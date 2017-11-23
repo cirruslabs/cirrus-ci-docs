@@ -1,0 +1,3 @@
+# Pricing
+
+Cirrus CI is free for Open Source projects. For private projects...

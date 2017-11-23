@@ -1,6 +1,6 @@
-![logo](media/cirrus-ci-logo.svg)
+![logo](media/cirrus-labs-logo.svg)
 
-# Cirrus CI
+# Cirrus CI Beta
 
 > Continuous Integration built for the cloud.
 
@@ -10,7 +10,8 @@
 * Linux and Windows support
 * SSDs and GPUs
 
-[Get Started](#overview)
+[Pricing](pricing.md)
+[Get Started](overview.md)
 
 <!-- background color -->
-![color](#B3E5FC)
+![color](#212121)

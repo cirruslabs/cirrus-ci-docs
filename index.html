@@ -6,17 +6,37 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="description" content="Description">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/buble.css">
+  <link rel="stylesheet" href="//unpkg.com/docsify/themes/dark.css">
+  <style>
+    body {
+      background-color: #212121;
+    }
+    .sidebar {
+      background-color: #212121;
+    }
+    .github-corner svg {
+      color: #212121;
+    }
+    .sidebar-toggle {
+      background-color: #212121;
+    }
+    body.close .sidebar-toggle{ {
+      background-color: #212121;
+    }
+  </style>
 </head>
 <body>
   <div id="app"></div>
   <script>
     window.$docsify = {
-      name: 'Cirrus CI',
+      name: 'Cirrus CI Beta',
       repo: 'https://github.com/cirruslabs/cirrus-ci-com',
-      coverpage: true
+      coverpage: true,
+      loadSidebar: true,
+      subMaxLevel: 3
     }
   </script>
   <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
+  <script src="//unpkg.com/prismjs/components/prism-yaml.min.js"></script>
 </body>
 </html>
