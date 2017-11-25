@@ -51,4 +51,4 @@ Because of all the problems and inconveniences described above we decided to bui
 1. Delegates execution directly to [variety of computing services](docs/supported-computing-services.md).
 2. Flexible execution environment: any Unix or Windows VM, any Docker container, any amount of CPUs, optional SSDs and GPUs.
 3. Most cloud compute services have per-second billing.
-4. Simple but very powerful configuration format. Learn more about how to write tasks [here](docs/writing-tasks.md).
+4. Simple but very powerful configuration format. Learn more about how to configure tasks [here](docs/writing-tasks.md).
