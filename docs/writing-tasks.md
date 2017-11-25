@@ -92,6 +92,59 @@ test_task:
 
 # Matrix Modification
 
+Sometimes it's useful to run the same task against different software versions. Or run different batches of tests based
+on an environment variable. For cases like these `matrix` modification comes very handy. It's possible to use `matrix`
+keyword anywhere inside of a particular task to have multiple tasks based on the original one. Each new task will be created
+from the original task by replacing the whole `matrix` YAML node with each `matrix`'s children separately. 
+
+Let check an example of `.cirrus.yml`:
+
+```yaml
+test_task:
+  container:
+    matrix:
+      image: node:latest
+      image: node:8.3.0
+  test_script: yarn run test
+```
+
+Which will be expanded into:
+
+```yaml
+test_task:
+  container:
+    image: node:latest
+  test_script: yarn run test
+  
+test_task:
+  container:
+    image: node:8.3.0
+  test_script: yarn run test
+```
+
+!> `matrix` modification can be used multiple times within a task.
+
+`matrix` modification makes it easy to create some pretty complex testing scenarios like this:
+
+```yaml
+test_task:
+  container:
+    matrix:
+      image: node:latest
+      image: node:8.3.0
+  environment:
+    matrix:
+      COMMAND: test
+      COMMAND: lint
+  node_modules_cache:
+    folder: node_modules
+    fingerprint_script: 
+      - node --version
+      - cat yarn.lock
+    populate_script: yarn install
+  test_script: yarn run $COMMAND
+```
+
 # HTTP Cache
 
 
