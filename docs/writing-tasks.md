@@ -36,7 +36,7 @@ test_task:
 
 # Script Instruction
 
-`script` instruction simply executes commands via `shell` on Unix or `batch` on Windows. `script` instruction can be named by
+`script` instruction executes commands via `shell` on Unix or `batch` on Windows. `script` instruction can be named by
 adding a name as a prefix. For example `test_script` or `my_very_specific_build_step_script`. Naming script instructions
 helps gather more granular information about task execution. Cirrus CI will use it in future to auto-detect performance 
 regressions.
@@ -86,6 +86,17 @@ test_task:
     fingerprint_script: cat yarn.lock
   install_script: yarn install
   test_script: yarn run test
+```
+
+# Environment Variables
+
+Environment variables can be configured under `environment` keyword in `.cirrus.yml` file. Here is an example:
+
+```yaml
+echo_task:
+  environment:
+    FOO: Bar
+  echo_script: echo $FOO   
 ```
 
 # Encrypted Variable
