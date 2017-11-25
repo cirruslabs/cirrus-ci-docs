@@ -36,7 +36,57 @@ test_task:
 
 # Script Instruction
 
+`script` instruction simply executes commands via `shell` on Unix or `batch` on Windows. `script` instruction can be named by
+adding a name as a prefix. For example `test_script` or `my_very_specific_build_step_script`. Naming script instructions
+helps gather more granular information about task execution. Cirrus CI will use it in future to auto-detect performance 
+regressions.
+
+Script commands can be specified as a single string value or a list of string values in `.cirrus.yml` configuration file
+like in an example below:
+
+```yaml
+check_task:
+  compile_script: gradle --parallel classes testClasses 
+  check_script:
+    - printenv
+    - gradle check
+``` 
+
 # Cache Instruction
+
+`cache` instruction allows to save some folder in cache based on a fingerprint and reuse it during the next execution 
+of the task with the same fingerprint. `cache` instruction can be named the same way as `script` instruction.
+
+Here is an example: 
+
+```yaml
+test_task:
+  node_modules_cache:
+    folder: node_modules
+    fingerprint_script: cat yarn.lock
+    populate_script: yarn install
+  test_script: yarn run test
+```
+
+`fingerprint_script` is an optional field that can specify a script that will be executed and console output of which
+will be used as a fingerprint for the given task. By default task name is used as a fingerprint value.
+
+`fingerprint_script` is an optional field that can specify a script that will be executed to populate the cache. 
+`fingerprint_script` should create `folder`.
+
+!> Note that cache folder will be archived and uploaded only in the very end of task execution once all instructions succeed.
+
+Which means the only difference between example above and below is that `yarn install` will always be executed in the 
+example below where in the example above only when `yarn.lock` has changes.
+
+```yaml
+test_task:      
+  node_modules_cache:
+    folder: node_modules
+    fingerprint_script: cat yarn.lock
+  install_script: yarn install
+  test_script: yarn run test
+```
 
 # Encrypted Variable
 
