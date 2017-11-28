@@ -141,7 +141,8 @@ CIRRUS_REPO_NAME | Repository name. For example `my-library`
 CIRRUS_REPO_OWNER | Repository owner(an organization or a user). For example `my-organization`
 CIRRUS_REPO_FULL_NAME | Repository full name. For example `my-organization/my-library`
 CIRRUS_REPO_CLONE_URL | URL used for cloning. For example `https://github.com/my-organization/my-library.git`
-CIRRUS_WORKING_DIR | Working directory where 
+CIRRUS_WORKING_DIR | Working directory where
+CIRRUS_HTTP_CACHE_HOST | Host and port number on which [local HTTP cache](#http-cache) can be accessed on
       
 # Encrypted Variable
 
