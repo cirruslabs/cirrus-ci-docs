@@ -201,6 +201,20 @@ publish_task:
   script: yarn run publish
 ```
 
+# Conditional Task Execution
+
+Some tasks are meant to be executed for master or release branches only. In order to specify a condition when a task
+should be executed please use `only_if` keyword:
+
+```yaml
+publish_task:
+  only_if: $CIRRUS_BRANCH == 'master'
+  script: yarn run publish
+```
+
+Currently only basic operators like `==`, `!=`, `&&`, `||` and unary `!` are supported in `only_if` expression.
+[Environment variables](#environment-variables) can also be used as usually.
+
 # HTTP Cache
 
 
