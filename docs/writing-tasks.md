@@ -20,6 +20,18 @@ a sequence of [`script`](#script-instruction) and [`cache`](#cache-instruction) 
 Please read topics below if you want better understand what's doing on in a more complex `.cirrus.yml` configuration file like this:
 
 ```yaml
+# global default
+container:
+  image: node:latest
+  
+lint_task:      
+  node_modules_cache:
+    folder: node_modules
+    fingerprint_script: cat yarn.lock
+    populate_script: yarn install
+
+  test_script: yarn run lint
+
 test_task:
   container:
     matrix:
@@ -27,11 +39,25 @@ test_task:
       image: node:8.3.0
       
   node_modules_cache:
-      folder: node_modules
-      fingerprint_script: cat yarn.lock
-      populate_script: yarn install
+    folder: node_modules
+    fingerprint_script: cat yarn.lock
+    populate_script: yarn install
 
   test_script: yarn run test
+  
+
+publish_task:
+  depends_on: 
+    - test 
+    - lint
+  only_if: $BRANCH == "master"
+  
+  node_modules_cache:
+    folder: node_modules
+    fingerprint_script: cat yarn.lock
+    populate_script: yarn install
+
+  publish_script: yarn run publish
 ```
 
 # Script Instruction
@@ -74,7 +100,7 @@ will be used as a fingerprint for the given task. By default task name is used a
 `fingerprint_script` is an optional field that can specify a script that will be executed to populate the cache. 
 `fingerprint_script` should create `folder`.
 
-!> Note that cache folder will be archived and uploaded only in the very end of task execution once all instructions succeed.
+!> Note that cache folder will be archived and uploaded only in the very end of the task execution once all instructions succeed.
 
 Which means the only difference between example above and below is that `yarn install` will always be executed in the 
 example below where in the example above only when `yarn.lock` has changes.
@@ -154,6 +180,25 @@ test_task:
       - cat yarn.lock
     populate_script: yarn install
   test_script: yarn run $COMMAND
+```
+
+# Dependencies
+
+Sometimes it might be very handy execute some tasks only after successful execution of other tasks. For such cases
+it's possible specify for a task names of other tasks it depends on with `depends_on` keyword:
+
+```yaml
+lint_task:
+  script: yarn run lint
+
+test_task:
+  script: yarn run test
+  
+publish_task:
+  depends_on: 
+    - test
+    - lint
+  script: yarn run publish
 ```
 
 # HTTP Cache
