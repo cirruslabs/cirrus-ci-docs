@@ -125,6 +125,24 @@ echo_task:
   echo_script: echo $FOO   
 ```
 
+Also some default environment variables are pre-defined:
+
+Name | Value / Description
+---  | ---
+CI | true
+CIRRUS_CI | true
+CONTINUOUS_INTEGRATION | true
+CIRRUS_BRANCH | Branch name. For example `master`
+CIRRUS_BUILD_ID | Unique build ID
+CIRRUS_CHANGE_IN_REPO | Git SHA
+CIRRUS_TASK_NAME | Task name
+CIRRUS_TASK_ID | Unique task ID
+CIRRUS_REPO_NAME | Repository name. For example `my-library`
+CIRRUS_REPO_OWNER | Repository owner(an organization or a user). For example `my-organization`
+CIRRUS_REPO_FULL_NAME | Repository full name. For example `my-organization/my-library`
+CIRRUS_REPO_CLONE_URL | URL used for cloning. For example `https://github.com/my-organization/my-library.git`
+CIRRUS_WORKING_DIR | Working directory where 
+      
 # Encrypted Variable
 
 # Matrix Modification
