@@ -144,7 +144,27 @@ CIRRUS_REPO_CLONE_URL | URL used for cloning. For example `https://github.com/my
 CIRRUS_WORKING_DIR | Working directory where
 CIRRUS_HTTP_CACHE_HOST | Host and port number on which [local HTTP cache](#http-cache) can be accessed on
       
-# Encrypted Variable
+# Encrypted Variables
+
+It is possible to securely add sensitive information to `.cirrus.yml` file. Encrypted variables are only available to
+builds initialized or approved by users with write permission to a corresponding repository.
+
+In order to encrypt a variable go to repository's settings page via clicking settings icon ![](https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_settings_white_24px.svg)
+on a repository's main page (for example https://cirrus-ci.org/github/my-organization/my-repository) and follow instructions.
+
+!> Only users with `WRITE` permissions can add encrypted variables to a repository.
+
+An encrypted variable will be presented in a form like `ENCRYPTED[qwerty239abc]` which can be safely committed within `.cirrus.yml` file:
+
+```yaml
+publish_task:
+  environemnt:
+    AUTH_TOKEN: ENCRYPTED[qwerty239abc]
+  script: ./publish.sh
+```
+
+Cirrus CI encrypts variables with a unique per repository 256-bit encryption key so forks and even repositories within
+the same organization cannot re-use them.
 
 # Matrix Modification
 
