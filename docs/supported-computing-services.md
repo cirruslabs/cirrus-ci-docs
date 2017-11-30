@@ -29,6 +29,76 @@ that is available free of change for Open Source community. Paying customers can
 
 ## Google Compute Engine
 
+In order to interact with GCE APIs to create and delete instances for tasks Cirrus CI needs permissions. Creating a 
+[service account](https://cloud.google.com/compute/docs/access/service-accounts) is a common way to safely give granular
+access to parts of Google Cloud Projects. We do recommend though to create a separate Google Cloud project for running 
+CI builds as a best practice.
+
+Once you have a Google Cloud project to run Cirrus CI builds on simply create a service account by running following command: 
+
+```bash
+gcloud iam service-accounts create cirrus-ci \
+    --project $PROJECT_ID 
+```
+
+Now we need to give an access to Compute Engine to the newly created service account:
+
+```bash
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+    --member serviceAccount:cirrus-ci@$PROJECT_ID.iam.gserviceaccount.com \
+    --role roles/compute.admin
+```
+
+We also need to give an access to Google Storage so Cirrus CI can store logs and caches in it:
+
+```bash
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+    --member serviceAccount:cirrus-ci@$PROJECT_ID.iam.gserviceaccount.com \
+    --role roles/storage.admin
+```
+
+?> By default Cirrus CI will store logs and caches for 30 days but it can be changed by manually changing a
+[lifecycle rule](https://cloud.google.com/storage/docs/lifecycle) for a Google Storage bucket that Cirrus CI is using.
+
+Now we have a service account that Cirrus CI can use! It's time to let Cirrus CI know about that fact by proving a
+private key for the service account. A private key can be created by running the following command:
+
+```bash
+gcloud iam service-accounts keys create service-account-credentials.json \
+  --iam-account cirrus-ci@$PROJECT_ID.iam.gserviceaccount.com
+```
+
+And the last step is to create an [encrypted variable](docs/writing-tasks.md#encrypted-variables) from contents of
+`service-account-credentials.json` file and add it to `.cirrus.yml` file:
+
+```yaml
+gcp_credentials: ENCRYPTED[qwerty239abc]
+```
+
+Done! Now tasks can be scheduled on Compute Engine within `$PROJECT_ID` project by configuring `gce_instance` something 
+like this:
+
+```yaml
+gcp_credentials: ENCRYPTED[qwerty239abc]
+
+gce_instance:
+  image_project: ubuntu-os-cloud
+  image_name: ubuntu-1604-xenial-v20171121a
+  zone: us-central1-a
+  cpu: 8
+  memory: 40Gb
+  disk: 20
+  
+task:
+  script: ./run-ci.sh
+```
+
+### Custom VM images
+
+### Windows Support
+
+It is possible to 
+
 ## Google Kubernetes Engine
 
 ## Coming Soon
