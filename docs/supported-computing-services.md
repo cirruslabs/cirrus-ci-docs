@@ -95,9 +95,61 @@ task:
 
 ### Custom VM images
 
+Building an immutable VM image with all necessary software pre-configured is a known best practice with many benefits.
+It makes sure environment where a task is executed is always the same and that no time is spent on useless work like
+installing a package over and over again for every single task.
+
+There are many ways how one can create a custom image for Google Compute Engine. Please refer to the [official documentation](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images).
+At Cirrus Labs we are using [Packer](https://www.packer.io/docs/builders/googlecompute.html) to automate building such
+images. An example of how we use it can be found in [our public GitHub repository](https://github.com/cirruslabs/cirrus-images).
+
 ### Windows Support
 
-It is possible to 
+Google Compute Engine support Windows images and Cirrus CI can take full advantages of it by just explicitly specifying
+platform of an image like this:
+
+```yaml
+gce_instance:
+  image_project: windows-cloud
+  image_name: windows-server-2016-dc-core-v20170913
+  platform: windows
+  zone: us-central1-a
+  cpu: 8
+  memory: 40Gb
+  disk: 20
+  
+task:
+  script: run-ci.bat
+```
+
+### Instance Scopes
+
+By default Cirrus CI will create Google Compute instances without any [scopes](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes) 
+so an instance can't access Google Storage for example. But sometimes it can be useful to give some permissions to an 
+instance by using `scopes` key of `gce_instance`.  For example if a particular task builds Docker images and then pushes 
+them to [Container Registry](https://cloud.google.com/container-registry/) it's configuration file can look something like:
+
+```yaml
+gcp_credentials: ENCRYPTED[qwerty239abc]
+
+gce_instance:
+  image_project: my-project
+  image_name: my-custom-image-with-docker
+  zone: us-central1-a
+  cpu: 8
+  memory: 40Gb
+  disk: 20
+
+test_task:
+  test_script: ./scripts/test.sh
+
+push_docker_task:
+  depends_on: test
+  only_if: $CIRRUS_BRANCH == "master"
+  gce_instance:
+    scopes: cloud-platform
+  push_script: ./scripts/push_docker.sh
+```
 
 ## Google Kubernetes Engine
 
