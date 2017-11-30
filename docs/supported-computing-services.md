@@ -151,8 +151,22 @@ push_docker_task:
   push_script: ./scripts/push_docker.sh
 ```
 
+### Preemptible Instances
+
+Cirrus CI can schedule [preemptible](https://cloud.google.com/compute/docs/instances/preemptible) instances with all price
+benefits and stability risks. But sometimes risks of an instance being preempted at any time can be tolerated. For example 
+`gce_instance` can be configured to schedule preemptible instance for non master branches like this:
+
+```yaml
+gce_instance:
+  image_project: my-project
+  image_name: my-custom-image-with-docker
+  zone: us-central1-a
+  preemptible: $CIRRUS_BRANCH != "master"
+```
+
 ## Google Kubernetes Engine
 
 ## Coming Soon
 
-We are actively working on supporting AWS and Azure and planning to release support for them in the end of Q1 2018.
+We are actively working on supporting AWS and Azure and planning to add support for them in the end of Q1 2018.
