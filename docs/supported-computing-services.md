@@ -24,8 +24,24 @@ Please check the list of currently supported cloud compute services below and pl
 
 ## Community Cluster
 
-Community Cluster is simply a [Kubernetes](https://kubernetes.io/) cluster running on [Google Kubernetes Engine](#google-kubernetes-engine)
+Community Cluster is a [Kubernetes](https://kubernetes.io/) cluster running on [Google Kubernetes Engine](#google-kubernetes-engine)
 that is available free of change for Open Source community. Paying customers can also use Community Cluster for personal private repositories.
+
+Community Cluster is configured the same way as anyone can configure a personal GKE cluster as [described below](#google-kubernetes-engine).
+
+By default a container is given 2 CPUs and 4 Gb of memory but it can be configured in `.cirrus.yml`:
+
+```yaml
+container:
+  image: openjdk:8-jdk
+  cpu: 4
+  memory: 12
+``` 
+
+Containers on Community Cluster can use maximum 8.0 CPUs and up to 24 Gb of memory. [Custom GKE clusters](#google-kubernetes-engine) don't have that limitation though.
+
+!> Since Community Cluster is shared scheduling times for containers can vary from time to time. Also the smaller a container 
+require resources faster it will be scheduled.
 
 ## Google Compute Engine
 
@@ -166,6 +182,40 @@ gce_instance:
 ```
 
 ## Google Kubernetes Engine
+
+Scheduling tasks on [Compute Engine](#google-compute-engine) has one big disadvantage of waiting for an instance to
+start which usually takes around a minute. One minute is not that long but can't compete with hundreds of milliseconds
+that takes a container cluster on GKE to start a container.
+
+To start scheduling tasks on a container cluster we first need to create one using `gcloud`. Here is a command to create
+an auto-scalable cluster that will scale down to zero nodes when there is no load for some time and quickly scale up with
+the load during pick hours:
+
+```yaml
+gcloud container clusters create cirrus-ci-cluster \
+  --project cirruslabs-ci \
+  --zone us-central1-a \
+  --num-nodes 1 --machine-type n1-standard-8 \
+  --enable-autoscaling --min-nodes=0 --max-nodes=10
+```
+
+Cirrus CI still need API permissions same as for [Compute Engine](#google-compute-engine) to be able to authorize
+into the Kubernetes cluster and also to save logs and caches into Google Storage.
+
+Done! Now after creating `cirrus-ci-cluster` cluster and `gcp_credentials` credentials tasks can be scheduled on the 
+newly created cluster like this:
+
+```yaml
+gcp_credentials: ENCRYPTED[qwerty239abc]
+
+gke_container:
+  image: gradle:4.3.0-jdk8
+  cluster_name: cirrus-ci-cluster
+  zone: us-central1-a
+  namespace: default
+  cpu: 6
+  memory: 24Gb
+```
 
 ## Coming Soon
 
