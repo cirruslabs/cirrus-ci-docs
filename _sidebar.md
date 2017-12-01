@@ -1,9 +1,8 @@
 - [Overview](overview.md)
 - [Quick Start](quick-start.md)
 - [Pricing](pricing.md)
-- Docs
-  - [Life of a Cirrus CI build](docs/build-life.md)
-  - [Writing Tasks](docs/writing-tasks.md)
-  - [Supported Computing Services](docs/supported-computing-services.md)
+- [Life of a Cirrus CI build](docs/build-life.md)
+- [Writing Tasks](docs/writing-tasks.md)
+- [Supported Computing Services](docs/supported-computing-services.md)
 - [FAQ](faq.md)
 - [Support](support.md)
