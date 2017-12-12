@@ -25,7 +25,7 @@ Please check the list of currently supported cloud compute services below and pl
 ## Community Cluster
 
 Community Cluster is a [Kubernetes](https://kubernetes.io/) cluster running on [Google Kubernetes Engine](#google-kubernetes-engine)
-that is available free of change for Open Source community. Paying customers can also use Community Cluster for personal private repositories.
+that is available free of charge for Open Source community. Paying customers can also use Community Cluster for personal private repositories.
 
 Community Cluster is configured the same way as anyone can configure a personal GKE cluster as [described below](#google-kubernetes-engine).
 
