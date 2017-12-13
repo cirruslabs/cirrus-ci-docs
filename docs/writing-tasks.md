@@ -256,4 +256,46 @@ Currently only basic operators like `==`, `!=`, `&&`, `||` and unary `!` are sup
 
 # HTTP Cache
 
+For the most cases regular caching mechanism where Cirrus CI caches a folder is more than enough. But modern build systems
+like [Gradle](https://gradle.org/), [Bazel](https://bazel.build/) and [Pants](https://www.pantsbuild.org/) can take
+advantages of remote caching. Remote caching is when a build system uploads and downloads intermediate results of a build 
+execution while the build itself is still executing.
 
+Cirrus CI agent starts a local caching server and exposes it via `CIRRUS_HTTP_CACHE_HOST` environments variable. Caching server
+supports `GET`, `POST` and `HEAD` requests to upload, download and check presence of artifacts.
+
+?> If port `12321` is available `CIRRUS_HTTP_CACHE_HOST` will be equal to `localhost:12321`.  
+
+For example running the following command:
+
+```bash
+curl -s -X POST --data-binary=@myfolder.tar.gz http://$CIRRUS_HTTP_CACHE_HOST/mykey
+```
+
+Has the same effect as a [caching instruction](#cache-instruction) of `myfolder` folder where `sha1sum` of all the 
+`myfolder` contents is equal to `mykey`:
+
+```yaml
+myfolder_cache:
+  folder: myfolder
+```
+
+### Gradle HTTP Cache
+
+Here is how [HTTP Cache](#http-cache) can be used with Gradle simply by adding following lines to `settings.gradle`:
+
+```groovy
+ext.isCiServer = System.getenv().containsKey("CI")
+ext.isMasterBranch = System.getenv()["CIRRUS_BRANCH"] == "master"
+
+buildCache {
+  local {
+    enabled = !isCiServer
+  }
+  remote(HttpBuildCache) {
+    url = 'http://' + System.getenv().getOrDefault("CIRRUS_HTTP_CACHE_HOST", "localhost:12321") + "/"
+    enabled = isCiServer
+    push = isMasterBranch
+  }
+}
+```
