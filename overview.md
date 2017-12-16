@@ -52,3 +52,5 @@ Because of all the problems and inconveniences described above, we decided to bu
 2. Flexible execution environment: any Unix or Windows VM, any Docker container, any amount of CPUs, optional SSDs and GPUs.
 3. Most cloud compute services have per-second billing.
 4. Simple but very powerful configuration format. Learn more about how to configure tasks [here](docs/writing-tasks.md).
+
+Try Cirrus CI with a [Quick Start](quick-start.md) guide.
