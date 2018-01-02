@@ -49,8 +49,12 @@ Because of all the problems and inconveniences described above, we decided to bu
 # Key Highlights
 
 1. Delegates execution directly to [variety of computing services](docs/supported-computing-services.md).
-2. Flexible execution environment: any Unix or Windows VM, any Docker container, any amount of CPUs, optional SSDs and GPUs.
-3. Most cloud compute services have per-second billing.
-4. Simple but very powerful configuration format. Learn more about how to configure tasks [here](docs/writing-tasks.md).
+2. Most cloud compute services have per-second billing.
+3. Flexible execution environment: any Unix or Windows VM, any Docker container, any amount of CPUs, optional SSDs and GPUs.
+4. Simple but very powerful configuration format. Learn more about how to configure tasks [here](docs/writing-tasks.md). Configure things like:
+  - [Matrix Builds](docs/writing-tasks.md#matrix-modification)
+  - [Dependencies between tasks](docs/writing-tasks.md#dependencies)
+  - [Conditional Task Execution](docs/writing-tasks.md#conditional-task-execution)
+  - [Local HTTP Cache](docs/writing-tasks.md#http-cache)
 
 Try Cirrus CI with a [Quick Start](quick-start.md) guide.
