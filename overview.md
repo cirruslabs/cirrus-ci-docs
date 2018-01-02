@@ -8,7 +8,7 @@ For private repositories Cirrus CI takes a [small per-user fee](pricing.md) for 
 Cirrus CI is free for Open Source projects.
 
 ?> [Community Cluster](docs/supported-computing-services.md#community-cluster) is available free of charge 
-to Open Source community and for private personal repositories.
+to Open Source community and with no extra fee for private personal repositories.
 
 # Why Cirrus CI
 
