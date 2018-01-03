@@ -4,6 +4,7 @@
 - [Life of a Cirrus CI build](docs/build-life.md)
 - [Writing Tasks](docs/writing-tasks.md)
 - [Supported Computing Services](docs/supported-computing-services.md)
+- [Examples](examples.md)
 - [FAQ](faq.md)
 - [Terms of Service](terms.md)
 - [Privacy Policy](privacy.md)

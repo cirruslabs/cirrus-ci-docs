@@ -281,22 +281,4 @@ myfolder_cache:
   folder: myfolder
 ```
 
-### Gradle HTTP Cache
-
-Here is how [HTTP Cache](#http-cache) can be used with Gradle simply by adding following lines to `settings.gradle`:
-
-```groovy
-ext.isCiServer = System.getenv().containsKey("CI")
-ext.isMasterBranch = System.getenv()["CIRRUS_BRANCH"] == "master"
-
-buildCache {
-  local {
-    enabled = !isCiServer
-  }
-  remote(HttpBuildCache) {
-    url = 'http://' + System.getenv().getOrDefault("CIRRUS_HTTP_CACHE_HOST", "localhost:12321") + "/"
-    enabled = isCiServer
-    push = isMasterBranch
-  }
-}
-```
+?> To see how HTTP Cache can be used with Gradle's Build Cache please check [this example](examples.md#build-cache).
