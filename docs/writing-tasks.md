@@ -6,8 +6,8 @@ Task defines where and how your scripts will be executed. Let's check line-by-li
 task:
   container:
     image: gradle:4.3.0-jdk8
-    cpu: 8
-    memory: 20G
+    cpu: 4
+    memory: 10G
   script: gradle test
 ```
 

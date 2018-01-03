@@ -10,8 +10,8 @@ For a simple Java project `.cirrus.yml` can look like:
 ```yaml
 container:
   image: gradle:4.3.0-jdk8
-  cpu: 8
-  memory: 20G
+  cpu: 4
+  memory: 10G
 task:
   script: gradle check
 ```
