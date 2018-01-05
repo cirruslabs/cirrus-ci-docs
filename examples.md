@@ -22,7 +22,6 @@ check_task:
   check_script: gradle check
   cleanup_before_cache_script:
     - rm -rf ~/.gradle/caches/$GRADLE_VERSION/
-    - rm -f ~/.gradle/caches/user-id.txt
     - find ~/.gradle/caches/ -name "*.lock" -type f -delete
 ```
 
