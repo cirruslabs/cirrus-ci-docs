@@ -14,7 +14,7 @@ task:
 Example above defines a single task that will be scheduled and executed on Community Cluster using `gradle:4.3.0-jdk8` Docker image.
 Only one user defined script instruction to run `gradle test` will be executed. Pretty simple, isn't it?
 
-A `task` simply defines a [compute service](deoc/supported-computing-services.md) to schedule the task on and 
+A `task` simply defines a [compute service](doc/supported-computing-services.md) to schedule the task on and 
 a sequence of [`script`](#script-instruction) and [`cache`](#cache-instruction) instructions that will be executed.
 
 Please read topics below if you want better understand what's doing on in a more complex `.cirrus.yml` configuration file like this:
@@ -98,7 +98,7 @@ test_task:
 will be used as a fingerprint for the given task. By default task name is used as a fingerprint value.
 
 `fingerprint_script` is an optional field that can specify a script that will be executed to populate the cache. 
-`fingerprint_script` should create `folder`.
+`populate_script` should create `folder`.
 
 !> Note that cache folder will be archived and uploaded only in the very end of the task execution once all instructions succeed.
 
