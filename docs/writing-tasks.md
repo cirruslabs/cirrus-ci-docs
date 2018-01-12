@@ -78,6 +78,25 @@ check_task:
     - gradle check
 ``` 
 
+# Background Script Instruction
+
+`background_script` instruction is absolutely the same as `script` instruction but Cirrus CI won't wait for the script to finish 
+and will continue execution of following instructions.
+
+Background scripts can be useful when something needs to be executed in the background. For example, a database or
+some emulators. Traditionally the same effect is achieved by adding `&` to a command like `$: command &`. Problem here 
+is that logs from `command` will be mixed into regular logs of the following commands. By using background scripts 
+not only logs will be properly saved and displayed, but also `command` itself will be properly killed in the end of a task.
+
+Here is an example of how `background_script` instruction can be used to run an android emulator:
+
+```yaml
+android_test_task:
+  start_emulator_background_script: emulator -avd test -no-audio -no-window
+  wait_for_emulator_to_boot_script: adb wait-for-device
+  test_script: gradle test
+``` 
+
 # Cache Instruction
 
 `cache` instruction allows to save some folder in cache based on a fingerprint and reuse it during the next execution 
