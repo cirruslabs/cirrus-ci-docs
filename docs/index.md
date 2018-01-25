@@ -1,3 +1,5 @@
+# Cirrus CI
+
 Cirrus CI is a modern continuous-integration-as-a-service solution that takes advantage of cloud computing services. 
 Cirrus CI allows customers to schedule CI builds on [variety of cloud services](guide/supported-computing-services.md) and 
 pay the cloud provider directly and only for the resources used to run CI builds and store build artifacts. 
@@ -9,7 +11,20 @@ Cirrus CI is free for Open Source projects.
     [Community Cluster](guide/supported-computing-services.md#community-cluster) is available free of charge 
     to Open Source community and with no extra fee for private personal repositories.
 
-# Why Cirrus CI
+## Key Highlights
+
+* [Free for Open Source](guide/supported-computing-services.md#community-cluster) or per-second billing otherwise.
+* Can delegate execution directly to [variety of computing services](guide/supported-computing-services.md).
+* Flexible execution environment: any Unix or Windows VM, any Docker container, any amount of CPUs, optional SSDs and GPUs.
+* Simple but very powerful configuration format. Learn more about how to configure tasks [here](guide/writing-tasks.md). Configure things like:
+    - [Matrix Builds](guide/writing-tasks.md#matrix-modification)
+    - [Dependencies between tasks](guide/writing-tasks.md#dependencies)
+    - [Conditional Task Execution](guide/writing-tasks.md#conditional-task-execution)
+    - [Local HTTP Cache](guide/writing-tasks.md#http-cache)
+
+Try Cirrus CI with a [Quick Start](guide/quick-start.md) guide.
+
+## Why Cirrus CI
 
 * "Why yet another CI? There are gazillions of them already!"
 * "We have X already configured. It's working for us. Why should we switch?"
@@ -44,16 +59,3 @@ Because of all the problems and inconveniences described above, we decided to bu
 1. Simple in details.
 2. Efficient everywhere.
 3. Transparent and honest with users. 
-
-# Key Highlights
-
-1. Delegates execution directly to [variety of computing services](guide/supported-computing-services.md).
-2. Most cloud compute services have per-second billing.
-3. Flexible execution environment: any Unix or Windows VM, any Docker container, any amount of CPUs, optional SSDs and GPUs.
-4. Simple but very powerful configuration format. Learn more about how to configure tasks [here](guide/writing-tasks.md). Configure things like:
-  - [Matrix Builds](guide/writing-tasks.md#matrix-modification)
-  - [Dependencies between tasks](guide/writing-tasks.md#dependencies)
-  - [Conditional Task Execution](guide/writing-tasks.md#conditional-task-execution)
-  - [Local HTTP Cache](guide/writing-tasks.md#http-cache)
-
-Try Cirrus CI with a [Quick Start](guide/quick-start.md) guide.
