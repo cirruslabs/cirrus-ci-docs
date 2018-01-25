@@ -1,5 +1,3 @@
-# Writing Tasks
-
 Task defines where and how your scripts will be executed. Let's check line-by-line an example of `.cirrus.yml` configuration file first:
 
 ```yaml
@@ -14,7 +12,7 @@ task:
 Example above defines a single task that will be scheduled and executed on Community Cluster using `gradle:4.3.0-jdk8` Docker image.
 Only one user defined script instruction to run `gradle test` will be executed. Pretty simple, isn't it?
 
-A `task` simply defines a [compute service](doc/supported-computing-services.md) to schedule the task on and 
+A `task` simply defines a [compute service](supported-computing-services.md) to schedule the task on and 
 a sequence of [`script`](#script-instruction) and [`cache`](#cache-instruction) instructions that will be executed.
 
 Please read topics below if you want better understand what's doing on in a more complex `.cirrus.yml` configuration file like this:
@@ -60,7 +58,7 @@ publish_task:
   publish_script: yarn run publish
 ```
 
-# Script Instruction
+## Script Instruction
 
 `script` instruction executes commands via `shell` on Unix or `batch` on Windows. `script` instruction can be named by
 adding a name as a prefix. For example `test_script` or `my_very_specific_build_step_script`. Naming script instructions
@@ -78,7 +76,7 @@ check_task:
     - gradle check
 ``` 
 
-# Background Script Instruction
+## Background Script Instruction
 
 `background_script` instruction is absolutely the same as `script` instruction but Cirrus CI won't wait for the script to finish 
 and will continue execution of following instructions.
@@ -97,7 +95,7 @@ android_test_task:
   test_script: gradle test
 ``` 
 
-# Cache Instruction
+## Cache Instruction
 
 `cache` instruction allows to save some folder in cache based on a fingerprint and reuse it during the next execution 
 of the task with the same fingerprint. `cache` instruction can be named the same way as `script` instruction.
@@ -119,7 +117,8 @@ will be used as a fingerprint for the given task. By default task name is used a
 `fingerprint_script` is an optional field that can specify a script that will be executed to populate the cache. 
 `populate_script` should create `folder`.
 
-!> Note that cache folder will be archived and uploaded only in the very end of the task execution once all instructions succeed.
+!!! info
+    Note that a cache folder will be archived and uploaded only in the very end of the task execution once all instructions succeed.
 
 Which means the only difference between example above and below is that `yarn install` will always be executed in the 
 example below where in the example above only when `yarn.lock` has changes.
@@ -133,7 +132,7 @@ test_task:
   test_script: yarn run test
 ```
 
-# Environment Variables
+## Environment Variables
 
 Environment variables can be configured under `environment` keyword in `.cirrus.yml` file. Here is an example:
 
@@ -164,7 +163,7 @@ CIRRUS_REPO_CLONE_URL | URL used for cloning. For example `https://github.com/my
 CIRRUS_WORKING_DIR | Working directory where
 CIRRUS_HTTP_CACHE_HOST | Host and port number on which [local HTTP cache](#http-cache) can be accessed on
       
-# Encrypted Variables
+## Encrypted Variables
 
 It is possible to securely add sensitive information to `.cirrus.yml` file. Encrypted variables are only available to
 builds initialized or approved by users with write permission to a corresponding repository.
@@ -172,7 +171,8 @@ builds initialized or approved by users with write permission to a corresponding
 In order to encrypt a variable go to repository's settings page via clicking settings icon ![](https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_settings_white_24px.svg)
 on a repository's main page (for example https://cirrus-ci.org/github/my-organization/my-repository) and follow instructions.
 
-!> Only users with `WRITE` permissions can add encrypted variables to a repository.
+!!! warning
+    Only users with `WRITE` permissions can add encrypted variables to a repository.
 
 An encrypted variable will be presented in a form like `ENCRYPTED[qwerty239abc]` which can be safely committed within `.cirrus.yml` file:
 
@@ -186,7 +186,7 @@ publish_task:
 Cirrus CI encrypts variables with a unique per repository 256-bit encryption key so forks and even repositories within
 the same organization cannot re-use them.
 
-# Matrix Modification
+## Matrix Modification
 
 Sometimes it's useful to run the same task against different software versions. Or run different batches of tests based
 on an environment variable. For cases like these `matrix` modification comes very handy. It's possible to use `matrix`
@@ -218,7 +218,8 @@ test_task:
   test_script: yarn run test
 ```
 
-!> `matrix` modification can be used multiple times within a task.
+!!! info
+    `matrix` modification can be used multiple times within a task.
 
 `matrix` modification makes it easy to create some pretty complex testing scenarios like this:
 
@@ -241,7 +242,7 @@ test_task:
   test_script: yarn run $COMMAND
 ```
 
-# Dependencies
+## Dependencies
 
 Sometimes it might be very handy execute some tasks only after successful execution of other tasks. For such cases
 it's possible specify for a task names of other tasks it depends on with `depends_on` keyword:
@@ -260,7 +261,7 @@ publish_task:
   script: yarn run publish
 ```
 
-# Conditional Task Execution
+## Conditional Task Execution
 
 Some tasks are meant to be executed for master or release branches only. In order to specify a condition when a task
 should be executed please use `only_if` keyword:
@@ -274,7 +275,7 @@ publish_task:
 Currently only basic operators like `==`, `!=`, `&&`, `||` and unary `!` are supported in `only_if` expression.
 [Environment variables](#environment-variables) can also be used as usually.
 
-# HTTP Cache
+## HTTP Cache
 
 For the most cases regular caching mechanism where Cirrus CI caches a folder is more than enough. But modern build systems
 like [Gradle](https://gradle.org/), [Bazel](https://bazel.build/) and [Pants](https://www.pantsbuild.org/) can take
@@ -284,7 +285,8 @@ execution while the build itself is still executing.
 Cirrus CI agent starts a local caching server and exposes it via `CIRRUS_HTTP_CACHE_HOST` environments variable. Caching server
 supports `GET`, `POST` and `HEAD` requests to upload, download and check presence of artifacts.
 
-?> If port `12321` is available `CIRRUS_HTTP_CACHE_HOST` will be equal to `localhost:12321`.  
+!!! info
+    If port `12321` is available `CIRRUS_HTTP_CACHE_HOST` will be equal to `localhost:12321`.  
 
 For example running the following command:
 
@@ -300,4 +302,5 @@ myfolder_cache:
   folder: myfolder
 ```
 
-?> To see how HTTP Cache can be used with Gradle's Build Cache please check [this example](examples.md#build-cache).
+!!! info
+    To see how HTTP Cache can be used with Gradle's Build Cache please check [this example](examples.md#build-cache).

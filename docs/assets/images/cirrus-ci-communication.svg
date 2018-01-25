@@ -10,7 +10,7 @@
             <path id="Line-2-decoration-1" d="M112,60 L122.8,63 L122.8,57 L112,60 Z" stroke="#AED581" stroke-width="4" stroke-linecap="square"></path>
             <path d="M418,281 L621,98" id="Line" stroke="#2196F3" stroke-width="4" stroke-linecap="square"></path>
             <path id="Line-decoration-1" d="M621,98 L610.969608,103.003122 L614.987033,107.459611 L621,98 Z" stroke="#2196F3" stroke-width="4" stroke-linecap="square"></path>
-            <g id="cirrus-labs-logo" stroke="#FAFAFA" stroke-width="9" stroke-linecap="round">
+            <g id="cirrus-labs-logo" stroke="#333333" stroke-width="9" stroke-linecap="round">
                 <path d="M0.125,90.425 L79.675,90.425" id="Shape" fill="#000000" fill-rule="nonzero"></path>
                 <path d="M79.675,90.425 C87.9868855,90.425 94.725,83.6868855 94.725,75.375 C94.725,67.0631145 87.9868855,60.325 79.675,60.325" id="Shape"></path>
                 <path d="M0.125,60.325 L79.675,60.325" id="Shape" fill="#000000" fill-rule="nonzero"></path>

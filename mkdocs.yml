@@ -1,0 +1,76 @@
+repo_url: https://github.com/cirruslabs/cirrus-ci-docs
+
+site_name: Cirrus CI Beta
+site_author: Cirrus Labs
+site_description: >
+  Cirrus CI is a modern Continuous Integration system built for the era of cloud computing.
+  Cirrus CI supports both Linux and Windows environments as well as various cloud computing
+  services like Kubernetes and Google Cloud Platform.
+
+google_analytics: ['UA-110620457-1', 'cirrus-ci.org']
+remote_branch: master
+strict: true
+
+theme:
+  name: 'material'
+  favicon: 'assets/images/favicon.ico'
+  logo: 'assets/images/logo.svg'
+  # Don't include MkDocs' JavaScript
+  include_search_page: false
+  search_index_only: true
+  language: en
+  palette:
+    primary: indigo
+    accent: indigo
+  font:
+    text: Roboto
+    code: Roboto Mono
+
+markdown_extensions:
+  - markdown.extensions.admonition
+  - markdown.extensions.codehilite:
+      guess_lang: false
+  - markdown.extensions.def_list
+  - markdown.extensions.footnotes
+  - markdown.extensions.meta
+  - markdown.extensions.toc:
+      permalink: true
+  - pymdownx.arithmatex
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+pages:
+  - Home: index.md
+  - User Guide:
+    - 'Quick Start': guide/quick-start.md
+    - 'Writing Tasks': guide/writing-tasks.md
+    - 'Life of a Build': guide/build-life.md
+    - 'Supported Computing Services': guide/supported-computing-services.md
+    - 'Examples': guide/examples.md
+  - Pricing: pricing.md
+  - FAQ: faq.md
+  - About:
+    - 'Support': about/support.md
+    - 'Privacy': about/privacy.md
+    - 'Terms of Service': about/terms.md
+
+extra:
+  social:
+    - type: 'github'
+      link: 'https://github.com/cirrulabs'
+    - type: 'twitter'
+      link: 'https://twitter.com/cirrus_labs'

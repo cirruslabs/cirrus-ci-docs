@@ -1,14 +1,13 @@
-# Overview
-
 Cirrus CI is a modern continuous-integration-as-a-service solution that takes advantage of cloud computing services. 
-Cirrus CI allows customers to schedule CI builds on [variety of cloud services](docs/supported-computing-services.md) and 
+Cirrus CI allows customers to schedule CI builds on [variety of cloud services](guide/supported-computing-services.md) and 
 pay the cloud provider directly and only for the resources used to run CI builds and store build artifacts. 
 
 For private repositories Cirrus CI takes a [small per-user fee](pricing.md) for scheduling and orchestrating builds. 
 Cirrus CI is free for Open Source projects.
 
-?> [Community Cluster](docs/supported-computing-services.md#community-cluster) is available free of charge 
-to Open Source community and with no extra fee for private personal repositories.
+!!! info
+    [Community Cluster](guide/supported-computing-services.md#community-cluster) is available free of charge 
+    to Open Source community and with no extra fee for private personal repositories.
 
 # Why Cirrus CI
 
@@ -48,13 +47,13 @@ Because of all the problems and inconveniences described above, we decided to bu
 
 # Key Highlights
 
-1. Delegates execution directly to [variety of computing services](docs/supported-computing-services.md).
+1. Delegates execution directly to [variety of computing services](guide/supported-computing-services.md).
 2. Most cloud compute services have per-second billing.
 3. Flexible execution environment: any Unix or Windows VM, any Docker container, any amount of CPUs, optional SSDs and GPUs.
-4. Simple but very powerful configuration format. Learn more about how to configure tasks [here](docs/writing-tasks.md). Configure things like:
-  - [Matrix Builds](docs/writing-tasks.md#matrix-modification)
-  - [Dependencies between tasks](docs/writing-tasks.md#dependencies)
-  - [Conditional Task Execution](docs/writing-tasks.md#conditional-task-execution)
-  - [Local HTTP Cache](docs/writing-tasks.md#http-cache)
+4. Simple but very powerful configuration format. Learn more about how to configure tasks [here](guide/writing-tasks.md). Configure things like:
+  - [Matrix Builds](guide/writing-tasks.md#matrix-modification)
+  - [Dependencies between tasks](guide/writing-tasks.md#dependencies)
+  - [Conditional Task Execution](guide/writing-tasks.md#conditional-task-execution)
+  - [Local HTTP Cache](guide/writing-tasks.md#http-cache)
 
-Try Cirrus CI with a [Quick Start](quick-start.md) guide.
+Try Cirrus CI with a [Quick Start](guide/quick-start.md) guide.

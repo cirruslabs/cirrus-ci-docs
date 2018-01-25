@@ -1,24 +1,26 @@
 # Supported Computing Services
 
-For every [task](docs/writing-tasks.md) Cirrus CI start a new Virtual Machine or a new Docker Container on a given compute service.
+For every [task](writing-tasks.md) Cirrus CI starts a new Virtual Machine or a new Docker Container on a given compute service.
 Using a new VM or a new Docker Container each time for running tasks has many benefits:
-* *Atomic changes to an environment where tasks are executed.* Everything about a task is configured in `.cirrus.yml` file including
-VM image version and Docker Container image version. After commiting changes to `.cirrus.yml` not only new tasks will use the new environment
-but also outdated branches will continue using the old configuration.
-* *Reproducibility.* Fresh environment guarantees no corrupted artifacts or caches are presented from the previous tasks.
-* *Cost efficiency.* Most compute services are offering per-second pricing which makes them ideal for using with Cirrus CI. 
-Also each task for repository can define ideal amount of CPUs and Memory specific for a nature of the task. No need to manage
-pools of similar VMs or try to fit workloads within limits of a given Continuous Integration systems.
+
+  * **Atomic changes to an environment where tasks are executed.** Everything about a task is configured in `.cirrus.yml` file including
+    VM image version and Docker Container image version. After commiting changes to `.cirrus.yml` not only new tasks will use the new environment
+    but also outdated branches will continue using the old configuration.
+  * **Reproducibility.** Fresh environment guarantees no corrupted artifacts or caches are presented from the previous tasks.
+  * **Cost efficiency.** Most compute services are offering per-second pricing which makes them ideal for using with Cirrus CI. 
+    Also each task for repository can define ideal amount of CPUs and Memory specific for a nature of the task. No need to manage
+    pools of similar VMs or try to fit workloads within limits of a given Continuous Integration systems.
 
 To be fair there are of course some disadvantages of starting a new VM or a container for every task:
-* *Virtual Machine Startup Speed.* Starting a VM can take from a few dozen seconds to a minute or two depending on a cloud provider and
-a particular VM image. Starting a container on the other hand just takes a few hundred milliseconds! But even a minute
-on average for starting up VMs is not a big inconvenience in favor of more stable, reliable and more reproducible CI.
-* *Cold local caches for every task execution.* Many tools tend to store some caches like downloaded dependencies locally
-to avoid downloading them again in future. Since Cirrus CI always uses fresh VMs and containers such local caches will always
-be empty. Performance implication of empty local caches can be avoided by using Cirrus CI features like 
-[built-in caching mechanism](docs/writing-tasks.md#cache-instruction). Some tools like [Gradle](https://gradle.org/) can 
-even take advantages of [built-in HTTP cache](docs/writing-tasks.md#http-cache)!
+
+  * **Virtual Machine Startup Speed.** Starting a VM can take from a few dozen seconds to a minute or two depending on a cloud provider and
+    a particular VM image. Starting a container on the other hand just takes a few hundred milliseconds! But even a minute
+    on average for starting up VMs is not a big inconvenience in favor of more stable, reliable and more reproducible CI.
+  * **Cold local caches for every task execution.** Many tools tend to store some caches like downloaded dependencies locally
+    to avoid downloading them again in future. Since Cirrus CI always uses fresh VMs and containers such local caches will always
+    be empty. Performance implication of empty local caches can be avoided by using Cirrus CI features like 
+    [built-in caching mechanism](writing-tasks.md#cache-instruction). Some tools like [Gradle](https://gradle.org/) can 
+    even take advantages of [built-in HTTP cache](writing-tasks.md#http-cache)!
 
 Please check the list of currently supported cloud compute services below and please see what's [coming next](#coming-soon).
 
@@ -40,18 +42,20 @@ container:
 
 Containers on Community Cluster can use maximum 8.0 CPUs and up to 24 Gb of memory. [Custom GKE clusters](#google-kubernetes-engine) don't have that limitation though.
 
-!> Since Community Cluster is shared scheduling times for containers can vary from time to time. Also the smaller a container 
-require resources faster it will be scheduled.
+!!! warning
+    Since Community Cluster is shared scheduling times for containers can vary from time to time. Also the smaller a container 
+    require resources faster it will be scheduled.
 
 ## Google Cloud
 
 Cirrus CI can schedule tasks on several Google Cloud Compute services. In order to interact with Google Cloud APIs 
-Cirrus CI needs permissions. Creating a [service account](https://cloud.google.com/compute/docs/access/service-accounts) 
+Cirrus CI needs permissions. Creating a [service account](https://cloud.google.com/compute/access/service-accounts) 
 is a common way to safely give granular access to parts of Google Cloud Projects. 
 
-!> We do recommend to create a separate Google Cloud project for running CI builds to make sure tests are
-isolated from production data. Having a separate project also will show how much money is spent on CI and how
-efficient Cirrus CI is :wink:
+!!! warning
+    We do recommend to create a separate Google Cloud project for running CI builds to make sure tests are
+    isolated from production data. Having a separate project also will show how much money is spent on CI and how
+    efficient Cirrus CI is :wink:
 
 Once you have a Google Cloud project for Cirrus CI please create a service account by running the following command: 
 
@@ -60,7 +64,7 @@ gcloud iam service-accounts create cirrus-ci \
     --project $PROJECT_ID 
 ```
 
-Depending on a compute service Cirrus CI will need different [roles](https://cloud.google.com/iam/docs/understanding-roles) 
+Depending on a compute service Cirrus CI will need different [roles](https://cloud.google.com/iam/understanding-roles) 
 assigned to the service account. But Cirrus CI will always need permissions to Google Cloud Storage to store logs and caches. 
 In order to give Google Cloud Storage permissions to the service account please run:
 
@@ -70,8 +74,9 @@ gcloud projects add-iam-policy-binding $PROJECT_ID \
     --role roles/storage.admin
 ```
 
-?> By default Cirrus CI will store logs and caches for 30 days but it can be changed by manually configuring a
-[lifecycle rule](https://cloud.google.com/storage/docs/lifecycle) for a Google Cloud Storage bucket that Cirrus CI is using.
+!!! info
+    By default Cirrus CI will store logs and caches for 30 days but it can be changed by manually configuring a
+    [lifecycle rule](https://cloud.google.com/storage/lifecycle) for a Google Cloud Storage bucket that Cirrus CI is using.
 
 Now we have a service account that Cirrus CI can use! It's time to let Cirrus CI know about that fact by securely providing a
 private key for the service account. A private key can be created by running the following command:
@@ -81,7 +86,7 @@ gcloud iam service-accounts keys create service-account-credentials.json \
   --iam-account cirrus-ci@$PROJECT_ID.iam.gserviceaccount.com
 ```
 
-At last create an [encrypted variable](docs/writing-tasks.md#encrypted-variables) from contents of
+At last create an [encrypted variable](writing-tasks.md#encrypted-variables) from contents of
 `service-account-credentials.json` file and add it to the top of `.cirrus.yml` file:
 
 ```yaml
@@ -124,8 +129,8 @@ Building an immutable VM image with all necessary software pre-configured is a k
 It makes sure environment where a task is executed is always the same and that no time is spent on useless work like
 installing a package over and over again for every single task.
 
-There are many ways how one can create a custom image for Google Compute Engine. Please refer to the [official documentation](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images).
-At Cirrus Labs we are using [Packer](https://www.packer.io/docs/builders/googlecompute.html) to automate building such
+There are many ways how one can create a custom image for Google Compute Engine. Please refer to the [official documentation](https://cloud.google.com/compute/images/create-delete-deprecate-private-images).
+At Cirrus Labs we are using [Packer](https://www.packer.io/builders/googlecompute.html) to automate building such
 images. An example of how we use it can be found in [our public GitHub repository](https://github.com/cirruslabs/cirrus-images).
 
 #### Windows Support
@@ -178,7 +183,7 @@ push_docker_task:
 
 #### Preemptible Instances
 
-Cirrus CI can schedule [preemptible](https://cloud.google.com/compute/docs/instances/preemptible) instances with all price
+Cirrus CI can schedule [preemptible](https://cloud.google.com/compute/instances/preemptible) instances with all price
 benefits and stability risks. But sometimes risks of an instance being preempted at any time can be tolerated. For example 
 `gce_instance` can be configured to schedule preemptible instance for non master branches like this:
 
