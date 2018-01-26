@@ -96,3 +96,20 @@ org.gradle.parallel=true
 org.gradle.configureondemand=true
 org.gradle.jvmargs=-Dfile.encoding=UTF-8
 ```
+
+## Node
+
+Official [Node Docker images](https://hub.docker.com/_/node/) can be used for builds. Here is an example of `.cirrus.yml` that caches `node_modules` 
+based on contents of `yarn.lock` lock and runs tests:
+
+```bash
+container:
+  image: node:9.4.0
+
+test_task:
+  node_modules_cache:
+    folder: node_modules
+    fingerprint_script: cat yarn.lock
+    populate_script: yarn install
+  test_script: yarn run test
+```
