@@ -1,12 +1,53 @@
 # Examples
 
+## Android
+
+Cirrus CI has a [set of Docker images ready for Android development](https://hub.docker.com/r/cirrusci/android-sdk/). 
+If these images are not the right fit for your project you can always use any custom Docker image with Cirrus CI. For those
+images `.cirrus.yml` configuration file can look like:
+
+```yaml
+container:
+  image: cirrusci/android-sdk:27
+
+check_android_task:
+  check_script: ./gradlew check connectedCheck
+```
+
+Or like this if a running emulator is needed for the tests:
+
+```yaml
+container:
+  image: cirrusci/android-sdk:18
+  cpu: 4
+  memory: 10G
+
+check_android_task:
+  create_device_script: >
+    echo no | avdmanager create avd --force \
+        -n test \
+        -k "system-images;android-18;default;armeabi-v7a"
+  start_emulator_background_script: >
+    $ANDROID_HOME/emulator/emulator \
+        -avd test \
+        -no-audio \
+        -no-window
+  wait_for_emulator_script:
+    - adb wait-for-device
+    - adb shell input keyevent 82
+  check_script: ./gradlew check connectedCheck
+```
+
+!!! info
+    Please don't forget to setup [Remote Build Cache](#build-cache) for your Gradle project. Or at least [simple folder caching](#gradle-caching).
+
 ## Gradle
 
 We recommend to use [official Gradle Docker containers](https://hub.docker.com/_/gradle/) since they have `GRADLE_HOME`
 environment variable set up and other Gradle specific configurations. For example, standard `java` containers don't have 
 a pre-configured user and as a result don't have `HOME` environment variable presented which upsets Gradle.
 
-### Caching
+### <a name="gradle-caching"></a>Caching
 
 To preserve caches between Gradle runs simply add a [cache instruction](guide/writing-tasks.md#cache-instruction) as shown below. 
 Trick here is to clean up `~/.gradle/caches` folder in the very end of a build. Gradle creates some unique nondeterministic
