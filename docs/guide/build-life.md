@@ -27,6 +27,6 @@ an agent inside a VM or a container and Cirrus CI.
 Other things like health checking of the agent and GitHub status reporting are happening at same time as a task is running 
 but the main flow was described above. Straight forward and nothing magical. :sweat_smile:
 
-For any question please use official [support channels](/about/support.md).
+For any question please use official [support channels](/support.md).
 
 

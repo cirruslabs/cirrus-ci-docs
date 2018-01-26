@@ -303,4 +303,4 @@ myfolder_cache:
 ```
 
 !!! info
-    To see how HTTP Cache can be used with Gradle's Build Cache please check [this example](examples.md#build-cache).
+    To see how HTTP Cache can be used with Gradle's Build Cache please check [this example](/examples.md#build-cache).

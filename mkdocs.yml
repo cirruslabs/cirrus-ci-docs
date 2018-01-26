@@ -60,13 +60,13 @@ pages:
     - 'Writing Tasks': guide/writing-tasks.md
     - 'Life of a Build': guide/build-life.md
     - 'Supported Computing Services': guide/supported-computing-services.md
-    - 'Examples': guide/examples.md
   - Pricing: pricing.md
+  - Examples: examples.md
   - FAQ: faq.md
-  - About:
-    - 'Support': about/support.md
-    - 'Privacy': about/privacy.md
-    - 'Terms of Service': about/terms.md
+  - Legal:
+    - 'Privacy': legal/privacy.md
+    - 'Terms of Service': legal/terms.md
+  - Support: support.md
 
 extra:
   social:

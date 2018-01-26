@@ -8,7 +8,7 @@ a pre-configured user and as a result don't have `HOME` environment variable pre
 
 ### Caching
 
-To preserve caches between Gradle runs simply add a [cache instruction](writing-tasks.md#cache-instruction) as shown below. 
+To preserve caches between Gradle runs simply add a [cache instruction](guide/writing-tasks.md#cache-instruction) as shown below. 
 Trick here is to clean up `~/.gradle/caches` folder in the very end of a build. Gradle creates some unique nondeterministic
 files in `~/.gradle/caches` folder on every run which breaks Cirrus CI check wherever a cache entry has changed during a build.
 
@@ -27,7 +27,7 @@ check_task:
 
 ### Build Cache
 
-Here is how [HTTP Cache](writing-tasks.md#http-cache) can be used with Gradle simply by adding following lines to `settings.gradle`:
+Here is how [HTTP Cache](guide/writing-tasks.md#http-cache) can be used with Gradle simply by adding following lines to `settings.gradle`:
 
 ```groovy
 ext.isCiServer = System.getenv().containsKey("CI")
