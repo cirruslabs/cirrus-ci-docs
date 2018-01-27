@@ -41,6 +41,40 @@ check_android_task:
 !!! info
     Please don't forget to setup [Remote Build Cache](#build-cache) for your Gradle project. Or at least [simple folder caching](#gradle-caching).
 
+
+## Bazel
+
+Cirrus CI provides a [set of Docker images with Bazel pre-installed](https://hub.docker.com/r/cirrusci/bazel/). Here is
+an example of how `.cirrus.yml` can look like for Bazel:
+
+```yaml
+container:
+  image: cirrusci/bazel:0.9.0
+task:
+  build_script: bazel build //...
+```
+
+If these images are not the right fit for your project you can always use any custom Docker image with Cirrus CI.
+
+### Remote Cache
+
+Cirrus CI has [built-in HTTP Cache](guide/writing-tasks.md#http-cache) which is compatible with Bazel's [remote cache](https://github.com/bazelbuild/bazel/blob/master/src/main/java/com/google/devtools/build/lib/remote/README.md).
+
+Here is an example of how Cirrus CI HTTP Cache can be used with Bazel:
+
+```yaml
+container:
+  image: cirrusci/bazel:0.9.0
+task:
+  build_script: |
+    bazel build \
+      --spawn_strategy=remote \
+      --strategy=Javac=remote \
+      --genrule_strategy=remote \
+      --remote_rest_cache=http://$CIRRUS_HTTP_CACHE_HOST \
+      //...
+```
+
 ## Gradle
 
 We recommend to use [official Gradle Docker containers](https://hub.docker.com/_/gradle/) since they have `GRADLE_HOME`
