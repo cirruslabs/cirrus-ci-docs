@@ -4,7 +4,7 @@ Cirrus CI is a modern continuous-integration-as-a-service solution that takes ad
 Cirrus CI allows customers to schedule CI builds on [variety of cloud services](guide/supported-computing-services.md) and 
 pay the cloud provider directly and only for the resources used to run CI builds and store build artifacts. 
 
-For private repositories Cirrus CI takes a [small per-user fee](pricing.md) for scheduling and orchestrating builds. 
+At the moment Cirrus CI [supports only GitHub](faq.md#only-github-support). For private repositories Cirrus CI takes a [small per-user fee](pricing.md) for scheduling and orchestrating builds. 
 Cirrus CI is free for Open Source projects.
 
 !!! info

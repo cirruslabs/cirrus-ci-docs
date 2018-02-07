@@ -29,3 +29,8 @@ of Cirrus CI and on support for AWS and Azure. We are going to revisit Mac OS su
 for running Mac OS builds except a [computing service](guide/supported-computing-services.md) that can effectively 
 schedule Mac OS VMs. Please [let us know](support.md) if there is such a service and we can try to work together to bring
 Mac OS support earlier :wink:.
+
+#### Only GitHub Support?
+
+At the moment Cirrus CI only supports GitHub via a [GitHub Application](https://github.com/apps/cirrus-ci). We are planning
+to [support BitBucket](https://github.com/cirruslabs/cirrus-ci-docs/issues/9) next. 

@@ -1,6 +1,6 @@
 repo_url: https://github.com/cirruslabs/cirrus-ci-docs
 
-site_name: Cirrus CI Beta
+site_name: Cirrus CI
 site_author: Cirrus Labs
 site_description: >
   Cirrus CI is a modern Continuous Integration system built for the era of cloud computing.
