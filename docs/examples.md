@@ -75,6 +75,23 @@ task:
       //...
 ```
 
+## Flutter
+
+Cirrus CI provides a [set of Docker images with Flutter and Dart SDK pre-installed](https://hub.docker.com/r/cirrusci/flutter/). Here is
+an example of how `.cirrus.yml` can look like for Flutter:
+
+```yaml
+container:
+  image: cirrusci/flutter:0.0.24
+
+test_task:
+  pub_cache:
+    folder: ~/.pub-cache
+  test_script: flutter test
+```
+
+If these images are not the right fit for your project you can always use any custom Docker image with Cirrus CI.
+
 ## Gradle
 
 We recommend to use [official Gradle Docker containers](https://hub.docker.com/_/gradle/) since they have `GRADLE_HOME`
