@@ -200,3 +200,20 @@ test_task:
     populate_script: yarn install
   test_script: yarn run test
 ```
+
+## Ruby
+
+Official [Ruby Docker images](https://hub.docker.com/_/ruby/) can be used for builds. Here is an example of `.cirrus.yml` 
+that caches installed gems based on contents of `Gemfile.lock` and runs `rspec`:
+
+```yaml
+container:
+  image: ruby:2.5
+
+rspec_task:
+  bundle_cache:
+    folder: /usr/local/bundle
+    fingerprint_script: cat Gemfile.lock
+    populate_script: bundle install
+  rspec_script: bundle exec rspec
+```
