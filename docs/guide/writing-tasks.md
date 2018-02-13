@@ -134,11 +134,11 @@ test_task:
 
 ## Environment Variables
 
-Environment variables can be configured under `environment` keyword in `.cirrus.yml` file. Here is an example:
+Environment variables can be configured under `env` keyword in `.cirrus.yml` file. Here is an example:
 
 ```yaml
 echo_task:
-  environment:
+  env:
     FOO: Bar
   echo_script: echo $FOO   
 ```
@@ -229,7 +229,7 @@ test_task:
     matrix:
       image: node:latest
       image: node:8.3.0
-  environment:
+  env:
     matrix:
       COMMAND: test
       COMMAND: lint
