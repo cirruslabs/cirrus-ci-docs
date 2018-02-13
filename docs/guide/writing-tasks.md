@@ -304,3 +304,37 @@ myfolder_cache:
 
 !!! info
     To see how HTTP Cache can be used with Gradle's Build Cache please check [this example](/examples.md#build-cache).
+    
+## Additional Containers
+
+Sometimes one container is not enough to run a CI build. For example, your application might use a MySQL database 
+as a storage. In this case you most likely want a MySQL instance running for your tests.
+
+One option here is to pre-install MySQL and use a [`background_script`](#background-script-instruction) to start it. This
+approach has some inconveniences like the need to pre-install MySQL by building a custom Docker container.
+
+For such use cases Cirrus CI allows to run additional containers in parallel with the main container that executes a task.
+Each additional container is defined under `additional_containers` keyword in `.cirrus.yml`. Each additional container 
+should have a unique `name` and specify at least Docker `image` and `port` that this container exposes.
+
+In the example below we are going to use an [official MySQL Docker image](https://hub.docker.com/_/mysql/) that exposes 
+the standard MySQL port (3306). Tests will be able to access MySQL instance via `localhost:3306`.
+
+```yaml
+container:
+  image: golang:1.9.4
+  additional_containers:
+    - name: mysql
+      image: mysql:8
+      port: 3306
+      cpu: 1.0
+      memory: 512Mi
+      env:
+        MYSQL_ROOT_PASSWORD: ""
+```
+
+Additional container can be very handy in many scenarios. Please check [Cirrus CI catalog of examples](/examples.md) for more details.
+
+!!! warning
+    **Note** that `additional_containers` can be used only with [Community Cluster](/guide/supported-computing-services.md#community-cluster) 
+    or [Google's Kubernetes Engine](/guide/supported-computing-services.md#kubernetes-engine).
