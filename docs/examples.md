@@ -165,6 +165,25 @@ org.gradle.configureondemand=true
 org.gradle.jvmargs=-Dfile.encoding=UTF-8
 ```
 
+## MySQL
+
+[Additional Containers feature](/guide/writing-tasks.md#additional-containers) makes it super simple to run the same Docker
+MySQL image as you might be running in production for your application. Getting a running instance of the latest GA 
+version of MySQL can be as simple as the following six lines in your `.cirrus.yml`:
+
+```yaml hl_lines="3 4 5 6 7 8"
+container:
+  image: golang:1.9.4
+  additional_containers:
+    - name: mysql
+      image: mysql:latest
+      port: 3306
+      env:
+        MYSQL_ROOT_PASSWORD: ""
+```
+
+With the configuration above MySQL will be available on `localhost:3306`. Use empty password to login as `root` user. 
+
 ## Node
 
 Official [Node Docker images](https://hub.docker.com/_/node/) can be used for builds. Here is an example of `.cirrus.yml` that caches `node_modules` 
