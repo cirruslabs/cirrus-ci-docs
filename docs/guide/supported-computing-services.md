@@ -1,5 +1,20 @@
 # Supported Computing Services
 
+<p align="center">
+  <a href="#google-cloud">
+    <img style="width:128px;height:128px;" src="/assets/images/gcp/Google Cloud Platform.svg"/>
+  </a>
+  <a href="#compute-engine">
+    <img style="width:128px;height:128px;" src="/assets/images/gcp/Compute Engine.svg"/>
+  </a>
+  <a href="#kubernetes-engine">
+    <img style="width:128px;height:128px;" src="/assets/images/gcp/Container Engine.svg"/>
+  </a>
+  <a href="#kubernetes-engine">
+    <img style="width:128px;height:128px;" src="/assets/images/gcp/Kubernetes_logo.svg" />
+  </a>
+</p>
+
 For every [task](writing-tasks.md) Cirrus CI starts a new Virtual Machine or a new Docker Container on a given compute service.
 Using a new VM or a new Docker Container each time for running tasks has many benefits:
 
@@ -42,17 +57,24 @@ container:
 
 Containers on Community Cluster can use maximum 8.0 CPUs and up to 24 Gb of memory. [Custom GKE clusters](#google-kubernetes-engine) don't have that limitation though.
 
-!!! warning
-    Since Community Cluster is shared scheduling times for containers can vary from time to time. Also the smaller a container 
+!!! warning "Scheduling Times on Community Cluster"
+    Since Community Cluster is shared, scheduling times for containers can vary from time to time. Also the smaller a container 
     require resources faster it will be scheduled.
 
 ## Google Cloud
+
+<p align="center">
+  <a href="#google-cloud">
+    <img style="width:128px;height:128px;" src="/assets/images/gcp/Google Cloud Platform.svg"/>
+  </a>
+  </a>
+</p>
 
 Cirrus CI can schedule tasks on several Google Cloud Compute services. In order to interact with Google Cloud APIs 
 Cirrus CI needs permissions. Creating a [service account](https://cloud.google.com/compute/access/service-accounts) 
 is a common way to safely give granular access to parts of Google Cloud Projects. 
 
-!!! warning
+!!! warning "Isolation"
     We do recommend to create a separate Google Cloud project for running CI builds to make sure tests are
     isolated from production data. Having a separate project also will show how much money is spent on CI and how
     efficient Cirrus CI is :wink:
@@ -74,7 +96,7 @@ gcloud projects add-iam-policy-binding $PROJECT_ID \
     --role roles/storage.admin
 ```
 
-!!! info
+!!! info "Default Logs Retentions Period"
     By default Cirrus CI will store logs and caches for 30 days but it can be changed by manually configuring a
     [lifecycle rule](https://cloud.google.com/storage/lifecycle) for a Google Cloud Storage bucket that Cirrus CI is using.
 
@@ -97,6 +119,12 @@ Now Cirrus CI can store logs and caches for scheduled tasks in Google Cloud Stor
 with additional instructions about [Compute Engine](#compute-engine) or [Kubernetes Engine](#kubernetes-engine).
 
 ### Compute Engine
+
+<p align="center">
+  <a href="#compute-engine">
+    <img style="width:128px;height:128px;" src="/assets/images/gcp/Compute Engine.svg"/>
+  </a>
+</p>
 
 In order to schedule tasks on Google Compute Engine a service account that Cirrus CI operates via should have a necessary
 role assigned. It can be done by running a `gcloud` command:
@@ -196,6 +224,12 @@ gce_instance:
 ```
 
 ### Kubernetes Engine
+
+<p align="center">
+  <a href="#kubernetes-engine">
+    <img style="width:128px;height:128px;" src="/assets/images/gcp/Container Engine.svg"/>
+  </a>
+</p>
 
 Scheduling tasks on [Compute Engine](#google-compute-engine) has one big disadvantage of waiting for an instance to
 start which usually takes around a minute. One minute is not that long but can't compete with hundreds of milliseconds
