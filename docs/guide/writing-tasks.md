@@ -151,7 +151,7 @@ CI | true
 CIRRUS_CI | true
 CONTINUOUS_INTEGRATION | true
 CIRRUS_BRANCH | Branch name. For example `master`
-CIRRUS_PR | PR number if current build was triggered by a new PR. For example `239`
+CIRRUS_PR | PR number if current build was triggered by a PR based of a fork. For example `239`
 CIRRUS_TAG | Tag name if current build was triggered by a new tag. For example `v1.0`
 CIRRUS_BUILD_ID | Unique build ID
 CIRRUS_CHANGE_IN_REPO | Git SHA
