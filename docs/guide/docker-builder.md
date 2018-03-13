@@ -31,5 +31,5 @@ docker_builder:
   push_script: docker push myrepo/foo:$CIRRUS_TAG
 ```
 
-!!! Info
+!!! info "Example"
     For more examples please check how we use Docker Builder to build and publish Cirrus CI's Docker Images for [Android](https://github.com/cirruslabs/docker-images-android).
