@@ -59,3 +59,19 @@ Because of all the problems and inconveniences described above, we decided to bu
 1. Simple in details.
 2. Efficient everywhere.
 3. Transparent and honest with users. 
+
+## Comparison with popular CIaaS
+
+Here is a high level comparison with popular continuous-integration-as-a-service solutions:
+
+Name      | Linux Support      | Windows Support    | MacOS Support       | Customizable CPU/Memory | Pricing
+----------| -----------------  | ------------------ | ------------------- | ----------------------- | -----------------------
+Cirrus CI | :white_check_mark: | :white_check_mark: | [In development][1] | :white_check_mark:      | Only for used resources + [discounts][2]
+Travis CI | :white_check_mark: | :x:                | :white_check_mark:  | :x:                     | Max parallel builds
+Circle CI | :white_check_mark: | :x:                | :white_check_mark:  | :white_check_mark:      | Max parallel builds
+AppVeyor  | :x:                | :white_check_mark: | :x:                 | :x:                     | Max parallel builds
+
+[1]: https://github.com/cirruslabs/cirrus-ci-docs/issues/4
+[2]: /faq.md#any-discounts
+
+Feel free to [contact support](mailto:support@cirruslabs.org) if you have questions for your particular case.

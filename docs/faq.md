@@ -33,3 +33,9 @@ Mac OS support earlier :wink:.
 
 At the moment Cirrus CI only supports GitHub via a [GitHub Application](https://github.com/apps/cirrus-ci). We are planning
 to [support BitBucket](https://github.com/cirruslabs/cirrus-ci-docs/issues/9) next. 
+
+#### Any discounts?
+
+Cirrus CI itself doesn't provide any discounts except [Community Cluster](/guide/supported-computing-services.md#community-cluster) 
+which is free for open source projects. But since Cirrus CI delegates execution of builds to different computing services,
+it means that discounts from your cloud provider will be applied to Cirrus CI builds.
