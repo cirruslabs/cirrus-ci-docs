@@ -338,3 +338,29 @@ Additional container can be very handy in many scenarios. Please check [Cirrus C
 !!! warning
     **Note** that `additional_containers` can be used only with [Community Cluster](/guide/supported-computing-services.md#community-cluster) 
     or [Google's Kubernetes Engine](/guide/supported-computing-services.md#kubernetes-engine).
+
+## Embedded Badges
+
+Cirrus CI provides a way to embed a badge that can represent status of your builds into a ReadMe file or a website.
+
+For example, this is a badge for `cirruslabs/cirrus-ci-web` repository that contains Cirrus CI's front end: [![](https://api.cirrus-ci.com/github/cirruslabs/cirrus-ci-web.svg)](https://github.com/cirruslabs/cirrus-ci-web)
+
+In order to embed such a check into your ReadMe file or your website, simply use a URL to a badge that looks like this:
+
+```yaml
+https://api.cirrus-ci.com/github/<USER OR ORGANIZATION>/<REPOSITORY>.svg
+```
+
+If you want a badge for a particular branch, simply use `?branch=<BRANCH NAME>` query parameter like this:
+
+```yaml
+https://api.cirrus-ci.com/github/<USER OR ORGANIZATION>/<REPOSITORY>.svg?branch=<BRANCH NAME>
+```
+
+### Badges in Markdown
+
+Here is how Cirrus CI's badge can be embeded in a Markdown file:
+
+```markdown
+[![Build Status](https://api.cirrus-ci.com/github/<USER OR ORGANIZATION>/<REPOSITORY>.svg)](https://cirrus-ci.com/github<USER OR ORGANIZATION>/<REPOSITORY>)
+```
