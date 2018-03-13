@@ -19,6 +19,10 @@ task:
 That's all! After pushing `.cirrus.yml` a build with all the tasks defined in `.cirrus.yml` file will be created. 
 GitHub status checks for each task will appear momentarily.
 
-!!! info 
+!!! info "Examples"
+    Don't forget to check [examples page](/examples.md) for ready-to-copy examples of `.cirrus.yml` configuration files
+    for different languages and build systems.
+
+!!! info "Life of a build"
     Please check [a high level overview of what's happening under the hood](build-life.md) when a changed is pushed
     and [this guide](writing-tasks.md) to learn more about how to write tasks.
