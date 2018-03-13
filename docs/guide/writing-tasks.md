@@ -174,7 +174,7 @@ on a repository's main page (for example https://cirrus-ci.org/github/my-organiz
 !!! warning
     Only users with `WRITE` permissions can add encrypted variables to a repository.
 
-An encrypted variable will be presented in a form like `ENCRYPTED[qwerty239abc]` which can be safely committed within `.cirrus.yml` file:
+An encrypted variable will be presented in a form like `ENCRYPTED[qwerty239abc]` which can be safely committed to `.cirrus.yml` file:
 
 ```yaml
 publish_task:
@@ -184,7 +184,8 @@ publish_task:
 ```
 
 Cirrus CI encrypts variables with a unique per repository 256-bit encryption key so forks and even repositories within
-the same organization cannot re-use them.
+the same organization cannot re-use them. `qwerty239abc` from the example above is **NOT** the content of your encrypted
+variable, it's just an internal ID. No one can brute force your secrets from such ID. 
 
 ## Matrix Modification
 
