@@ -82,7 +82,7 @@ an example of how `.cirrus.yml` can look like for Flutter:
 
 ```yaml
 container:
-  image: cirrusci/flutter:0.0.24
+  image: cirrusci/flutter:latest
 
 test_task:
   pub_cache:
