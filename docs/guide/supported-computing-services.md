@@ -70,79 +70,6 @@ Containers on Community Cluster can use maximum 8.0 CPUs and up to 24 Gb of memo
     Since Community Cluster is shared, scheduling times for containers can vary from time to time. Also the smaller a container 
     require resources faster it will be scheduled.
 
-## Azure
-
-<p align="center">
-  <a href="#google-cloud">
-    <img style="width:128px;height:128px;" src="/assets/images/azure/Microsoft Azure.svg"/>
-  </a>
-  </a>
-</p>
-
-Cirrus CI can schedule tasks on several Azure services. In order to interact with Azure APIs 
-Cirrus CI needs permissions. First, please choose a subscription you want to use for scheduling CI tasks.
-[Navigate to the Subscriptions blade within the Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)
-and save `$SUBSCRIPTION_ID` that we'll use below for setting up a service principle.
-
-Creating a [service principal](https://docs.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli) 
-is a common way to safely give granular access to parts of Azure:
-
-```bash
-az ad sp create-for-rbac --name CirrusCI --sdk-auth \
-  --scopes "/subscriptions/$SUBSCRIPTION_ID"
-```
-
-Command above will create a new service principal and will print something like:
-
-```json
-{
-  "appId": "...",
-  "displayName": "CirrusCI",
-  "name": "http://CirrusCI",
-  "password": "...",
-  "tenant": "..."
-}
-``` 
-
-Please create an [encrypted variable](writing-tasks.md#encrypted-variables) from this output and 
-add it to the top of `.cirrus.yml` file:
-
-```yaml
-azure_credentials: ENCRYPTED[qwerty239abc]
-```
-
-Now Cirrus CI can interact with Azure APIs.
-
-### Azure Container Instances
-
-<p align="center">
-  <a href="#compute-engine">
-    <img style="width:128px;height:128px;" src="/assets/images/azure/Azure Container Service.svg"/>
-  </a>
-</p>
-
-[Azure Container Instances (ACI)](https://azure.microsoft.com/en-us/services/container-instances/) allows is an ideal 
-candidate for running modern CI workloads. ACI allows *just* to run Linux and Windows containers without thinking about 
-underlying infrastructure.
-
-Once `azure_credentials` is configured as described above, tasks can be scheduled on ACI by configuring `aci_instance` like this:
-
-
-```yaml
-azure_container_instance:
-  image: cirrusci/windowsservercore:2016
-  resource_group: CirrusCI
-  region: westus
-  platform: windows
-  cpu: 4
-  memory: 12G
-```
-
-!!! info "About Docker Images to use with ACI"
-    Linux-based images are usually pretty small and doesn't require much tweaking. For Windows containers ACI recommends
-    to follow a [few simple advices](https://docs.microsoft.com/en-us/azure/container-instances/container-instances-troubleshooting#container-takes-a-long-time-to-start)
-    in order to reduce startup time.
-
 ## Google Cloud
 
 <p align="center">
@@ -351,6 +278,79 @@ gke_container:
   cpu: 6
   memory: 24Gb
 ```
+
+## Azure
+
+<p align="center">
+  <a href="#google-cloud">
+    <img style="width:128px;height:128px;" src="/assets/images/azure/Microsoft Azure.svg"/>
+  </a>
+  </a>
+</p>
+
+Cirrus CI can schedule tasks on several Azure services. In order to interact with Azure APIs 
+Cirrus CI needs permissions. First, please choose a subscription you want to use for scheduling CI tasks.
+[Navigate to the Subscriptions blade within the Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)
+and save `$SUBSCRIPTION_ID` that we'll use below for setting up a service principle.
+
+Creating a [service principal](https://docs.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli) 
+is a common way to safely give granular access to parts of Azure:
+
+```bash
+az ad sp create-for-rbac --name CirrusCI --sdk-auth \
+  --scopes "/subscriptions/$SUBSCRIPTION_ID"
+```
+
+Command above will create a new service principal and will print something like:
+
+```json
+{
+  "appId": "...",
+  "displayName": "CirrusCI",
+  "name": "http://CirrusCI",
+  "password": "...",
+  "tenant": "..."
+}
+``` 
+
+Please create an [encrypted variable](writing-tasks.md#encrypted-variables) from this output and 
+add it to the top of `.cirrus.yml` file:
+
+```yaml
+azure_credentials: ENCRYPTED[qwerty239abc]
+```
+
+Now Cirrus CI can interact with Azure APIs.
+
+### Azure Container Instances
+
+<p align="center">
+  <a href="#compute-engine">
+    <img style="width:128px;height:128px;" src="/assets/images/azure/Azure Container Service.svg"/>
+  </a>
+</p>
+
+[Azure Container Instances (ACI)](https://azure.microsoft.com/en-us/services/container-instances/) allows is an ideal 
+candidate for running modern CI workloads. ACI allows *just* to run Linux and Windows containers without thinking about 
+underlying infrastructure.
+
+Once `azure_credentials` is configured as described above, tasks can be scheduled on ACI by configuring `aci_instance` like this:
+
+
+```yaml
+azure_container_instance:
+  image: cirrusci/windowsservercore:2016
+  resource_group: CirrusCI
+  region: westus
+  platform: windows
+  cpu: 4
+  memory: 12G
+```
+
+!!! info "About Docker Images to use with ACI"
+    Linux-based images are usually pretty small and doesn't require much tweaking. For Windows containers ACI recommends
+    to follow a [few simple advices](https://docs.microsoft.com/en-us/azure/container-instances/container-instances-troubleshooting#container-takes-a-long-time-to-start)
+    in order to reduce startup time.
 
 ## Coming Soon
 
