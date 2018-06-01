@@ -59,6 +59,7 @@ pages:
     - 'Quick Start': guide/quick-start.md
     - 'Writing Tasks': guide/writing-tasks.md
     - 'Docker Builder': guide/docker-builder.md
+    - 'Windows Containers': guide/windows.md
     - 'Life of a Build': guide/build-life.md
     - 'Supported Computing Services': guide/supported-computing-services.md
   - Pricing: pricing.md
