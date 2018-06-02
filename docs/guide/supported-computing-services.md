@@ -24,6 +24,12 @@
   </a>
 </p>
 
+<p align="center">
+  <a href="#anka">
+    <img style="height:100px;" src="/assets/images/veertu/ankalogo.png"/>
+  </a>
+</p>
+
 For every [task](writing-tasks.md) Cirrus CI starts a new Virtual Machine or a new Docker Container on a given compute service.
 Using a new VM or a new Docker Container each time for running tasks has many benefits:
 
@@ -351,6 +357,49 @@ azure_container_instance:
     Linux-based images are usually pretty small and doesn't require much tweaking. For Windows containers ACI recommends
     to follow a [few simple advices](https://docs.microsoft.com/en-us/azure/container-instances/container-instances-troubleshooting#container-takes-a-long-time-to-start)
     in order to reduce startup time.
+
+## Anka
+
+<p align="center">
+  <a href="#anka">
+    <img style="height:100px;" src="/assets/images/veertu/ankalogo.png"/>
+  </a>
+</p>
+
+[Anka Build by Veertu](https://veertu.com/) is a solution to create private macOS clouds for iOS CI infrastructure.
+[Anka Hypervisor](https://veertu.com/anka-technology/#hypervisor) powers lightweight but powerful macOS VMs that 
+act almost like containers. Overall Anka is a perfect solution for a modern Continuous Integration system. 
+
+<p align="center">
+  <a href="https://www.macstadium.com/">
+    <img style="height:128px;" src="/assets/images/mac-stadium/invertase-maclogo.png"/>
+  </a>
+</p>
+
+[MacStadium](https://www.macstadium.com/) is the leading provider of hosted Mac infrastructure and [recently MacStadium partnered with Veertu](https://www.macstadium.com/anka/) 
+to provide Hosted Anka Cloud solution. **CI infrastructure for macOS has never been that accessible before.** 
+
+Cirrus CI supports Anka Build as a computing service to schedule tasks on. In order to connect Anka Cloud to Cirrus CI, 
+Cirrus Labs created [Anka Controller Extended](https://github.com/cirruslabs/anka-controller-extended) which can connect 
+to Anka Cloud's private network and securely expose API for Cirrus CI to connect. 
+
+Please check [Anka Controller Extended Documentation](https://github.com/cirruslabs/anka-controller-extended) for details
+and don't hesitate to reach out [support](/support.md) with any question.
+
+Once Anka Controller Extended is up and running, Cirrus CI can use it's API to schedule tasks. Simply use `anka_instance`
+in your `.cirrus.yml` file like this: 
+
+```yaml
+anka_instance:
+  controller_endpoint: <anka-controller-extended-IP>:<PORT>
+  access_token: ENCRYPTED[qwerty239]
+  template: high-sierra
+  tag: xcode-9.4
+```
+
+!!! info "Custom Anka VM Templates"
+    Anka allows to easily build hierarchy of VMs much like containers with their layers. Please check our [example repository](https://github.com/cirruslabs/osx-images)
+    
 
 ## Coming Soon
 
