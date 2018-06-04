@@ -1,9 +1,9 @@
-FROM node:9.4.0
+FROM node:10
 
 WORKDIR /svc/cirrus-ci-docs
 EXPOSE 8080
 
-RUN npm install -g serve@6.4.9
+RUN npm install -g serve@6.5.8
 
 ADD site/ /svc/cirrus-ci-docs/
 
