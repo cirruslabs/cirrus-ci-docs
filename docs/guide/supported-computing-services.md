@@ -367,8 +367,9 @@ azure_container_instance:
 </p>
 
 [Anka Build by Veertu](https://veertu.com/) is a solution to create private macOS clouds for iOS CI infrastructure.
-[Anka Hypervisor](https://veertu.com/anka-technology/#hypervisor) powers lightweight but powerful macOS VMs that 
-act almost like containers. Overall Anka is a perfect solution for a modern Continuous Integration system. 
+[Anka Hypervisor](https://veertu.com/anka-technology/#hypervisor) leverages Apple's [`Hypervisor.framework`](https://developer.apple.com/documentation/hypervisor) 
+which provides lightweight but powerful macOS VMs that act almost like containers. Overall Anka is a perfect solution 
+for a modern Continuous Integration system. 
 
 <p align="center">
   <a href="https://www.macstadium.com/">
@@ -399,7 +400,10 @@ anka_instance:
 
 !!! info "Custom Anka VM Templates"
     Anka allows to easily build hierarchy of VMs much like containers with their layers. Please check our [example repository](https://github.com/cirruslabs/osx-images)
-    
+
+!!! info "Hosted Anka Cloud on MacStadium"
+    If you choose to use [hosted Anka Cloud solution from MacStadium](https://www.macstadium.com/anka/) please mention
+    Cirrus CI upon the registration for a quicker installation process. 
 
 ## Coming Soon
 
