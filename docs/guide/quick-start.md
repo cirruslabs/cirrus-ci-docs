@@ -14,26 +14,35 @@ In contrast, classic OAuth Apps [doesn't have such restrictions](https://develop
 
 <img src="/assets/screenshots/installation/step3.png"/>
 
+## Post Installation
+
 Once Cirrus CI is installed for a particular repository `.cirrus.yml` configuration file should be added to the root of the repository. 
 `.cirrus.yml` defines tasks that will be executed for every build for the repository. 
 
-For a simple Java project `.cirrus.yml` can look like:
+For a simple Node.js project `.cirrus.yml` can look like:
 
 ```yaml
 container:
-  image: gradle:jdk8
-  cpu: 4
-  memory: 10G
+  image: node:latest
 check_task:
-  script: gradle check
+  node_modules_cache:
+    folder: node_modules
+    fingerprint_script: cat yarn.lock
+    populate_script: yarn install
+  script: yarn test
 ```
 
 That's all! After pushing `.cirrus.yml` a build with all the tasks defined in `.cirrus.yml` file will be created. 
-GitHub status checks for each task will appear momentarily.
+
+You will see all your Cirrus CI builds on [cirrus-ci.com](https://cirrus-ci.com/). 
+
+<img src="/assets/screenshots/installation/recent-builds.png"/>
+
+GitHub status checks for each task will appear on GitHub as well.
 
 <img src="/assets/screenshots/installation/statuses-branch.png"/>
 
-Newly create PRs will also get Cirrus CI's status checks.
+Newly created PRs will also get Cirrus CI's status checks.
 
 <img src="/assets/screenshots/installation/statuses-pr.png"/>
 
