@@ -49,7 +49,7 @@ an example of how `.cirrus.yml` can look like for Bazel:
 
 ```yaml
 container:
-  image: cirrusci/bazel:0.9.0
+  image: cirrusci/bazel:latest
 task:
   build_script: bazel build //...
 ```
@@ -64,7 +64,7 @@ Here is an example of how Cirrus CI HTTP Cache can be used with Bazel:
 
 ```yaml
 container:
-  image: cirrusci/bazel:0.9.0
+  image: cirrusci/bazel:latest
 task:
   build_script: |
     bazel build \
@@ -100,7 +100,7 @@ It can be achieved by providing `CIRRUS_WORKING_DIR` environment variable like i
 
 ```yaml
 container:
-  image: golang:1.9.4
+  image: golang:latest
 
 test_task:
   env:
@@ -123,7 +123,7 @@ files in `~/.gradle/caches` folder on every run which breaks Cirrus CI check whe
 
 ```yaml
 container:
-  image: gradle:4.4-jdk8
+  image: gradle:jdk8
 
 check_task:
   gradle_cache:
@@ -173,7 +173,7 @@ version of MySQL can be as simple as the following six lines in your `.cirrus.ym
 
 ```yaml hl_lines="3 4 5 6 7 8"
 container:
-  image: golang:1.9.4
+  image: golang:latest
   additional_containers:
     - name: mysql
       image: mysql:latest
@@ -191,7 +191,7 @@ based on contents of `yarn.lock` lock and runs tests:
 
 ```bash
 container:
-  image: node:9.4.0
+  image: node:latest
 
 test_task:
   node_modules_cache:
@@ -208,7 +208,7 @@ that caches installed gems based on contents of `Gemfile.lock` and runs `rspec`:
 
 ```yaml
 container:
-  image: ruby:2.5
+  image: ruby:latest
 
 rspec_task:
   bundle_cache:

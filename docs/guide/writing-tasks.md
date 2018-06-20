@@ -3,13 +3,13 @@ Task defines where and how your scripts will be executed. Let's check line-by-li
 ```yaml
 task:
   container:
-    image: gradle:4.3.0-jdk8
+    image: gradle:jdk8
     cpu: 4
     memory: 10G
   script: gradle test
 ```
 
-Example above defines a single task that will be scheduled and executed on Community Cluster using `gradle:4.3.0-jdk8` Docker image.
+Example above defines a single task that will be scheduled and executed on Community Cluster using `gradle:jdk8` Docker image.
 Only one user defined script instruction to run `gradle test` will be executed. Pretty simple, isn't it?
 
 A `task` simply defines a [compute service](supported-computing-services.md) to schedule the task on and 

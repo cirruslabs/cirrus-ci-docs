@@ -255,7 +255,7 @@ newly created cluster like this:
 gcp_credentials: ENCRYPTED[qwerty239abc]
 
 gke_container:
-  image: gradle:4.3.0-jdk8
+  image: gradle:jdk8
   cluster_name: cirrus-ci-cluster
   zone: us-central1-a
   namespace: default
