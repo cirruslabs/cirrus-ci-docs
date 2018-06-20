@@ -22,7 +22,7 @@ publish_task:
 
 #### CI agent stopped responding!
 
-It simply means that Cirrus CI haven't heard from the agent for quite some time. In 99.999% of the cases 
+It means that Cirrus CI haven't heard from the agent for quite some time. In 99.999% of the cases 
 it happens because of two reasons:
 
 1. Your task was executing on [Community Cluster](guide/supported-computing-services.md#community-cluster). Community Cluster 
@@ -32,14 +32,13 @@ by constantly rotating VMs before Google Cloud preempts them, but there is still
 
 2. Your CI task used too much memory which led to a crash of a VM or a container.
 
-#### Mac OS X Support?
+#### Instance failed to start!
 
-**TLDR**: not in the near future.
+It means that Cirrus CI have made a successful API call to a [computing service](/guide/supported-computing-services.md) 
+to allocate resources. But a requested resource wasn't created. 
 
-We are planning to spend Q2 of 2018 on supporting for AWS and Azure. We are going to revisit Mac OS support in Q3 2018. Cirrus CI has everything 
-for running Mac OS builds except a [computing service](guide/supported-computing-services.md) that can effectively 
-schedule Mac OS VMs. Please [let us know](support.md) if there is such a service and we can try to work together to bring
-Mac OS support earlier :wink:.
+If it happened for an OSS project, please contact [support](/support.md) immediately. Otherwise check your cloud console first 
+and then contact [support](/support.md) if it's still not clear what happened. 
 
 #### Only GitHub Support?
 
