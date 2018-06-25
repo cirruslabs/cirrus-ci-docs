@@ -201,6 +201,23 @@ test_task:
   test_script: yarn run test
 ```
 
+## Python
+
+Official [Python Docker images](https://hub.docker.com/_/python/) can be used for builds. Here is an example of `.cirrus.yml` 
+that caches installed packages based on contents of `requirements.txt` and runs `pytest`:
+
+```yaml
+container:
+  image: python:2.7
+
+test_task:
+  pip_cache:
+    folder: ~/.cache/pip
+    fingerprint_script: cat requirements.txt
+    populate_script: pip install -r requirements.txt
+  test_script: pytest
+```
+
 ## Ruby
 
 Official [Ruby Docker images](https://hub.docker.com/_/ruby/) can be used for builds. Here is an example of `.cirrus.yml` 
