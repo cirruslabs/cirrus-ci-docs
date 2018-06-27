@@ -41,7 +41,6 @@ check_android_task:
 !!! info
     Please don't forget to setup [Remote Build Cache](#build-cache) for your Gradle project. Or at least [simple folder caching](#gradle-caching).
 
-
 ## Bazel
 
 Cirrus CI provides a [set of Docker images with Bazel pre-installed](https://hub.docker.com/r/cirrusci/bazel/). Here is
@@ -73,6 +72,17 @@ task:
       --genrule_strategy=remote \
       --remote_rest_cache=http://$CIRRUS_HTTP_CACHE_HOST \
       //...
+```
+
+## C++
+
+Official [GCC Docker images](https://hub.docker.com/_/gcc/) can be used for builds. Here is an example of `.cirrus.yml` that runs tests:
+
+```yaml
+container:
+  image: gcc:latest
+task:
+  tests_script: make tests
 ```
 
 ## Flutter
