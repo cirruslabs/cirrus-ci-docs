@@ -261,3 +261,23 @@ test_task:
   build_script: cargo build
   test_script: cargo test
 ```
+
+### Rust Nightly
+
+It is possible to use nightly builds of Rust via an [official `rustlang/rust:nightly` container](https://hub.docker.com/r/rustlang/rust/). 
+Here is an example of `.cirrus.yml` to run tests against the latest stable and nightly versions of Rust:
+
+```yaml
+test_task:
+  matrix:
+    - container:
+        image: rust:latest
+    - allow_failures: true
+      container:
+        image: rustlang/rust:nightly
+  cargo_cache:
+    folder: $CARGO_HOME
+    fingerprint_script: cat Cargo.lock
+  build_script: cargo build
+  test_script: cargo test
+```
