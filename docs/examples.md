@@ -244,3 +244,20 @@ rspec_task:
     populate_script: bundle install
   rspec_script: bundle exec rspec
 ```
+
+## Rust
+
+Official [Rust Docker images](https://hub.docker.com/_/rust/) can be used for builds. Here is a simple example of `.cirrus.yml` 
+that caches crates in `$CARGO_HOME` based on contents of `Cargo.lock`:
+
+```yaml
+container:
+  image: rust:latest
+
+test_task:
+  cargo_cache:
+    folder: $CARGO_HOME
+    fingerprint_script: cat Cargo.lock
+  build_script: cargo build --verbose
+  test_script: cargo test
+```
