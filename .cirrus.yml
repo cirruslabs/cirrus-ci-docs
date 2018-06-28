@@ -1,0 +1,5 @@
+container:
+  image: squidfunk/mkdocs-material:latest
+
+build_task:
+  build_script: mkdocs build
