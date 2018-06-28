@@ -258,6 +258,6 @@ test_task:
   cargo_cache:
     folder: $CARGO_HOME
     fingerprint_script: cat Cargo.lock
-  build_script: cargo build --verbose
+  build_script: cargo build
   test_script: cargo test
 ```
