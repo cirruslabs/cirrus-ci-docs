@@ -218,7 +218,7 @@ that caches installed packages based on contents of `requirements.txt` and runs 
 
 ```yaml
 container:
-  image: python:2.7
+  image: python:latest
 
 test_task:
   pip_cache:
