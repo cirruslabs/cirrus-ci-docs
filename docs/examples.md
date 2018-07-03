@@ -256,7 +256,7 @@ container:
 
 test_task:
   cargo_cache:
-    folder: $CARGO_HOME
+    folder: $CARGO_HOME/registry
     fingerprint_script: cat Cargo.lock
   build_script: cargo build
   test_script: cargo test
