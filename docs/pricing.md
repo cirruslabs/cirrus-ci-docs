@@ -10,6 +10,16 @@ User | Public Repository | Private Repository
 Person | Free + Access to [Community Cluster](guide/supported-computing-services.md#community-cluster) | $10/month + Access to [Community Cluster](guide/supported-computing-services.md#community-cluster)
 Organization | Free + Access to [Community Cluster](guide/supported-computing-services.md#community-cluster) | $10/seat/month
 
+!!! info "What is a seat?"
+
+    Seat is simply a GitHub user that initiates CI builds by pushing commints and/or creating pull requests. It can be a real
+    person or a bot.
+    
+    For example, there are 10 people in your GitHub Organization and only 5 of them are working on several repositories 
+    where Cirrus CI is configured. And let's say [dependabot](https://dependabot.com/) is also configured for these repositories. 
+    
+    In that case there are `5 + 1 = 6` seats you need to purchase Cirrus CI plan for.
+
 See all the pricing options on [Cirrus CI's GitHub Marketplace Page](https://github.com/marketplace/cirrus-ci).
 
 All payments will go through [GitHub Marketplace](https://github.com/marketplace) and will be billed according to
