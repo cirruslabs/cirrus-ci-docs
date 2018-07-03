@@ -260,7 +260,14 @@ test_task:
     fingerprint_script: cat Cargo.lock
   build_script: cargo build
   test_script: cargo test
+  before_cache_script: rm -rf $CARGO_HOME/registry/index
 ```
+
+!!! info "Caching Cleanup"
+
+    Please note `before_cache_script` that removes registry index from the cache before uploading it in the end of a successful task. 
+    Registry index is [changing very rapidly](https://github.com/rust-lang/crates.io-index) making the cache invalid. `before_cache_script`
+    deletes the index and leaves just the required crates for caching.
 
 ### Rust Nightly
 
@@ -276,8 +283,9 @@ test_task:
       container:
         image: rustlang/rust:nightly
   cargo_cache:
-    folder: $CARGO_HOME
+    folder: $CARGO_HOME/registry
     fingerprint_script: cat Cargo.lock
   build_script: cargo build
   test_script: cargo test
+  before_cache_script: rm -rf $CARGO_HOME/registry/index
 ```
