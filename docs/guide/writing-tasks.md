@@ -193,7 +193,7 @@ variable, it's just an internal ID. No one can brute force your secrets from suc
 
 Sometimes it's useful to run the same task against different software versions. Or run different batches of tests based
 on an environment variable. For cases like these `matrix` modification comes very handy. It's possible to use `matrix`
-keyword anywhere inside of a particular task to have multiple tasks based on the original one. Each new task will be created
+keyword **only inside of a particular task** to have multiple tasks based on the original one. Each new task will be created
 from the original task by replacing the whole `matrix` YAML node with each `matrix`'s children separately. 
 
 Let check an example of `.cirrus.yml`:
