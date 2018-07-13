@@ -6,6 +6,8 @@ It is possible to run Windows Containers the same way one can run [Linux contain
 ```yaml
 windows_container:
   image: cirrusci/windowsservercore:2016
+  
+task:
   script: ...
 ```
 

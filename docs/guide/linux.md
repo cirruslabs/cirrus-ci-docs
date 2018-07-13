@@ -12,6 +12,9 @@ container:
   image: openjdk:8-jdk
   cpu: 4
   memory: 12
+
+task:
+  script: ...
 ``` 
 
 Containers on Community Cluster can use maximum 8.0 CPUs and up to 24 Gb of memory. [Custom GKE clusters](/guide/supported-computing-services.md#google-kubernetes-engine) don't have that limitation though.

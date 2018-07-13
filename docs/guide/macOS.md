@@ -5,6 +5,8 @@ It is possible to run macOS Virtual Machines. Simply use `osx_instance` in `.cir
 ```yaml
 osx_instance:
   image: high-sierra-xcode-9.4
+
+task:
   script: ...
 ```
 
