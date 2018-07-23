@@ -12,11 +12,12 @@ Organization | Free + Access to [Community Cluster](guide/supported-computing-se
 
 !!! info "What is a seat?"
 
-    Seat is simply a GitHub user that initiates CI builds by pushing commints and/or creating pull requests. It can be a real
-    person or a bot.
+    Seat is simply a GitHub user that initiates CI builds by pushing commints and/or creating pull requests in a **private** repository. 
+    It can be a real person or a bot.
     
-    For example, there are 10 people in your GitHub Organization and only 5 of them are working on several repositories 
-    where Cirrus CI is configured. And let's say [dependabot](https://dependabot.com/) is also configured for these repositories. 
+    For example, there are 10 people in your GitHub Organization and only 5 of them are working on several private repositories 
+    where Cirrus CI is configured. The rest 5 people are working on public repositories or not pushing changes at all. Let's say [dependabot](https://dependabot.com/) 
+    is also configured for these private repositories. 
     
     In that case there are `5 + 1 = 6` seats you need to purchase Cirrus CI plan for.
 
