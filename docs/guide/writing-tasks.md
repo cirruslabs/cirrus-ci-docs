@@ -171,7 +171,7 @@ CIRRUS_HTTP_CACHE_HOST | Host and port number on which [local HTTP cache](#http-
 It is possible to securely add sensitive information to `.cirrus.yml` file. Encrypted variables are only available to
 builds initialized or approved by users with write permission to a corresponding repository.
 
-In order to encrypt a variable go to repository's settings page via clicking settings icon ![](https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_settings_white_24px.svg)
+In order to encrypt a variable go to repository's settings page via clicking settings icon ![](https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_settings_black_24px.svg)
 on a repository's main page (for example https://cirrus-ci.org/github/my-organization/my-repository) and follow instructions.
 
 !!! warning
@@ -188,7 +188,8 @@ publish_task:
 
 Cirrus CI encrypts variables with a unique per repository 256-bit encryption key so forks and even repositories within
 the same organization cannot re-use them. `qwerty239abc` from the example above is **NOT** the content of your encrypted
-variable, it's just an internal ID. No one can brute force your secrets from such ID. 
+variable, it's just an internal ID. No one can brute force your secrets from such ID. In addition, Cirrus CI doesn't know
+a relation between an encrypted variable and a repository for which the encrypted variable was created.
 
 ## Matrix Modification
 
