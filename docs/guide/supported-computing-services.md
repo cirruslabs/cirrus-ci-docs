@@ -76,12 +76,20 @@ Once you have a Google Cloud project for Cirrus CI please create a service accou
 
 ```bash
 gcloud iam service-accounts create cirrus-ci \
-    --project $PROJECT_ID 
+    --project $PROJECT_ID
 ```
 
 Depending on a compute service Cirrus CI will need different [roles](https://cloud.google.com/iam/understanding-roles) 
-assigned to the service account. But Cirrus CI will always need permissions to Google Cloud Storage to store logs and caches. 
-In order to give Google Cloud Storage permissions to the service account please run:
+assigned to the service account. But Cirrus CI will always need permissions to act as a service account:
+
+```bash
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+    --member serviceAccount:cirrus-ci@$PROJECT_ID.iam.gserviceaccount.com \
+    --role roles/iam.serviceAccountUser
+```
+
+Cirrus CI uses Google Cloud Storage to store logs and caches. In order to give Google Cloud Storage permissions
+to the service account please run:
 
 ```bash
 gcloud projects add-iam-policy-binding $PROJECT_ID \
