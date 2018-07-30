@@ -17,3 +17,27 @@ Cirrus CI will execute [scripts instructions](/guide/writing-tasks.md#script-ins
     At the moment only Docker images based of `microsoft/windowsservercore:ltsc2016` are supported since Windows Containers
     are executed via [Azure Container Instances](/guide/supported-computing-services.md#azure-container-instances) computing
     service.
+    
+# Powershell support
+
+By default Cirrus CI agent executed scripts using `cmd.exe`. It is possible to override default shell executor by providing
+`CIRRUS_SHELL` [environment variable](/guide/writing-tasks.md#environment-variables):
+
+```yaml
+env:
+  CIRRUS_SHELL: powershell
+``` 
+
+It is also possible to use *powershell* scripts inline inside of a script instruction by prefixing it with `ps`:
+
+```yaml
+windows_container:
+  script:
+    - ps: Get-Location
+```
+
+`ps: COMMAND` is a simple synthetic sugar which transforms it to 
+
+```bash
+powershell.exe -EncodedCommand base64(COMMAND)
+```
