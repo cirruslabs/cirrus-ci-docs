@@ -55,8 +55,8 @@ markdown_extensions:
 
 pages:
   - Home: index.md
+  - 'Quick Start': guide/quick-start.md
   - User Guide:
-    - 'Quick Start': guide/quick-start.md
     - 'Writing Tasks': guide/writing-tasks.md
     - 'Linux Containers': guide/linux.md
     - 'Windows Containers': guide/windows.md
