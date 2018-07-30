@@ -36,7 +36,7 @@ windows_container:
     - ps: Get-Location
 ```
 
-`ps: COMMAND` is a simple synthetic sugar which transforms it to 
+`ps: COMMAND` is a simple syntactic sugar which transforms it to 
 
 ```bash
 powershell.exe -EncodedCommand base64(COMMAND)
