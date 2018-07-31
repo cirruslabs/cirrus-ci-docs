@@ -1,5 +1,6 @@
-repo_url: https://github.com/cirruslabs/cirrus-ci-docs
-site_url: https://cirrus-ci.org/
+repo_url: https://github.com/cirruslabs/cirrus-ci-docs/
+site_url: https://cirrus-ci.org
+edit_uri: ""
 
 site_name: Cirrus CI
 site_author: Cirrus Labs
@@ -54,7 +55,7 @@ markdown_extensions:
       custom_checkbox: true
   - pymdownx.tilde
 
-nav:
+pages:
   - Home: index.md
   - 'Quick Start': guide/quick-start.md
   - User Guide:
