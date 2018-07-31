@@ -2,5 +2,9 @@ container:
   image: squidfunk/mkdocs-material:latest
 
 build_task:
-  install_script: pip install pymdown-extensions
-  build_script: mkdocs build
+  install_script:
+    - pip install -U mkdocs
+    - pip install pymdown-extensions
+  build_script:
+    - mkdocs --version
+    - mkdocs build
