@@ -117,9 +117,6 @@ will be used as a fingerprint for the given task. By default task name is used a
 `fingerprint_script` is an optional field that can specify a script that will be executed to populate the cache. 
 `populate_script` should create `folder`.
 
-!!! info
-    Note that a cache folder will be archived and uploaded only in the very end of the task execution once all instructions succeed.
-
 Which means the only difference between example above and below is that `yarn install` will always be executed in the 
 example below where in the example above only when `yarn.lock` has changes.
 
@@ -131,6 +128,10 @@ test_task:
   install_script: yarn install
   test_script: yarn run test
 ```
+
+!!! warning "Caching for Pull Requests"
+    Tasks for PRs upload caches to a separate caching namespace to not interfere with caches used by other tasks.
+    But such PR tasks **can read** all caches even from the main caching namespace for a repository.
 
 ## Environment Variables
 
