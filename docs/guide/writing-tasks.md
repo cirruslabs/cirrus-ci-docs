@@ -166,6 +166,7 @@ CIRRUS_REPO_CLONE_URL | URL used for cloning. For example `https://github.com/my
 CIRRUS_SHELL | Shell that Cirrus CI uses to execute scripts. By default `sh` is used.
 CIRRUS_WORKING_DIR | Working directory where Cirrus CI executes builds. Default to `cirrus-ci-build` folder inside of a system's temporary folder.
 CIRRUS_HTTP_CACHE_HOST | Host and port number on which [local HTTP cache](#http-cache) can be accessed on
+OS | Host OS. Either `linux`, `windows` or `darwiin`.
       
 ## Encrypted Variables
 
