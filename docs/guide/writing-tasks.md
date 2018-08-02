@@ -157,6 +157,7 @@ CIRRUS_PR | PR number if current build was triggered by a PR based of a fork. Fo
 CIRRUS_TAG | Tag name if current build was triggered by a new tag. For example `v1.0`
 CIRRUS_BUILD_ID | Unique build ID
 CIRRUS_CHANGE_IN_REPO | Git SHA
+CIRRUS_OS, OS | Host OS. Either `linux`, `windows` or `darwin`.
 CIRRUS_TASK_NAME | Task name
 CIRRUS_TASK_ID | Unique task ID
 CIRRUS_REPO_NAME | Repository name. For example `my-library`
@@ -166,7 +167,6 @@ CIRRUS_REPO_CLONE_URL | URL used for cloning. For example `https://github.com/my
 CIRRUS_SHELL | Shell that Cirrus CI uses to execute scripts. By default `sh` is used.
 CIRRUS_WORKING_DIR | Working directory where Cirrus CI executes builds. Default to `cirrus-ci-build` folder inside of a system's temporary folder.
 CIRRUS_HTTP_CACHE_HOST | Host and port number on which [local HTTP cache](#http-cache) can be accessed on.
-OS | Host OS. Either `linux`, `windows` or `darwiin`.
       
 ## Encrypted Variables
 
