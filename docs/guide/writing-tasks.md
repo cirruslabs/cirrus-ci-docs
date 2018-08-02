@@ -225,7 +225,7 @@ test_task:
   test_script: yarn run test
 ```
 
-!!! info
+!!! tip
     `matrix` modification can be used multiple times within a task.
 
 `matrix` modification makes it easy to create some pretty complex testing scenarios like this:

@@ -32,7 +32,11 @@ check_task:
   script: yarn test
 ```
 
-That's all! After pushing `.cirrus.yml` a build with all the tasks defined in `.cirrus.yml` file will be created. 
+That's all! After pushing `.cirrus.yml` a build with all the tasks defined in `.cirrus.yml` file will be created.
+
+!!! tip "Zero-config Docker Builds"
+    If your repository happened to have a `Dockerfile` in the root, Cirrus CI will attempt to build it even without
+    a corresponding `.cirrus.yml` configuration file.
 
 You will see all your Cirrus CI builds on [cirrus-ci.com](https://cirrus-ci.com/). 
 

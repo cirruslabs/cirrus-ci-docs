@@ -263,7 +263,7 @@ test_task:
   before_cache_script: rm -rf $CARGO_HOME/registry/index
 ```
 
-!!! info "Caching Cleanup"
+!!! tip "Caching Cleanup"
 
     Please note `before_cache_script` that removes registry index from the cache before uploading it in the end of a successful task. 
     Registry index is [changing very rapidly](https://github.com/rust-lang/crates.io-index) making the cache invalid. `before_cache_script`
