@@ -127,7 +127,7 @@ test_task:
 `fingerprint_script` is an optional field that can specify a script that will be executed and console output of which
 will be used as a fingerprint for the given task. By default task name is used as a fingerprint value.
 
-`fingerprint_script` is an optional field that can specify a script that will be executed to populate the cache. 
+`populate_script` is an optional field that can specify a script that will be executed to populate the cache. 
 `populate_script` should create `folder`.
 
 Which means the only difference between example above and below is that `yarn install` will always be executed in the 
