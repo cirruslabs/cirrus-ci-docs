@@ -58,6 +58,19 @@ publish_task:
   publish_script: yarn run publish
 ```
 
+!!! tip "Task Naming"
+    To name a task one can simply use `name` field. `foo_task` syntax is simply a syntactic sugar. Following two task definitions
+    are identical:
+    
+    ```yaml
+    foo_task:
+      ...
+      
+    task:
+      name: foo
+      ...
+    ```
+
 ## Script Instruction
 
 `script` instruction executes commands via `shell` on Unix or `batch` on Windows. `script` instruction can be named by
@@ -251,8 +264,8 @@ test_task:
 
 ## Dependencies
 
-Sometimes it might be very handy execute some tasks only after successful execution of other tasks. For such cases
-it's possible specify for a task names of other tasks it depends on with `depends_on` keyword:
+Sometimes it might be very handy to execute some tasks only after successful execution of other tasks. For such cases
+it is possible to specify task names that a particular task depends. Use `depends_on` keyword to define dependencies:
 
 ```yaml
 lint_task:
@@ -267,6 +280,40 @@ publish_task:
     - lint
   script: yarn run publish
 ```
+
+!!! tip "Task Names"
+    It is possible to specify task name via `name` field. `lint_task` syntax is simply a syntactic sugar that will be
+    expanded into: 
+    
+    ```yaml
+    task:
+      name: lint
+      ...
+    ```
+    
+    Names can be also pretty complex:
+    
+    
+    ```yaml
+    task:
+      name: test (linux)
+      ...
+      
+    task:
+      name: test (windows)
+      ...
+      
+    task:
+      name: test (macOS)
+      ...
+      
+    deploy_task:
+      depends_on:
+        - test (linux)
+        - test (windows)
+        - test (macOS)
+      ...
+    ```
 
 ## Conditional Task Execution
 
