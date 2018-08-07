@@ -55,7 +55,7 @@ markdown_extensions:
       custom_checkbox: true
   - pymdownx.tilde
 
-pages:
+nav:
   - Home: index.md
   - 'Quick Start': guide/quick-start.md
   - User Guide:
