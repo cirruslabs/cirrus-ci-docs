@@ -40,6 +40,17 @@ to allocate resources. But a requested resource wasn't created.
 If it happened for an OSS project, please contact [support](/support.md) immediately. Otherwise check your cloud console first 
 and then contact [support](/support.md) if it's still not clear what happened. 
 
+#### Instance timed out!
+
+By default Cirrus CI has an execution limit of 60 minutes for each task. Therefore, this default timeout duration can be changed
+by using `timeout_in` field in `.cirrus.yml` configuration file:
+
+```yaml
+task: 
+  timeout_in 90m
+  ...
+```
+
 #### Only GitHub Support?
 
 At the moment Cirrus CI only supports GitHub via a [GitHub Application](https://github.com/apps/cirrus-ci). We are planning
