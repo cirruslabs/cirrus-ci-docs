@@ -33,3 +33,17 @@ docker_builder:
 
 !!! info "Example"
     For more examples please check how we use Docker Builder to build and publish Cirrus CI's Docker Images for [Android](https://github.com/cirruslabs/docker-images-android).
+    
+### Layer Caching
+
+Docker has `--cache-from` flag which allows to use a previously built image as a cache source. This way only changed
+layers will be rebuilt which can drastically improve performance of `build_script`. Here is a snippet that uses 
+`--cache-from` flag:
+
+```bash
+# pull an image if available
+docker pull myrepo/foo:latest || true
+docker build --cache-from myrepo/foo:latest \
+  --tag myrepo/foo:$CIRRUS_TAG \
+  --tag myrepo/foo:latest .
+```
