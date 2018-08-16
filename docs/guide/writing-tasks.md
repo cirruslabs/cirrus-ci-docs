@@ -163,6 +163,8 @@ Name | Value / Description
 ---  | ---
 CI | true
 CIRRUS_CI | true
+CI_NODE_INDEX | Index of the current task within `CI_NODE_TOTAL` tasks
+CI_NODE_TOTAL | Total amount of unique tasks for a given `CIRRUS_BUILD_ID` build 
 CONTINUOUS_INTEGRATION | true
 CIRRUS_BRANCH | Branch name. For example `my-feature`
 CIRRUS_DEFAULT_BRANCH | Default repository branch name. For example `master`
