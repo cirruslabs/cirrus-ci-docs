@@ -187,7 +187,7 @@ It is possible to securely add sensitive information to `.cirrus.yml` file. Encr
 builds initialized or approved by users with write permission to a corresponding repository.
 
 In order to encrypt a variable go to repository's settings page via clicking settings icon ![](https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_settings_black_24px.svg)
-on a repository's main page (for example https://cirrus-ci.org/github/my-organization/my-repository) and follow instructions.
+on a repository's main page (for example https://cirrus-ci.com/github/my-organization/my-repository) and follow instructions.
 
 !!! warning
     Only users with `WRITE` permissions can add encrypted variables to a repository.
