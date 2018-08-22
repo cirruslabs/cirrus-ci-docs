@@ -245,6 +245,28 @@ rspec_task:
   rspec_script: bundle exec rspec
 ```
 
+!!! tip "Test Palatalization"
+    It's super easy to add intelligent test splitting by using [Knapsack Pro](https://knapsackpro.com/) and [matrix modification](/guide/writing-tasks.md#matrix-modification).
+    After [setting up Knapsack Pro gem](https://docs.knapsackpro.com/knapsack_pro-ruby/guide/) simply add sharding like this:
+    
+    ```yaml
+    task:
+      name:
+        matrix:
+          - rspec (shard 1)
+          - rspec (shard 2)
+          - rspec (shard 3)
+          - rspec (shard 4)
+      bundle_cache:
+        folder: /usr/local/bundle
+        fingerprint_script: cat Gemfile.lock
+        populate_script: bundle install
+      rspec_script: bundle exec rake knapsack_pro:rspec
+    ```
+    
+    Which will create four shards that will theoretically **run tests 4x faster** by equaly splitting all tests between 
+    these four shards.
+
 ## Rust
 
 Official [Rust Docker images](https://hub.docker.com/_/rust/) can be used for builds. Here is a simple example of `.cirrus.yml` 
