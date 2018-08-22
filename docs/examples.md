@@ -251,12 +251,11 @@ rspec_task:
     
     ```yaml
     task:
-      name:
-        matrix:
-          - rspec (shard 1)
-          - rspec (shard 2)
-          - rspec (shard 3)
-          - rspec (shard 4)
+      matrix:
+        name: rspec (shard 1)
+        name: rspec (shard 2)
+        name: rspec (shard 3)
+        name: rspec (shard 4)
       bundle_cache:
         folder: /usr/local/bundle
         fingerprint_script: cat Gemfile.lock
