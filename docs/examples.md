@@ -245,7 +245,7 @@ rspec_task:
   rspec_script: bundle exec rspec
 ```
 
-!!! tip "Test Palatalization"
+!!! tip "Test Parallelization"
     It's super easy to add intelligent test splitting by using [Knapsack Pro](https://knapsackpro.com/) and [matrix modification](/guide/writing-tasks.md#matrix-modification).
     After [setting up Knapsack Pro gem](https://docs.knapsackpro.com/knapsack_pro-ruby/guide/) simply add sharding like this:
     
