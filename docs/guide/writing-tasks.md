@@ -331,6 +331,17 @@ publish_task:
 Currently only basic operators like `==`, `!=`, `&&`, `||` and unary `!` are supported in `only_if` expression.
 [Environment variables](#environment-variables) can also be used as usually.
 
+## Failure Toleration
+
+Sometimes tasks can play a role of sanity checks. For example, a task can check that your library is working with the latest nightly 
+version of some dependency package. It will be great to be notified about such failures but it's not necessary to fail the
+whole build when a failure occurs. Cirrus CI has `allow_failures` keyword which will make a task to not affect the overall status of a build.
+
+```yaml
+test_nightly_task:
+  allow_failures: $SOME_PACKAGE_DEPENDENCY_VERSION == 'nightly'
+```
+
 ## HTTP Cache
 
 For the most cases regular caching mechanism where Cirrus CI caches a folder is more than enough. But modern build systems
