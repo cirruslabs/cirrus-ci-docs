@@ -223,7 +223,7 @@ container:
 test_task:
   pip_cache:
     folder: ~/.cache/pip
-    fingerprint_script: cat requirements.txt
+    fingerprint_script: echo $PYTHON_VERSION && cat requirements.txt
     populate_script: pip install -r requirements.txt
   test_script: pytest
 ```
@@ -240,7 +240,7 @@ container:
 rspec_task:
   bundle_cache:
     folder: /usr/local/bundle
-    fingerprint_script: cat Gemfile.lock
+    fingerprint_script: echo $RUBY_VERSION && cat Gemfile.lock
     populate_script: bundle install
   rspec_script: bundle exec rspec
 ```
