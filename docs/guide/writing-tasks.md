@@ -166,12 +166,14 @@ CIRRUS_CI | true
 CI_NODE_INDEX | Index of the current task within `CI_NODE_TOTAL` tasks
 CI_NODE_TOTAL | Total amount of unique tasks for a given `CIRRUS_BUILD_ID` build 
 CONTINUOUS_INTEGRATION | true
+CIRRUS_BASE_BRANCH | Base branch name if current build was triggered by a PR **based of a fork**. For example `master`
+CIRRUS_BASE_SHA | Base SHA if current build was triggered by a PR **based of a fork**
 CIRRUS_BRANCH | Branch name. For example `my-feature`
-CIRRUS_DEFAULT_BRANCH | Default repository branch name. For example `master`
-CIRRUS_PR | PR number if current build was triggered by a PR based of a fork. For example `239`
-CIRRUS_TAG | Tag name if current build was triggered by a new tag. For example `v1.0`
 CIRRUS_BUILD_ID | Unique build ID
 CIRRUS_CHANGE_IN_REPO | Git SHA
+CIRRUS_DEFAULT_BRANCH | Default repository branch name. For example `master`
+CIRRUS_PR | PR number if current build was triggered by a PR **based of a fork**. For example `239`.
+CIRRUS_TAG | Tag name if current build was triggered by a new tag. For example `v1.0`
 CIRRUS_OS, OS | Host OS. Either `linux`, `windows` or `darwin`.
 CIRRUS_TASK_NAME | Task name
 CIRRUS_TASK_ID | Unique task ID
