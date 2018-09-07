@@ -148,7 +148,7 @@ test_task:
 
 ## Environment Variables
 
-Environment variables can be configured under `env` keyword in `.cirrus.yml` file. Here is an example:
+Environment variables can be configured under `env` or `environment` keyword in `.cirrus.yml` file. Here is an example:
 
 ```yaml
 echo_task:
@@ -201,7 +201,7 @@ An encrypted variable will be presented in a form like `ENCRYPTED[qwerty239abc]`
 
 ```yaml
 publish_task:
-  environemnt:
+  environment:
     AUTH_TOKEN: ENCRYPTED[qwerty239abc]
   script: ./publish.sh
 ```
