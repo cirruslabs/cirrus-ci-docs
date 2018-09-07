@@ -214,8 +214,7 @@ a relation between an encrypted variable and a repository for which the encrypte
 ## Matrix Modification
 
 Sometimes it's useful to run the same task against different software versions. Or run different batches of tests based
-on an 
-variable. For cases like these `matrix` modification comes very handy. It's possible to use `matrix`
+on an environment variable. For cases like these `matrix` modification comes very handy. It's possible to use `matrix`
 keyword **only inside of a particular task** to have multiple tasks based on the original one. Each new task will be created
 from the original task by replacing the whole `matrix` YAML node with each `matrix`'s children separately. 
 
