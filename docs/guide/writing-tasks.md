@@ -331,8 +331,16 @@ publish_task:
   script: yarn run publish
 ```
 
-Currently only basic operators like `==`, `!=`, `&&`, `||` and unary `!` are supported in `only_if` expression.
+Currently only basic operators like `==`, `!=`, `=~`, `!=~`, `&&`, `||` and unary `!` are supported in `only_if` expression.
 [Environment variables](#environment-variables) can also be used as usually.
+
+!!! tip "Pattern Matching Example"
+    Use `=~` operator for pattern matching.
+    
+    ```yaml
+    check_aggreement_task:
+      only_if: $CIRRUS_BRANCH =~ 'pull/*'      
+    ```
 
 ## Failure Toleration
 
