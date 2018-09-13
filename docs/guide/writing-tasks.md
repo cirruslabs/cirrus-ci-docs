@@ -339,7 +339,7 @@ Currently only basic operators like `==`, `!=`, `=~`, `!=~`, `&&`, `||` and unar
     
     ```yaml
     check_aggreement_task:
-      only_if: $CIRRUS_BRANCH =~ 'pull/*'      
+      only_if: $CIRRUS_BRANCH =~ 'pull/.*'      
     ```
 
 ## Failure Toleration
