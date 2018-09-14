@@ -171,6 +171,7 @@ CIRRUS_BASE_SHA | Base SHA if current build was triggered by a PR
 CIRRUS_BRANCH | Branch name. For example `my-feature`
 CIRRUS_BUILD_ID | Unique build ID
 CIRRUS_CHANGE_IN_REPO | Git SHA
+CIRRUS_CHANGE_MESSAGE | Commit message
 CIRRUS_CLONE_DEPTH | Clone depth. By default Cirrus CI agent does a full clone of a single branch.
 CIRRUS_DEFAULT_BRANCH | Default repository branch name. For example `master`
 CIRRUS_PR | PR number if current build was triggered by a PR. For example `239`.
