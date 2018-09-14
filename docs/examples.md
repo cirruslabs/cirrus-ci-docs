@@ -67,9 +67,9 @@ container:
 task:
   build_script: |
     bazel build \
-      --spawn_strategy=remote \
-      --strategy=Javac=remote \
-      --genrule_strategy=remote \
+      --spawn_strategy=remote_http_cache \
+      --strategy=Javac=remote_http_cache \
+      --genrule_strategy=remote_http_cache \
       --remote_rest_cache=http://$CIRRUS_HTTP_CACHE_HOST \
       //...
 ```
