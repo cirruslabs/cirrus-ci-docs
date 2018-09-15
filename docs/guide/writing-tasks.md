@@ -342,6 +342,12 @@ Currently only basic operators like `==`, `!=`, `=~`, `!=~`, `&&`, `||` and unar
     check_aggreement_task:
       only_if: $CIRRUS_BRANCH =~ 'pull/.*'      
     ```
+    
+!!! tip "Skip CI Completely"
+    Simply include `[skip ci]` or `[ci skip]` in your commit message in order to skip CI execution for a commit completely.
+    
+    If you push multiple commits at the same time, only commit message of `HEAD` will be checked for `[skip ci]` 
+    or `[ci skip]`.
 
 ## Failure Toleration
 
