@@ -69,7 +69,7 @@ Name      | Linux Support           | Windows Support         | macOS Support   
 Cirrus CI | [:white_check_mark:][1] | [:white_check_mark:][2] | [:white_check_mark:][3]  | :white_check_mark:      | Only for used resources + [discounts][4]
 Travis CI | :white_check_mark:      | :x:                     | :white_check_mark:       | :x:                     | Max parallel builds
 Circle CI | :white_check_mark:      | :x:                     | :white_check_mark:       | :white_check_mark:      | Max parallel builds
-AppVeyor  | :x:                     | :white_check_mark:      | :x:                      | :x:                     | Max parallel builds
+AppVeyor  | :white_check_mark:      | :white_check_mark:      | :x:                      | :x:                     | Max parallel builds
 
 [1]: /guide/linux.md
 [2]: /guide/windows.md
