@@ -98,9 +98,9 @@ task:
 
 !!! tip "Using compute credits for public repositories"
     If you willing to boost Cirrus CI for public repositories you need to explicitly mark a task to use compute credits
-    with `use_compute_credits` field:
+    with `use_compute_credits` field. Here is an example how to enable compute credits for internal and external collaborators:
     
     ```yaml
     task:
-      use_compute_credits: $CIRRUS_PR == ''
+      use_compute_credits: $CIRRUS_USER_COLLABORATOR == 'true'
     ```
