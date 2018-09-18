@@ -102,5 +102,5 @@ task:
     
     ```yaml
     task:
-      use_compute_credits: $CIRRUS_PR != ''
+      use_compute_credits: $CIRRUS_PR == ''
     ```
