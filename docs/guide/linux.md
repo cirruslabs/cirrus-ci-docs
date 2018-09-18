@@ -1,7 +1,8 @@
-## Community Cluster
+## Linux Containers
 
-Community Cluster is a [Kubernetes](https://kubernetes.io/) cluster running on [Google Kubernetes Engine](/guide/supported-computing-services.md#google-kubernetes-engine)
-that is available free of charge for Open Source community. Paying customers can also use Community Cluster for personal private repositories.
+Linux Community Cluster is a [Kubernetes](https://kubernetes.io/) cluster running on [Google Kubernetes Engine](/guide/supported-computing-services.md#google-kubernetes-engine)
+that is available free of charge for Open Source community. Paying customers can also use Community Cluster for 
+personal private repositories or buy CPU time with [compute credits](/pricing.md#compute-credits) for their private organization repositories.
 
 Community Cluster is configured the same way as anyone can configure a personal GKE cluster as [described here](/guide/supported-computing-services.md#google-kubernetes-engine).
 
@@ -17,7 +18,7 @@ task:
   script: ...
 ``` 
 
-Containers on Community Cluster can use maximum 8.0 CPUs and up to 24 Gb of memory. [Custom GKE clusters](/guide/supported-computing-services.md#google-kubernetes-engine) don't have that limitation though.
+Containers on Community Cluster can use maximum 8.0 CPUs and up to 24 Gb of memory. Private 
 
 !!! warning "Scheduling Times on Community Cluster"
     Since Community Cluster is shared, scheduling times for containers can vary from time to time. Also the smaller a container 

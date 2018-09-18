@@ -1,7 +1,7 @@
 # Windows Containers
 
-It is possible to run Windows Containers the same way one can run [Linux containers](/guide/linux.md) on Community Cluster. Simply use
-`windows_container` instead of `container` in `.cirrus.yml` files:
+It is possible to run Windows Containers the same way one can run [Linux containers](/guide/linux.md) on Windows Community Cluster. 
+Simply use `windows_container` instead of `container` in `.cirrus.yml` files:
 
 ```yaml
 windows_container:
