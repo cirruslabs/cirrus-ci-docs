@@ -64,7 +64,7 @@ Please check the list of currently supported cloud compute services below and pl
 </p>
 
 Cirrus CI can schedule tasks on several Google Cloud Compute services. In order to interact with Google Cloud APIs 
-Cirrus CI needs permissions. Creating a [service account](https://cloud.google.com/compute/access/service-accounts) 
+Cirrus CI needs permissions. Creating a [service account](https://cloud.google.com/compute/docs/access/service-accounts) 
 is a common way to safely give granular access to parts of Google Cloud Projects. 
 
 !!! warning "Isolation"
@@ -79,7 +79,7 @@ gcloud iam service-accounts create cirrus-ci \
     --project $PROJECT_ID
 ```
 
-Depending on a compute service Cirrus CI will need different [roles](https://cloud.google.com/iam/understanding-roles) 
+Depending on a compute service Cirrus CI will need different [roles](https://cloud.google.com/iam/docs/understanding-roles) 
 assigned to the service account. But Cirrus CI will always need permissions to act as a service account:
 
 ```bash
@@ -99,7 +99,7 @@ gcloud projects add-iam-policy-binding $PROJECT_ID \
 
 !!! info "Default Logs Retentions Period"
     By default Cirrus CI will store logs and caches for 30 days but it can be changed by manually configuring a
-    [lifecycle rule](https://cloud.google.com/storage/lifecycle) for a Google Cloud Storage bucket that Cirrus CI is using.
+    [lifecycle rule](https://cloud.google.com/storage/docs/lifecycle) for a Google Cloud Storage bucket that Cirrus CI is using.
 
 Now we have a service account that Cirrus CI can use! It's time to let Cirrus CI know about that fact by securely providing a
 private key for the service account. A private key can be created by running the following command:
@@ -158,8 +158,8 @@ Building an immutable VM image with all necessary software pre-configured is a k
 It makes sure environment where a task is executed is always the same and that no time is spent on useless work like
 installing a package over and over again for every single task.
 
-There are many ways how one can create a custom image for Google Compute Engine. Please refer to the [official documentation](https://cloud.google.com/compute/images/create-delete-deprecate-private-images).
-At Cirrus Labs we are using [Packer](https://www.packer.io/builders/googlecompute.html) to automate building such
+There are many ways how one can create a custom image for Google Compute Engine. Please refer to the [official documentation](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images).
+At Cirrus Labs we are using [Packer](https://www.packer.io/docs/builders/googlecompute.html) to automate building such
 images. An example of how we use it can be found in [our public GitHub repository](https://github.com/cirruslabs/cirrus-images).
 
 #### Windows Support
@@ -212,7 +212,7 @@ push_docker_task:
 
 #### Preemptible Instances
 
-Cirrus CI can schedule [preemptible](https://cloud.google.com/compute/instances/preemptible) instances with all price
+Cirrus CI can schedule [preemptible](https://cloud.google.com/compute/docs/instances/preemptible) instances with all price
 benefits and stability risks. But sometimes risks of an instance being preempted at any time can be tolerated. For example 
 `gce_instance` can be configured to schedule preemptible instance for non master branches like this:
 
