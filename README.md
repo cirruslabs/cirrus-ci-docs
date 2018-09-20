@@ -1,4 +1,4 @@
-# Documentation for Cirrus CI
+# Documentation for Cirrus CI 📚
 
 [![Build Status](https://api.cirrus-ci.com/github/cirruslabs/cirrus-ci-docs.svg)](https://cirrus-ci.com/github/cirruslabs/cirrus-ci-docs)
 
