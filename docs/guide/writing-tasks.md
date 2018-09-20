@@ -350,6 +350,18 @@ Currently only basic operators like `==`, `!=`, `=~`, `!=~`, `&&`, `||` and unar
     If you push multiple commits at the same time, only commit message of `HEAD` will be checked for `[skip ci]` 
     or `[ci skip]`.
 
+## Auto-Cancellation of Tasks
+
+Cirrus CI can automatically cancel tasks in case of new pushes to the same branch. By default Cirrus CI auto-cancels 
+all tasks for non default branch (for most repositories `master` branch) but this behavior can be changed by specifying
+`auto_cancellation` field:
+
+```yaml
+task:
+  auto_cancellation: $CIRRUS_BRANCH != 'master` && $CIRRUS_BRANCH !=~ 'release/.*'
+  ...
+```
+
 ## Failure Toleration
 
 Sometimes tasks can play a role of sanity checks. For example, a task can check that your library is working with the latest nightly 
