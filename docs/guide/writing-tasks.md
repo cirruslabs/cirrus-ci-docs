@@ -185,6 +185,7 @@ CIRRUS_REPO_FULL_NAME | Repository full name. For example `my-organization/my-li
 CIRRUS_REPO_CLONE_URL | URL used for cloning. For example `https://github.com/my-organization/my-library.git`
 CIRRUS_SHELL | Shell that Cirrus CI uses to execute scripts. By default `sh` is used.
 CIRRUS_USER_COLLABORATOR | `true` if a user initialized a build is already a contributor to the repository. `false` otherwise.
+CIRRUS_USER_PERMISSION | `admin`, `write`, `read` or `none`.
 CIRRUS_WORKING_DIR | Working directory where Cirrus CI executes builds. Default to `cirrus-ci-build` folder inside of a system's temporary folder.
 CIRRUS_HTTP_CACHE_HOST | Host and port number on which [local HTTP cache](#http-cache) can be accessed on.
       
@@ -358,7 +359,7 @@ all tasks for non default branch (for most repositories `master` branch) but thi
 
 ```yaml
 task:
-  auto_cancellation: $CIRRUS_BRANCH != 'master` && $CIRRUS_BRANCH !=~ 'release/.*'
+  auto_cancellation: $CIRRUS_BRANCH != 'master' && $CIRRUS_BRANCH !=~ 'release/.*'
   ...
 ```
 
