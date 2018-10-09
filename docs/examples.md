@@ -43,12 +43,12 @@ check_android_task:
 
 ## Bazel
 
-Cirrus CI provides a [set of Docker images with Bazel pre-installed](https://hub.docker.com/r/cirrusci/bazel/). Here is
+Bazel Team provides a [set of official Docker images with Bazel pre-installed](https://l.gcr.io/google/bazel). Here is
 an example of how `.cirrus.yml` can look like for Bazel:
 
 ```yaml
 container:
-  image: cirrusci/bazel:latest
+  image: l.gcr.io/google/bazel:latest
 task:
   build_script: bazel build //...
 ```
@@ -63,7 +63,7 @@ Here is an example of how Cirrus CI HTTP Cache can be used with Bazel:
 
 ```yaml
 container:
-  image: cirrusci/bazel:latest
+  image: l.gcr.io/google/bazel:latest
 task:
   build_script: |
     bazel build \
