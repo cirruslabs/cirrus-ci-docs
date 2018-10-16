@@ -374,6 +374,15 @@ test_nightly_task:
   allow_failures: $SOME_PACKAGE_DEPENDENCY_VERSION == 'nightly'
 ```
 
+!!! tip "Skipping Notifications"
+    You can also skip posting **red statuses** to GitHub via `skip_notifications` field.
+    
+    ```yaml
+    skip_notifications: $SOME_PACKAGE_DEPENDENCY_VERSION == 'nightly'
+    ```
+    
+    It can help to track potential issues overtime without distracting the main workflow.
+
 ## HTTP Cache
 
 For the most cases regular caching mechanism where Cirrus CI caches a folder is more than enough. But modern build systems
