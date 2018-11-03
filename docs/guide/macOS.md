@@ -5,13 +5,19 @@ Simply use `osx_instance` in `.cirrus.yml` files:
 
 ```yaml
 osx_instance:
-  image: high-sierra-xcode-9.4.1
+  image: high-sierra-xcode-10.0
 
 task:
   script: ...
 ```
 
-Please refer to [`osx-images`](https://github.com/cirruslabs/osx-images) repository for a list of all available images and
+### List of available images
+
+* `high-sierra-base` - vanilla macOS with Brew and Command Line Tools pre-installed.
+* `high-sierra-xcode-[9.4.1, 10.0]` - based of `high-sierra-base` with Xcode and couple other packages pre-installed:
+`cocoapods`, `fastlane`, `rake` and `xctool`.
+
+Please refer to [`osx-images`](https://github.com/cirruslabs/osx-images) repository on how the images were built and
 don't hesitate to [create issues](https://github.com/cirruslabs/osx-images/issues) if current images are missing something.
 
 !!! info "Underlying Technology"
