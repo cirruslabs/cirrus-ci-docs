@@ -5,7 +5,7 @@ Simply use `osx_instance` in `.cirrus.yml` files:
 
 ```yaml
 osx_instance:
-  image: high-sierra-xcode-10.0
+  image: mojave-xcode-10.1
 
 task:
   script: ...
@@ -13,6 +13,9 @@ task:
 
 ### List of available images
 
+* `mojave-base` - vanilla macOS with Brew and Command Line Tools pre-installed.
+* `mojave-xcode-10.1` - based of `mojave-base` with Xcode and couple other packages pre-installed:
+`cocoapods`, `fastlane`, `rake` and `xctool`.
 * `high-sierra-base` - vanilla macOS with Brew and Command Line Tools pre-installed.
 * `high-sierra-xcode-[9.4.1, 10.0]` - based of `high-sierra-base` with Xcode and couple other packages pre-installed:
 `cocoapods`, `fastlane`, `rake` and `xctool`.
