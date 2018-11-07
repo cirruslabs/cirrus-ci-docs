@@ -178,6 +178,7 @@ CIRRUS_TAG | Tag name if current build was triggered by a new tag. For example `
 CIRRUS_OS, OS | Host OS. Either `linux`, `windows` or `darwin`.
 CIRRUS_TASK_NAME | Task name
 CIRRUS_TASK_ID | Unique task ID
+CIRRUS_REPO_CLONE_TOKEN | Temporary GitHub access token to perform a clone.
 CIRRUS_REPO_NAME | Repository name. For example `my-library`
 CIRRUS_REPO_OWNER | Repository owner(an organization or a user). For example `my-organization`
 CIRRUS_REPO_FULL_NAME | Repository full name. For example `my-organization/my-library`
@@ -185,6 +186,8 @@ CIRRUS_REPO_CLONE_URL | URL used for cloning. For example `https://github.com/my
 CIRRUS_USER_COLLABORATOR | `true` if a user initialized a build is already a contributor to the repository. `false` otherwise.
 CIRRUS_USER_PERMISSION | `admin`, `write`, `read` or `none`.
 CIRRUS_HTTP_CACHE_HOST | Host and port number on which [local HTTP cache](#http-cache) can be accessed on.
+
+### Behavioural Environment Variables
 
 And some environment variables can be set to control behaviour of the Cirrus CI Agent:
 
@@ -477,3 +480,24 @@ Here is how Cirrus CI's badge can be embeded in a Markdown file:
 ```markdown
 [![Build Status](https://api.cirrus-ci.com/github/<USER OR ORGANIZATION>/<REPOSITORY>.svg)](https://cirrus-ci.com/github/<USER OR ORGANIZATION>/<REPOSITORY>)
 ```
+
+## Custom Clone Command
+
+By default Cirrus CI uses a [Git client implemented purely in Go](https://github.com/src-d/go-git) to perform a clone of
+a single branch with full Git history. It is possible to control clone depth via `CIRRUS_CLONE_DEPTH` [environment variable](#behavioural-environment-variables).
+
+Customizing clone behaviour is a simple as overriding `clone_script`. For example, here an override to use a pre-installed
+Git client (if your build environment has it) to do a shallow clone of a single branch:
+
+```yaml
+task:
+  clone_script: 
+    - git clone --depth=50 --branch=$CIRRUS_BRANCH https://x-access-token:${CIRRUS_REPO_CLONE_TOKEN}@github.com/${CIRRUS_REPO_FULL_NAME}.git $CIRRUS_WORKING_DIR
+    - git reset --hard $CIRRUS_CHANGE_IN_REPO
+  ...
+```
+
+!!! note "`go-git` benefits"
+    Using `go-git` made it possible to not require a pre-installed Git from an execution environment. For example, 
+    most of `alpine`-based containers doesn't have Git pre-installed. Because of `go-git` you can even use distroless 
+    containers with Cirrus CI which don't even have Operation System.
