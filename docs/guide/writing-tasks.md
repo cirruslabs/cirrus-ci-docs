@@ -171,7 +171,7 @@ CIRRUS_BASE_SHA | Base SHA if current build was triggered by a PR
 CIRRUS_BRANCH | Branch name. For example `my-feature`
 CIRRUS_BUILD_ID | Unique build ID
 CIRRUS_CHANGE_IN_REPO | Git SHA
-CIRRUS_CHANGE_MESSAGE | Commit message
+CIRRUS_CHANGE_MESSAGE | Commit message or PR title and description, depending on trigger event (Non-PRs or PRs respectively).
 CIRRUS_DEFAULT_BRANCH | Default repository branch name. For example `master`
 CIRRUS_PR | PR number if current build was triggered by a PR. For example `239`.
 CIRRUS_TAG | Tag name if current build was triggered by a new tag. For example `v1.0`
