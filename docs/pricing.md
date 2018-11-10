@@ -38,15 +38,15 @@ for orchestrating CI workloads on these compute services.
     It can be a real person or a bot.
     
     For example, there are 10 people in your GitHub Organization and only 5 of them are working on several private repositories 
-    where Cirrus CI is configured. The rest 5 people are working on public repositories or not pushing changes at all. Let's say [dependabot](https://dependabot.com/) 
+    where Cirrus CI is configured. The remaining 5 people are working on public repositories or not pushing changes at all. Let's say [dependabot](https://dependabot.com/) 
     is also configured for these private repositories. 
     
     In that case there are `5 + 1 = 6` seats you need to purchase Cirrus CI plan for.
     
 ### Compute Credits
 
-Sometimes configuring your own [compute services](#compute-services) doesn't worth it. It takes time and effort to configure
-and maintain them. For such cases there is a way to use the same community clusters that Open Source community is enjoying.
+Sometimes configuring your own [compute services](#compute-services) isn't worth it. It takes time and effort to configure
+and maintain them. For such cases there is a way to use the same community clusters that the Open Source community is enjoying.
 Use compute credits with your private or public repositories of any scale.
 
 1 compute credit can be bought for 1 US dollar. Here is how much 1000 minutes of CPU time will cost for different platforms:
@@ -62,8 +62,8 @@ All tasks using compute credits are charged on per-second basis. 2 CPU Linux tas
 
 **Pros** of this approach:
   
-  * Use the same pre-configured infrastructure as Open Source community is enjoying.
-  * No need to configure anything. Let Cirrus CI team to manage and upgrade infrastructure for you.
+  * Use the same pre-configured infrastructure as the Open Source community is enjoying.
+  * No need to configure anything. Let Cirrus CI team manage and upgrade infrastructure for you.
   * Per-second billing with no additional minimum or monthly fees.
   * Cost efficient for small teams. 
   
