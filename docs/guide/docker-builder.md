@@ -72,4 +72,22 @@ Cirrus CI will build a container and cache the resulting image based on `Dockerf
 Cirrus CI will check if a container was already built, and if so, Cirrus CI will instantly start a CI task using the cached image.
 
 Under the hood, for every `Dockerfile` that is needed to be built, Cirrus CI will create a Docker Builder task as a dependency. 
-You will see such `build_docker_iamge_HASH` tasks in the UI.
+You will see such `build_docker_image_HASH` tasks in the UI.
+
+!!! info "Using with private GKE clusters"
+
+    To use `dockerfile` with `gke_container` you first need to create a VM with Docker installed withint your GCP project.
+    This image will be used to perform building of Docker images for caching. Once this image is available, for example, by 
+    `MY_DOCKER_VM` name, you can simply use it like this:
+    
+    ```yaml
+    gke_container:
+      dockerfile: .ci/Dockerfile
+      builder_image_name: MY_DOCKER_VM
+      cluster_name: cirrus-ci-cluster
+      zone: us-central1-a
+      namespace: default
+    ```
+    
+    If your builder image is strored in another project. You can also specify it by using `builder_image_project` field.
+    By default, Cirrus CI assumes builder image is stored within the same project as the GKE cluster.
