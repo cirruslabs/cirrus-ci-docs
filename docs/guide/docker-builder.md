@@ -47,3 +47,29 @@ docker build --cache-from myrepo/foo:latest \
   --tag myrepo/foo:$CIRRUS_TAG \
   --tag myrepo/foo:latest .
 ```
+
+### Dockerfile as a CI environment
+
+With Docker Builder there is no need to build and push custom containers so they can be used as an environment to run CI tasks in. 
+Cirrus CI can do it for you! Just specify path to a `Dockerfile` via `dockerfile` field for you container 
+declaration in `.cirrus.yml` like this:
+
+```yaml
+efficient_task:
+  container:
+    dockerfile: ci/Dockerfile
+  test_script: ...
+inefficient_task:
+  container:
+    image: node:latest
+  setup_script:
+    - apt-get update
+    - apt-get install build-essential
+  test_script: ...
+```
+
+Cirrus CI will build a container and cache the resulting image based on `Dockerfile`’s content. On the next build, 
+Cirrus CI will check if a container was already built, and if so, Cirrus CI will instantly start a CI task using the cached image.
+
+Under the hood, for every `Dockerfile` that is needed to be built, Cirrus CI will create a Docker Builder task as a dependency. 
+You will see such `build_docker_iamge_HASH` tasks in the UI.
