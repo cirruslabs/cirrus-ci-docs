@@ -451,6 +451,10 @@ container:
 
 Additional container can be very handy in many scenarios. Please check [Cirrus CI catalog of examples](/examples.md) for more details.
 
+!!! info "Default Resources"
+    By default, each additional container will get `0.5` CPU and `512Mi` of memory. These defaults can be configured as usual
+    via `cpu` and `memory` fields.
+
 !!! warning
     **Note** that `additional_containers` can be used only with [Community Cluster](/guide/supported-computing-services.md#community-cluster) 
     or [Google's Kubernetes Engine](/guide/supported-computing-services.md#kubernetes-engine).
