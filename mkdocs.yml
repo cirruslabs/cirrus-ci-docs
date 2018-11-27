@@ -68,6 +68,7 @@ nav:
     - 'Supported Computing Services': guide/supported-computing-services.md
   - Pricing: pricing.md
   - Examples: examples.md
+  - API: api.md
   - FAQ: faq.md
   - Legal:
     - 'Privacy': legal/privacy.md
