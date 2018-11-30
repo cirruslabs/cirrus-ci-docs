@@ -181,6 +181,25 @@ task:
   script: run-ci.bat
 ```
 
+#### FreeBSD Support
+
+Google Compute Engine support FreeBSD images and Cirrus CI can take full advantages of it by just explicitly specifying
+platform of an image like this:
+
+```yaml
+gce_instance:
+  image_project: freebsd-org-cloud-dev
+  image_name: freebsd-11-2-release-amd64
+  platform: FreeBSD
+  zone: us-central1-a
+  cpu: 8
+  memory: 40Gb
+  disk: 50
+  
+task:
+  script: printenv
+```
+
 #### Instance Scopes
 
 By default Cirrus CI will create Google Compute instances without any [scopes](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes) 
