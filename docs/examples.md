@@ -149,7 +149,7 @@ check_task:
 Here is how [HTTP Cache](guide/writing-tasks.md#http-cache) can be used with Gradle simply by adding following lines to `settings.gradle`:
 
 ```groovy
-ext.isCiServer = System.getenv().containsKey("CI")
+ext.isCiServer = System.getenv().containsKey("CIRRUS_CI")
 ext.isMasterBranch = System.getenv()["CIRRUS_BRANCH"] == "master"
 
 buildCache {
