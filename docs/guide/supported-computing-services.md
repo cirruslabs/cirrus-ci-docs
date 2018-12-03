@@ -152,6 +152,19 @@ task:
   script: ./run-ci.sh
 ```
 
+!!! tip "Specify Machine Type"
+    It is possible to specify a [predefined machine type](https://cloud.google.com/compute/docs/machine-types) via `type`
+    field:
+    
+    ```yaml
+    gce_instance:
+      image_project: ubuntu-os-cloud
+      image_name: ubuntu-1604-xenial-v20171121a
+      zone: us-central1-a
+      type: n1-standard-8
+      disk: 20
+    ```
+
 #### Custom VM images
 
 Building an immutable VM image with all necessary software pre-configured is a known best practice with many benefits.
