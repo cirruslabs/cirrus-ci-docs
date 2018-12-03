@@ -21,16 +21,17 @@ Try Cirrus CI with a [Quick Start](guide/quick-start.md) guide.
 
 Here is a high level comparison with popular continuous-integration-as-a-service solutions:
 
-Name      | Linux Support           | Windows Support         | macOS Support            | Customizable CPU/Memory | Pricing
-----------| ----------------------  | ----------------------- | ------------------------ | ----------------------- | -----------------------
-Cirrus CI | [:white_check_mark:][1] | [:white_check_mark:][2] | [:white_check_mark:][3]  | :white_check_mark:      | Only for used resources + [discounts][4]
-Travis CI | :white_check_mark:      | :white_check_mark:      | :white_check_mark:       | :x:                     | Max parallel builds
-Circle CI | :white_check_mark:      | :x:                     | :white_check_mark:       | :white_check_mark:      | Max parallel builds
-AppVeyor  | :white_check_mark:      | :white_check_mark:      | :x:                      | :x:                     | Max parallel builds
+Name      | Linux Support           | Windows Support         | macOS Support             | FreeBSD Support            | Customizable CPU/Memory | Pricing
+----------| ----------------------  | ----------------------- | ------------------------  | ------------------------ | ----------------------- | -----------------------
+Cirrus CI | [:white_check_mark:][1] | [:white_check_mark:][2] | [:white_check_mark:][3]   | [:white_check_mark:][4]  | :white_check_mark:      | Only for used resources + [discounts][5]
+Travis CI | :white_check_mark:      | :white_check_mark:      | :white_check_mark:        | :x:                      | :x:                     | Max parallel builds
+Circle CI | :white_check_mark:      | :x:                     | :white_check_mark:        | :x:                      | :white_check_mark:      | Max parallel builds
+AppVeyor  | :white_check_mark:      | :white_check_mark:      | :x:                       | :x:                      | :x:                     | Max parallel builds
 
 [1]: /guide/linux.md
 [2]: /guide/windows.md
 [3]: /guide/macOS.md
-[4]: /faq.md#any-discounts
+[4]: /guide/FreeBSD.md
+[5]: /faq.md#any-discounts
 
 Feel free to [contact support](mailto:support@cirruslabs.org) if you have questions for your particular case.
