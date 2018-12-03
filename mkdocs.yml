@@ -58,6 +58,7 @@ markdown_extensions:
 nav:
   - Home: index.md
   - 'Quick Start': guide/quick-start.md
+  - 'Why Cirrus CI': why.md
   - User Guide:
     - 'Writing Tasks': guide/writing-tasks.md
     - 'Linux Containers': guide/linux.md
