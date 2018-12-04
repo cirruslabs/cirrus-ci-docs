@@ -52,6 +52,7 @@ Use compute credits with your private or public repositories of any scale.
 1 compute credit can be bought for 1 US dollar. Here is how much 1000 minutes of CPU time will cost for different platforms:
 
   * 1000 minutes of 1 virtual CPU for Linux for 5 compute credits
+  * 1000 minutes of 1 virtual CPU for FreeBSD for 5 compute credits
   * 1000 minutes of 1 virtual CPU for Windows for 10 compute credits
   * 1000 minutes of 1 CPU with hyper-threading enabled (comparable to 2 vCPUs) for macOS for 30 compute credits
 
