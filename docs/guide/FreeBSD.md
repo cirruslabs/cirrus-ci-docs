@@ -8,6 +8,7 @@ freebsd_instance:
   image: freebsd-11-2-release-amd64
 
 task:
+  install_script: pkg install -y ...
   script: ...
 ```
 
