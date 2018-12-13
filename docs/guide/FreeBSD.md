@@ -20,7 +20,7 @@ task:
 
 Any of the official FreeBSD VMs on Google Cloud Platform are supported. Here are a few of them which are self explanatory:
 
-* `freebsd-12-0-rc3-amd64`
+* `freebsd-12-0-release-amd64`
 * `freebsd-11-2-release-amd64`
 * `freebsd-11-1-release-amd64`
 * `freebsd-10-4-release-amd64`
