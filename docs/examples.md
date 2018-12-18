@@ -228,6 +228,55 @@ test_task:
   test_script: pytest
 ```
 
+## Release Assets
+
+Cirrus CI doesn't provide a built-in functionality to upload artifacts on a GitHub release but this functionality can be
+added via a simple script. For a release Cirrus CI will provide `CIRRUS_RELEASE` environment variable along with `CIRRUS_TAG` 
+environment variable. `CIRRUS_RELEASE` indicates release id which can be used to upload assests.
+
+Cirrus CI only requires write access to Check API and doesn't require write access to repository contents becuase of security 
+reasons. That's why you need to [create a personal access token](https://github.com/settings/tokens/new) with full access
+to `repo` scope. Once an access token is created, please [create an encrypted variable](/guide/writing-tasks.md#encrypted-variables) 
+from it and save it to `.cirrus.yml`:
+
+```yaml
+env:
+  GITHUB_TOKEN: ENCRYPTED[qwerty]
+```
+
+Now you can use a simple script to upload your assets:
+
+```bash
+#!/usr/bin/env bash
+
+if [[ "$CIRRUS_RELEASE" == "" ]]; then
+  echo "Not a release. No need to deploy!"
+  exit 0
+fi
+
+if [[ "$GITHUB_TOKEN" == "" ]]; then
+  echo "Please provide GitHub access token via GITHUB_TOKEN environment variable!"
+  exit 1
+fi
+
+file_content_type="application/octet-stream"
+files_to_upload=(
+  # relative paths of assets to upload
+)
+
+for fpath in $files_to_upload
+do
+  echo "Uploading $fpath..."
+  name=$(basename "$fpath")
+  url_to_upload="https://uploads.github.com/repos/$CIRRUS_REPO_FULL_NAME/releases/$CIRRUS_RELEASE/assets?name=$name"
+  curl -X POST \
+    --data-binary @$fpath \
+    --header "Authorization: token $GITHUB_TOKEN" \
+    --header "Content-Type: $file_content_type" \
+    $url_to_upload
+done
+```
+
 ## Ruby
 
 Official [Ruby Docker images](https://hub.docker.com/_/ruby/) can be used for builds. Here is an example of `.cirrus.yml` 

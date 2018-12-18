@@ -178,6 +178,7 @@ CIRRUS_TAG | Tag name if current build was triggered by a new tag. For example `
 CIRRUS_OS, OS | Host OS. Either `linux`, `windows` or `darwin`.
 CIRRUS_TASK_NAME | Task name
 CIRRUS_TASK_ID | Unique task ID
+CIRRUS_RELEASE | GitHub Release id if current tag was created for a release. Handy for [uploading release assets](/examples.md#release-assets).
 CIRRUS_REPO_CLONE_TOKEN | Temporary GitHub access token to perform a clone.
 CIRRUS_REPO_NAME | Repository name. For example `my-library`
 CIRRUS_REPO_OWNER | Repository owner(an organization or a user). For example `my-organization`
