@@ -23,3 +23,6 @@ Containers on Community Cluster can use maximum 8.0 CPUs and up to 24 Gb of memo
 !!! warning "Scheduling Times on Community Cluster"
     Since Community Cluster is shared, scheduling times for containers can vary from time to time. Also the smaller a container 
     require resources faster it will be scheduled.
+
+!!! info "Privileged Access"
+    If you need to run privileged docker containers, take a look at the [docker builder](/guide/docker-builder.md).
