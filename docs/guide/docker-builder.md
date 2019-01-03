@@ -9,7 +9,7 @@ docker_builder:
 
 Leveraging features like [Task Dependencies](/guide/writing-tasks.md#depepndencies), [Conditional Execution](/guide/writing-tasks.md#conditional-execution)
 and [Encrypted Variables](/guide/writing-tasks.md#encrypted-variables) with a Docker Builder can help building some pretty
-complex pipelines.
+complex pipelines. It can also be used to execute builds which need special privileges.
 
 In the example below, a `docker_builder` will be only executed on a tag creation, once both `test` and `lint` 
 tasks have finished successfully:
