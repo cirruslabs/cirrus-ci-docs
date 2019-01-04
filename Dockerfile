@@ -1,4 +1,4 @@
-FROM node:10
+FROM node:11
 
 WORKDIR /svc/cirrus-ci-docs
 EXPOSE 8080
