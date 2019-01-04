@@ -20,6 +20,25 @@ publish_task:
   script: yarn run publish
 ```
 
+#### Are there any limits?
+
+There are no limits on how many VMs or Containers you can run in parallel if you bring your own [compute services](/guide/supported-computing-services.md)
+or use [Compute Credits](/pricing.md#compute-credits) for either private or public repositories.
+
+Cirrus CI has following limitations on how many VMs or Containers a single user can run for free for public repositories:
+
+  * 8 Linux Containers or VMs
+  * 2 Windows Containers or VMs
+  * 2 FreeBSD VMs
+  * 1 macOS VM
+  
+Which means that a single user can run at most 13 simultaneous tasks for free.
+
+!!! note "No per repository limits"
+    Cirrus CI doesn't enforce any limits on repository or organization levels. All the limits are on per user basis.
+    For example, if you have 10 active contributors to a repository then you can end up with 130 tasks running in parallel 
+    for the repository.  
+
 #### CI agent stopped responding!
 
 It means that Cirrus CI haven't heard from the agent for quite some time. In 99.999% of the cases 
