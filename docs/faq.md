@@ -59,6 +59,18 @@ to allocate resources. But a requested resource wasn't created.
 If it happened for an OSS project, please contact [support](/support.md) immediately. Otherwise check your cloud console first 
 and then contact [support](/support.md) if it's still not clear what happened. 
 
+#### Instance got rescheduled!
+
+Cirrus CI is trying to be as efficient as possible and uses an auto-scalable cluster of [preemptible VMs](https://cloud.google.com/preemptible-vms/)
+to run [Linux containers for OSS](/guide/linux.md). It allows to drastically lower Cirrus CI's bill for parts of infrastructure 
+that **run tasks for OSS projects free of charge** but it comes with a rare edge case... 
+
+Preemptible VMs can be preempted which will require to reschedule and automatically restart tasks that were executing on these VMs. 
+This is a rare event since autoscaler is constantly rotating instances but preemption still happens occasionally.
+
+!!! tip "Compute Credits"
+    Tasks that use [compute credits](/pricing.md#compute-credits) are executed on standard VMs that don't get preempted.    
+
 #### Instance timed out!
 
 By default Cirrus CI has an execution limit of 60 minutes for each task. However, this default timeout duration can be changed
