@@ -2,7 +2,7 @@ container:
   image: squidfunk/mkdocs-material:latest
 
 build_task:
-  only_if: $CIRRUS_BRANCH != 'gh-pages'
+  only_if: $CIRRUS_BRANCH != 'gh-pages' && $CIRRUS_BRANCH != 'master'
   install_script: pip install pymdown-extensions
   build_script: mkdocs build
 
