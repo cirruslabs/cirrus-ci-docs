@@ -61,6 +61,10 @@ All tasks using compute credits are charged on per-second basis. 2 CPU Linux tas
 !!! info "Priority Scheduling"
     Tasks that are using compute credits will be prioritized and will be scheduled as fast as possible.
 
+!!! tip "Works for OSS projects"
+    Compute credits can be used for commercial OSS projects to avoid [concurrency limits](/faq.md#are-there-any-limits).
+    Note that only collaborators for the project will be able to use organization's compute credits.
+
 **Pros** of this approach:
   
   * Use the same pre-configured infrastructure as the Open Source community is enjoying.
