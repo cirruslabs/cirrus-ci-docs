@@ -1,4 +1,4 @@
-Docker Builder is a way for Open Source projects to build and publish Docker Images to Docker Registries of their choice.
+Docker Builder is a way to build and publish Docker Images to Docker Registries of their choice.
 In essence, a `docker_builder` is basically [a `task`](/guide/writing-tasks.md) that is executed in a VM with pre-installed Docker. 
 `docker_builder` can be defined the same way as a `task`:
 
