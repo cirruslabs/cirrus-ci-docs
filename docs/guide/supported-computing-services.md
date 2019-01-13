@@ -274,7 +274,6 @@ the load during pick hours:
 
 ```yaml
 gcloud container clusters create cirrus-ci-cluster \
-  --project cirruslabs-ci \
   --zone us-central1-a \
   --num-nodes 1 --machine-type n1-standard-8 \
   --enable-autoscaling --min-nodes=0 --max-nodes=10
