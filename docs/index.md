@@ -29,7 +29,7 @@ patterns from Cirrus CI customers:
       </a>
     </td>
     <td>
-      <a href="https://flutter.io/">Flutter</a> is a mobile app SDK with almost 50,000 stars on GitHub.
+      <a href="https://flutter.io/">Flutter</a> is a mobile app SDK with over 50,000 stars on GitHub.
       Flutter team uses <a href="/pricing/#compute-credits">compute credits</a> to get unlimited prioritized builds and
       only pay for resources that these builds used. 
     </td>
