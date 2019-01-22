@@ -68,6 +68,7 @@ nav:
     - 'Docker Builder': guide/docker-builder.md
     - 'Life of a Build': guide/build-life.md
     - 'Supported Computing Services': guide/supported-computing-services.md
+    - 'Notifications': guide/notifications.md
   - Pricing: pricing.md
   - Examples: examples.md
   - API: api.md
