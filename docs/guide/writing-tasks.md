@@ -1,12 +1,12 @@
-Task defines where and how your scripts will be executed. Let's check line-by-line an example of `.cirrus.yml` configuration file first:
+Task defines where and how your scripts will be executed. Let's see line-by-line an example of `.cirrus.yml` configuration file first:
 
 ```yaml
-task:
+test_task:
   container:
     image: gradle:jdk8
     cpu: 4
     memory: 10G
-  script: gradle test
+  test_script: gradle test
 ```
 
 Example above defines a single task that will be scheduled and executed on Community Cluster using `gradle:jdk8` Docker image.
@@ -85,6 +85,7 @@ like in an example below:
 check_task:
   compile_script: gradle --parallel classes testClasses 
   check_script:
+    - echo "Here comes more then one script!"
     - printenv
     - gradle check
 ``` 
@@ -154,7 +155,7 @@ Environment variables can be configured under `env` or `environment` keyword in 
 echo_task:
   env:
     FOO: Bar
-  echo_script: echo $FOO   
+  echo_script: echo $FOO
 ```
 
 Also some default environment variables are pre-defined:
@@ -182,8 +183,8 @@ CIRRUS_RELEASE | GitHub Release id if current tag was created for a release. Han
 CIRRUS_REPO_CLONE_TOKEN | Temporary GitHub access token to perform a clone.
 CIRRUS_REPO_NAME | Repository name. For example `my-library`
 CIRRUS_REPO_OWNER | Repository owner(an organization or a user). For example `my-organization`
-CIRRUS_REPO_FULL_NAME | Repository full name. For example `my-organization/my-library`
-CIRRUS_REPO_CLONE_URL | URL used for cloning. For example `https://github.com/my-organization/my-library.git`
+CIRRUS_REPO_FULL_NAME | Repository full name/slug. For example `my-organization/my-project`
+CIRRUS_REPO_CLONE_URL | URL used for cloning. For example `https://github.com/my-organization/my-project.git`
 CIRRUS_USER_COLLABORATOR | `true` if a user initialized a build is already a contributor to the repository. `false` otherwise.
 CIRRUS_USER_PERMISSION | `admin`, `write`, `read` or `none`.
 CIRRUS_HTTP_CACHE_HOST | Host and port number on which [local HTTP cache](#http-cache) can be accessed on.
@@ -279,7 +280,7 @@ test_task:
   test_script: yarn run $COMMAND
 ```
 
-## Dependencies
+## Task Execution Dependencies
 
 Sometimes it might be very handy to execute some tasks only after successful execution of other tasks. For such cases
 it is possible to specify task names that a particular task depends. Use `depends_on` keyword to define dependencies:
@@ -453,7 +454,7 @@ container:
 Additional container can be very handy in many scenarios. Please check [Cirrus CI catalog of examples](/examples.md) for more details.
 
 !!! info "Default Resources"
-    By default, each additional container will get `0.5` CPU and `512Mi` of memory. These defaults can be configured as usual
+    By default, each additional container will get `0.5` CPU and `512Mi` of memory. These values can be configured as usual
     via `cpu` and `memory` fields.
 
 !!! warning
@@ -472,7 +473,7 @@ In order to embed such a check into your ReadMe file or your website, simply use
 https://api.cirrus-ci.com/github/<USER OR ORGANIZATION>/<REPOSITORY>.svg
 ```
 
-If you want a badge for a particular branch, simply use `?branch=<BRANCH NAME>` query parameter like this:
+If you want a badge for a particular branch, simply use `?branch=<BRANCH NAME>` query parameter (at the end of the URl) like this:
 
 ```yaml
 https://api.cirrus-ci.com/github/<USER OR ORGANIZATION>/<REPOSITORY>.svg?branch=<BRANCH NAME>
