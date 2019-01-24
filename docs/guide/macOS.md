@@ -17,8 +17,7 @@ task:
 * `mojave-xcode-10.1` - based of `mojave-base` with Xcode and couple other packages pre-installed:
 `cocoapods`, `fastlane`, `rake` and `xctool`.
 * `high-sierra-base` - vanilla macOS with Brew and Command Line Tools pre-installed.
-* `high-sierra-xcode-[9.4.1, 10.0]` - based of `high-sierra-base` with Xcode and couple other packages pre-installed:
-`cocoapods`, `fastlane`, `rake` and `xctool`.
+* `high-sierra-xcode-9.4.1` and `high-sierra-xcode-10.0` - based on `high-sierra-base` with Xcode and couple other packages pre-installed: `cocoapods`, `fastlane`, `rake` and `xctool`.
 
 Please refer to [`osx-images`](https://github.com/cirruslabs/osx-images) repository on how the images were built and
 don't hesitate to [create issues](https://github.com/cirruslabs/osx-images/issues) if current images are missing something.
