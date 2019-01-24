@@ -473,7 +473,7 @@ In order to embed such a check into your ReadMe file or your website, simply use
 https://api.cirrus-ci.com/github/<USER OR ORGANIZATION>/<REPOSITORY>.svg
 ```
 
-If you want a badge for a particular branch, simply use `?branch=<BRANCH NAME>` query parameter (at the end of the URl) like this:
+If you want a badge for a particular branch, simply use `?branch=<BRANCH NAME>` query parameter (at the end of the URL) like this:
 
 ```yaml
 https://api.cirrus-ci.com/github/<USER OR ORGANIZATION>/<REPOSITORY>.svg?branch=<BRANCH NAME>
