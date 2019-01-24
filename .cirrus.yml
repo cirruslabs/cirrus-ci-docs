@@ -3,7 +3,7 @@ container:
 
 build_task:
   only_if: $CIRRUS_BRANCH != 'gh-pages' && $CIRRUS_BRANCH != 'master'
-  install_script: pip install pymdown-extensions
+  install_script: pip install --upgrade pymdown-extensions
   build_script: mkdocs build
 
 deploy_task:
