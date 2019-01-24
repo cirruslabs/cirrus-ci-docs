@@ -247,6 +247,22 @@ test_task:
   test_script: pytest
 ```
 
+### Building PyPI Packages  
+
+Also using the Python Docker images, you can run tests if you are making packages for [PyPI](https://pypi.org).  Here is an example `.cirrus.yml` for doing so:
+
+```yaml
+container:
+  image: python:latest
+
+build_package_test_task:
+  pip_cache:
+    folder: ~/.cache/pip
+    fingerprint_script: echo $PYTHON_VERSION
+    populate_script: python3 -m pip install --upgrade setuptools wheel twine
+  build_package_test_script: python3 setup.py sdist bdist_wheel bdist_egg
+```
+
 ## Release Assets
 
 Cirrus CI doesn't provide a built-in functionality to upload artifacts on a GitHub release but this functionality can be
