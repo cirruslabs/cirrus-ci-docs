@@ -181,8 +181,8 @@ CIRRUS_TASK_NAME | Task name
 CIRRUS_TASK_ID | Unique task ID
 CIRRUS_RELEASE | GitHub Release id if current tag was created for a release. Handy for [uploading release assets](/examples.md#release-assets).
 CIRRUS_REPO_CLONE_TOKEN | Temporary GitHub access token to perform a clone.
-CIRRUS_REPO_NAME | Repository name. For example `my-library`
-CIRRUS_REPO_OWNER | Repository owner(an organization or a user). For example `my-organization`
+CIRRUS_REPO_NAME | Repository name. For example `my-project`
+CIRRUS_REPO_OWNER | Repository owner (an organization or a user). For example `my-organization`
 CIRRUS_REPO_FULL_NAME | Repository full name/slug. For example `my-organization/my-project`
 CIRRUS_REPO_CLONE_URL | URL used for cloning. For example `https://github.com/my-organization/my-project.git`
 CIRRUS_USER_COLLABORATOR | `true` if a user initialized a build is already a contributor to the repository. `false` otherwise.
