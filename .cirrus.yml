@@ -14,7 +14,7 @@ Deploy_task:
     image: python:latest
   depends_on:
     - Build
-    - Markdown_Lint
+#    - Markdown_Lint
     - Markdown_LinkCheck
   env:
     DEPLOY_TOKEN: ENCRYPTED[fbf2f9b7dc97cc3d960126b1540f19c36b96768c46b8eb99389e02b8c54080418d1fb90094dc2e3a36767df34acb5d5d]
@@ -22,13 +22,13 @@ Deploy_task:
   deploy_script: ./.ci/deploy.sh
 
 # ====== MARKDOWN TESTS ======
-task:
-  skip_notifications: true
-  name: Markdown_Lint
-  container:
-    image: mivok/markdownlint:latest
-  script: 
-    - mdl docs/
+#task:
+#  skip_notifications: true
+#  name: Markdown_Lint
+#  container:
+#    image: mivok/markdownlint:latest
+#  script: 
+#    - mdl docs/
 
 task:
   name: Markdown_LinkCheck
