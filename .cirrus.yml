@@ -24,12 +24,10 @@ deploy_task:
 # ====== MARKDOWN TESTS ======
 markdown_lint_task:
   container:
-    image: node:latest
-  install_script:
-    - npm install -g remark-lint remark-cli
+    image: mivok/markdownlint:latest
   script: 
     - echo ========  STARTING MARKDOWN LINTING TESTS  ========
-    - find . -name \*.md -exec remark {} \;
+    - mdl docs/
 
 markdown_linkcheck_task:
   container:
