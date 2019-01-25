@@ -22,5 +22,7 @@ markdown_tests_task:
     folder: node_modules
     populate_script: npm install -g remark-lint remark-cli remark-preset-lint-recommended && npm install -g markdown-link-check@3.7.2
   script: 
+    - echo ========  STARTING MARKDOWN LINTING TESTS  ========
     - find . -name \*.md -exec remark {} \;
+    - echo ========  STARTING MARKDOWN LINK CHECK TESTS  ========
     - find . -name \*.md -exec markdown-link-check {} \;
