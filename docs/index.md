@@ -41,7 +41,7 @@ patterns from Cirrus CI customers:
       </a>
     </td>
     <td>
-      <a href="https://www.sonarsource.com/">SonarSource</a> is using <a href="/guide/supported-computing-services/">integration with Google Cloud Platform</a>
+      [SonarSource](https://www.sonarsource.com/) is using [integration with Google Cloud Platform](/guide/supported-computing-services/)
       to bring their own infrastructure to Cirrus CI. SonarSource runs their integration tests in parallel on more than 
       a hundred dedicated VMs to get test results in minutes rather than hours.
     </td>
