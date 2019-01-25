@@ -12,3 +12,15 @@ deploy_task:
     DEPLOY_TOKEN: ENCRYPTED[fbf2f9b7dc97cc3d960126b1540f19c36b96768c46b8eb99389e02b8c54080418d1fb90094dc2e3a36767df34acb5d5d]
   install_script: pip install pymdown-extensions
   deploy_script: ./.ci/deploy.sh
+
+markdown_tests_task:
+  container:
+    image: node:latest
+  depends_on:
+    - build
+  node_modules_cache:
+    folder: node_modules
+    populate_script: npm install -g remark-lint remark-cli remark-preset-lint-recommended && npm install -g markdown-link-check@3.7.2
+  script: 
+    - find . -name \*.md -exec remark {} \;
+    - find . -name \*.md -exec markdown-link-check {} \;
