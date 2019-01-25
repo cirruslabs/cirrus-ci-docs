@@ -1,12 +1,12 @@
-container:
-  image: squidfunk/mkdocs-material:latest
-  cpu: 2
-
+# ====== MKDOCS TEST ======
 build_task:
+  container:
+    image: squidfunk/mkdocs-material:latest
   only_if: $CIRRUS_BRANCH != 'gh-pages' && $CIRRUS_BRANCH != 'master'
   install_script: pip install --upgrade pymdown-extensions
   build_script: mkdocs build
 
+# ====== MKDOCS DEPLOY ======
 deploy_task:
   only_if: $CIRRUS_BRANCH == 'master'
   container:
@@ -20,6 +20,7 @@ deploy_task:
   install_script: pip install pymdown-extensions
   deploy_script: ./.ci/deploy.sh
 
+# ====== MARKDOWN TESTS ======
 markdown_lint_task:
   container:
     image: node:latest
