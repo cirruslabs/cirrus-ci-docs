@@ -38,7 +38,8 @@ Which means that a single user can run at most 13 simultaneous tasks for free.
 
 !!! note "No per repository limits"
     Cirrus CI doesn't enforce any limits on repository or organization levels. All the limits are on per user basis.
-    For example, if you have 10 active contributors to a repository then you can end up with 130 tasks running in parallel 
+    For example, if you have 10 active contributors to a
+    repository then you can end up with 130 tasks running in parallel
     for the repository.  
 
 #### CI agent stopped responding
@@ -46,10 +47,13 @@ Which means that a single user can run at most 13 simultaneous tasks for free.
 It means that Cirrus CI haven't heard from the agent for quite some time. In 99.999% of the cases 
 it happens because of two reasons:
 
-1. Your task was executing on [Community Cluster](guide/supported-computing-services.md#community-cluster). Community Cluster 
-is backed by Google Cloud's [Preemptible VMs](https://cloud.google.com/preemptible-vms/) for cost efficiency reasons and
-Google Cloud preempted back a VM your task was executing on. Cirrus CI is trying to minimize possibility of such cases 
-by constantly rotating VMs before Google Cloud preempts them, but there is still chance of such inconvenience.
+1. Your task was executing on [Community Cluster](guide/supported-computing-services.md#community-cluster).
+Community Cluster is backed by Google Cloud's 
+[Preemptible VMs](https://cloud.google.com/preemptible-vms/) for cost efficiency reasons and
+Google Cloud preempted back a VM your task was executing on.
+Cirrus CI is trying to minimize possibility of such cases 
+by constantly rotating VMs before Google Cloud preempts them,
+but there is still chance of such inconvenience.
 
 2. Your CI task used too much memory which led to a crash of a VM or a container.
 
