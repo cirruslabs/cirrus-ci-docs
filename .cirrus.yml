@@ -6,6 +6,8 @@ build_task:
   build_script: mkdocs build
 
 deploy_task:
+  container:
+    image: squidfunk/mkdocs-material:latest
   only_if: $CIRRUS_BRANCH == 'master'
   depends_on:
     - build
