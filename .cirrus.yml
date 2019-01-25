@@ -23,7 +23,7 @@ Deploy_task:
 
 # ====== MARKDOWN TESTS ======
 task:
-  allow_failures: true
+  skip_notifications: true
   name: Markdown_Lint
   container:
     image: mivok/markdownlint:latest
