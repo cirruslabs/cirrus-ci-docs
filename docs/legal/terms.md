@@ -1,3 +1,5 @@
+<!-- markdownlint-disable -->
+
 # Terms of Service
 
 In addition to these Terms of Service, Cirrus Labs also has a [Privacy Policy](privacy.md).

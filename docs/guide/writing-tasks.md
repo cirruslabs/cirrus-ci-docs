@@ -204,8 +204,8 @@ CIRRUS_WORKING_DIR | `cirrus-ci-build` folder inside of a system's temporary fol
 It is possible to securely add sensitive information to `.cirrus.yml` file. Encrypted variables are only available to
 builds initialized or approved by users with write permission to a corresponding repository.
 
-In order to encrypt a variable go to repository's settings page via clicking settings icon ![](https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_settings_black_24px.svg)
-on a repository's main page (for example https://cirrus-ci.com/github/my-organization/my-repository) and follow instructions.
+In order to encrypt a variable go to repository's settings page via clicking settings icon ![settings icon](https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_settings_black_24px.svg)
+on a repository's main page (for example `https://cirrus-ci.com/github/my-organization/my-repository`) and follow instructions.
 
 !!! warning
     Only users with `WRITE` permissions can add encrypted variables to a repository.
@@ -465,7 +465,7 @@ Additional container can be very handy in many scenarios. Please check [Cirrus C
 
 Cirrus CI provides a way to embed a badge that can represent status of your builds into a ReadMe file or a website.
 
-For example, this is a badge for `cirruslabs/cirrus-ci-web` repository that contains Cirrus CI's front end: [![](https://api.cirrus-ci.com/github/cirruslabs/cirrus-ci-web.svg)](https://github.com/cirruslabs/cirrus-ci-web)
+For example, this is a badge for `cirruslabs/cirrus-ci-web` repository that contains Cirrus CI's front end: [![passing badge](https://api.cirrus-ci.com/github/cirruslabs/cirrus-ci-web.svg)](https://github.com/cirruslabs/cirrus-ci-web)
 
 In order to embed such a check into your ReadMe file or your website, simply use a URL to a badge that looks like this:
 

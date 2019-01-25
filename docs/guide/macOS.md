@@ -11,11 +11,11 @@ task:
   script: ...
 ```
 
-### List of available images
+## List of available images
 
 * `mojave-base` - vanilla macOS with Brew and Command Line Tools pre-installed.
-* `mojave-xcode-10.1` - based of `mojave-base` with Xcode and couple other packages pre-installed:
-`cocoapods`, `fastlane`, `rake` and `xctool`.
+* `mojave-xcode-10.1` - based of `mojave-base` with Xcode and couple other packages pre-installed: 
+  `cocoapods`, `fastlane`, `rake` and `xctool`.
 * `high-sierra-base` - vanilla macOS with Brew and Command Line Tools pre-installed.
 * `high-sierra-xcode-9.4.1` and `high-sierra-xcode-10.0` - based on `high-sierra-base` with Xcode and couple other packages pre-installed: `cocoapods`, `fastlane`, `rake` and `xctool`.
 
