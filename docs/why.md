@@ -1,4 +1,4 @@
-## Why Cirrus CI
+# Why Cirrus CI
 
 * "Why yet another CI? There are gazillions of them already!"
 * "We have X already configured. It's working for us. Why should we switch?"
@@ -22,11 +22,11 @@ but they are doing great job of making continuous integration as simple as possi
 inconveniences like:
 
 * Not pay-as-you-go approach for pricing. Usually users pay for how many containers at a time one can execute. 
-Which means if users don't want to face queuing issues they need to plan and pay for the maximum load they'll have. 
-This is not a suitable pricing model for the era of cloud computing.
+  Which means if users don't want to face queuing issues they need to plan and pay for the maximum load they'll have. 
+  This is not a suitable pricing model for the era of cloud computing.
 * Focused mostly on containers which many businesses have not yet migrated their legacy projects to.
 * Poor environment flexibility. It's not possible to specify precisely which VM image or Docker container to run and
-how much resources it can have.
+  how much resources it can have.
 
 Because of all the problems and inconveniences described above, we decided to build Cirrus CI with three simple principles in mind:
 

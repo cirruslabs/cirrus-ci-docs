@@ -8,7 +8,7 @@ Here is a full list of curated Cirrus Actions for GitHub including ones to send 
 Email GitHub Action allows to send email notifications on Cirrus CI Checks completion. Simply add the following to you
 `.github/main.workflow` workflow file:
 
-```
+```HCL
 action "Cirrus CI Email" {
   uses = "docker://cirrusactions/email:latest"
   env = {

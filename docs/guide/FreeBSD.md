@@ -16,7 +16,7 @@ task:
     Under the hood a simple integration with [Google Compute Engine](/guide/supported-computing-services.md#compute-engine) 
     is used.
 
-### List of available images
+## List of available images
 
 Any of the official FreeBSD VMs on Google Cloud Platform are supported. Here are a few of them which are self explanatory:
 

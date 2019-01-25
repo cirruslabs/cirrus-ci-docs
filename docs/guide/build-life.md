@@ -18,7 +18,7 @@ of the commands upon execution.
 
 Once task finishes the same scheduling service will clean up a VM or a container.
 
-![](/assets/images/cirrus-ci-communication.svg)
+![communication schema](/assets/images/cirrus-ci-communication.svg)
 
 Image above is a diagram of how Cirrus CI schedules a task on Google Cloud Platform. <span style="color:#2196F3">Blue arrows</span> 
 represent API calls and <span style="color:#AED581">green arrow</span> represents unidirectional communication between 
@@ -28,5 +28,3 @@ Other things like health checking of the agent and GitHub status reporting are h
 but the main flow was described above. Straight forward and nothing magical. :sweat_smile:
 
 For any question please use official [support channels](/support.md).
-
-

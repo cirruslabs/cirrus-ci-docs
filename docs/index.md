@@ -60,10 +60,10 @@ patterns from Cirrus CI customers:
 * Bring you own infrastructure by delegating execution directly to [variety of computing services](guide/supported-computing-services.md).
 * Flexible execution environment: any Unix or Windows VM, any Docker container, any amount of CPUs, optional SSDs and GPUs.
 * Simple but very powerful configuration format. Learn more about how to configure tasks [here](guide/writing-tasks.md). Configure things like:
-    - [Matrix Builds](guide/writing-tasks.md#matrix-modification)
-    - [Dependencies between tasks](guide/writing-tasks.md#dependencies)
-    - [Conditional Task Execution](guide/writing-tasks.md#conditional-task-execution)
-    - [Local HTTP Cache](guide/writing-tasks.md#http-cache)
+    * [Matrix Builds](guide/writing-tasks.md#matrix-modification)
+    * [Dependencies between tasks](guide/writing-tasks.md#dependencies)
+    * [Conditional Task Execution](guide/writing-tasks.md#conditional-task-execution)
+    * [Local HTTP Cache](guide/writing-tasks.md#http-cache)
 
 Try Cirrus CI with a [Quick Start](guide/quick-start.md) guide.
 
