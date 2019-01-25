@@ -1,7 +1,5 @@
 container:
   image: squidfunk/mkdocs-material:latest
-  image: node:latest
-  image: python:latest
   cpu: 2
 
 build_task:
@@ -11,6 +9,8 @@ build_task:
 
 deploy_task:
   only_if: $CIRRUS_BRANCH == 'master'
+  container:
+    image: python:latest
   depends_on:
     - build
     - markdown_lint
@@ -21,6 +21,8 @@ deploy_task:
   deploy_script: ./.ci/deploy.sh
 
 markdown_lint_task:
+  container:
+    image: node:latest
   install_script:
     - npm install -g remark-lint remark-cli
   script: 
@@ -28,6 +30,8 @@ markdown_lint_task:
     - find . -name \*.md -exec remark {} \;
 
 markdown_linkcheck_task:
+  container:
+    image: node:latest
   install_script:
     - npm install -g markdown-link-check@3.7.2
   script:
