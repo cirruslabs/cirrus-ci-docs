@@ -59,13 +59,13 @@ It means that Cirrus CI have made a successful API call to a [computing service]
 to allocate resources. But a requested resource wasn't created. 
 
 If it happened for an OSS project, please contact [support](/support.md) immediately. Otherwise check your cloud console first 
-and then contact [support](/support.md) if it's still not clear what happened. 
+and then contact [support](/support.md) if it's still not clear what happened.
 
 #### Instance got rescheduled
 
 Cirrus CI is trying to be as efficient as possible and uses an auto-scalable cluster of [preemptible VMs](https://cloud.google.com/preemptible-vms/)
-to run [Linux containers for OSS](/guide/linux.md). It allows to drastically lower Cirrus CI's bill for parts of infrastructure 
-that **run tasks for OSS projects free of charge** but it comes with a rare edge case... 
+to run [Linux containers for OSS](/guide/linux.md). It allows to drastically lower Cirrus CI's bill for parts of infrastructure
+that **run tasks for OSS projects free of charge** but it comes with a rare edge case...
 
 Preemptible VMs can be preempted which will require to reschedule and automatically restart tasks that were executing on these VMs. 
 This is a rare event since autoscaler is constantly rotating instances but preemption still happens occasionally.
@@ -79,7 +79,7 @@ By default Cirrus CI has an execution limit of 60 minutes for each task. However
 by using `timeout_in` field in `.cirrus.yml` configuration file:
 
 ```yaml
-task: 
+task:
   timeout_in: 90m
   ...
 ```
@@ -87,10 +87,12 @@ task:
 #### Only GitHub Support
 
 At the moment Cirrus CI only supports GitHub via a [GitHub Application](https://github.com/apps/cirrus-ci). We are planning
-to [support BitBucket](https://github.com/cirruslabs/cirrus-ci-docs/issues/9) next. 
+to [support BitBucket](https://github.com/cirruslabs/cirrus-ci-docs/issues/9) next.
 
 #### Any discounts
 
-Cirrus CI itself doesn't provide any discounts except [Community Cluster](/guide/supported-computing-services.md#community-cluster) 
-which is free for open source projects. But since Cirrus CI delegates execution of builds to different computing services,
+Cirrus CI itself doesn't provide any discounts except 
+[Community Cluster](/guide/supported-computing-services.md#community-cluster)
+which is free for open source projects. But since Cirrus CI 
+delegates execution of builds to different computing services,
 it means that discounts from your cloud provider will be applied to Cirrus CI builds.
