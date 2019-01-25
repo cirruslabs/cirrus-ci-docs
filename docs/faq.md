@@ -30,10 +30,10 @@ either private or public repositories.
 Cirrus CI has following limitations on how many VMs or 
 Containers a single user can run for free for public repositories:
 
-  * 8 Linux Containers or VMs
-  * 2 Windows Containers or VMs
-  * 2 FreeBSD VMs
-  * 1 macOS VM
+- 8 Linux Containers or VMs
+- 2 Windows Containers or VMs
+- 2 FreeBSD VMs
+- 1 macOS VM
   
 Which means that a single user can run at most 13 simultaneous tasks for free.
 
@@ -50,13 +50,12 @@ It means that Cirrus CI haven't heard from the agent for quite some time. In 99.
 it happens because of two reasons:
 
 1. Your task was executing on [Community Cluster](guide/supported-computing-services.md#community-cluster).
-Community Cluster is backed by Google Cloud's 
-[Preemptible VMs](https://cloud.google.com/preemptible-vms/) for cost efficiency reasons and
-Google Cloud preempted back a VM your task was executing on.
-Cirrus CI is trying to minimize possibility of such cases 
-by constantly rotating VMs before Google Cloud preempts them,
-but there is still chance of such inconvenience.
-
+   Community Cluster is backed by Google Cloud's 
+   [Preemptible VMs](https://cloud.google.com/preemptible-vms/) for cost efficiency reasons and
+   Google Cloud preempted back a VM your task was executing on.
+   Cirrus CI is trying to minimize possibility of such cases 
+   by constantly rotating VMs before Google Cloud preempts them,
+   but there is still chance of such inconvenience.
 2. Your CI task used too much memory which led to a crash of a VM or a container.
 
 #### Instance failed to start
