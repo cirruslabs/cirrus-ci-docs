@@ -1,13 +1,14 @@
+container:
+  image: squidfunk/mkdocs-material:latest
+  image: node:latest
+  cpu: 2
+
 build_task:
-  container:
-    image: squidfunk/mkdocs-material:latest
   only_if: $CIRRUS_BRANCH != 'gh-pages' && $CIRRUS_BRANCH != 'master'
   install_script: pip install --upgrade pymdown-extensions
   build_script: mkdocs build
 
 deploy_task:
-  container:
-    image: squidfunk/mkdocs-material:latest
   only_if: $CIRRUS_BRANCH == 'master'
   depends_on:
     - build
@@ -19,15 +20,13 @@ deploy_task:
   deploy_script: ./.ci/deploy.sh
 
 markdown_lint_task:
-  install_script: 
+  install_script:
     - npm install -g remark-lint remark-cli
   script: 
     - echo ========  STARTING MARKDOWN LINTING TESTS  ========
     - find . -name \*.md -exec remark {} \;
 
 markdown_linkcheck_task:
-  container:
-    image: node:latest
   install_script:
     - npm install -g markdown-link-check@3.7.2
   script:
