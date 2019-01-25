@@ -1,6 +1,7 @@
 container:
   image: squidfunk/mkdocs-material:latest
   image: node:latest
+  image: python:latest
   cpu: 2
 
 build_task:
