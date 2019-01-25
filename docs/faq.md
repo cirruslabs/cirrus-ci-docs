@@ -27,7 +27,8 @@ if you bring your own [compute services](/guide/supported-computing-services.md)
 or use [Compute Credits](/pricing.md#compute-credits) for 
 either private or public repositories.
 
-Cirrus CI has following limitations on how many VMs or Containers a single user can run for free for public repositories:
+Cirrus CI has following limitations on how many VMs or 
+Containers a single user can run for free for public repositories:
 
   * 8 Linux Containers or VMs
   * 2 Windows Containers or VMs
@@ -37,7 +38,8 @@ Cirrus CI has following limitations on how many VMs or Containers a single user 
 Which means that a single user can run at most 13 simultaneous tasks for free.
 
 !!! note "No per repository limits"
-    Cirrus CI doesn't enforce any limits on repository or organization levels. All the limits are on per user basis.
+    Cirrus CI doesn't enforce any limits on repository or 
+    organization levels. All the limits are on per user basis.
     For example, if you have 10 active contributors to a
     repository then you can end up with 130 tasks running in parallel
     for the repository.  
@@ -62,7 +64,8 @@ but there is still chance of such inconvenience.
 It means that Cirrus CI have made a successful API call to a [computing service](/guide/supported-computing-services.md) 
 to allocate resources. But a requested resource wasn't created. 
 
-If it happened for an OSS project, please contact [support](/support.md) immediately. Otherwise check your cloud console first 
+If it happened for an OSS project, please contact [support](/support.md) immediately.
+Otherwise check your cloud console first
 and then contact [support](/support.md) if it's still not clear what happened.
 
 #### Instance got rescheduled
@@ -79,7 +82,8 @@ This is a rare event since autoscaler is constantly rotating instances but preem
 
 #### Instance timed out
 
-By default Cirrus CI has an execution limit of 60 minutes for each task. However, this default timeout duration can be changed
+By default Cirrus CI has an execution limit of 60 minutes for each task. However,
+this default timeout duration can be changed
 by using `timeout_in` field in `.cirrus.yml` configuration file:
 
 ```yaml
@@ -90,7 +94,8 @@ task:
 
 #### Only GitHub Support
 
-At the moment Cirrus CI only supports GitHub via a [GitHub Application](https://github.com/apps/cirrus-ci). We are planning
+At the moment Cirrus CI only supports GitHub via a 
+[GitHub Application](https://github.com/apps/cirrus-ci). We are planning
 to [support BitBucket](https://github.com/cirruslabs/cirrus-ci-docs/issues/9) next.
 
 #### Any discounts
