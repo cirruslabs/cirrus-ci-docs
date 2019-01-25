@@ -465,7 +465,7 @@ Additional container can be very handy in many scenarios. Please check [Cirrus C
 
 Cirrus CI provides a way to embed a badge that can represent status of your builds into a ReadMe file or a website.
 
-For example, this is a badge for `cirruslabs/cirrus-ci-web` repository that contains Cirrus CI's front end: [![passing badge](https://api.cirrus-ci.com/github/cirruslabs/cirrus-ci-web.svg)](https://github.com/cirruslabs/cirrus-ci-web)
+For example, this is a badge for `cirruslabs/cirrus-ci-web` repository that contains Cirrus CI's front end: [![Passing build badge example](https://api.cirrus-ci.com/github/cirruslabs/cirrus-ci-web.svg)](https://github.com/cirruslabs/cirrus-ci-web)
 
 In order to embed such a check into your ReadMe file or your website, simply use a URL to a badge that looks like this:
 
