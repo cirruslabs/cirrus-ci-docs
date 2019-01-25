@@ -2,37 +2,39 @@ container:
   image: squidfunk/mkdocs-material:latest
 
 # ====== MKDOCS TEST ======
-build_task:
+Build_task:
   only_if: $CIRRUS_BRANCH != 'gh-pages' && $CIRRUS_BRANCH != 'master'
   install_script: pip install --upgrade pymdown-extensions
   build_script: mkdocs build
 
 # ====== MKDOCS DEPLOY ======
-deploy_task:
+Deploy_task:
   only_if: $CIRRUS_BRANCH == 'master'
   container:
     image: python:latest
   depends_on:
-    - build
-    - markdown_lint
-    - markdown_linkcheck
+    - Build
+    - Markdown_Lint
+    - Markdown_LinkCheck
   env:
     DEPLOY_TOKEN: ENCRYPTED[fbf2f9b7dc97cc3d960126b1540f19c36b96768c46b8eb99389e02b8c54080418d1fb90094dc2e3a36767df34acb5d5d]
   install_script: pip install pymdown-extensions
   deploy_script: ./.ci/deploy.sh
 
 # ====== MARKDOWN TESTS ======
-markdown_lint_task:
+task:
+  name: Markdown_Lint
   container:
     image: mivok/markdownlint:latest
   script: 
     - echo ========  STARTING MARKDOWN LINTING TESTS  ========
     - mdl docs/
 
-markdown_linkcheck_task:
+task:
+  name: Markdown_LinkCheck
   container:
     image: node:latest
-  install_script:
+  Install_script:
     - npm install -g markdown-link-check@3.7.2
   script:
     - echo ========  STARTING MARKDOWN LINK CHECK TESTS  ========
