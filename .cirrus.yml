@@ -23,6 +23,7 @@ Deploy_task:
 
 # ====== MARKDOWN TESTS ======
 task:
+  allow_failures: $CI != false
   name: Markdown_Lint
   container:
     image: mivok/markdownlint:latest
