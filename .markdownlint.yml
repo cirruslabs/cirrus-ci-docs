@@ -7,4 +7,4 @@
 "MD025": false # Multiple top level headings in the same document
 "MD026": false # Trailing punctuation in heading
 "MD033": false # Inline HTML
-"MD041": false # Inline HTML
+"MD041": false # First line in file should be a top level heading
