@@ -27,7 +27,6 @@ task:
   container:
     image: mivok/markdownlint:latest
   script: 
-    - echo ========  STARTING MARKDOWN LINTING TESTS  ========
     - mdl docs/
 
 task:
@@ -37,5 +36,4 @@ task:
   Install_script:
     - npm install -g markdown-link-check@3.7.2
   script:
-    - echo ========  STARTING MARKDOWN LINK CHECK TESTS  ========
     - find . -name \*.md -exec markdown-link-check {} \;
