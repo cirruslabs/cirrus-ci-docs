@@ -82,6 +82,10 @@ task:
   ...
 ```
 
+!!! note "Maximum timeout"
+    There is a hard limit of 2 hours for community tasks. Use [compute credits](/pricing.md#compute-credits) or
+    [compute service integration](/guide/supported-computing-services.md) to avoid the limit.
+
 ## Only GitHub Support?
 
 At the moment Cirrus CI only supports GitHub via a [GitHub Application](https://github.com/apps/cirrus-ci). We are planning
