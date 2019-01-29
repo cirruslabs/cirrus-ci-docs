@@ -507,3 +507,13 @@ task:
     Using `go-git` made it possible to not require a pre-installed Git from an execution environment. For example, 
     most of `alpine`-based containers doesn't have Git pre-installed. Because of `go-git` you can even use distroless 
     containers with Cirrus CI which don't even have Operation System.
+
+## Custom Build Machine Resources  
+
+You can choose some of the resources such as the CPU count and how much RAM to allocate to the machine. You can do so by adding the following to your `container` configuration:
+```yaml
+container:
+  image: insert-image-here:version
+  cpu: 4 # number of cores
+  memory: 10G # RAM
+```
