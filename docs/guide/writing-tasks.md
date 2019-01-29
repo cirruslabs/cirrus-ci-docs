@@ -511,9 +511,10 @@ task:
 ## Custom Build Machine Resources  
 
 You can choose some of the resources such as the CPU count and how much RAM to allocate to the machine. You can do so by adding the following to your `container` configuration:
+
 ```yaml
 container:
-  image: insert-image-here:version
+  image: my-cool-image:latest
   cpu: 4 # number of cores
   memory: 10G # RAM
 ```
