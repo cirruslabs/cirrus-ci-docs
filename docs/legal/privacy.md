@@ -34,7 +34,7 @@ It is Cirrus Labs Inc's policy to respect your privacy regarding any information
 
 If you have question about this Privacy Policy, please contact us at hello@cirruslabs.org
 
-V### isitors
+### Visitors
 
 Like most website operators, Cirrus Labs Inc collects non-personally-identifying information of the sort that web browsers and 
 servers typically make available, such as the browser type, language preference, referring site, and the date and time of each visitor request. 
