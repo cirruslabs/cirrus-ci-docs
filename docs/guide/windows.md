@@ -5,7 +5,8 @@ Simply use `windows_container` instead of `container` in `.cirrus.yml` files:
 
 ```yaml
 windows_container:
-  image: cirrusci/windowsservercore:2016
+  image: cirrusci/windowsservercore:2019
+  os_version: 2019
   
 task:
   script: ...
@@ -13,10 +14,18 @@ task:
 
 Cirrus CI will execute [scripts instructions](/guide/writing-tasks.md#script-instruction) like **Batch scripts**.
     
-!!! warning "Limitations"
-    At the moment only Docker images based of `microsoft/windowsservercore:ltsc2016` are supported since Windows Containers
-    are executed via [Azure Container Instances](/guide/supported-computing-services.md#azure-container-instances) computing
-    service.
+## OS Versions
+
+By default, Cirrus CI assumes that the container image's host OS is Windows Server 2016. Please specify `os_version`
+filed to override it. Cirrus CI support all versions of Windows Containers including: `2016`, `1709`, `1803` and `2019`.
+
+```yaml
+windows_container:
+  image: cirrusci/windowsservercore:2019
+  os_version: 2019
+  install_script: choco install -y ...
+  ...
+```
     
 # Powershell support
 

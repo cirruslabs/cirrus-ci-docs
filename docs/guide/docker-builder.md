@@ -91,3 +91,18 @@ You will see such `build_docker_image_HASH` tasks in the UI.
     
     If your builder image is strored in another project. You can also specify it by using `builder_image_project` field.
     By default, Cirrus CI assumes builder image is stored within the same project as the GKE cluster.
+
+### Windows Support
+
+Docker builder also supports building Windows Docker containers. Simply specify `platform` and `os_version` fields:
+
+```yaml
+docker_builder:
+  platform: windows
+  os_version: 2019
+  ...
+```
+
+!!! tip "Supported OS Versions"
+    See [Windows Containers documentation](/guide/windows.md#os-versions) for a list of supported OS versions.
+  
