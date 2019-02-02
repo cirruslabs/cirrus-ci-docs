@@ -17,7 +17,7 @@ Organization | Free + Access to community cluster | <ul><li>[$10/seat/month](#co
 
 ## Compute Services
 
-Configure and connect one or several [compute services](/guide/supported-computing-services.md) to Cirrus CI and [pay $10/seat/month](https://github.com/marketplace/cirrus-ci/plan/MDIyOk1hcmtldHBsYWNlTGlzdGluZ1BsYW45OTM=#pricing-and-setup) 
+Configure and connect one or several [compute services](/guide/supported-computing-services) to Cirrus CI and [pay $10/seat/month](https://github.com/marketplace/cirrus-ci/plan/MDIyOk1hcmtldHBsYWNlTGlzdGluZ1BsYW45OTM=#pricing-and-setup) 
 for orchestrating CI workloads on these compute services. 
 
 **Pros** of this approach:
