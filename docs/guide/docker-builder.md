@@ -105,4 +105,3 @@ docker_builder:
 
 !!! tip "Supported OS Versions"
     See [Windows Containers documentation](/guide/windows.md#os-versions) for a list of supported OS versions.
-  
