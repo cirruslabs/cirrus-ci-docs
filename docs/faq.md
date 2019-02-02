@@ -83,8 +83,8 @@ task:
 ```
 
 !!! note "Maximum timeout"
-    There is a hard limit of 2 hours for community tasks. Use [compute credits](/pricing.md#compute-credits) or
-    [compute service integration](/guide/supported-computing-services.md) to avoid the limit.
+    There is a hard limit of 2 hours for community tasks. Use [compute credits](/pricing#compute-credits) or
+    [compute service integration](/guide/supported-computing-services) to avoid the limit.
 
 ## Only GitHub Support?
 
@@ -93,6 +93,6 @@ to [support BitBucket](https://github.com/cirruslabs/cirrus-ci-docs/issues/9) ne
 
 ## Any discounts?
 
-Cirrus CI itself doesn't provide any discounts except [Community Cluster](/guide/supported-computing-services.md#community-cluster) 
+Cirrus CI itself doesn't provide any discounts except [Community Cluster](/guide/supported-computing-services#community-cluster) 
 which is free for open source projects. But since Cirrus CI delegates execution of builds to different computing services,
 it means that discounts from your cloud provider will be applied to Cirrus CI builds.
