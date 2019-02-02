@@ -26,7 +26,7 @@
 
 <p align="center">
   <a href="#anka">
-    <img style="height:100px;" src="/assets/images/veertu/ankalogo.png"/>
+    <img style="height:100px;" src="/assets/images/veertu/anka-logo.png"/>
   </a>
 </p>
 
@@ -384,7 +384,7 @@ azure_container_instance:
 
 <p align="center">
   <a href="#anka">
-    <img style="height:100px;" src="/assets/images/veertu/ankalogo.png"/>
+    <img style="height:100px;" src="/assets/images/veertu/anka-logo.png"/>
   </a>
 </p>
 
