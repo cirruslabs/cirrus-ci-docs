@@ -26,7 +26,7 @@ windows_container:
   install_script: choco install -y ...
   ...
 ```
-    
+
 # Powershell support
 
 By default Cirrus CI agent executed scripts using `cmd.exe`. It is possible to override default shell executor by providing
