@@ -55,7 +55,7 @@ patterns from Cirrus CI customers:
 ## Key Highlights
 
 * Free for Open Source ([Linux](guide/linux.md), [Windows](guide/windows.md), [macOS](guide/macOS.md) and [FreeBSD](guide/FreeBSD.md))
-* [Per-second billing](/pricing.md) for private projects.
+* [Per-second billing](pricing.md) for private projects.
 * No concurrency limit. No queues.
 * Bring you own infrastructure by delegating execution directly to [variety of computing services](guide/supported-computing-services.md).
 * Flexible execution environment: any Unix or Windows VM, any Docker container, any amount of CPUs, optional SSDs and GPUs.
