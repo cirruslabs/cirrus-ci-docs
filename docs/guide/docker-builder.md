@@ -1,5 +1,5 @@
 Docker Builder is a way to build and publish Docker Images to Docker Registries of their choice.
-In essence, a `docker_builder` is basically [a `task`](/guide/writing-tasks.md) that is executed in a VM with pre-installed Docker. 
+In essence, a `docker_builder` is basically [a `task`](writing-tasks.md) that is executed in a VM with pre-installed Docker. 
 `docker_builder` can be defined the same way as a `task`:
 
 ```yaml
@@ -7,8 +7,8 @@ docker_builder:
   build_script: docker build --tag myrepo/foo:latest .
 ```
 
-Leveraging features like [Task Dependencies](/guide/writing-tasks.md#depepndencies), [Conditional Execution](/guide/writing-tasks.md#conditional-execution)
-and [Encrypted Variables](/guide/writing-tasks.md#encrypted-variables) with a Docker Builder can help building some pretty
+Leveraging features like [Task Dependencies](writing-tasks.md#depepndencies), [Conditional Execution](writing-tasks.md#conditional-execution)
+and [Encrypted Variables](writing-tasks.md#encrypted-variables) with a Docker Builder can help building some pretty
 complex pipelines. It can also be used to execute builds which need special privileges.
 
 In the example below, a `docker_builder` will be only executed on a tag creation, once both `test` and `lint` 
@@ -104,4 +104,4 @@ docker_builder:
 ```
 
 !!! tip "Supported OS Versions"
-    See [Windows Containers documentation](/guide/windows.md#os-versions) for a list of supported OS versions.
+    See [Windows Containers documentation](windows.md#os-versions) for a list of supported OS versions.

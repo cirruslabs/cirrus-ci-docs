@@ -52,9 +52,9 @@ Newly created PRs will also get Cirrus CI's status checks.
 <img src="/assets/images/screenshots/github/statuses-pr.png" />
 
 !!! info "Examples"
-    Don't forget to check [examples page](/examples) for ready-to-copy examples of `.cirrus.yml` configuration files
+    Don't forget to check [examples page](../examples.md) for ready-to-copy examples of `.cirrus.yml` configuration files
     for different languages and build systems.
 
 !!! info "Life of a build"
     Please check [a high level overview of what's happening under the hood](build-life.md) when a changed is pushed
-    and [this guide](writing-tasks) to learn more about how to write tasks.
+    and [this guide](writing-tasks.md) to learn more about how to write tasks.

@@ -1,6 +1,6 @@
 # macOS Virtual Machines
 
-It is possible to run macOS Virtual Machines the same way one can run [Linux containers](/guide/linux.md) on macOS Community Cluster. 
+It is possible to run macOS Virtual Machines the same way one can run [Linux containers](linux.md) on macOS Community Cluster. 
 Simply use `osx_instance` in `.cirrus.yml` files:
 
 ```yaml
@@ -23,5 +23,5 @@ Please refer to [`osx-images`](https://github.com/cirruslabs/osx-images) reposit
 don't hesitate to [create issues](https://github.com/cirruslabs/osx-images/issues) if current images are missing something.
 
 !!! info "Underlying Technology"
-    Under the hood Cirrus CI is using [Anka Cloud hosted on MacStadium](/guide/supported-computing-services.md#anka) for 
-    orchestrating macOS VMs. Please refer to [documentation](/guide/supported-computing-services.md#anka) for more details.
+    Under the hood Cirrus CI is using [Anka Cloud hosted on MacStadium](supported-computing-services.md#anka) for 
+    orchestrating macOS VMs. Please refer to [documentation](supported-computing-services.md#anka) for more details.

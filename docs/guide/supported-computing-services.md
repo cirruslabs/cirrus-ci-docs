@@ -407,7 +407,7 @@ Cirrus Labs created [Anka Controller Extended](https://github.com/cirruslabs/ank
 to Anka Cloud's private network and securely expose API for Cirrus CI to connect. 
 
 Please check [Anka Controller Extended Documentation](https://github.com/cirruslabs/anka-controller-extended) for details
-and don't hesitate to reach out [support](/support.md) with any question.
+and don't hesitate to reach out [support](../support.md) with any question.
 
 Once Anka Controller Extended is up and running, Cirrus CI can use it's API to schedule tasks. Simply use `anka_instance`
 in your `.cirrus.yml` file like this: 
