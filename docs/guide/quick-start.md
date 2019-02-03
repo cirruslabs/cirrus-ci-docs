@@ -14,6 +14,9 @@ In contrast, classic OAuth Apps [don't have such restrictions](https://developer
 
 <img src="/assets/images/screenshots/github/marketplace/step3.png" />
 
+!!! note "Change Repository Access"
+    You can always revisit Cirrus CI's repository access settings on [your installation page](https://github.com/apps/cirrus-ci/installations/new).
+
 ## Post Installation
 
 Once Cirrus CI is installed for a particular repository, a `.cirrus.yml` configuration file should be added to the root of the repository. 
