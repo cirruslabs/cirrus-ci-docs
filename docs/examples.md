@@ -198,7 +198,7 @@ With the configuration above MySQL will be available on `localhost:3306`. Use em
 
 Official [Node Docker images](https://hub.docker.com/_/node/) can be used for building and testing Node.JS applications.
 
-### npm
+### NPM
 
 Here is an example of `.cirrus.yml` that caches `node_modules` based on contents of `package-lock.json` file and runs tests:
 
