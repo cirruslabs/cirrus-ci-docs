@@ -47,7 +47,7 @@ Cirrus Labs may make changes to the Terms from time to time. You may reject the 
 You understand and agree that if You use the Service after the date on which the Terms have changed, Cirrus Labs will treat 
 Your use as acceptance of the updated Terms.
 
-If you have any question about the Terms, please [contact us](/support.md).
+If you have any question about the Terms, please [contact us](../support.md).
 
 ### Your Cirrus CI User
 
