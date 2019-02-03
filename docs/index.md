@@ -78,10 +78,10 @@ Travis CI | :white_check_mark:      | :white_check_mark:      | :white_check_mar
 Circle CI | :white_check_mark:      | :x:                     | :white_check_mark:        | :x:                      | :white_check_mark:      | Max parallel builds
 AppVeyor  | :white_check_mark:      | :white_check_mark:      | :x:                       | :x:                      | :x:                     | Max parallel builds
 
-[1]: /guide/linux.md
-[2]: /guide/windows.md
-[3]: /guide/macOS.md
-[4]: /guide/FreeBSD.md
-[5]: /faq.md#any-discounts
+[1]: guide/linux.md
+[2]: guide/windows.md
+[3]: guide/macOS.md
+[4]: guide/FreeBSD.md
+[5]: faq.md#any-discounts
 
 Feel free to [contact support](mailto:support@cirruslabs.org) if you have questions for your particular case.
