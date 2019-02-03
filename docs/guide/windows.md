@@ -1,6 +1,6 @@
 # Windows Containers
 
-It is possible to run Windows Containers the same way one can run [Linux containers](/guide/linux.md) on Windows Community Cluster. 
+It is possible to run Windows Containers the same way one can run [Linux containers](linux.md) on Windows Community Cluster. 
 Simply use `windows_container` instead of `container` in `.cirrus.yml` files:
 
 ```yaml
@@ -12,7 +12,7 @@ task:
   script: ...
 ```
 
-Cirrus CI will execute [scripts instructions](/guide/writing-tasks.md#script-instruction) like **Batch scripts**.
+Cirrus CI will execute [scripts instructions](writing-tasks.md#script-instruction) like **Batch scripts**.
     
 ## OS Versions
 
@@ -30,7 +30,7 @@ windows_container:
 # Powershell support
 
 By default Cirrus CI agent executed scripts using `cmd.exe`. It is possible to override default shell executor by providing
-`CIRRUS_SHELL` [environment variable](/guide/writing-tasks.md#environment-variables):
+`CIRRUS_SHELL` [environment variable](writing-tasks.md#environment-variables):
 
 ```yaml
 env:

@@ -3,10 +3,10 @@
 Cirrus CI is free for Open Source projects. For private projects Cirrus CI has couple of options depending on your needs:
 
 1. For private personal repositories these is a [very affordable $10 a month plan](https://github.com/marketplace/cirrus-ci/plan/MDIyOk1hcmtldHBsYWNlTGlzdGluZ1BsYW45OTI=#pricing-and-setup) with 
-   ultimate access to community clusters for [Linux](/guide/linux.md), [Windows](/guide/windows.md) and [macOS](/guide/macOS.md) workloads.
+   ultimate access to community clusters for [Linux](guide/linux.md), [Windows](guide/windows.md) and [macOS](guide/macOS.md) workloads.
 2. Configure access to your own [compute services](#compute-services) and [pay $10/seat/month](https://github.com/marketplace/cirrus-ci/plan/MDIyOk1hcmtldHBsYWNlTGlzdGluZ1BsYW45OTM=#pricing-and-setup)
    fee for orchestrating your CI workloads on these compute services.
-3. Buy [compute credits](#compute-credits) to access managed and pre-configured community clusters for [Linux](/guide/linux.md), [Windows](/guide/windows.md) and [macOS](/guide/macOS.md) workloads.
+3. Buy [compute credits](#compute-credits) to access managed and pre-configured community clusters for [Linux](guide/linux.md), [Windows](guide/windows.md) and [macOS](guide/macOS.md) workloads.
 
 Here is a pricing model of Cirrus CI:
 
@@ -17,7 +17,7 @@ Organization | Free + Access to community cluster | <ul><li>[$10/seat/month](#co
 
 ## Compute Services
 
-Configure and connect one or several [compute services](/guide/supported-computing-services) to Cirrus CI and [pay $10/seat/month](https://github.com/marketplace/cirrus-ci/plan/MDIyOk1hcmtldHBsYWNlTGlzdGluZ1BsYW45OTM=#pricing-and-setup) 
+Configure and connect one or several [compute services](guide/supported-computing-services.md) to Cirrus CI and [pay $10/seat/month](https://github.com/marketplace/cirrus-ci/plan/MDIyOk1hcmtldHBsYWNlTGlzdGluZ1BsYW45OTM=#pricing-and-setup) 
 for orchestrating CI workloads on these compute services. 
 
 **Pros** of this approach:
@@ -28,7 +28,7 @@ for orchestrating CI workloads on these compute services.
   
 **Cons** of this approach:
 
-* Need to configure and connect one or several [compute services](/guide/supported-computing-services.md). Might be
+* Need to configure and connect one or several [compute services](guide/supported-computing-services.md). Might be
   nonintuitive for cases like Anka Build Cloud for macOS.
 * Might not worth the effort for a small team.
 
@@ -62,7 +62,7 @@ All tasks using compute credits are charged on per-second basis. 2 CPU Linux tas
     Tasks that are using compute credits will be prioritized and will be scheduled as fast as possible.
 
 !!! tip "Works for OSS projects"
-    Compute credits can be used for commercial OSS projects to avoid [concurrency limits](/faq.md#are-there-any-limits).
+    Compute credits can be used for commercial OSS projects to avoid [concurrency limits](faq.md#are-there-any-limits).
     Note that only collaborators for the project will be able to use organization's compute credits.
 
 **Pros** of this approach:

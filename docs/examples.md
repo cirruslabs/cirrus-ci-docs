@@ -177,7 +177,7 @@ org.gradle.jvmargs=-Dfile.encoding=UTF-8
 
 ## MySQL
 
-[Additional Containers feature](/guide/writing-tasks.md#additional-containers) makes it super simple to run the same Docker
+[Additional Containers feature](guide/writing-tasks.md#additional-containers) makes it super simple to run the same Docker
 MySQL image as you might be running in production for your application. Getting a running instance of the latest GA 
 version of MySQL can be as simple as the following six lines in your `.cirrus.yml`:
 
@@ -271,7 +271,7 @@ environment variable. `CIRRUS_RELEASE` indicates release id which can be used to
 
 Cirrus CI only requires write access to Check API and doesn't require write access to repository contents becuase of security 
 reasons. That's why you need to [create a personal access token](https://github.com/settings/tokens/new) with full access
-to `repo` scope. Once an access token is created, please [create an encrypted variable](/guide/writing-tasks.md#encrypted-variables) 
+to `repo` scope. Once an access token is created, please [create an encrypted variable](guide/writing-tasks.md#encrypted-variables) 
 from it and save it to `.cirrus.yml`:
 
 ```yaml

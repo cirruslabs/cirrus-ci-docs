@@ -179,7 +179,7 @@ CIRRUS_TAG | Tag name if current build was triggered by a new tag. For example `
 CIRRUS_OS, OS | Host OS. Either `linux`, `windows` or `darwin`.
 CIRRUS_TASK_NAME | Task name
 CIRRUS_TASK_ID | Unique task ID
-CIRRUS_RELEASE | GitHub Release id if current tag was created for a release. Handy for [uploading release assets](/examples.md#release-assets).
+CIRRUS_RELEASE | GitHub Release id if current tag was created for a release. Handy for [uploading release assets](../examples.md#release-assets).
 CIRRUS_REPO_CLONE_TOKEN | Temporary GitHub access token to perform a clone.
 CIRRUS_REPO_NAME | Repository name. For example `my-project`
 CIRRUS_REPO_OWNER | Repository owner (an organization or a user). For example `my-organization`
@@ -421,7 +421,7 @@ myfolder_cache:
 ```
 
 !!! info
-    To see how HTTP Cache can be used with Gradle's Build Cache please check [this example](/examples.md#build-cache).
+    To see how HTTP Cache can be used with Gradle's Build Cache please check [this example](../examples.md#build-cache).
     
 ## Additional Containers
 
@@ -451,15 +451,15 @@ container:
         MYSQL_ROOT_PASSWORD: ""
 ```
 
-Additional container can be very handy in many scenarios. Please check [Cirrus CI catalog of examples](/examples.md) for more details.
+Additional container can be very handy in many scenarios. Please check [Cirrus CI catalog of examples](../examples.md) for more details.
 
 !!! info "Default Resources"
     By default, each additional container will get `0.5` CPU and `512Mi` of memory. These values can be configured as usual
     via `cpu` and `memory` fields.
 
 !!! warning
-    **Note** that `additional_containers` can be used only with [Community Cluster](/guide/supported-computing-services.md#community-cluster) 
-    or [Google's Kubernetes Engine](/guide/supported-computing-services.md#kubernetes-engine).
+    **Note** that `additional_containers` can be used only with [Community Cluster](supported-computing-services.md#community-cluster) 
+    or [Google's Kubernetes Engine](supported-computing-services.md#kubernetes-engine).
 
 ## Embedded Badges
 
