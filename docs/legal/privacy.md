@@ -2,7 +2,7 @@
 
 # Privacy Policy
 
-In addition to these Terms of Service, Cirrus Labs also has a [Terms of Service](terms).
+In addition to these Terms of Service, Cirrus Labs also has a [Terms of Service](terms.md).
 
 ### The Gist
 
