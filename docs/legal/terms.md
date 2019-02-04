@@ -17,7 +17,7 @@ The Terms of Service, the Cirrus CI Service, and our prices can change at any ti
 of any price changes. We'll try to warn you about major changes to the Terms of Service or Cirrus CI, but we make no guarantees.
 
 That's the basic idea, but you must read through the entire Terms of Service below and agree with all the details before 
-you use any of our sites (whether or not you have signed up).
+you use any of our websites or services (whether or not you have signed up).
 
 ### Reuse
 
@@ -80,7 +80,7 @@ and [GitHub Marketplace Developer Agreement](https://help.github.com/articles/gi
 
 ### Cancellation and Termination
 
-* You must cancel Your subscription via GitHub Marketplace with respect to [GitHub Marketplace Terms of Service](https://help.github.com/articles/github-marketplace-terms-of-service/).
+* You must cancel your subscription via GitHub Marketplace with respect to [GitHub Marketplace Terms of Service](https://help.github.com/articles/github-marketplace-terms-of-service/).
 * You agree that Cirrus Labs, in its sole discretion and for any or no reason, may terminate or suspend Your subscription. You agree that any termination of Your access to the Service may be without prior notice, and You agree that Cirrus CI will not be liable to You or any third party for such termination.
 
 ### Customer Source Code
@@ -107,7 +107,7 @@ use the Idea without any additional compensation to You, and/or to disclose the 
 
 ### External Resources
 
-The Service may include hyperlinks to other web sites or content or resources or email content. You acknowledge and 
+The Service may include hyperlinks to other websites or content or resources or email content. You acknowledge and 
 agree that Cirrus Labs is not responsible for the availability of any such external sites or resources, and does not 
 endorse any advertising, products or other materials on or available from such web sites or resources.
 
@@ -262,4 +262,4 @@ flood or other acts of God, labor conditions, power failures, and Internet distu
 We may assign this contract at any time to any parent, subsidiary, or any affiliated company, or as part of the sale to, 
 merger with, or other transfer of our company to another entity.
 
-This page was last updated on 12/06/2017.
+This page was last updated on 02/03/2019.

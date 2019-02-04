@@ -84,7 +84,7 @@ we reserve the right to publish it in order to help us clarify or respond to you
 Cirrus Labs Inc takes all measures reasonably necessary to protect against the unauthorized access, use, alteration or 
 destruction of potentially personally-identifying and personally-identifying information.
 
-### Cookies
+### Browser Cookies
 
 A cookie is a string of information that a website stores on a visitor's computer, and that the visitor's browser provides 
 to the Service each time the visitor returns. Cirrus Labs Inc uses cookies to help Cirrus Labs Inc identify and track visitors, 
@@ -105,4 +105,4 @@ and in Cirrus Labs Inc's sole discretion. Cirrus Labs Inc encourages visitors to
 to its Privacy Policy. Your continued use of this site after any change in this Privacy Policy will constitute your 
 acceptance of such change.
 
-This page was last updated on 12/06/2017.
+This page was last updated on 02/03/2019.
