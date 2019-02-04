@@ -23,5 +23,7 @@ Please refer to the [`osx-images`](https://github.com/cirruslabs/osx-images) rep
 don't hesitate to [create issues](https://github.com/cirruslabs/osx-images/issues) if current images are missing something.
 
 !!! info "Underlying Technology"
-    Under the hood Cirrus CI is using [Anka Cloud hosted on MacStadium](supported-computing-services#anka) for 
-    orchestrating macOS VMs. Please refer to [documentation](supported-computing-services#anka) for more details.
+    Under the hood Cirrus CI is using [Anka Cloud hosted on MacStadium][anka] for 
+    orchestrating macOS VMs. Please refer to [documentation][anka] for more details.
+
+[anka]: supported-computing-services.md#anka
