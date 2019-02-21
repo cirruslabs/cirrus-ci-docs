@@ -479,6 +479,18 @@ If you want a badge for a particular branch, simply use `?branch=<BRANCH NAME>` 
 https://api.cirrus-ci.com/github/<USER OR ORGANIZATION>/<REPOSITORY>.svg?branch=<BRANCH NAME>
 ```
 
+If you want a badge for a particular task within the lastest finished build, simply use `?task=<TASK NAME>` query parameter (at the end of the URL) like this:
+
+```yaml
+https://api.cirrus-ci.com/github/<USER OR ORGANIZATION>/<REPOSITORY>.svg?task=tests
+```
+
+You can even pick a specific script instruction within the task with an additional `script=<SCRIPT NAME>` parameter:
+
+```yaml
+https://api.cirrus-ci.com/github/<USER OR ORGANIZATION>/<REPOSITORY>.svg?task=build&command=lint
+```
+
 ### Badges in Markdown
 
 Here is how Cirrus CI's badge can be embeded in a Markdown file:
