@@ -12,7 +12,7 @@ task:
   script: ...
 ```
 
-Cirrus CI will execute [scripts instructions](writing-tasks.md#script-instruction) like **Batch scripts**.
+Cirrus CI will execute [scripts instructions](writing-tasks.md#script-instruction) like **[Batch](https://en.wikipedia.org/wiki/Batch_file) scripts**.
     
 ## OS Versions
 
@@ -27,7 +27,7 @@ windows_container:
   ...
 ```
 
-# Powershell support
+## PowerShell support
 
 By default Cirrus CI agent executed scripts using `cmd.exe`. It is possible to override default shell executor by providing
 `CIRRUS_SHELL` [environment variable](writing-tasks.md#environment-variables):
@@ -37,7 +37,7 @@ env:
   CIRRUS_SHELL: powershell
 ``` 
 
-It is also possible to use *powershell* scripts inline inside of a script instruction by prefixing it with `ps`:
+It is also possible to use *PowerShell* scripts inline inside of a script instruction by prefixing it with `ps`:
 
 ```yaml
 windows_container:
@@ -45,7 +45,7 @@ windows_container:
     - ps: Get-Location
 ```
 
-`ps: COMMAND` is a simple syntactic sugar which transforms it to 
+`ps: COMMAND` is a simple syntactic sugar which transforms it to:
 
 ```bash
 powershell.exe -EncodedCommand base64(COMMAND)
