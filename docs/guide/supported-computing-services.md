@@ -319,7 +319,6 @@ gke_container:
     `/tmp` path to protect the pod from unnecessary eviction by autoscaler. It is possible to switch emptyDir's medium to 
     use in-memory `tmpfs` storage instead of a default one by setting `use_in_memory_disk` field of `gke_container` to `true`
     or any other expression that uses environment variables.
-    
 
 ## AWS
 
@@ -454,8 +453,7 @@ $: kubectl get nodes
         create-cluster --name cirrus-ci \
         --role-arn ... \
         --resources-vpc-config subnetIds=...,securityGroupIds=...
-    ```
-   
+    ```   
 
 Now tasks can be scheduled on EKS by configuring `eks_container` something like this:
 
