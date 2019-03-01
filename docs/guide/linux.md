@@ -45,11 +45,11 @@ After a successful login, Docker config file located in `~/.docker/config.json` 
 
 ```json
 {
-	"auths": {
-		"container-registry.oracle.com": {
-			"auth": "...."
-		}
-	}
+  "auths": {
+    "container-registry.oracle.com": {
+      "auth": "...."
+    }
+  }
 }
 ``` 
 
