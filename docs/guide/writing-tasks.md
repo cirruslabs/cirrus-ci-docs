@@ -397,7 +397,7 @@ test_nightly_task:
 
 For the most cases regular caching mechanism where Cirrus CI caches a folder is more than enough. But modern build systems
 like [Gradle](https://gradle.org/), [Bazel](https://bazel.build/) and [Pants](https://www.pantsbuild.org/) can take
-advantages of remote caching. Remote caching is when a build system uploads and downloads intermediate results of a build 
+advantage of remote caching. Remote caching is when a build system uploads and downloads intermediate results of a build 
 execution while the build itself is still executing.
 
 Cirrus CI agent starts a local caching server and exposes it via `CIRRUS_HTTP_CACHE_HOST` environments variable. Caching server
