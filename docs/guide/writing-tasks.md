@@ -1,4 +1,4 @@
-Task defines where and how your scripts will be executed. Let's see line-by-line an example of `.cirrus.yml` configuration file first:
+Task defines where and how your scripts will be executed. Let's see a line-by-line example of a `.cirrus.yml` configuration file first:
 
 ```yaml
 test_task:
@@ -9,13 +9,13 @@ test_task:
   test_script: gradle test
 ```
 
-Example above defines a single task that will be scheduled and executed on Community Cluster using `gradle:jdk8` Docker image.
+The example above defines a single task that will be scheduled and executed on Community Cluster using the `gradle:jdk8` Docker image.
 Only one user defined script instruction to run `gradle test` will be executed. Pretty simple, isn't it?
 
 A `task` simply defines a [compute service](supported-computing-services.md) to schedule the task on and 
 a sequence of [`script`](#script-instruction) and [`cache`](#cache-instruction) instructions that will be executed.
 
-Please read topics below if you want better understand what's doing on in a more complex `.cirrus.yml` configuration file like this:
+Please read topics below if you want better understand what's doing on in a more complex `.cirrus.yml` configuration file such as this:
 
 ```yaml
 # global default
@@ -42,14 +42,13 @@ test_task:
     populate_script: yarn install
 
   test_script: yarn run test
-  
 
 publish_task:
   depends_on: 
     - test 
     - lint
   only_if: $BRANCH == "master"
-  
+
   node_modules_cache:
     folder: node_modules
     fingerprint_script: cat yarn.lock
@@ -59,13 +58,13 @@ publish_task:
 ```
 
 !!! tip "Task Naming"
-    To name a task one can simply use `name` field. `foo_task` syntax is simply a syntactic sugar. Following two task definitions
+    To name a task one can simply use the `name` field. `foo_task` syntax is simply a syntactic sugar. The following two task definitions
     are identical:
     
     ```yaml
     foo_task:
       ...
-      
+    
     task:
       name: foo
       ...
@@ -73,26 +72,26 @@ publish_task:
 
 ## Script Instruction
 
-`script` instruction executes commands via `shell` on Unix or `batch` on Windows. `script` instruction can be named by
+A `script` instruction executes commands via `shell` on Unix or `batch` on Windows. A `script` instruction can be named by
 adding a name as a prefix. For example `test_script` or `my_very_specific_build_step_script`. Naming script instructions
 helps gather more granular information about task execution. Cirrus CI will use it in future to auto-detect performance 
 regressions.
 
-Script commands can be specified as a single string value or a list of string values in `.cirrus.yml` configuration file
-like in an example below:
+Script commands can be specified as a single string value or a list of string values in a `.cirrus.yml` configuration file
+like in the example below:
 
 ```yaml
 check_task:
-  compile_script: gradle --parallel classes testClasses 
+  compile_script: gradle --parallel classes testClasses
   check_script:
     - echo "Here comes more then one script!"
     - printenv
     - gradle check
-``` 
+```
 
 ## Background Script Instruction
 
-`background_script` instruction is absolutely the same as `script` instruction but Cirrus CI won't wait for the script to finish 
+A `background_script` instruction is absolutely the same as `script` instruction but Cirrus CI won't wait for the script to finish 
 and will continue execution of following instructions.
 
 Background scripts can be useful when something needs to be executed in the background. For example, a database or
@@ -111,10 +110,10 @@ android_test_task:
 
 ## Cache Instruction
 
-`cache` instruction allows to save some folder in cache based on a fingerprint and reuse it during the next execution 
-of the task with the same fingerprint. `cache` instruction can be named the same way as `script` instruction.
+A `cache` instruction allows to save some folder in cache based on a fingerprint and reuse it during the next execution 
+of the task with the same fingerprint. A `cache` instruction can be named the same way as `script` instruction.
 
-Here is an example: 
+Here is an example:
 
 ```yaml
 test_task:
@@ -125,17 +124,17 @@ test_task:
   test_script: yarn run test
 ```
 
-`fingerprint_script` is an optional field that can specify a script that will be executed and console output of which
+A `fingerprint_script` is an optional field that can specify a script that will be executed and console output of which
 will be used as a fingerprint for the given task. By default task name is used as a fingerprint value.
 
 `populate_script` is an optional field that can specify a script that will be executed to populate the cache. 
-`populate_script` should create `folder`.
+`populate_script` should create `folder` if it doesn't exist before the `cache` instruction.
 
-Which means the only difference between example above and below is that `yarn install` will always be executed in the 
+That means the only difference between example above and below is that `yarn install` will always be executed in the 
 example below where in the example above only when `yarn.lock` has changes.
 
 ```yaml
-test_task:      
+test_task:
   node_modules_cache:
     folder: node_modules
     fingerprint_script: cat yarn.lock
@@ -149,7 +148,7 @@ test_task:
 
 ## Environment Variables
 
-Environment variables can be configured under `env` or `environment` keyword in `.cirrus.yml` file. Here is an example:
+Environment variables can be configured under the `env` or `environment` keywords in `.cirrus.yml` files. Here is an example:
 
 ```yaml
 echo_task:
@@ -198,10 +197,10 @@ Name | Default Value | Description
 CIRRUS_CLONE_DEPTH | `0` which will reflect in a full clone of a single branch | Clone depth.
 CIRRUS_SHELL | `sh` on Linux/macOS and `cmd.exe` on Windows | Shell that Cirrus CI uses to execute scripts. By default `sh` is used.
 CIRRUS_WORKING_DIR | `cirrus-ci-build` folder inside of a system's temporary folder | Working directory where Cirrus CI executes builds. Default to `cirrus-ci-build` folder inside of a system's temporary folder.
-      
+
 ## Encrypted Variables
 
-It is possible to securely add sensitive information to `.cirrus.yml` file. Encrypted variables are only available to
+It is possible to securely add sensitive information to a `.cirrus.yml` file. Encrypted variables are only available to
 builds initialized or approved by users with write permission to a corresponding repository.
 
 In order to encrypt a variable go to repository's settings page via clicking settings icon ![settings icon](https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_settings_black_24px.svg)
@@ -229,9 +228,9 @@ a relation between an encrypted variable and a repository for which the encrypte
 Sometimes it's useful to run the same task against different software versions. Or run different batches of tests based
 on an environment variable. For cases like these `matrix` modification comes very handy. It's possible to use `matrix`
 keyword **only inside of a particular task** to have multiple tasks based on the original one. Each new task will be created
-from the original task by replacing the whole `matrix` YAML node with each `matrix`'s children separately. 
+from the original task by replacing the whole `matrix` YAML node with each `matrix`'s children separately.
 
-Let check an example of `.cirrus.yml`:
+Let check an example of a `.cirrus.yml`:
 
 ```yaml
 test_task:
@@ -249,7 +248,7 @@ test_task:
   container:
     image: node:latest
   test_script: yarn run test
-  
+
 test_task:
   container:
     image: node:8.3.0
@@ -273,7 +272,7 @@ test_task:
       COMMAND: lint
   node_modules_cache:
     folder: node_modules
-    fingerprint_script: 
+    fingerprint_script:
       - node --version
       - cat yarn.lock
     populate_script: yarn install
@@ -291,7 +290,7 @@ lint_task:
 
 test_task:
   script: yarn run test
-  
+
 publish_task:
   depends_on: 
     - test
@@ -316,15 +315,15 @@ publish_task:
     task:
       name: test (linux)
       ...
-      
+    
     task:
       name: test (windows)
       ...
-      
+    
     task:
       name: test (macOS)
       ...
-      
+    
     deploy_task:
       depends_on:
         - test (linux)
@@ -335,8 +334,8 @@ publish_task:
 
 ## Conditional Task Execution
 
-Some tasks are meant to be executed for master or release branches only. In order to specify a condition when a task
-should be executed please use `only_if` keyword:
+Some tasks are meant to be executed only if certain conditions are met. In order to specify a condition when a task
+should be executed, use the `only_if` keyword:
 
 ```yaml
 publish_task:
@@ -352,9 +351,9 @@ Currently only basic operators like `==`, `!=`, `=~`, `!=~`, `&&`, `||` and unar
     
     ```yaml
     check_aggreement_task:
-      only_if: $CIRRUS_BRANCH =~ 'pull/.*'      
+      only_if: $CIRRUS_BRANCH =~ 'pull/.*'
     ```
-    
+
 !!! tip "Skip CI Completely"
     Simply include `[skip ci]` or `[ci skip]` in your commit message in order to skip CI execution for a commit completely.
     
@@ -377,7 +376,7 @@ task:
 
 Sometimes tasks can play a role of sanity checks. For example, a task can check that your library is working with the latest nightly 
 version of some dependency package. It will be great to be notified about such failures but it's not necessary to fail the
-whole build when a failure occurs. Cirrus CI has `allow_failures` keyword which will make a task to not affect the overall status of a build.
+whole build when a failure occurs. Cirrus CI has the `allow_failures` keyword which will make a task to not affect the overall status of a build.
 
 ```yaml
 test_nightly_task:
@@ -412,7 +411,7 @@ For example running the following command:
 curl -s -X POST --data-binary=@myfolder.tar.gz http://$CIRRUS_HTTP_CACHE_HOST/mykey
 ```
 
-Has the same effect as a [caching instruction](#cache-instruction) of `myfolder` folder where `sha1sum` of all the 
+... has the same effect as a [caching instruction](#cache-instruction) of `myfolder` folder where `sha1sum` of all the 
 `myfolder` contents is equal to `mykey`:
 
 ```yaml
@@ -425,7 +424,7 @@ myfolder_cache:
     
 ## Additional Containers
 
-Sometimes one container is not enough to run a CI build. For example, your application might use a MySQL database 
+Sometimes one container is not enough to run a CI build. For example, your application might use a MySQL database
 as a storage. In this case you most likely want a MySQL instance running for your tests.
 
 One option here is to pre-install MySQL and use a [`background_script`](#background-script-instruction) to start it. This
@@ -435,7 +434,7 @@ For such use cases Cirrus CI allows to run additional containers in parallel wit
 Each additional container is defined under `additional_containers` keyword in `.cirrus.yml`. Each additional container 
 should have a unique `name` and specify at least Docker `image` and `port` that this container exposes.
 
-In the example below we are going to use an [official MySQL Docker image](https://hub.docker.com/_/mysql/) that exposes 
+In the example below we use an [official MySQL Docker image](https://hub.docker.com/_/mysql/) that exposes 
 the standard MySQL port (3306). Tests will be able to access MySQL instance via `localhost:3306`.
 
 ```yaml
@@ -488,7 +487,7 @@ https://api.cirrus-ci.com/github/<USER OR ORGANIZATION>/<REPOSITORY>.svg?task=te
 You can even pick a specific script instruction within the task with an additional `script=<SCRIPT NAME>` parameter:
 
 ```yaml
-https://api.cirrus-ci.com/github/<USER OR ORGANIZATION>/<REPOSITORY>.svg?task=build&command=lint
+https://api.cirrus-ci.com/github/<USER OR ORGANIZATION>/<REPOSITORY>.svg?task=build&script=lint
 ```
 
 ### Badges in Markdown
