@@ -557,7 +557,7 @@ for a modern Continuous Integration system.
 
 <p align="center">
   <a href="https://www.macstadium.com/">
-    <img style="height:128px;" src="/assets/images/mac-stadium/invertase-maclogo.png"/>
+    <img style="height:128px;" src="/assets/images/mac-stadium/MacStadium_Logo.png"/>
   </a>
 </p>
 
