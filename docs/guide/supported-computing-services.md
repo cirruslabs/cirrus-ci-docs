@@ -16,6 +16,18 @@
 </p>
 
 <p align="center">
+  <a href="#aws">
+    <img style="width:128px;height:128px;" src="/assets/images/aws/AWS.svg"/>
+  </a>
+  <a href="#ec2">
+    <img style="width:128px;height:128px;" src="/assets/images/aws/EC2.svg"/>
+  </a>
+  <a href="#eks">
+    <img style="width:128px;height:128px;" src="/assets/images/aws/EKS.svg"/>
+  </a>
+</p>
+
+<p align="center">
   <a href="#azure">
     <img style="width:128px;height:128px;" src="/assets/images/azure/Microsoft Azure.svg"/>
   </a>
@@ -306,7 +318,157 @@ gke_container:
     By default Cirrus CI mounts a simple [emptyDir](https://kubernetes.io/docs/concepts/storage/volumes/#emptydir) into 
     `/tmp` path to protect the pod from unnecessary eviction by autoscaler. It is possible to switch emptyDir's medium to 
     use in-memory `tmpfs` storage instead of a default one by setting `use_in_memory_disk` field of `gke_container` to `true`
-    or any other expression that uses environment variables.  
+    or any other expression that uses environment variables.
+
+## AWS
+
+<p align="center">
+  <a href="#aws">
+    <img style="width:128px;height:128px;" src="/assets/images/aws/AWS.svg"/>
+  </a>
+  </a>
+</p>
+
+Cirrus CI can schedule tasks on several AWS services. In order to interact with AWS APIs Cirrus CI needs permissions. 
+Creating an [IMA user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html) for programmatic access 
+is a common way to safely give granular access to parts of your AWS.
+
+Once you created a user for Cirrus CI you'll need to provide *key id* and *access key* itself. In order to do so
+please create an [encrypted variable](writing-tasks.md#encrypted-variables) with the following content:
+
+```properties
+[default]
+aws_access_key_id=...
+aws_secret_access_key=...
+```
+
+Then you'll be able to use the encrypted variable in your `.cirrus.yml` file like this:
+
+```yaml
+aws_credentials: ENCRYPTED[...]
+
+task:  
+  ec2_instance:
+    ...
+    
+task:  
+  eks_instance:
+    ...
+```
+
+!!! info "Permissions"
+    A user that Cirrus CI will be using for orchestrating tasks on AWS should at least have access to S3 in order to store
+    logs and cache artifacts. Here is a list of actions that Cirrus CI requires to store logs and artifacts:
+    
+    ```json
+    "Action": [
+      "s3:CreateBucket",
+      "s3:GetObject",
+      "s3:PutObject",
+      "s3:DeleteObject",
+      "s3:PutLifecycleConfiguration"
+    ]
+    ```
+
+### EC2
+
+<p align="center">
+  <a href="#ec2">
+    <img style="width:128px;height:128px;" src="/assets/images/aws/EC2.svg"/>
+  </a>
+  </a>
+</p>
+
+In order to schedule tasks on EC2 please make sure that IAM user that Cirrus CI is using has following permissions:
+
+```json
+"Action": [
+  "ec2:DescribeInstances",
+  "ec2:RunInstances",
+  "ec2:TerminateInstances"
+]
+```
+
+Now tasks can be scheduled on EC2 by configuring `ec2_instance` something like this:
+
+```yaml  
+task:
+  ec2_instance:
+    image: ami-03790f6959fc34ef3
+    type: t2.micro
+    region: us-east-1
+  script: ./run-ci.sh
+```
+
+### EKS
+
+<p align="center">
+  <a href="#eks">
+    <img style="width:128px;height:128px;" src="/assets/images/aws/EKS.svg"/>
+  </a>
+  </a>
+</p>
+
+Please follow instructions on how to [create a EKS cluster](https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html)
+and [add workers nodes](https://docs.aws.amazon.com/eks/latest/userguide/launch-workers.html) to it. And don't forget to
+add necessary permissions for the IAM user that Cirrus CI is using:
+
+```json
+"Action": [
+  "iam:PassRole",
+  "eks:DescribeCluster",
+  "eks:CreateCluster",
+  "eks:DeleteCluster",
+  "eks:UpdateClusterVersion"
+]
+```
+
+To verify that Cirrus CI will be able to communicate with your cluster please make sure that if you are locally logged in
+as the user that Cirrus CI acts as you can successfully run the following commands and see your worker nodes up and running:
+
+```bash
+$: aws sts get-caller-identity
+{
+    "UserId": "...",
+    "Account": "...",
+    "Arn": "USER_USED_BY_CIRRUS_CI"
+}
+$: aws eks --region $REGION update-kubeconfig --name $CLUSTER_NAME
+$: kubectl get nodes
+```
+
+!!! tip "EKS Access Denied"
+    If you have an issue with accessing your EKS cluster via `kubectl`, most likely you did **not** create the cluster
+    with the user that Cirrus CI is using. The easiest way to do so is to create the cluster through AWS CLI with the
+    following command:
+    
+    ```bash
+    $: aws sts get-caller-identity
+    {
+        "UserId": "...",
+        "Account": "...",
+        "Arn": "USER_USED_BY_CIRRUS_CI"
+    }
+    $: aws eks --region $REGION \
+        create-cluster --name cirrus-ci \
+        --role-arn ... \
+        --resources-vpc-config subnetIds=...,securityGroupIds=...
+    ```   
+
+Now tasks can be scheduled on EKS by configuring `eks_container` something like this:
+
+```yaml  
+task:
+  eks_container:
+    image: node:latest
+    region: us-east-1
+    cluster_name: cirrus-ci
+  script: ./run-ci.sh
+```
+
+!!! info "S3 Access for Caching"
+    Please add `AmazonS3FullAccess` policy to the role used for creation of EKS workers (same role you put in `aws-auth-cm.yaml`
+    when [enabled worker nodes to join the cluster](https://docs.aws.amazon.com/eks/latest/userguide/launch-workers.html)).
 
 ## Azure
 
@@ -426,7 +588,3 @@ anka_instance:
 !!! info "Hosted Anka Cloud on MacStadium"
     If you choose to use [hosted Anka Cloud solution from MacStadium](https://www.macstadium.com/anka/) please mention
     Cirrus CI upon the registration for a quicker installation process. 
-
-## Coming Soon
-
-We are actively working on supporting AWS.
