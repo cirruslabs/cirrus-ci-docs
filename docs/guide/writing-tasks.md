@@ -126,16 +126,19 @@ test_task:
 ```
 
 A `fingerprint_script` is an optional field that can specify a script that will be executed and console output of which
-will be used as a fingerprint for the given task. By default task name is used as a fingerprint value.
+will be used as a fingerprint for the given task. By default the task name is used as a fingerprint value.
 
-`populate_script` is an optional field that can specify a script that will be executed to populate the cache. 
+`populate_script` is an optional field that can specify a script that will be executed to populate the cache.
 `populate_script` should create the `folder` if it doesn't exist before the `cache` instruction.
+If your dependencies are updated often, we suggest putting the populate script after the cache block so new versions of dependencies are used.
 
-That means the only difference between example above and below is that `yarn install` will always be executed in the 
+That means the only difference between the example above and below is that `yarn install` will always be executed in the 
 example below where in the example above only when `yarn.lock` has changes.
 
 ```yaml
 test_task:
+  container:
+    image: node:latest
   node_modules_cache:
     folder: node_modules
     fingerprint_script: cat yarn.lock
