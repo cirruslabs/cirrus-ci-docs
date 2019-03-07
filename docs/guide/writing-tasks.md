@@ -110,13 +110,14 @@ android_test_task:
 
 ## Cache Instruction
 
-A `cache` instruction allows to save some folder in cache based on a fingerprint and reuse it during the next execution 
-of the task with the same fingerprint. A `cache` instruction can be named the same way as `script` instruction.
+A `cache` instruction allows you to save a directory in the cloud. It will be downloaded onto the machine given to your task when new builds are triggered. This can help save time for installing dependencies, or just storing a large folder. A `cache` instruction can be named the same way as `script` instruction.
 
 Here is an example:
 
 ```yaml
 test_task:
+  container:
+    image: node:latest
   node_modules_cache:
     folder: node_modules
     fingerprint_script: cat yarn.lock
@@ -128,7 +129,7 @@ A `fingerprint_script` is an optional field that can specify a script that will 
 will be used as a fingerprint for the given task. By default task name is used as a fingerprint value.
 
 `populate_script` is an optional field that can specify a script that will be executed to populate the cache. 
-`populate_script` should create `folder` if it doesn't exist before the `cache` instruction.
+`populate_script` should create the `folder` if it doesn't exist before the `cache` instruction.
 
 That means the only difference between example above and below is that `yarn install` will always be executed in the 
 example below where in the example above only when `yarn.lock` has changes.
