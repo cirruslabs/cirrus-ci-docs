@@ -110,7 +110,7 @@ android_test_task:
 
 ## Cache Instruction
 
-A `cache` instruction allows you to save a directory in the cloud. It will be downloaded onto the machine given to your task when new builds are triggered. This can help save time for installing dependencies, or just storing a large folder. A `cache` instruction can be named the same way as `script` instruction.
+A `cache` instruction allows to persist a folder and reuse it during the next execution of the task. A `cache` instruction can be named the same way as `script` instruction.
 
 Here is an example:
 
