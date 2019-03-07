@@ -125,10 +125,12 @@ test_task:
   test_script: yarn run test
 ```
 
-A `fingerprint_script` is an optional field that can specify a script that will be executed and console output of which
-will be used as a fingerprint for the given task. By default the task name is used as a fingerprint value.
+The `folder` is a *required* field that tells the agent which folder to cache. It should be relative to the working directory, or the root directory of the machine (ex. `node_modules` or `/usr/bin/bundler`).
 
-`populate_script` is an optional field that can specify a script that will be executed to populate the cache.
+A `fingerprint_script` is an *optional* field that can specify a script that will be executed and console output of which
+will be used as a be used as a key for the given cache. By default the task name is used as a fingerprint value.
+
+`populate_script` is an *optional* field that can specify a script that will be executed to populate the cache.
 `populate_script` should create the `folder` if it doesn't exist before the `cache` instruction.
 If your dependencies are updated often, we suggest putting the populate script after the cache block so new versions of dependencies are used.
 
