@@ -132,7 +132,7 @@ will be used as a key for the given cache. By default the task name is used as a
 
 `populate_script` is an *optional* field that can specify a script that will be executed to populate the cache.
 `populate_script` should create the `folder` if it doesn't exist before the `cache` instruction.
-If your dependencies are updated often, we suggest making the `fingerprint` script log something different so new versions of dependencies are used.
+If your dependencies are updated often, please pay attention to `fingerprint_script` and make sure it will produce different outputs for different versions of your dependency (ideally just print locked versions of dependencies).
 
 That means the only difference between the example above and below is that `yarn install` will always be executed in the 
 example below where in the example above only when `yarn.lock` has changes.
