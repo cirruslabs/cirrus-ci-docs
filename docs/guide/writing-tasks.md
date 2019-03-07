@@ -9,7 +9,7 @@ test_task:
   test_script: gradle test
 ```
 
-The example above defines a single task that will be scheduled and executed on Community Cluster using the `gradle:jdk8` Docker image.
+The example above defines a single task that will be scheduled and executed on the Community Cluster using the `gradle:jdk8` Docker image.
 Only one user defined script instruction to run `gradle test` will be executed. Pretty simple, isn't it?
 
 A `task` simply defines a [compute service](supported-computing-services.md) to schedule the task on and 
@@ -110,13 +110,14 @@ android_test_task:
 
 ## Cache Instruction
 
-A `cache` instruction allows to save some folder in cache based on a fingerprint and reuse it during the next execution 
-of the task with the same fingerprint. A `cache` instruction can be named the same way as `script` instruction.
+A `cache` instruction allows to persist a folder and reuse it during the next execution of the task. A `cache` instruction can be named the same way as `script` instruction.
 
 Here is an example:
 
 ```yaml
 test_task:
+  container:
+    image: node:latest
   node_modules_cache:
     folder: node_modules
     fingerprint_script: cat yarn.lock
@@ -124,17 +125,22 @@ test_task:
   test_script: yarn run test
 ```
 
-A `fingerprint_script` is an optional field that can specify a script that will be executed and console output of which
-will be used as a fingerprint for the given task. By default task name is used as a fingerprint value.
+The `folder` is a *required* field that tells the agent which folder to cache. It should be relative to the working directory, or the root directory of the machine (ex. `node_modules` or `/usr/bin/bundler`).
 
-`populate_script` is an optional field that can specify a script that will be executed to populate the cache. 
-`populate_script` should create `folder` if it doesn't exist before the `cache` instruction.
+A `fingerprint_script` is an *optional* field that can specify a script that will be executed and console output of which
+will be used as a key for the given cache. By default the task name is used as a fingerprint value.
 
-That means the only difference between example above and below is that `yarn install` will always be executed in the 
+`populate_script` is an *optional* field that can specify a script that will be executed to populate the cache.
+`populate_script` should create the `folder` if it doesn't exist before the `cache` instruction.
+If your dependencies are updated often, please pay attention to `fingerprint_script` and make sure it will produce different outputs for different versions of your dependency (ideally just print locked versions of dependencies).
+
+That means the only difference between the example above and below is that `yarn install` will always be executed in the 
 example below where in the example above only when `yarn.lock` has changes.
 
 ```yaml
 test_task:
+  container:
+    image: node:latest
   node_modules_cache:
     folder: node_modules
     fingerprint_script: cat yarn.lock
