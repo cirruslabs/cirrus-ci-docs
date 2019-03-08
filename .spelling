@@ -44,3 +44,5 @@ emptyDir
 preemptiable
 vCPUs
 compute
+caching
+256-bit
