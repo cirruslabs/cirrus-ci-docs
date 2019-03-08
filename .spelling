@@ -42,3 +42,5 @@ docker
 Docker
 emptyDir
 preemptiable
+vCPUs
+compute
