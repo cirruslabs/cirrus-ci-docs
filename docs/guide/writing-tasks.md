@@ -484,7 +484,7 @@ If you want a badge for a particular branch, simply use `?branch=<BRANCH NAME>` 
 https://api.cirrus-ci.com/github/<USER OR ORGANIZATION>/<REPOSITORY>.svg?branch=<BRANCH NAME>
 ```
 
-If you want a badge for a particular task within the lastest finished build, simply use `?task=<TASK NAME>` query parameter (at the end of the URL) like this:
+If you want a badge for a particular task within the last finished build, simply use `?task=<TASK NAME>` query parameter (at the end of the URL) like this:
 
 ```yaml
 https://api.cirrus-ci.com/github/<USER OR ORGANIZATION>/<REPOSITORY>.svg?task=tests
