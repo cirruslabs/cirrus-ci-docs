@@ -4,6 +4,7 @@ cirruslabs
 kubernetes
 google
 :white_check_mark:
+sweat_smile
 macOS
 FreeBSD
 Windows
@@ -115,3 +116,7 @@ Customizable
 nonintuitive
 GitHub
 BitBucket
+nondeterministic
+GraphQL
+Node.js
+Node.JS
