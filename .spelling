@@ -54,3 +54,12 @@ exotic
 cirrus-ci-build
 GPU
 GPUs
+white_check_mark
+pre-installed
+cirruslabs.org
+unary
+CIRRUS_CI
+CIRRUS_NODE_INDEX
+CIRRUS_NODE_TOTAL
+CIRRUS_PR
+CIRRUS_TAG
