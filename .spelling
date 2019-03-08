@@ -1,5 +1,5 @@
 cirrus
-ci
+CI
 cirruslabs
 kubernetes
 google
@@ -7,14 +7,14 @@ google
 macOS
 FreeBSD
 Windows
-ciaas
+CIaaS
 support@cirruslabs.org
-anka
-macstadium
+Anka
+MacStadium
 cluster
 cpu
 vcpu
-mysql
+MySQL
 git
 ssds
 ReadMe
@@ -22,6 +22,8 @@ bazel
 go-git
 distroless
 circleci
-appveyor
-powershell
+AppVeyor
+PowerShell
 gradle
+Veertu
+VMs
