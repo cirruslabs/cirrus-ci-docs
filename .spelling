@@ -18,3 +18,8 @@ mysql
 git
 ssds
 ReadMe
+bazel
+go-git
+distroless
+circleci
+appveyor
