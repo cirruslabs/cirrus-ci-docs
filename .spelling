@@ -78,6 +78,10 @@ CIRRUS_TASK_NAME
 CIRRUS_BASE_BRANCH
 CIRRUS_BUILD_ID
 CIRRUS_HTTP_CACHE_HOST
+CIRRUS_BASE_SHA
+CIRRUS_TASK_ID
+CIRRUS_REPO_FULL_NAME
+CIRRUS_REPO_CLONE_TOKEN
 Xcode
 Homebrew
 Brew
@@ -87,6 +91,7 @@ webhook
 OAuth
 CPUs
 cirrus-ci
+autoscaler
 Preemptible
 lifecycle
 Lifecycle
