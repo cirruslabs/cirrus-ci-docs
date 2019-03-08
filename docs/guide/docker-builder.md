@@ -58,6 +58,8 @@ declaration in `.cirrus.yml` like this:
 efficient_task:
   container:
     dockerfile: ci/Dockerfile
+    docker_arguments:
+      foo: bar
   test_script: ...
 inefficient_task:
   container:
