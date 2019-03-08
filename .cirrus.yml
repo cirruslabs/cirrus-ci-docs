@@ -13,6 +13,16 @@ task:
       install_script: npm install -g markdownlint-cli
       lint_script: markdownlint --config=.markdownlint.yml docs/
 
+spell-check_task:
+  only_if: true
+  use_compute_credits: false
+  container:
+    image: node:latest
+  install_tool_script:
+    # WARNING: DO NOT try to cache this, symlinks will not be created and task will fail
+    - sudo npm install -g markdown-spellcheck@0.11.0
+  script: mdspell '**/*.md' '!**/legal/*.md' --ignore-numbers --ignore-acronyms --report --en-us;
+
 deploy_task:
   only_if: $CIRRUS_BRANCH == 'master'
   depends_on:
