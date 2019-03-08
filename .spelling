@@ -63,3 +63,10 @@ CIRRUS_NODE_INDEX
 CIRRUS_NODE_TOTAL
 CIRRUS_PR
 CIRRUS_TAG
+CPUs
+cirrus-ci
+Preemptible
+lifecycle
+Lifecycle
+iOS
+namespace
