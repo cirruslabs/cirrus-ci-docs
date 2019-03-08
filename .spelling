@@ -107,6 +107,7 @@ Dockerfile
 Dockerfiles
 pre-install
 Hypervisor
+preemptible
 Customizable
 nonintuitive
 GitHub
