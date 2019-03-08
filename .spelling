@@ -23,3 +23,5 @@ go-git
 distroless
 circleci
 appveyor
+powershell
+gradle
