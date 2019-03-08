@@ -1,4 +1,4 @@
-cirrus
+Cirrus
 CI
 cirruslabs
 kubernetes
@@ -12,11 +12,11 @@ support@cirruslabs.org
 Anka
 MacStadium
 cluster
-cpu
-vcpu
+CPU
+vCPU
 MySQL
 git
-ssds
+SSDs
 ReadMe
 bazel
 go-git
@@ -27,3 +27,8 @@ PowerShell
 gradle
 Veertu
 VMs
+node
+NodeJS
+npm
+yarn
+ruby
