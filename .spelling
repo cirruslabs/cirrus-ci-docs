@@ -40,3 +40,5 @@ gcloud
 pre-configured
 docker
 Docker
+emptyDir
+preemptiable
