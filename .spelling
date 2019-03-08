@@ -70,6 +70,9 @@ CIRRUS_REPO_OWNER
 CIRRUS_REPO_CLONE_URL
 CIRRUS_USER_COLLABORATOR
 CIRRUS_USER_PERMISSION
+CIRRUS_BRANCH
+CIRRUS_OS
+CIRRUS_CLONE_DEPTH
 Xcode
 Homebrew
 Brew
@@ -91,3 +94,5 @@ GB
 Dockerfile
 Dockerfiles
 pre-install
+Customizable
+nonintuitive
