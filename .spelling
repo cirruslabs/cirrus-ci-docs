@@ -90,6 +90,7 @@ CONTINUOUS_INTEGRATION
 webhook
 OAuth
 CPUs
+PyPI
 cirrus-ci
 autoscaler
 Preemptible
@@ -105,5 +106,8 @@ GB
 Dockerfile
 Dockerfiles
 pre-install
+Hypervisor
 Customizable
 nonintuitive
+GitHub
+BitBucket
