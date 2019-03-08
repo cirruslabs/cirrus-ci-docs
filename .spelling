@@ -63,6 +63,12 @@ CIRRUS_NODE_INDEX
 CIRRUS_NODE_TOTAL
 CIRRUS_PR
 CIRRUS_TAG
+Xcode
+Homebrew
+Brew
+sh
+webhook
+OAuth
 CPUs
 cirrus-ci
 Preemptible
@@ -70,3 +76,10 @@ lifecycle
 Lifecycle
 iOS
 namespace
+Zero-config
+config
+Gb
+gb
+GB
+Dockerfile
+Dockerfiles
