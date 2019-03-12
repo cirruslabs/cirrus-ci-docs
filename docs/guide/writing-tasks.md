@@ -194,9 +194,9 @@ CIRRUS_USER_COLLABORATOR | `true` if a user initialized a build is already a con
 CIRRUS_USER_PERMISSION | `admin`, `write`, `read` or `none`.
 CIRRUS_HTTP_CACHE_HOST | Host and port number on which [local HTTP cache](#http-cache) can be accessed on.
 
-### Behavioural Environment Variables
+### Behavioral Environment Variables
 
-And some environment variables can be set to control behaviour of the Cirrus CI Agent:
+And some environment variables can be set to control behavior of the Cirrus CI Agent:
 
 Name | Default Value | Description
 ---  | --- | ---
@@ -484,7 +484,7 @@ If you want a badge for a particular branch, simply use `?branch=<BRANCH NAME>` 
 https://api.cirrus-ci.com/github/<USER OR ORGANIZATION>/<REPOSITORY>.svg?branch=<BRANCH NAME>
 ```
 
-If you want a badge for a particular task within the lastest finished build, simply use `?task=<TASK NAME>` query parameter (at the end of the URL) like this:
+If you want a badge for a particular task within the latest finished build, simply use `?task=<TASK NAME>` query parameter (at the end of the URL) like this:
 
 ```yaml
 https://api.cirrus-ci.com/github/<USER OR ORGANIZATION>/<REPOSITORY>.svg?task=tests
@@ -507,9 +507,9 @@ Here is how Cirrus CI's badge can be embeded in a Markdown file:
 ## Custom Clone Command
 
 By default Cirrus CI uses a [Git client implemented purely in Go](https://github.com/src-d/go-git) to perform a clone of
-a single branch with full Git history. It is possible to control clone depth via `CIRRUS_CLONE_DEPTH` [environment variable](#behavioural-environment-variables).
+a single branch with full Git history. It is possible to control clone depth via `CIRRUS_CLONE_DEPTH` [environment variable](#behavioral-environment-variables).
 
-Customizing clone behaviour is a simple as overriding `clone_script`. For example, here an override to use a pre-installed
+Customizing clone behavior is a simple as overriding `clone_script`. For example, here an override to use a pre-installed
 Git client (if your build environment has it) to do a shallow clone of a single branch:
 
 ```yaml

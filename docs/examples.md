@@ -267,9 +267,9 @@ build_package_test_task:
 
 Cirrus CI doesn't provide a built-in functionality to upload artifacts on a GitHub release but this functionality can be
 added via a simple script. For a release Cirrus CI will provide `CIRRUS_RELEASE` environment variable along with `CIRRUS_TAG` 
-environment variable. `CIRRUS_RELEASE` indicates release id which can be used to upload assests.
+environment variable. `CIRRUS_RELEASE` indicates release id which can be used to upload assets.
 
-Cirrus CI only requires write access to Check API and doesn't require write access to repository contents becuase of security 
+Cirrus CI only requires write access to Check API and doesn't require write access to repository contents because of security 
 reasons. That's why you need to [create a personal access token](https://github.com/settings/tokens/new) with full access
 to `repo` scope. Once an access token is created, please [create an encrypted variable](guide/writing-tasks.md#encrypted-variables) 
 from it and save it to `.cirrus.yml`:
