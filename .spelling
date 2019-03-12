@@ -1,9 +1,8 @@
 Cirrus
 CI
 cirruslabs
-kubernetes
-google
-:white_check_mark:
+Kubernetes
+Google
 sweat_smile
 macOS
 FreeBSD
@@ -39,7 +38,6 @@ APIs
 AWS
 gcloud
 pre-configured
-docker
 Docker
 emptyDir
 preemptiable
@@ -51,7 +49,7 @@ commit
 commiting
 fkorotkov
 exotic
-:x:
+x
 cirrus-ci-build
 GPU
 GPUs
@@ -86,11 +84,11 @@ CIRRUS_REPO_CLONE_TOKEN
 CIRRUS_CHANGE_IN_REPO
 CIRRUS_CHANGE_MESSAGE
 CIRRUS_DEFAULT_BRANCH
+CONTINUOUS_INTEGRATION
 Xcode
 Homebrew
 Brew
 sh
-CONTINUOUS_INTEGRATION
 webhook
 OAuth
 CPUs
