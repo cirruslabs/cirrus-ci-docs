@@ -167,7 +167,7 @@ task:
     test_reports_script: ./print_test_reposrts.sh
 ```
 
-In the example above `print_additional_debug_info.sh` script will be executed only on failures to output some additional
+In the example above, `print_additional_debug_info.sh` script will be executed only on failures to output some additional
 debug information. `print_test_reposrts.sh` on the other hand will be executed both on successful and and failed runs to
 print test reports (test reports are always useful! :smile:).
 
