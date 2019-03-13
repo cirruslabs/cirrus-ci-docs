@@ -152,6 +152,25 @@ test_task:
     Tasks for PRs upload caches to a separate caching namespace to not interfere with caches used by other tasks.
     But such PR tasks **can read** all caches even from the main caching namespace for a repository.
 
+## Execution Behavior of Instructions
+
+By default Cirrus CI executes instructions one after another and stops the overall task execution on the first failure.
+Sometimes there might be situations when some scripts should always be executed or some debug information needs to be saved 
+on a failure. For such situations the `always` and `on_failure` keywords can be used to group instructions.
+
+```yaml
+task:
+  test_script: ./run_tests.sh
+  on_failure:
+    debug_script: ./print_additional_debug_info.sh
+  always:
+    test_reports_script: ./print_test_reports.sh
+```
+
+In the example above, `print_additional_debug_info.sh` script will be executed only on failures to output some additional
+debug information. `print_test_reports.sh` on the other hand will be executed both on successful and and failed runs to
+print test reports (test reports are always useful! :smile:).
+
 ## Environment Variables
 
 Environment variables can be configured under the `env` or `environment` keywords in `.cirrus.yml` files. Here is an example:
