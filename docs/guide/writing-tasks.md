@@ -156,7 +156,7 @@ test_task:
 
 By default Cirrus CI executes instructions one after another and stops the overall task execution on the first failure.
 Sometimes there might be situations when some scripts should always be executed or some debug information needs to be saved 
-on a failure. For such exceptional situations `always` and `on_failure` keywords can be used to group instructions.
+on a failure. For such situations the `always` and `on_failure` keywords can be used to group instructions.
 
 ```yaml
 task:
