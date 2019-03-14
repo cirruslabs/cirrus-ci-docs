@@ -364,23 +364,21 @@ publish_task:
 Some tasks are meant to be created only if a certain condition is met. And some tasks can be skipped in some cases. 
 Cirrus CI supports `only_if` and `skip` keywords in order to provide such flexibility:
 
-  * `only_if` keyword controls whether or not a task will be created. For example, you may want to publish only changes
-    committed to `master` branch.
-  
-    ```yaml
-    publish_task:
-      only_if: $CIRRUS_BRANCH == 'master'
-      script: yarn run publish
-    ```
+* `only_if` keyword controls whether or not a task will be created. For example, you may want to publish only changes
+  committed to `master` branch.
+  ```yaml
+  publish_task:
+    only_if: $CIRRUS_BRANCH == 'master'
+    script: yarn run publish
+  ```
 
-  * `skip` keyword allows to skip execution of a task and mark it as successful. For example, you may want to skip linting
-    if no source files have changed since the last successful run.
-  
-    ```yaml
-    lint_task:
-      skip: !changesInclude(".cirrus.yml", "*.js", "**/*.js")
-      script: yarn run lint
-    ```
+* `skip` keyword allows to skip execution of a task and mark it as successful. For example, you may want to skip linting
+  if no source files have changed since the last successful run.
+  ```yaml
+  lint_task:
+    skip: !changesInclude(".cirrus.yml", "*.js", "**/*.js")
+    script: yarn run lint
+  ```
 
 !!! tip "Skip CI Completely"
     Simply include `[skip ci]` or `[ci skip]` in your commit message in order to skip CI execution for a commit completely.
@@ -406,9 +404,9 @@ Currently only basic operators like `==`, `!=`, `=~`, `!=~`, `&&`, `||` and unar
 Currently only one function is supported in `only_if` and `skip` expressions. `changesInclude` function allows to check
 which files were changed. `changesInclude` behaves differently for PR builds and regular builds:
 
-  * For PR builds, `changesInclude` will check the list of files affected by the PR.
-  * For regular build, `changesInclude` will use `CIRRUS_LAST_GREEN_CHANGE` [environment variable](#environment-variables)
-    to determine list of affected files between `CIRRUS_LAST_GREEN_CHANGE` and `CIRRUS_CHANGE_IN_REPO`.
+* For PR builds, `changesInclude` will check the list of files affected by the PR.
+* For regular build, `changesInclude` will use `CIRRUS_LAST_GREEN_CHANGE` [environment variable](#environment-variables)
+  to determine list of affected files between `CIRRUS_LAST_GREEN_CHANGE` and `CIRRUS_CHANGE_IN_REPO`.
 
 `changesInclude` function can be very useful for skipping some tasks when no changes to sources have been made since the
 last successful Cirrus CI build.
