@@ -366,19 +366,23 @@ Cirrus CI supports `only_if` and `skip` keywords in order to provide such flexib
 
 * `only_if` keyword controls whether or not a task will be created. For example, you may want to publish only changes
   committed to `master` branch.
+<!-- markdownlint-disable MD031 -->
   ```yaml
   publish_task:
     only_if: $CIRRUS_BRANCH == 'master'
     script: yarn run publish
   ```
+<!-- markdownlint-enable MD031 -->
 
 * `skip` keyword allows to skip execution of a task and mark it as successful. For example, you may want to skip linting
   if no source files have changed since the last successful run.
+<!-- markdownlint-disable MD031 -->
   ```yaml
   lint_task:
     skip: !changesInclude(".cirrus.yml", "*.js", "**/*.js")
     script: yarn run lint
   ```
+<!-- markdownlint-enable MD031 -->
 
 !!! tip "Skip CI Completely"
     Simply include `[skip ci]` or `[ci skip]` in your commit message in order to skip CI execution for a commit completely.
