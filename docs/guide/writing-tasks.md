@@ -374,7 +374,7 @@ Cirrus CI supports `only_if` and `skip` keywords in order to provide such flexib
   ```
 <!-- markdownlint-enable MD031 -->
 
-* `skip` keyword allows to skip execution of a task and mark it as successful. For example, you may want to skip linting
+* The `skip` keyword allows skipping execution of a task and mark it as successful. For example, you may want to skip linting
   if no source files have changed since the last successful run.
 <!-- markdownlint-disable MD031 -->
   ```yaml
