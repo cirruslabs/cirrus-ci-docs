@@ -364,7 +364,7 @@ publish_task:
 Some tasks are meant to be created only if a certain condition is met. And some tasks can be skipped in some cases. 
 Cirrus CI supports `only_if` and `skip` keywords in order to provide such flexibility:
 
-* `only_if` keyword controls whether or not a task will be created. For example, you may want to publish only changes
+* The `only_if` keyword controls whether or not a task will be created. For example, you may want to publish only changes
   committed to `master` branch.
 <!-- markdownlint-disable MD031 -->
   ```yaml
