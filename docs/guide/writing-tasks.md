@@ -409,7 +409,7 @@ Currently only one function is supported in `only_if` and `skip` expressions. `c
 which files were changed. `changesInclude` behaves differently for PR builds and regular builds:
 
 * For PR builds, `changesInclude` will check the list of files affected by the PR.
-* For regular build, `changesInclude` will use `CIRRUS_LAST_GREEN_CHANGE` [environment variable](#environment-variables)
+* For regular builds, `changesInclude` will use `CIRRUS_LAST_GREEN_CHANGE` [environment variable](#environment-variables)
   to determine list of affected files between `CIRRUS_LAST_GREEN_CHANGE` and `CIRRUS_CHANGE_IN_REPO`.
 
 `changesInclude` function can be very useful for skipping some tasks when no changes to sources have been made since the
