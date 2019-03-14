@@ -364,24 +364,24 @@ publish_task:
 Some tasks are meant to be created only if a certain condition is met. And some tasks can be skipped in some cases. 
 Cirrus CI supports `only_if` and `skip` keywords in order to provide such flexibility:
 
+<!-- markdownlint-disable MD031 -->
+<!-- markdownlint-disable MD032 -->
 * The `only_if` keyword controls whether or not a task will be created. For example, you may want to publish only changes
   committed to `master` branch.
-<!-- markdownlint-disable MD031 -->
   ```yaml
   publish_task:
     only_if: $CIRRUS_BRANCH == 'master'
     script: yarn run publish
   ```
-<!-- markdownlint-enable MD031 -->
 
 * The `skip` keyword allows skipping execution of a task and mark it as successful. For example, you may want to skip linting
   if no source files have changed since the last successful run.
-<!-- markdownlint-disable MD031 -->
   ```yaml
   lint_task:
     skip: !changesInclude(".cirrus.yml", "*.js", "**/*.js")
     script: yarn run lint
   ```
+<!-- markdownlint-enable MD032 -->
 <!-- markdownlint-enable MD031 -->
 
 !!! tip "Skip CI Completely"
