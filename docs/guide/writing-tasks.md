@@ -198,7 +198,7 @@ CIRRUS_BUILD_ID | Unique build ID
 CIRRUS_CHANGE_IN_REPO | Git SHA
 CIRRUS_CHANGE_MESSAGE | Commit message or PR title and description, depending on trigger event (Non-PRs or PRs respectively).
 CIRRUS_DEFAULT_BRANCH | Default repository branch name. For example `master`
-CIRRUS_LAST_GREEN_BUILD_ID | Build id of the last successful build on the same branch at the time of the current build creation.
+CIRRUS_LAST_GREEN_BUILD_ID | The build id of the last successful build on the same branch at the time of the current build creation.
 CIRRUS_LAST_GREEN_CHANGE | Corresponding to `CIRRUS_LAST_GREEN_BUILD_ID` SHA (used in [`changesInclude` function](#supported-functions)).
 CIRRUS_PR | PR number if current build was triggered by a PR. For example `239`.
 CIRRUS_TAG | Tag name if current build was triggered by a new tag. For example `v1.0`
@@ -362,19 +362,19 @@ publish_task:
 ## Conditional Task Execution
 
 Some tasks are meant to be created only if a certain condition is met. And some tasks can be skipped in some cases. 
-Cirrus CI supports `only_if` and `skip` keywords in order to provide such flexibility:
+Cirrus CI supports the `only_if` and `skip` keywords in order to provide such flexibility:
 
 <!-- markdownlint-disable MD031 -->
 <!-- markdownlint-disable MD032 -->
 * The `only_if` keyword controls whether or not a task will be created. For example, you may want to publish only changes
-  committed to `master` branch.
+  committed to the `master` branch.
   ```yaml
   publish_task:
     only_if: $CIRRUS_BRANCH == 'master'
     script: yarn run publish
   ```
 
-* The `skip` keyword allows skipping execution of a task and mark it as successful. For example, you may want to skip linting
+* The `skip` keyword allows to skip execution of a task and mark it as successful. For example, you may want to skip linting
   if no source files have changed since the last successful run.
   ```yaml
   lint_task:
@@ -387,7 +387,7 @@ Cirrus CI supports `only_if` and `skip` keywords in order to provide such flexib
 !!! tip "Skip CI Completely"
     Simply include `[skip ci]` or `[ci skip]` in your commit message in order to skip CI execution for a commit completely.
     
-    If you push multiple commits at the same time, only commit message of `HEAD` will be checked for `[skip ci]` 
+    If you push multiple commits at the same time, only the commit message of `HEAD` will be checked for `[skip ci]` 
     or `[ci skip]`.
 
 ### Supported Operators
@@ -405,11 +405,11 @@ Currently only basic operators like `==`, `!=`, `=~`, `!=~`, `&&`, `||` and unar
 
 ### Supported Functions
 
-Currently only one function is supported in `only_if` and `skip` expressions. `changesInclude` function allows to check
+Currently only one function is supported in the `only_if` and `skip` expressions. `changesInclude` function allows to check
 which files were changed. `changesInclude` behaves differently for PR builds and regular builds:
 
 * For PR builds, `changesInclude` will check the list of files affected by the PR.
-* For regular builds, `changesInclude` will use `CIRRUS_LAST_GREEN_CHANGE` [environment variable](#environment-variables)
+* For regular builds, `changesInclude` will use the `CIRRUS_LAST_GREEN_CHANGE` [environment variable](#environment-variables)
   to determine list of affected files between `CIRRUS_LAST_GREEN_CHANGE` and `CIRRUS_CHANGE_IN_REPO`.
 
 `changesInclude` function can be very useful for skipping some tasks when no changes to sources have been made since the
