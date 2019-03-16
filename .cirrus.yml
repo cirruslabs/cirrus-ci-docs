@@ -21,7 +21,7 @@ spell-check_task:
   install_tool_script:
     # WARNING: DO NOT try to cache this, symlinks will not be created and task will fail
     - npm install -g markdown-spellcheck@0.11.0
-  script: mdspell '**/*.md' '!**/legal/*.md' '!.github/**/*.md' '!.github/*.md' --ignore-numbers --ignore-acronyms --report --en-us;
+  script: mdspell '**/*.md' '!**/legal/*.md' --ignore-numbers --ignore-acronyms --report --en-us;
 
 deploy_task:
   only_if: $CIRRUS_BRANCH == 'master'
