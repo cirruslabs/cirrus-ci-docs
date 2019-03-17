@@ -50,7 +50,7 @@ an example of how `.cirrus.yml` can look like for Bazel:
 container:
   image: l.gcr.io/google/bazel:latest
 task:
-  build_script: bazel build //...
+  build_script: bazel build # ...
 ```
 
 If these images are not the right fit for your project you can always use any custom Docker image with Cirrus CI.
@@ -71,7 +71,7 @@ task:
       --strategy=Javac=sandboxed
       --genrule_strategy=sandboxed
       --remote_http_cache=http://$CIRRUS_HTTP_CACHE_HOST
-      //...
+      # ...
 ```
 
 ## C++
