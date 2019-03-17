@@ -23,14 +23,14 @@ container:
   memory: 10G
 
 check_android_task:
-  create_device_script: >
-    echo no | avdmanager create avd --force \
-        -n test \
+  create_device_script:
+    echo no | avdmanager create avd --force
+        -n test
         -k "system-images;android-18;default;armeabi-v7a"
-  start_emulator_background_script: >
-    $ANDROID_HOME/emulator/emulator \
-        -avd test \
-        -no-audio \
+  start_emulator_background_script:
+    $ANDROID_HOME/emulator/emulator
+        -avd test
+        -no-audio
         -no-window
   wait_for_emulator_script:
     - adb wait-for-device
@@ -65,12 +65,12 @@ Here is an example of how Cirrus CI HTTP Cache can be used with Bazel:
 container:
   image: l.gcr.io/google/bazel:latest
 task:
-  build_script: |
-    bazel build \
-      --spawn_strategy=sandboxed \
-      --strategy=Javac=sandboxed \
-      --genrule_strategy=sandboxed \
-      --remote_http_cache=http://$CIRRUS_HTTP_CACHE_HOST \
+  build_script:
+    bazel build
+      --spawn_strategy=sandboxed
+      --strategy=Javac=sandboxed
+      --genrule_strategy=sandboxed
+      --remote_http_cache=http://$CIRRUS_HTTP_CACHE_HOST
       //...
 ```
 
