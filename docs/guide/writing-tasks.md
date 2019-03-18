@@ -253,7 +253,7 @@ a relation between an encrypted variable and a repository for which the encrypte
 ## Matrix Modification
 
 Sometimes it's useful to run the same task against different software versions. Or run different batches of tests based
-on an environment variable. For cases like these `matrix` modification comes very handy. It's possible to use `matrix`
+on an environment variable. For cases like these, the `matrix` modifier comes very handy. It's possible to use `matrix`
 keyword **only inside of a particular task** to have multiple tasks based on the original one. Each new task will be created
 from the original task by replacing the whole `matrix` YAML node with each `matrix`'s children separately.
 
@@ -283,9 +283,9 @@ test_task:
 ```
 
 !!! tip
-    `matrix` modification can be used multiple times within a task.
+    The `matrix` modifier can be used multiple times within a task.
 
-`matrix` modification makes it easy to create some pretty complex testing scenarios like this:
+The `matrix` modification makes it easy to create some pretty complex testing scenarios like this:
 
 ```yaml
 test_task:
