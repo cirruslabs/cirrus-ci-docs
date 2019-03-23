@@ -63,6 +63,7 @@ emptyDir
 exotic
 FreeBSD
 fkorotkov
+flake8
 Google
 go-git
 gradle
