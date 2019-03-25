@@ -20,9 +20,9 @@ In contrast, classic OAuth Apps [don't have such restrictions](https://developer
 ## Post Installation
 
 Once Cirrus CI is installed for a particular repository, a `.cirrus.yml` configuration file should be added to the root of the repository. 
-`.cirrus.yml` defines tasks that will be executed for every build for the repository. 
+The `.cirrus.yml` defines tasks that will be executed for every build for the repository. 
 
-For a simple Node.js project `.cirrus.yml` can look like:
+For a simple Node.js project, your `.cirrus.yml` can look like:
 
 ```yaml
 container:
@@ -36,7 +36,8 @@ check_task:
   test_script: yarn test
 ```
 
-That's all! After pushing `.cirrus.yml` a build with all the tasks defined in `.cirrus.yml` file will be created.
+That's all! After pushing a `.cirrus.yml` a build with all the tasks defined in the `.cirrus.yml`
+file will be created.
 
 !!! tip "Zero-config Docker Builds"
     If your repository happened to have a `Dockerfile` in the root, Cirrus CI will attempt to build it even without
@@ -55,8 +56,8 @@ Newly created PRs will also get Cirrus CI's status checks.
 <img src="/assets/images/screenshots/github/statuses-pr.png" />
 
 !!! info "Examples"
-    Don't forget to check [examples page](../examples.md) for ready-to-copy examples of `.cirrus.yml` configuration files
-    for different languages and build systems.
+    Don't forget to check [examples page](../examples.md) for ready-to-copy examples of some `.cirrus.yml` 
+    configuration files for different languages and build systems.
 
 !!! info "Life of a build"
     Please check [a high level overview of what's happening under the hood](build-life.md) when a changed is pushed
