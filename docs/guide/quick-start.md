@@ -28,12 +28,12 @@ For a simple Node.js project `.cirrus.yml` can look like:
 container:
   image: node:latest
 
-test_task:
+check_task:
   node_modules_cache:
     folder: node_modules
     fingerprint_script: cat yarn.lock
     populate_script: yarn install
-  script: yarn test
+  test_script: yarn test
 ```
 
 That's all! After pushing `.cirrus.yml` a build with all the tasks defined in `.cirrus.yml` file will be created.
