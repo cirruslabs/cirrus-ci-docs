@@ -125,7 +125,7 @@ We recommend to use [official Gradle Docker containers](https://hub.docker.com/_
 environment variable set up and other Gradle specific configurations. For example, standard `java` containers don't have 
 a pre-configured user and as a result don't have `HOME` environment variable presented which upsets Gradle.
 
-### <a name="gradle-caching"></a>Caching
+### Caching
 
 To preserve caches between Gradle runs simply add a [cache instruction](guide/writing-tasks.md#cache-instruction) as shown below. 
 Trick here is to clean up `~/.gradle/caches` folder in the very end of a build. Gradle creates some unique nondeterministic
