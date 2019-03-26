@@ -1,7 +1,7 @@
 # Windows Containers
 
 It is possible to run Windows Containers the same way one can run [Linux containers](linux.md) on Windows Community Cluster. 
-Simply use `windows_container` instead of `container` in `.cirrus.yml` files:
+Simply use `windows_container` instead of `container` in your `.cirrus.yml`:
 
 ```yaml
 windows_container:
@@ -48,5 +48,5 @@ windows_container:
 `ps: COMMAND` is a simple syntactic sugar which transforms it to:
 
 ```bash
-powershell.exe -EncodedCommand base64(COMMAND)
+powershell.exe -NoLogo -EncodedCommand base64(COMMAND)
 ```
