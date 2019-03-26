@@ -5,7 +5,7 @@ Simply use `osx_instance` in your `.cirrus.yml` files:
 
 ```yaml
 osx_instance:
-  image: mojave-xcode-10.1
+  image: mojave-xcode-10.2
 
 task:
   script: echo "Hello World from macOS!"
@@ -15,6 +15,8 @@ task:
 
 * `mojave-base` - vanilla macOS with Brew and Command Line Tools pre-installed.
 * `mojave-xcode-10.1` - based of `mojave-base` with Xcode and couple other packages pre-installed: 
+  `cocoapods`, `fastlane`, `rake` and `xctool`.
+* `mojave-xcode-10.2` - based of `mojave-base` with Xcode and couple other packages pre-installed: 
   `cocoapods`, `fastlane`, `rake` and `xctool`.
 * `mojave-flutter` - based of `mojave-xcode-10.1` with pre-installed [Flutter](https://flutter.dev/) and Android SDK/NDK.
 * (**Not maintained**) `high-sierra-base` - vanilla macOS with [Homebrew](https://brew.sh) and Command Line Tools pre-installed.
