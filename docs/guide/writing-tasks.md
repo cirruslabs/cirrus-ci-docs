@@ -172,6 +172,14 @@ build_and_test_task:
       path: "**/test-results/**/*.xml"
 ```
 
+!!! tip "URL to the latest artifacts"
+    It is possible to refer to the latest artifacts directly. Use the following link format to download the latest artifact
+    of a particular task:
+    
+    ```yaml
+    https://api.cirrus-ci.com/v1/artifact/github/<USER OR ORGANIZATION>/<REPOSITORY>/<TASK NAME>/<ARTIFACTS NAME>/<PATH>
+    ```
+
 ## Execution Behavior of Instructions
 
 By default Cirrus CI executes instructions one after another and stops the overall task execution on the first failure.
