@@ -152,6 +152,26 @@ test_task:
     Tasks for PRs upload caches to a separate caching namespace to not interfere with caches used by other tasks.
     But such PR tasks **can read** all caches even from the main caching namespace for a repository.
 
+## Artifacts Instruction
+
+An `artifacts` instruction allows to store files and expose them in the UI for downloading later. An `artifacts` instruction 
+can be named the same way as `script` instruction and has only one required `path` field which accepts a [glob pattern](https://en.wikipedia.org/wiki/Glob_(programming))
+of files to store.
+
+In the example below, *Build and Test* task produces two artifacts: `binaries` artifacts with all executables built during a 
+successful task completion and `junit` artifacts with all test reports regardless of the final task status (more about 
+that you can learn in the [next section describing execution behavior](#execution-behavior-of-instructions)).
+
+```yaml
+build_and_test_task:
+  # instructions to build and test
+  binaries_artifacts:
+    path: "build/*"
+  always:
+    junit_artifacts:
+      path: "**/test-results/**/*.xml"
+```
+
 ## Execution Behavior of Instructions
 
 By default Cirrus CI executes instructions one after another and stops the overall task execution on the first failure.
