@@ -163,8 +163,7 @@ successful task completion and `junit` artifacts with all test reports regardles
 that you can learn in the [next section describing execution behaviour](#execution-behavior-of-instructions)).
 
 ```yaml
-task:
-  name: Build and Test
+build_and_test_task:
   # instructions to build and test
   binaries_artifacts:
     path: "build/*"
