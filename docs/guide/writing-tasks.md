@@ -160,7 +160,7 @@ of files to store.
 
 In the example below, *Build and Test* task produces two artifacts: `binaries` artifacts with all executables built during a 
 successful task completion and `junit` artifacts with all test reports regardless of the final task status (more about 
-that you can learn in the [next section describing execution behaviour](#execution-behavior-of-instructions)).
+that you can learn in the [next section describing execution behavior](#execution-behavior-of-instructions)).
 
 ```yaml
 build_and_test_task:

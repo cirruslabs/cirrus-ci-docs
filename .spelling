@@ -60,6 +60,7 @@ Dockerfiles
 Docker
 embeded
 emptyDir
+executables
 exotic
 FreeBSD
 fkorotkov
