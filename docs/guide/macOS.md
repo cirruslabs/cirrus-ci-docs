@@ -19,6 +19,7 @@ task:
 * `mojave-xcode-10.2` - based of `mojave-base` with Xcode and couple other packages pre-installed: 
   `cocoapods`, `fastlane`, `rake` and `xctool`.
 * `mojave-flutter` - based of `mojave-xcode-10.1` with pre-installed [Flutter](https://flutter.dev/) and Android SDK/NDK.
+* `mojave-xcode-10.2-flutter` - based of `mojave-xcode-10.2` with pre-installed [Flutter](https://flutter.dev/) and Android SDK/NDK.
 * (**Not maintained**) `high-sierra-base` - vanilla macOS with [Homebrew](https://brew.sh) and Command Line Tools pre-installed.
 * (**Not maintained**) `high-sierra-xcode-9.4.1` and `high-sierra-xcode-10.0` - based on `high-sierra-base` with Xcode and couple other packages pre-installed: `cocoapods`, `fastlane`, `rake` and `xctool`.
 
