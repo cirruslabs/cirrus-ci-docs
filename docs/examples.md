@@ -125,7 +125,7 @@ We recommend to use [official Gradle Docker containers](https://hub.docker.com/_
 environment variable set up and other Gradle specific configurations. For example, standard `java` containers don't have 
 a pre-configured user and as a result don't have `HOME` environment variable presented which upsets Gradle.
 
-### <a name="gradle-caching"></a>Caching
+### Caching
 
 To preserve caches between Gradle runs simply add a [cache instruction](guide/writing-tasks.md#cache-instruction) as shown below. 
 Trick here is to clean up `~/.gradle/caches` folder in the very end of a build. Gradle creates some unique nondeterministic
@@ -196,7 +196,7 @@ With the configuration above MySQL will be available on `localhost:3306`. Use em
 
 ## Node
 
-Official [Node Docker images](https://hub.docker.com/_/node/) can be used for building and testing Node.JS applications.
+Official [NodeJS Docker images](https://hub.docker.com/_/node/) can be used for building and testing Node.JS applications.
 
 ### npm
 
@@ -263,6 +263,17 @@ build_package_test_task:
   build_package_test_script: python3 setup.py sdist bdist_wheel bdist_egg
 ```
 
+### Linting
+
+You can easily set up linting with Cirrus CI and flake8, here is an example:
+
+```yaml
+lint_task:
+  container:
+    image: alpine/flake8:latest
+  script: flake8 *.py
+```
+
 ## Release Assets
 
 Cirrus CI doesn't provide a built-in functionality to upload artifacts on a GitHub release but this functionality can be
@@ -322,9 +333,10 @@ container:
   image: ruby:latest
 
 rspec_task:
+  install_bundler_script: gem install bundler
   bundle_cache:
     folder: /usr/local/bundle
-    fingerprint_script: echo $RUBY_VERSION && cat Gemfile.lock
+    fingerprint_script: echo $RUBY_VERSION && cat Gemfile && cat Gemfile.lock
     populate_script: bundle install
   rspec_script: bundle exec rspec
 ```
