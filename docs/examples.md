@@ -270,7 +270,7 @@ You can easily set up linting with Cirrus CI and flake8, here is an example:
 ```yaml
 lint_task:
   container:
-    image: jumbocakeyumyum/flake8:latest
+    image: alpine/flake8:latest
   script: flake8 *.py
 ```
 
