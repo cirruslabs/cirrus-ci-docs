@@ -87,7 +87,7 @@ task:
 
 ## Elixir
 
-Official [Elixir Docker images](https://hub.docker.com/_/elixir/) can be used for builds. Here is an example of `.cirrus.yml` that runs tests:
+Official [Elixir Docker images](https://hub.docker.com/_/elixir/) can be used for builds. Here is an example of a `.cirrus.yml` that runs tests:
 
 ```yaml
 test_task:
