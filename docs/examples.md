@@ -85,6 +85,22 @@ task:
   tests_script: make tests
 ```
 
+## Elixir
+
+Official [Elixir Docker images](https://hub.docker.com/_/elixir/) can be used for builds. Here is an example of `.cirrus.yml` that runs tests:
+
+```yaml
+test_task:
+  container:
+    image: elixir:latest
+  mix_cache:
+    folder: deps
+    fingerprint_script: cat mix.lock
+    populate_script: mix deps.get
+  compile_script: mix compile
+  test_script: mix test
+```
+
 ## Flutter
 
 Cirrus CI provides a [set of Docker images with Flutter and Dart SDK pre-installed](https://hub.docker.com/r/cirrusci/flutter/). Here is
