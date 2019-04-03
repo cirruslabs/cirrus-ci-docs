@@ -76,7 +76,7 @@ task:
 
 ## C++
 
-Official [GCC Docker images](https://hub.docker.com/_/gcc/) can be used for builds. Here is an example of `.cirrus.yml` that runs tests:
+Official [GCC Docker images](https://hub.docker.com/_/gcc/) can be used for builds. Here is an example of a `.cirrus.yml` that runs tests:
 
 ```yaml
 container:
@@ -181,7 +181,7 @@ buildCache {
 ```
 
 Please make sure you are running Gradle commands with `--build-cache` flag or have `org.gradle.caching` enabled in `gradle.properties` file.
-Here is an example of `gradle.properties` file that we use internally for all Gradle projects:
+Here is an example of a `gradle.properties` file that we use internally for all Gradle projects:
 
 ```properties
 org.gradle.daemon=true
@@ -216,7 +216,7 @@ Official [NodeJS Docker images](https://hub.docker.com/_/node/) can be used for 
 
 ### npm
 
-Here is an example of `.cirrus.yml` that caches `node_modules` based on contents of `package-lock.json` file and runs tests:
+Here is an example of a `.cirrus.yml` that caches `node_modules` based on contents of `package-lock.json` file and runs tests:
 
 ```yaml
 container:
@@ -232,7 +232,7 @@ test_task:
 
 ### Yarn 
 
-Here is an example of `.cirrus.yml` that caches `node_modules` based on contents of `yarn.lock` file and runs tests:
+Here is an example of a `.cirrus.yml` that caches `node_modules` based on contents of `yarn.lock` file and runs tests:
 
 ```yaml
 container:
@@ -248,7 +248,7 @@ test_task:
 
 ## Python
 
-Official [Python Docker images](https://hub.docker.com/_/python/) can be used for builds. Here is an example of `.cirrus.yml` 
+Official [Python Docker images](https://hub.docker.com/_/python/) can be used for builds. Here is an example of a `.cirrus.yml` 
 that caches installed packages based on contents of `requirements.txt` and runs `pytest`:
 
 ```yaml
@@ -341,7 +341,7 @@ done
 
 ## Ruby
 
-Official [Ruby Docker images](https://hub.docker.com/_/ruby/) can be used for builds. Here is an example of `.cirrus.yml` 
+Official [Ruby Docker images](https://hub.docker.com/_/ruby/) can be used for builds. Here is an example of a `.cirrus.yml` 
 that caches installed gems based on contents of `Gemfile.lock` and runs `rspec`:
 
 ```yaml
@@ -405,7 +405,7 @@ test_task:
 ### Rust Nightly
 
 It is possible to use nightly builds of Rust via an [official `rustlang/rust:nightly` container](https://hub.docker.com/r/rustlang/rust/). 
-Here is an example of `.cirrus.yml` to run tests against the latest stable and nightly versions of Rust:
+Here is an example of a `.cirrus.yml` to run tests against the latest stable and nightly versions of Rust:
 
 ```yaml
 test_task:
