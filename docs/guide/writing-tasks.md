@@ -4,8 +4,6 @@ Task defines where and how your scripts will be executed. Let's see a line-by-li
 test_task:
   container:
     image: gradle:jdk8
-    cpu: 4
-    memory: 10G
   test_script: gradle test
 ```
 
@@ -13,7 +11,12 @@ The example above defines a single task that will be scheduled and executed on t
 Only one user defined script instruction to run `gradle test` will be executed. Pretty simple, isn't it?
 
 A `task` simply defines a [compute service](supported-computing-services.md) to schedule the task on and 
-a sequence of [`script`](#script-instruction) and [`cache`](#cache-instruction) instructions that will be executed.
+a sequence of instructions to execute. The following instructions are supported:
+
+* [`script`](#script-instruction) instruction to execute a script.
+* [`background_script`](#background-script-instruction) instruction to execute a script in a background.
+* [`cache`](#cache-instruction) instruction to persist files between task runs.
+* [`artifacts`](#artifacts-instruction) instruction to store and expose files created via a task.
 
 Please read topics below if you want better understand what's doing on in a more complex `.cirrus.yml` configuration file such as this:
 
@@ -33,8 +36,8 @@ lint_task:
 test_task:
   container:
     matrix:
-      image: node:latest
-      image: node:8.3.0
+      - image: node:latest
+      - image: node:8.3.0
       
   node_modules_cache:
     folder: node_modules
@@ -58,17 +61,16 @@ publish_task:
 ```
 
 !!! tip "Task Naming"
-    To name a task one can simply use the `name` field. `foo_task` syntax is simply a syntactic sugar. The following two task definitions
-    are identical:
+    To name a task one can simply use the `name` field. `foo_task` syntax is simply a syntactic sugar. Separate name
+    field is very useful when you want to have a rich task name:
     
     ```yaml
-    foo_task:
-      ...
-    
     task:
-      name: foo
+      name: Tests (macOS)
       ...
     ```
+    
+    **Note:** instructions withing a task can only be named via a prefix (e.g. `test_script`). 
 
 ## Script Instruction
 
@@ -291,8 +293,8 @@ Let check an example of a `.cirrus.yml`:
 test_task:
   container:
     matrix:
-      image: node:latest
-      image: node:8.3.0
+      - image: node:latest
+      - image: node:8.3.0
   test_script: yarn run test
 ```
 
@@ -319,12 +321,12 @@ The `matrix` modification makes it easy to create some pretty complex testing sc
 test_task:
   container:
     matrix:
-      image: node:latest
-      image: node:8.3.0
+      - image: node:latest
+      - image: node:8.3.0
   env:
     matrix:
-      COMMAND: test
-      COMMAND: lint
+      - COMMAND: test
+      - COMMAND: lint
   node_modules_cache:
     folder: node_modules
     fingerprint_script:
