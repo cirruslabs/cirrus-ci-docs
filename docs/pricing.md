@@ -113,7 +113,7 @@ task:
     ```
     
     Here is another example of how to enable compute credits for master branch of a personal private project to make sure
-    all of the master builds are executed as fast as possible by skipping [coomunity clusters usage limits](faq.md#are-there-any-limits):
+    all of the master builds are executed as fast as possible by skipping [community clusters usage limits](faq.md#are-there-any-limits):
     
     ```yaml
     task:
