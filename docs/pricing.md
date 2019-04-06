@@ -101,11 +101,21 @@ task:
   ...
 ```
 
-!!! tip "Using compute credits for public repositories"
-    If you willing to boost Cirrus CI for public repositories you need to explicitly mark a task to use compute credits
-    with `use_compute_credits` field. Here is an example how to enable compute credits for internal and external collaborators:
+!!! tip "Using compute credits for public or personal private repositories"
+    If you willing to boost Cirrus CI for public or your personal private repositories you need to explicitly mark a task to use compute credits
+    with `use_compute_credits` field.
+    
+    Here is an example of how to enable compute credits for internal and external collaborators of a public repository:
     
     ```yaml
     task:
       use_compute_credits: $CIRRUS_USER_COLLABORATOR == 'true'
+    ```
+    
+    Here is another example of how to enable compute credits for master branch of a personal private project to make sure
+    all of the master builds are executed as fast as possible by skipping [community clusters usage limits](faq.md#are-there-any-limits):
+    
+    ```yaml
+    task:
+      use_compute_credits: $CIRRUS_BRANCH == 'master'
     ```
