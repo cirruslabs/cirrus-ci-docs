@@ -1,6 +1,6 @@
 # Windows Containers
 
-It is possible to run Windows Containers the same way one can run [Linux containers](linux.md) on Windows Community Cluster. 
+It is possible to run [Windows Containers](https://docs.microsoft.com/en-us/virtualization/windowscontainers/about/) the same way one can run [Linux containers](linux.md) on Windows Community Cluster. 
 Simply use `windows_container` instead of `container` in `.cirrus.yml` files:
 
 ```yaml
@@ -58,3 +58,8 @@ powershell.exe -EncodedCommand base64(COMMAND)
 Some software installed with Chocolatey would update `PATH` environment variable in system settings and suggest using `refreshenv` to pull those changes into the current environment.
 Unfortunately, using `refreshenv` will overwrite any environment variables set in Cirrus CI configuration with system-configured defaults.
 We advise to make necessary changes using `env` and `environment` instead of using `refreshenv` command in scripts.
+
+## Chocolatey
+
+All `cirrusci/*` Windows containers like `cirrusci/windowsservercore:2016` have [Chocolatey](https://chocolatey.org/) pre-installed.
+Chocolatey is a package manager for Windows which supports unattended installs of software, useful on headless machines.
