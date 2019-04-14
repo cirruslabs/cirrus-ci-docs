@@ -49,6 +49,7 @@ cirrus-ci
 cirrus-ci-build
 cirruslabs.org
 circleci
+checksum
 commit
 CPUs
 compute
