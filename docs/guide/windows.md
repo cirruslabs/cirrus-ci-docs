@@ -50,3 +50,9 @@ windows_container:
 ```bash
 powershell.exe -EncodedCommand base64(COMMAND)
 ```
+
+## Environment Variables
+
+Some software installed with Chocolatey would update `PATH` environment variable in system settings and suggest using `refreshenv` to pull those changes into the current environment.
+Unfortunately, using `refreshenv` will overwrite any environment variables set in Cirrus CI configuration with system-configured defaults.
+We advise to make necessary changes using `env` and `environment` instead of using `refreshenv` command in scripts.
