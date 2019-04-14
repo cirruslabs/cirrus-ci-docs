@@ -212,6 +212,19 @@ echo_task:
   echo_script: echo $FOO
 ```
 
+!!! warning "Usage of Environment Variables in Windows"
+    While the traditional way of referring to environment variables in Windows is percent sign (`%PATH%`), some places in
+    Cirrus CI configuration have to use the UNIX-like style. Such places include `env` block and `cache` instruction, for example:
+
+    ```yaml
+    ruby_task:
+      env:
+        RUBY_ROOT: 'C:\Ruby'
+        PATH: '${RUBY_ROOT}\bin;${PATH}'
+      ruby_cache:
+        folder: '${RUBY_ROOT}'
+    ```
+
 Also some default environment variables are pre-defined:
 
 Name | Value / Description
