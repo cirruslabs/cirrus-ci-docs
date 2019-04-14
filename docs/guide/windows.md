@@ -23,6 +23,8 @@ filed to override it. Cirrus CI support all versions of Windows Containers inclu
 windows_container:
   image: cirrusci/windowsservercore:2019
   os_version: 2019
+
+windows_task:
   install_script: choco install -y ...
   ...
 ```
@@ -40,7 +42,7 @@ env:
 It is also possible to use *PowerShell* scripts inline inside of a script instruction by prefixing it with `ps`:
 
 ```yaml
-windows_container:
+windows_task:
   script:
     - ps: Get-Location
 ```
