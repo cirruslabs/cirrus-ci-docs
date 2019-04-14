@@ -132,6 +132,9 @@ The `folder` is a *required* field that tells the agent which folder to cache. I
 A `fingerprint_script` is an *optional* field that can specify a script that will be executed and console output of which
 will be used as a key for the given cache. By default the task name is used as a fingerprint value.
 
+After the last `script` instruction for the task succeeds, Cirrus CI will calculate checksum of the cached folder (note that it's unrelated to `fingerprint_script` instruction) and re-upload the cache if it finds any changes.
+To avoid a time-costly re-upload, remove volatile files from the cache (for example, in the last `script` instruction of a task).
+
 `populate_script` is an *optional* field that can specify a script that will be executed to populate the cache.
 `populate_script` should create the `folder` if it doesn't exist before the `cache` instruction.
 If your dependencies are updated often, please pay attention to `fingerprint_script` and make sure it will produce different outputs for different versions of your dependency (ideally just print locked versions of dependencies).
