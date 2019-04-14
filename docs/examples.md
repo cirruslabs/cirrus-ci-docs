@@ -378,6 +378,32 @@ rspec_task:
     Which will create four shards that will theoretically **run tests 4x faster** by equaly splitting all tests between 
     these four shards.
 
+On Windows, Ruby can be installed with Chocolatey, for example:
+
+```yaml
+ruby_task:
+  windows_container:
+    image: cirrusci/windowsservercore:2019
+    os_version: 2019
+  env:
+    RUBY_ROOT: C:\ruby
+    MSYS2_ROOT: C:\msys2
+    PATH: '${RUBY_ROOT}\bin;${MSYS2_ROOT};${PATH}'
+  configure_chocolatey_script:
+  # https://github.com/chocolatey/choco/blob/0.10.11/src/chocolatey/infrastructure.app/ApplicationParameters.cs#L148
+  - choco feature enable -n allowGlobalConfirmation
+  - choco feature disable -n showDownloadProgress
+  install_ruby_script:
+  - choco install ruby --version 2.4.3.1 --params "/InstallDir:%RUBY_ROOT%"
+  - choco install msys2 --params "/NoUpdate /InstallDir:%MSYS2_ROOT%"
+  - ridk install 2 3
+  bundler_script:
+  - gem install bundler --no-document
+  - bundle install --quiet --clean --deployment
+  test_script:
+  - bundle exec rake
+```
+
 ## Rust
 
 Official [Rust Docker images](https://hub.docker.com/_/rust/) can be used for builds. Here is a simple example of `.cirrus.yml` 
