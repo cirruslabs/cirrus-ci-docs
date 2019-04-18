@@ -282,7 +282,7 @@ that takes a container cluster on GKE to start a container.
 
 To start scheduling tasks on a container cluster we first need to create one using `gcloud`. Here is a command to create
 an auto-scalable cluster that will scale down to zero nodes when there is no load for some time and quickly scale up with
-the load during pick hours:
+the load during peak hours:
 
 ```yaml
 gcloud container clusters create cirrus-ci-cluster \
