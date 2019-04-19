@@ -120,19 +120,20 @@ If these images are not the right fit for your project you can always use any cu
 
 ## Go
 
-The best way to test Go projects is by using [official Go Docker images](https://hub.docker.com/_/golang/). The only caveat
-is to instruct Cirrus CI to run builds in a directory inside `$GOPATH` which is set to `/go` on these official Docker images. 
-It can be achieved by providing `CIRRUS_WORKING_DIR` environment variable like in the example below:
+The best way to test Go projects is by using [official Go Docker images](https://hub.docker.com/_/golang/). Here is
+an example of how `.cirrus.yml` can look like for a project using Go Modules:
 
 ```yaml
 container:
   image: golang:latest
 
 test_task:
-  env:
-    CIRRUS_WORKING_DIR: /go/src/github.com/$CIRRUS_REPO_FULL_NAME
-  get_script: go get -t -v ./...
-  test_script: go test -v ./...
+  modules_cache:
+    fingerprint_script: cat go.sum
+    folder: $GOPATH/pkg/mod
+  get_script: go get ./...
+  build_script: go build ./...
+  test_script: go test ./...
 ```
 
 ## Gradle
