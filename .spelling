@@ -102,6 +102,7 @@ git
 go-git
 gradle
 iOS
+JUnit
 lifecycle
 macOS
 namespace
