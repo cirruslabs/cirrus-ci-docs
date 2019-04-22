@@ -219,7 +219,7 @@ Official [Maven Docker images](https://hub.docker.com/_/maven/) can be used for 
 task:
   name: Cirrus CI
   container:
-    image: maven:3-jdk-11
+    image: maven:latest
 test_script: mvn compile -B
 ```
 
