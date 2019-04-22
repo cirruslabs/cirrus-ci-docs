@@ -214,6 +214,7 @@ If it is running on a pull request, annotations will also be displayed in-line.
 ## Maven
 
 Official [Maven Docker images](https://hub.docker.com/_/maven/) can be used for building and testing Maven projects:
+
 ```yaml
 task:
   name: Cirrus CI
@@ -221,7 +222,6 @@ task:
     image: maven:3-jdk-11
 test_script: mvn compile -B
 ```
-If you want to use a different JDK version, you can change the `jdk-11` part to whatever version you want (e.g. `jdk-8`).
 
 ## MySQL
 
