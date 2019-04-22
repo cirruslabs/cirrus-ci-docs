@@ -41,6 +41,18 @@ check_android_task:
 !!! info
     Please don't forget to setup [Remote Build Cache](#build-cache) for your Gradle project. Or at least [simple folder caching](#gradle-caching).
 
+## Apache Maven
+
+Here is an example `.cirrus.yml` that builds a Maven project (and runs basic tests on code to make sure there are no simple errors):
+```yaml
+task:
+  name: Cirrus CI
+  container:
+    image: maven:3-jdk-8
+test_script: mvn compile -B
+```
+If you want to use a different JDK version, you can change the `jdk-8` part to whatever version you want (e.g. `jdk-11`).
+
 ## Bazel
 
 Bazel Team provides a [set of official Docker images with Bazel pre-installed](https://l.gcr.io/google/bazel). Here is
@@ -139,14 +151,12 @@ test_task:
   test_script: go test ./...
 ```
 
-## Java and Kotlin
-
-### Gradle
+## Gradle
 
 We recommend to use the [official Gradle Docker containers](https://hub.docker.com/_/gradle/) since they have Gradle specific configurations already set up. For example, standard `java` containers don't have 
 a pre-configured user and as a result don't have `HOME` environment variable presented which makes Gradle complain.
 
-#### Caching
+### Caching
 
 To preserve caches between Gradle runs simply add a [cache instruction](guide/writing-tasks.md#cache-instruction) as shown below.
 The trick here is to clean up `~/.gradle/caches` folder in the very end of a build. Gradle creates some unique nondeterministic
@@ -166,33 +176,6 @@ check_task:
     - rm -rf ~/.gradle/caches/journal-1
     - find ~/.gradle/caches/ -name "*.lock" -type f -delete
 ```
-
-### Apache Maven
-
-Here is an example `.cirrus.yml` that builds a Maven project (and runs basic tests on code to make sure there are no simple errors):
-```yaml
-task:
-  name: Cirrus CI
-  container:
-    image: maven:3-jdk-8
-test_script: mvn compile -B
-```
-If you want to use a different JDK version, you can change the `jdk-8` part to whatever version you want (e.g. `jdk-11`).
-
-### JUnit
-
-Here is a `.cirrus.yml` that (once completed), runs and uploads JUnit results:
-
-```yaml
-junit_test_task:
-  junit_script: <replace this comment with instructions to run the test suites>
-  always:
-    junit_result_artifacts:
-      path: "**/test-results/**/*.xml"
-      format: junit
-```
-
-If it is running on a pull request, annotations will also be displayed in-line.
 
 ### Build Cache
 
@@ -224,6 +207,21 @@ org.gradle.parallel=true
 org.gradle.configureondemand=true
 org.gradle.jvmargs=-Dfile.encoding=UTF-8
 ```
+
+## JUnit
+
+Here is a `.cirrus.yml` that (once completed), runs and uploads JUnit results:
+
+```yaml
+junit_test_task:
+  junit_script: <replace this comment with instructions to run the test suites>
+  always:
+    junit_result_artifacts:
+      path: "**/test-results/**/*.xml"
+      format: junit
+```
+
+If it is running on a pull request, annotations will also be displayed in-line.
 
 ## MySQL
 
@@ -264,9 +262,9 @@ test_task:
   test_script: npm test
 ```
 
-### Yarn 
+### Yarn
 
-Here is an example of a `.cirrus.yml` that caches `node_modules` based on contents of `yarn.lock` file and runs tests:
+Here is an example of a `.cirrus.yml` that caches `node_modules` based on the contents of a `yarn.lock` file and runs tests:
 
 ```yaml
 container:
