@@ -139,17 +139,18 @@ test_task:
   test_script: go test ./...
 ```
 
-## Gradle
+## Java
 
-We recommend to use [official Gradle Docker containers](https://hub.docker.com/_/gradle/) since they have `GRADLE_HOME`
-environment variable set up and other Gradle specific configurations. For example, standard `java` containers don't have 
-a pre-configured user and as a result don't have `HOME` environment variable presented which upsets Gradle.
+### Gradle
 
-### Caching
+We recommend to use the [official Gradle Docker containers](https://hub.docker.com/_/gradle/) since they have Gradle specific configurations already set up. For example, standard `java` containers don't have 
+a pre-configured user and as a result don't have `HOME` environment variable presented which makes Gradle complain.
 
-To preserve caches between Gradle runs simply add a [cache instruction](guide/writing-tasks.md#cache-instruction) as shown below. 
-Trick here is to clean up `~/.gradle/caches` folder in the very end of a build. Gradle creates some unique nondeterministic
-files in `~/.gradle/caches` folder on every run which breaks Cirrus CI check wherever a cache entry has changed during a build.
+#### Caching
+
+To preserve caches between Gradle runs simply add a [cache instruction](guide/writing-tasks.md#cache-instruction) as shown below.
+The trick here is to clean up `~/.gradle/caches` folder in the very end of a build. Gradle creates some unique nondeterministic
+files in `~/.gradle/caches` folder on every run which makes Cirrus CI re-upload the cache *every time*. This way, you get faster builds!
 
 ```yaml
 container:
@@ -165,6 +166,33 @@ check_task:
     - rm -rf ~/.gradle/caches/journal-1
     - find ~/.gradle/caches/ -name "*.lock" -type f -delete
 ```
+
+### Apache Maven
+
+Here is an example `.cirrus.yml` that builds a Maven project (and runs basic tests on code to make sure there are no simple errors):
+```yaml
+task:
+  name: Cirrus CI
+  container:
+    image: maven:3-jdk-8
+test_script: mvn compile -B
+```
+If you want to use a different JDK version, you can change the `jdk-8` part to whatever version you want (e.g. `jdk-11`).
+
+### JUnit
+
+Here is a `.cirrus.yml` that (once completed), runs and uploads JUnit results:
+
+```yaml
+junit_test_task:
+  junit_script: <replace this comment with instructions to run the test suites>
+  always:
+    junit_result_artifacts:
+      path: "**/test-results/**/*.xml"
+      format: junit
+```
+
+If it is running on a pull request, annotations will also be displayed in-line.
 
 ### Build Cache
 
