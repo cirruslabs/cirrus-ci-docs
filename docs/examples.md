@@ -43,7 +43,7 @@ check_android_task:
 
 ## Apache Maven
 
-Here is an example `.cirrus.yml` that builds a Maven project (and runs basic tests on code to make sure there are no simple errors):
+Official [Maven Docker images](https://hub.docker.com/_/maven/) can be used for building and testing Maven projects:
 ```yaml
 task:
   name: Cirrus CI
