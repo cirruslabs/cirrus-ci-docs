@@ -198,7 +198,7 @@ org.gradle.jvmargs=-Dfile.encoding=UTF-8
 
 ## JUnit
 
-Here is a `.cirrus.yml` that (once completed), runs and uploads JUnit results:
+Here is a `.cirrus.yml` that (once succeeded or failed), parses and uploads JUnit reports:
 
 ```yaml
 junit_test_task:
