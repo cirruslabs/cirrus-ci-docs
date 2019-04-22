@@ -175,6 +175,7 @@ build_and_test_task:
   always:
     junit_artifacts:
       path: "**/test-results/**/*.xml"
+      format: junit
 ```
 
 !!! tip "URL to the latest artifacts"
@@ -184,6 +185,20 @@ build_and_test_task:
     ```yaml
     https://api.cirrus-ci.com/v1/artifact/github/<USER OR ORGANIZATION>/<REPOSITORY>/<TASK NAME>/<ARTIFACTS NAME>/<PATH>
     ```
+    
+### Artifact Format
+
+Cirrus CI supports parsing artifacts in order to extract information that can be presented in the UI for better user experience. 
+Simply use `format` field of an artifact instruction to specify artifact's format:
+
+```yaml
+junit_artifacts:
+  path: "**/test-results/**/*.xml"
+  format: junit
+```
+
+Currently Cirrus CI can only parse JUnit XML artifacts but many tools use this format already. Please [let us know](https://github.com/cirruslabs/cirrus-ci-annotations/issues/new)
+what kind of formats Cirrus CI should support next!
 
 ## Execution Behavior of Instructions
 
