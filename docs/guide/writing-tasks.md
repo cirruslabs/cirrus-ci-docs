@@ -186,6 +186,12 @@ build_and_test_task:
     https://api.cirrus-ci.com/v1/artifact/github/<USER OR ORGANIZATION>/<REPOSITORY>/<TASK NAME>/<ARTIFACTS NAME>/<PATH>
     ```
     
+    It is possible to also **download an archive** of all files within an artifact with the following link:
+    
+    ```yaml
+    https://api.cirrus-ci.com/v1/artifact/github/<USER OR ORGANIZATION>/<REPOSITORY>/<TASK NAME>/<ARTIFACTS NAME>.zip
+    ```
+    
 ### Artifact Format
 
 Cirrus CI supports parsing artifacts in order to extract information that can be presented in the UI for better user experience. 
