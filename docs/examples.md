@@ -139,7 +139,7 @@ test_task:
   test_script: go test ./...
 ```
 
-## Java
+## Java and Kotlin
 
 ### Gradle
 
