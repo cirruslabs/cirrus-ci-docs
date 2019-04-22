@@ -127,6 +127,9 @@ an example of how `.cirrus.yml` can look like for a project using Go Modules:
 container:
   image: golang:latest
 
+env:
+  GOPROXY: https://gocenter.io
+
 test_task:
   modules_cache:
     fingerprint_script: cat go.sum
