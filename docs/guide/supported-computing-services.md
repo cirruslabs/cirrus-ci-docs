@@ -128,7 +128,7 @@ At last create an [encrypted variable](writing-tasks.md#encrypted-variables) fro
 gcp_credentials: ENCRYPTED[qwerty239abc]
 ```
 
-Now Cirrus CI can store logs and caches for scheduled tasks in Google Cloud Storage. Please check following sections 
+Now Cirrus CI can store logs and caches in Google Cloud Storage for tasks scheduled on either GCE or GKE. Please check following sections 
 with additional instructions about [Compute Engine](#compute-engine) or [Kubernetes Engine](#kubernetes-engine).
 
 ### Compute Engine
