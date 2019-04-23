@@ -220,7 +220,7 @@ task:
   name: Cirrus CI
   container:
     image: maven:latest
-test_script: mvn compile -B
+test_script: mvn test -B
 ```
 
 ## MySQL
