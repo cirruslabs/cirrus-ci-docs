@@ -54,6 +54,7 @@ Google
 GraphQL
 Homebrew
 Hypervisor
+JUnit
 Kubernetes
 Lifecycle
 MacStadium
@@ -90,6 +91,7 @@ commiting
 compute
 config
 distroless
+e.g.
 embeded
 emptyDir
 executables
@@ -102,7 +104,6 @@ git
 go-git
 gradle
 iOS
-JUnit
 lifecycle
 macOS
 namespace
