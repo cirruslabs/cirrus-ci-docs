@@ -157,6 +157,10 @@ test_task:
     Tasks for PRs upload caches to a separate caching namespace to not interfere with caches used by other tasks.
     But such PR tasks **can read** all caches even from the main caching namespace for a repository.
 
+!!! warning "Scope of cached artifacts"
+    Cache artifacts are shared between tasks, so two caches with the same name on e.g. Linux containers and macOS VMs will share the same set of files.
+    This may introduce binary incompatibility between caches. To avoid that, add `echo $CIRRUS_OS` into `fingerprint_script` which will distinguish caches based on OS.
+
 ## Artifacts Instruction
 
 An `artifacts` instruction allows to store files and expose them in the UI for downloading later. An `artifacts` instruction 
