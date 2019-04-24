@@ -76,6 +76,7 @@ go-git
 gradle
 Homebrew
 Hypervisor
+JUnit
 Kubernetes
 Lifecycle
 MacStadium
@@ -93,7 +94,6 @@ Windows
 distroless
 flake8
 iOS
-JUnit
 lifecycle
 macOS
 namespace
