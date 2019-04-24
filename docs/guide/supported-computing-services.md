@@ -154,11 +154,12 @@ like this:
 ```yaml
 gce_instance:
   image_project: ubuntu-os-cloud
-  image_name: ubuntu-1604-xenial-v20171121a
+  image_name: ubuntu-1904-disco-v20190417
   zone: us-central1-a
   cpu: 8
   memory: 40Gb
-  disk: 20
+  disk: 60
+  use_ssd: true # default to false
   
 task:
   script: ./run-ci.sh
