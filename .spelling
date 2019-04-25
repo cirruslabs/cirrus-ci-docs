@@ -96,7 +96,6 @@ embeded
 emptyDir
 executables
 exotic
-fkorotkov
 flake8
 gb
 gcloud

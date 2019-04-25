@@ -141,15 +141,14 @@ test_task:
 
 ## Gradle
 
-We recommend to use [official Gradle Docker containers](https://hub.docker.com/_/gradle/) since they have `GRADLE_HOME`
-environment variable set up and other Gradle specific configurations. For example, standard `java` containers don't have 
-a pre-configured user and as a result don't have `HOME` environment variable presented which upsets Gradle.
+We recommend to use the [official Gradle Docker containers](https://hub.docker.com/_/gradle/) since they have Gradle specific configurations already set up. For example, standard `java` containers don't have 
+a pre-configured user and as a result don't have `HOME` environment variable presented which makes Gradle complain.
 
 ### Caching
 
-To preserve caches between Gradle runs simply add a [cache instruction](guide/writing-tasks.md#cache-instruction) as shown below. 
-Trick here is to clean up `~/.gradle/caches` folder in the very end of a build. Gradle creates some unique nondeterministic
-files in `~/.gradle/caches` folder on every run which breaks Cirrus CI check wherever a cache entry has changed during a build.
+To preserve caches between Gradle runs simply add a [cache instruction](guide/writing-tasks.md#cache-instruction) as shown below.
+The trick here is to clean up `~/.gradle/caches` folder in the very end of a build. Gradle creates some unique nondeterministic
+files in `~/.gradle/caches` folder on every run which makes Cirrus CI re-upload the cache *every time*. This way, you get faster builds!
 
 ```yaml
 container:
@@ -197,6 +196,35 @@ org.gradle.configureondemand=true
 org.gradle.jvmargs=-Dfile.encoding=UTF-8
 ```
 
+## JUnit
+
+Here is a `.cirrus.yml` that (once succeeded or failed), parses and uploads JUnit reports:
+
+```yaml
+junit_test_task:
+  junit_script: <replace this comment with instructions to run the test suites>
+  always:
+    junit_result_artifacts:
+      path: "**/test-results/**/*.xml"
+      format: junit
+```
+
+If it is running on a pull request, annotations will also be displayed in-line.
+
+## Maven
+
+Official [Maven Docker images](https://hub.docker.com/_/maven/) can be used for building and testing Maven projects:
+
+```yaml
+task:
+  name: Cirrus CI
+  container:
+    image: maven:latest
+  maven_cache:
+    folder: ~/.m2
+  test_script: mvn test -B
+```
+
 ## MySQL
 
 [Additional Containers feature](guide/writing-tasks.md#additional-containers) makes it super simple to run the same Docker
@@ -236,9 +264,9 @@ test_task:
   test_script: npm test
 ```
 
-### Yarn 
+### Yarn
 
-Here is an example of a `.cirrus.yml` that caches `node_modules` based on contents of `yarn.lock` file and runs tests:
+Here is an example of a `.cirrus.yml` that caches `node_modules` based on the contents of a `yarn.lock` file and runs tests:
 
 ```yaml
 container:
