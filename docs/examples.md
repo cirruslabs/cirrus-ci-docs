@@ -220,7 +220,10 @@ task:
   name: Cirrus CI
   container:
     image: maven:latest
-test_script: mvn test -B
+  maven_cache:
+    folder: ~/.m2
+    fingerprint_script: cat pom.xml
+  test_script: mvn test -B
 ```
 
 ## MySQL
