@@ -50,7 +50,7 @@ windows_task:
 `ps: COMMAND` is a simple syntactic sugar which transforms it to:
 
 ```bash
-powershell.exe -EncodedCommand base64(COMMAND)
+powershell.exe -NoLogo -EncodedCommand base64(COMMAND)
 ```
 
 ## Environment Variables
