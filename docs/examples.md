@@ -128,7 +128,7 @@ container:
   image: golang:latest
 
 env:
-  GOPROXY: https://gocenter.io
+  GOPROXY: https://proxy.golang.org
 
 test_task:
   modules_cache:
