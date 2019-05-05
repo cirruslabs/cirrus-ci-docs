@@ -240,6 +240,32 @@ echo_task:
   echo_script: echo $FOO
 ```
 
+You can reference other environment variables using `$VAR`, `${VAR}` or `%VAR%` syntax:
+
+```yaml
+custom_path_task:
+  env:
+    SDK_ROOT: ${HOME}/sdk
+    PATH: ${SDK_ROOT}/bin:${PATH}
+  custom_script: sdktool install
+```
+
+Environment variables may also be set at the root level of `.cirrus.yml`. In that case, they will be merged with each task's
+individual environment variables, but the task level variables always take precedence. For example:
+
+```yaml
+env:
+  PATH: /sdk/bin:${PATH}
+
+echo_task:
+  env:
+    PATH: /opt/bin:${PATH}
+  echo_script: echo $PATH
+```
+
+Will output `/opt/bin:/usr/local/bin:/usr/bin` or similar, but will not include `/sdk/bin` because this root level setting is
+ignored.
+
 Also some default environment variables are pre-defined:
 
 Name | Value / Description
