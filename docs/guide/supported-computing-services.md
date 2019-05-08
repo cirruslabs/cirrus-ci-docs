@@ -321,6 +321,27 @@ gke_container:
     use in-memory `tmpfs` storage instead of a default one by setting `use_in_memory_disk` field of `gke_container` to `true`
     or any other expression that uses environment variables.
 
+!!! tip "Running privileged containers"
+    You can run privileged containers on your private GKE cluster by setting `privileged` field of `gke_container` to `true` 
+    or any other expression that uses environment variables. `privileged` field is also available for any additional container.
+    
+    Here is an example of how to run docker-in-docker
+    
+    ```yaml hl_lines="9"
+    gke_container:
+      image: my-docker-client:latest
+      cluster_name: my-gke-cluster
+      zone: us-west1-c
+      namespace: cirrus-ci
+      additional_containers:
+        - name: docker
+          image: docker:dind
+          privileged: true
+          cpu: 2
+          memory: 6G
+          port: 2375
+    ```
+
 ## AWS
 
 <p align="center">
