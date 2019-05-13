@@ -554,6 +554,8 @@ task:
     - Lint
 ```
 
+You'll be able to manually trigger such paused tasks via Cirrus CI Web UI or directly from GitHub Checks page.
+
 ## HTTP Cache
 
 For the most cases regular caching mechanism where Cirrus CI caches a folder is more than enough. But modern build systems
