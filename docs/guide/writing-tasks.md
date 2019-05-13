@@ -541,7 +541,7 @@ test_nightly_task:
 
 By default a Cirrus CI task is automatically triggered when all it's [dependency tasks](#task-execution-dependencies)
 finished successfully. Sometimes though, it can be very handy to trigger some tasks manually, for example, perform a
-deployment to staging for manual testing upon all automation checks have succeeded. In order change the default behaviour
+deployment to staging for manual testing upon all automation checks have succeeded. In order change the default behavior
 please use `trigger_type` field like this:
 
 ```yaml
