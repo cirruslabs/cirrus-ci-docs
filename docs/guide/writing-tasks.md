@@ -537,6 +537,25 @@ test_nightly_task:
     
     It can help to track potential issues overtime without distracting the main workflow.
 
+## Manual tasks
+
+By default a Cirrus CI task is automatically triggered when all it's [dependency tasks](#task-execution-dependencies)
+finished successfully. Sometimes though, it can be very handy to trigger some tasks manually, for example, perform a
+deployment to staging for manual testing upon all automation checks have succeeded. In order change the default behavior
+please use `trigger_type` field like this:
+
+```yaml
+task:
+  name: "Staging Deploy"
+  trigger_type: manual
+  depends_on:
+    - Tests (Unit)
+    - Tests (Ingegration)
+    - Lint
+```
+
+You'll be able to manually trigger such paused tasks via Cirrus CI Web UI or directly from GitHub Checks page.
+
 ## HTTP Cache
 
 For the most cases regular caching mechanism where Cirrus CI caches a folder is more than enough. But modern build systems
