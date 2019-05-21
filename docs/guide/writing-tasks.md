@@ -334,6 +334,13 @@ the same organization cannot re-use them. `qwerty239abc` from the example above 
 variable, it's just an internal ID. No one can brute force your secrets from such ID. In addition, Cirrus CI doesn't know
 a relation between an encrypted variable and a repository for which the encrypted variable was created.
 
+!!! tip "Organization Level Encrypted Variables"
+    Sometimes there might be secrets that are used in almost all repositories of an organization. For example, credentials 
+    to a [compute service](supported-computing-services.md) where tasks will be executed. In order to create such sharable 
+    encrypted variable go to organization's settings page via clicking settings icon ![settings icon](https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_settings_black_24px.svg)
+    on an organization's main page (for example `https://cirrus-ci.com/github/my-organization`) and follow instructions
+    in *Organization Level Encrypted Variables* section.
+
 ## Matrix Modification
 
 Sometimes it's useful to run the same task against different software versions. Or run different batches of tests based
