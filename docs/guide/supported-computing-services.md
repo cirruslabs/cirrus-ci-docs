@@ -157,7 +157,7 @@ gce_instance:
   image_name: ubuntu-1904-disco-v20190417
   zone: us-central1-a
   cpu: 8
-  memory: 40Gb
+  memory: 40GB
   disk: 60
   use_ssd: true # default to false
   
@@ -200,7 +200,7 @@ gce_instance:
   platform: windows
   zone: us-central1-a
   cpu: 8
-  memory: 40Gb
+  memory: 40GB
   disk: 20
   
 task:
@@ -219,7 +219,7 @@ gce_instance:
   platform: FreeBSD
   zone: us-central1-a
   cpu: 8
-  memory: 40Gb
+  memory: 40GB
   disk: 50
   
 task:
@@ -241,7 +241,7 @@ gce_instance:
   image_name: my-custom-image-with-docker
   zone: us-central1-a
   cpu: 8
-  memory: 40Gb
+  memory: 40GB
   disk: 20
 
 test_task:
@@ -312,7 +312,7 @@ gke_container:
   zone: us-central1-a
   namespace: default
   cpu: 6
-  memory: 24Gb
+  memory: 24GB
 ```
 
 !!! tip "Using in-memory disk"

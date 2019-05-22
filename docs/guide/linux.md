@@ -6,7 +6,7 @@ personal private repositories or buy CPU time with [compute credits](../pricing.
 
 Community Cluster is configured the same way as anyone can configure a personal GKE cluster as [described here](supported-computing-services.md#google-kubernetes-engine).
 
-By default a container is given 2 CPUs and 4 Gb of memory but it can be configured in `.cirrus.yml`:
+By default a container is given 2 CPUs and 4 GB of memory but it can be configured in `.cirrus.yml`:
 
 ```yaml
 container:
@@ -18,7 +18,7 @@ task:
   script: ...
 ``` 
 
-Containers on Community Cluster can use maximum 8.0 CPUs and up to 24 Gb of memory. 
+Containers on Community Cluster can use maximum 8.0 CPUs and up to 24 GB of memory. 
 
 !!! warning "Scheduling Times on Community Cluster"
     Since Community Cluster is shared, scheduling times for containers can vary from time to time. Also the smaller a container 
