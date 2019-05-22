@@ -37,7 +37,7 @@ test_task:
   container:
     matrix:
       - image: node:latest
-      - image: node:8.3.0
+      - image: node:lts
       
   node_modules_cache:
     folder: node_modules
@@ -355,7 +355,7 @@ test_task:
   container:
     matrix:
       - image: node:latest
-      - image: node:8.3.0
+      - image: node:lts
   test_script: yarn run test
 ```
 
@@ -369,7 +369,7 @@ test_task:
 
 test_task:
   container:
-    image: node:8.3.0
+    image: node:lts
   test_script: yarn run test
 ```
 
@@ -383,7 +383,7 @@ test_task:
   container:
     matrix:
       - image: node:latest
-      - image: node:8.3.0
+      - image: node:lts
   env:
     matrix:
       - COMMAND: test
