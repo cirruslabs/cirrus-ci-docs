@@ -105,4 +105,4 @@ and in Cirrus Labs Inc's sole discretion. Cirrus Labs Inc encourages visitors to
 to its Privacy Policy. Your continued use of this site after any change in this Privacy Policy will constitute your 
 acceptance of such change.
 
-This page was last updated on 02/03/2019.
+This page was last updated on 05/23/2019.
