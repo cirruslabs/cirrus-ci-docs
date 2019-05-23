@@ -6,7 +6,6 @@ If you find a security vulnerability in the Cirrus CI platform (the backend, web
 
 1. **Do NOT comment about the vulnerability publicly.**
 2. Please email [`hello@cirruslabs.org`](mailto:hello@cirruslabs.org) with the following format:
-
   ```none
   Subject: Platform Security Risk
   
@@ -18,7 +17,6 @@ If you find a security vulnerability in the Cirrus CI platform (the backend, web
 
   If anything else needs to be said, put it here.
   ```
-
 3. Please be patient. You will get an email back soon with further instructions.
 
 Thank you.
