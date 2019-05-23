@@ -19,6 +19,6 @@ If you find a security vulnerability in the Cirrus CI platform (the backend, web
   If anything else needs to be said, put it here.
   ```
 
-1. Please be patient. You will get an email back soon with further instructions.
+3. Please be patient. You will get an email back soon with further instructions.
 
 Thank you.
