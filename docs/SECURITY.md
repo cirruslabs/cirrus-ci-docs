@@ -4,7 +4,7 @@
 
 If you find a security vulnerability in the Cirrus CI platform (the backend, web interface, etc.), please **follow the steps below**.
 
-1. **Do NOT comment about the vulnerability publicly.** *Doing so would be in violation of our Terms of Service, [and may have consequences](https://cirrus-ci.org/legal/terms/#cancellation-and-termination)!*
+1. **Do NOT comment about the vulnerability publicly.**
 1. Please email [`hello@cirruslabs.org`](mailto:hello@cirruslabs.org) with the following format:
 
   ```none
