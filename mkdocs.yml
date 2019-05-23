@@ -77,7 +77,7 @@ nav:
     - 'Privacy': legal/privacy.md
     - 'Terms of Service': legal/terms.md
   - Support: support.md
-  - Security: SECURITY.md
+  - Security: security.md
 
 extra:
   social:
