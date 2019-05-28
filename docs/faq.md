@@ -3,7 +3,8 @@
 ## Is Cirrus CI a delivery platform?
 
 Cirrus CI is not positioned as a delivery platform but can be used as one for many general use cases by having 
-[Dependencies](guide/writing-tasks.md#dependencies) between tasks and using [Conditional Task Execution](guide/writing-tasks.md#conditional-task-execution):
+[Dependencies](guide/writing-tasks.md#dependencies) between tasks and using [Conditional Task Execution](guide/writing-tasks.md#conditional-task-execution)
+or [Manual Tasks](guide/writing-tasks.md#manual-tasks):
 
 ```yaml
 lint_task:
@@ -14,6 +15,7 @@ test_task:
 
 publish_task:
   only_if: $BRANCH == 'master'
+  trigger_type: manual
   depends_on: 
     - test
     - lint
