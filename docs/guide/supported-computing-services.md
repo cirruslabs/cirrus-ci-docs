@@ -131,6 +131,12 @@ gcp_credentials: ENCRYPTED[qwerty239abc]
 Now Cirrus CI can store logs and caches in Google Cloud Storage for tasks scheduled on either GCE or GKE. Please check following sections 
 with additional instructions about [Compute Engine](#compute-engine) or [Kubernetes Engine](#kubernetes-engine).
 
+!!! info "Supported Regions"
+    Cirrus CI currently supports following GCP regions: `us-central1`, `us-east1`, `us-east4`, `us-west1`, `us-west2`,
+    `europe-west1`, `europe-west2`, `europe-west3` and `europe-west4`.
+    
+    Please [contact support](support.md) if you are intersted in support for other regions.
+
 ### Compute Engine
 
 <p align="center">
