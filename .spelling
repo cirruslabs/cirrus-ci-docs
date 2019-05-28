@@ -55,6 +55,7 @@ Google
 GraphQL
 Homebrew
 Hypervisor
+IPs
 JUnit
 Kubernetes
 Lifecycle
@@ -81,6 +82,7 @@ autoscaler
 bazel
 caching
 checksum
+ci.com
 circleci
 cirrus-ci
 cirrus-ci-build
@@ -100,12 +102,15 @@ exotic
 flake8
 gb
 gcloud
+gcp.community.nat.cirrus
 git
 go-git
 gradle
+hostname
 iOS
 lifecycle
 macOS
+macstadium.community.nat.cirrus
 namespace
 node
 nondeterministic
@@ -118,6 +123,7 @@ pre-installed
 preemptible
 raised_hands
 ruby
+safelisting
 sh
 sharding
 support@cirruslabs.org

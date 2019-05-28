@@ -41,6 +41,21 @@ Which means that a single user can run at most 13 simultaneous tasks for free.
     For example, if you have 10 active contributors to a repository then you can end up with 130 tasks running in parallel 
     for the repository.  
 
+## IP Addresses of Community Clusters
+
+Instances running on Community Clusters are using static IPs for outgoing traffic from the instances. Knowing these IPs
+might be useful for safelisting while integrating your CI builds with external services.
+
+Infrastructure | NAT hostname | IP
+-------------- | ------------ | --
+OS X | macstadium.community.nat.cirrus-ci.com | 207.254.42.60
+Linux | gcp.community.nat.cirrus-ci.com | 35.222.255.190
+FreeBSD | gcp.community.nat.cirrus-ci.com | 35.222.255.190
+Windows 2019 | gcp.community.nat.cirrus-ci.com | 35.222.255.190
+Windows 1803 | gcp.community.nat.cirrus-ci.com | 35.222.255.190
+Windows 1709 | gcp.community.nat.cirrus-ci.com | 35.222.255.190
+Windows 2016 (**deprecated**) | **Not Supported** | **Not Available**
+
 ## CI agent stopped responding!
 
 It means that Cirrus CI haven't heard from the agent for quite some time. In 99.999% of the cases 
