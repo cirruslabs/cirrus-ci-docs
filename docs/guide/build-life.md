@@ -1,5 +1,3 @@
-# Life of a Cirrus CI build
-
 Any build starts with a change pushed to GitHub. Since Cirrus CI is a GitHub Application a webhook event 
 will be triggered by GitHub. From the webhook event Cirrus CI will parse a Git branch and a particular SHA 
 for the change. Based on parsed information a new build will be created.

@@ -2,8 +2,9 @@ repo_url: https://github.com/cirruslabs/cirrus-ci-docs/
 site_url: https://cirrus-ci.org
 edit_uri: ""
 
-site_name: Cirrus CI Documentation
+site_name: Cirrus CI
 site_author: Cirrus Labs
+copyright: © Cirrus Labs 2017-present
 site_description: >
   Cirrus CI is a modern Continuous Integration system built for the era of cloud computing.
   Cirrus CI supports both Linux and Windows environments as well as various cloud computing
@@ -15,6 +16,7 @@ strict: true
 
 theme:
   name: 'material'
+  custom_dir: 'theme'
   favicon: 'assets/images/favicon.ico'
   logo: 'assets/images/logo.svg'
   # Don't include MkDocs' JavaScript
@@ -27,6 +29,12 @@ theme:
   font:
     text: Roboto
     code: Roboto Mono
+  feature:
+    tabs: true
+
+extra_css:
+  - 'stylesheets/extra.css'
+
 
 markdown_extensions:
   - markdown.extensions.admonition
@@ -56,28 +64,34 @@ markdown_extensions:
   - pymdownx.tilde
 
 nav:
-  - Home: index.md
-  - 'Quick Start': guide/quick-start.md
-  - 'Why Cirrus CI': why.md
-  - User Guide:
-    - 'Writing Tasks': guide/writing-tasks.md
-    - 'Linux Containers': guide/linux.md
-    - 'Windows Containers': guide/windows.md
-    - 'macOS VMs': guide/macOS.md
-    - 'FreeBSD VMs': guide/FreeBSD.md
-    - 'Docker Builder': guide/docker-builder.md
-    - 'Life of a Build': guide/build-life.md
+  - Home:
+    - Home: index.md
+  - Features:
+    - Features: features.md
+  - Documentation:
+    - 'User Guide':
+      - 'Quick Start': guide/quick-start.md
+      - 'Writing Tasks': guide/writing-tasks.md
+      - 'Configuration Tips and Tricks': guide/tips-and-tricks.md
+      - 'Linux Containers': guide/linux.md
+      - 'Windows Containers': guide/windows.md
+      - 'macOS VMs': guide/macOS.md
+      - 'FreeBSD VMs': guide/FreeBSD.md
+      - 'Docker Builder': guide/docker-builder.md
+      - 'Life of a Build': guide/build-life.md
+      - 'Notifications': guide/notifications.md
     - 'Supported Computing Services': guide/supported-computing-services.md
-    - 'Notifications': guide/notifications.md
-  - Pricing: pricing.md
-  - Examples: examples.md
-  - API: api.md
-  - FAQ: faq.md
-  - Legal:
-    - 'Privacy': legal/privacy.md
-    - 'Terms of Service': legal/terms.md
-  - Support: support.md
-  - Security: security.md
+    - Examples: examples.md
+    - API: api.md
+    - FAQ: faq.md
+    - Legal:
+      - 'Privacy': legal/privacy.md
+      - 'Terms of Service': legal/terms.md
+    - Security: security.md
+  - Pricing:
+    - Pricing: pricing.md
+  - Support:
+    - Support: support.md
 
 extra:
   social:

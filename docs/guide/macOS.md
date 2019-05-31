@@ -1,4 +1,4 @@
-# macOS Virtual Machines
+## macOS Virtual Machines
 
 It is possible to run macOS Virtual Machines (the same way one can run [Linux containers](linux.md)) on the macOS Community Cluster. 
 Simply use `osx_instance` in your `.cirrus.yml` files:
@@ -11,7 +11,7 @@ task:
   script: echo "Hello World from macOS!"
 ```
 
-## List of available images
+### List of available images
 
 * `mojave-base` - vanilla macOS with Brew and Command Line Tools pre-installed.
 * `mojave-xcode-10.1` - based of `mojave-base` with Xcode and couple other packages pre-installed: 

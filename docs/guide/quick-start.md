@@ -1,5 +1,3 @@
-# Quick Start
-
 Start by configuring the [Cirrus CI application](https://github.com/marketplace/cirrus-ci) from GitHub Marketplace.
 
 <img src="/assets/images/screenshots/github/marketplace/step1.png" />

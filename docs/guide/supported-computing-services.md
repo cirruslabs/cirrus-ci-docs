@@ -1,5 +1,3 @@
-# Supported Computing Services
-
 <p align="center">
   <a href="#google-cloud">
     <img style="width:128px;height:128px;" src="/assets/images/gcp/Google Cloud Platform.svg"/>
