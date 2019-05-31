@@ -4,7 +4,7 @@ edit_uri: ""
 
 site_name: Cirrus CI
 site_author: Cirrus Labs
-copyright: © Cirrus Labs 2019
+copyright: © Cirrus Labs 2017-present
 site_description: >
   Cirrus CI is a modern Continuous Integration system built for the era of cloud computing.
   Cirrus CI supports both Linux and Windows environments as well as various cloud computing

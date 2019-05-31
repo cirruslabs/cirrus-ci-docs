@@ -1,4 +1,4 @@
-<h2 class="text-center">Make your development cycle <b>fast</b>, <b>efficient</b>, and <b>secure</b> with modern cloud technologies and Cirrus CI.</h2> 
+<h2 class="text-center">Make your development cycle <b>fast</b>, <b>efficient</b>, and <b>secure</b> with modern cloud technologies through Cirrus CI.</h2>
 
 <img src="/assets/images/screenshots/typical-build.png" />
 

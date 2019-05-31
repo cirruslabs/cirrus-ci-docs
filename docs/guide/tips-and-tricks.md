@@ -17,7 +17,7 @@ task:
       git fetch origin pull/$CIRRUS_PR/head:pull/$CIRRUS_PR
       git reset --hard $CIRRUS_CHANGE_IN_REPO
     fi
-  ...
+  # ...
 ```
 
 !!! note "`go-git` benefits"
