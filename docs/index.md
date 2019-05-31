@@ -4,7 +4,7 @@
 
 <a href="/features">
   <button class="btn center">
-    <b>See All The Features</b>
+    <b>Explore the Features</b>
   </button>
 </a>
 
