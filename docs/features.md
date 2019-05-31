@@ -39,10 +39,10 @@ Cirrus CI allows to use any Unix or Windows VMs, any Docker containers, any amou
 
 Learn more about how to configure tasks [here](guide/writing-tasks.md). Configure things like:
 
-  * [Matrix Builds](guide/writing-tasks.md#matrix-modification)
-  * [Dependencies between tasks](guide/writing-tasks.md#dependencies)
-  * [Conditional Task Execution](guide/writing-tasks.md#conditional-task-execution)
-  * [Local HTTP Cache](guide/writing-tasks.md#http-cache)
+* [Matrix Builds](guide/writing-tasks.md#matrix-modification)
+* [Dependencies between tasks](guide/writing-tasks.md#dependencies)
+* [Conditional Task Execution](guide/writing-tasks.md#conditional-task-execution)
+* [Local HTTP Cache](guide/writing-tasks.md#http-cache)
 
 Check [Quick Start](guide/quick-start.md) guide for more features.
 
