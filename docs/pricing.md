@@ -2,18 +2,18 @@
 
 Cirrus CI is free for Open Source projects. For private projects Cirrus CI has couple of options depending on your needs:
 
-1. For private personal repositories these is a [very affordable $10 a month plan](https://github.com/marketplace/cirrus-ci/plan/MDIyOk1hcmtldHBsYWNlTGlzdGluZ1BsYW45OTI=#pricing-and-setup) with 
-   ultimate access to community clusters for [Linux](guide/linux.md), [Windows](guide/windows.md) and [macOS](guide/macOS.md) workloads.
-2. Configure access to your own [compute services](#compute-services) and [pay $10/seat/month](https://github.com/marketplace/cirrus-ci/plan/MDIyOk1hcmtldHBsYWNlTGlzdGluZ1BsYW45OTM=#pricing-and-setup)
-   fee for orchestrating your CI workloads on these compute services.
-3. Buy [compute credits](#compute-credits) to access managed and pre-configured community clusters for [Linux](guide/linux.md), [Windows](guide/windows.md) and [macOS](guide/macOS.md) workloads.
+1. For private personal repositories there is a [very affordable $10 a month plan](https://github.com/marketplace/cirrus-ci/plan/MDIyOk1hcmtldHBsYWNlTGlzdGluZ1BsYW45OTI=#pricing-and-setup) with 
+   access to community clusters for [Linux](guide/linux.md), [Windows](guide/windows.md) and [macOS](guide/macOS.md) workloads.
+2. Configure access to [your own infrastructure](#compute-services) and [pay $10/seat/month](https://github.com/marketplace/cirrus-ci/plan/MDIyOk1hcmtldHBsYWNlTGlzdGluZ1BsYW45OTM=#pricing-and-setup)
+   fee for orchestrating your CI workloads on your infrastructure.
+3. Buy [compute credits](#compute-credits) to access managed and pre-configured community clusters for [Linux](guide/linux.md),  [FreeBSD](guide/FreeBSD.md), [Windows](guide/windows.md) and [macOS](guide/macOS.md) workloads.
 
 Here is a pricing model of Cirrus CI:
 
 User | Public Repository | Private Repository
 --- | --- | ---
 Person | Free + Access to community cluster | [$10/month](https://github.com/marketplace/cirrus-ci/plan/MDIyOk1hcmtldHBsYWNlTGlzdGluZ1BsYW45OTI=#pricing-and-setup) + Access to community cluster
-Organization | Free + Access to community cluster | <ul><li>[$10/seat/month](#compute-services) for managing CI workloads on your [compute services](#compute-services)</li><li>Buy [compute credits](#compute-credits) to access community clusters</li></ul> 
+Organization | Free + Access to community cluster | <ul><li>[$10/seat/month](#compute-services) for managing CI workloads on your [compute services](#compute-services)</li><li>Buy [compute credits](#compute-credits) to access community clusters instead</li></ul> 
 
 ## Compute Services
 
