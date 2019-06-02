@@ -48,11 +48,11 @@
 {% else %}
   <li class="{{ class }}">
     {% if nav_item.title == "Home" %}
-      <a href="{{ nav_item.url }}" title="{{ nav_item.title }}" class="md-nav__link">
+      <a href="/{{ nav_item.url }}" title="{{ nav_item.title }}" class="md-nav__link">
         {{ nav_item.title }}
       </a>
     {% else %}
-      <a href="{{ nav_item.url | default('/' + nav_item.title | lower) }}" title="{{ nav_item.title }}" class="md-nav__link">
+      <a href="/{{ nav_item.url | default(nav_item.title | lower) }}" title="{{ nav_item.title }}" class="md-nav__link">
         {{ nav_item.title }}
       </a>
     {% endif %}
