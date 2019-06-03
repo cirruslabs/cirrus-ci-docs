@@ -9,7 +9,7 @@ Git client (if your build environment has it) to do a shallow clone of a single 
 ```yaml
 task:
   clone_script: |
-    if [[ -z "$CIRRUS_PR" ]]; then
+    if [ -z "$CIRRUS_PR" ]; then
       git clone --recursive --branch=$CIRRUS_BRANCH https://x-access-token:${CIRRUS_REPO_CLONE_TOKEN}@github.com/${CIRRUS_REPO_FULL_NAME}.git $CIRRUS_WORKING_DIR
       git reset --hard $CIRRUS_CHANGE_IN_REPO
     else
