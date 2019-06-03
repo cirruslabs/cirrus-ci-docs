@@ -101,6 +101,22 @@ test_task:
   test_script: mix test
 ```
 
+## Erlang
+
+Official [Erlang Docker images](https://hub.docker.com/_/erlang/) can be used for builds. Here is an example of a `.cirrus.yml` that runs tests:
+
+```yaml
+test_task:
+  container:
+    image: erlang:latest
+  rebar3_cache:
+    folder: _build
+    fingerprint_script: cat rebar.lock
+    populate_script: rebar3 compile --deps_only
+  compile_script: rebar3 compile
+  test_script: rebar3 ct
+```
+
 ## Flutter
 
 Cirrus CI provides a [set of Docker images with Flutter and Dart SDK pre-installed](https://hub.docker.com/r/cirrusci/flutter/). Here is
