@@ -81,13 +81,14 @@ nav:
       - 'Life of a Build': guide/build-life.md
       - 'Notifications': guide/notifications.md
     - 'Supported Computing Services': guide/supported-computing-services.md
-    - Examples: examples.md
     - API: api.md
     - FAQ: faq.md
     - Legal:
       - 'Privacy': legal/privacy.md
       - 'Terms of Service': legal/terms.md
     - Security: security.md
+  - Examples:
+    - Examples: examples.md
   - Pricing:
     - Pricing: pricing.md
   - Support:
