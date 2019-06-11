@@ -39,7 +39,11 @@ Which means that a single user can run at most 13 simultaneous tasks for free.
 !!! note "No per repository limits"
     Cirrus CI doesn't enforce any limits on repository or organization levels. All the limits are on per user basis.
     For example, if you have 10 active contributors to a repository then you can end up with 130 tasks running in parallel 
-    for the repository.  
+    for the repository.
+    
+!!! note "Cache and Logs Redundancy"
+    By default Cirrus CI persists caches and logs for 90 days. If you bring your own [compute services](guide/supported-computing-services.md)
+    this period can be configured directly in your cloud provider's console.
 
 ## IP Addresses of Community Clusters
 

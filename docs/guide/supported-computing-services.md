@@ -108,7 +108,7 @@ gcloud projects add-iam-policy-binding $PROJECT_ID \
 ```
 
 !!! info "Default Logs Retentions Period"
-    By default Cirrus CI will store logs and caches for 30 days but it can be changed by manually configuring a
+    By default Cirrus CI will store logs and caches for 90 days but it can be changed by manually configuring a
     [lifecycle rule](https://cloud.google.com/storage/docs/lifecycle) for a Google Cloud Storage bucket that Cirrus CI is using.
 
 Now we have a service account that Cirrus CI can use! It's time to let Cirrus CI know about that fact by securely providing a
