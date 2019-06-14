@@ -134,6 +134,26 @@ test_task:
 
 If these images are not the right fit for your project you can always use any custom Docker image with Cirrus CI.
 
+### Flutter Web
+
+[Our Docker images with Flutter and Dart SDK pre-installed](https://hub.docker.com/r/cirrusci/flutter/) have special `*-web` tags
+with [Chromium](https://www.chromium.org/) pre-installed. You can use these tags to run Flutter Web 
+
+First define new `chromium` platform in your `dart_test.yaml`:
+
+```yaml
+define_platforms:
+  chromium:
+    name: Chromium
+    extends: chrome
+    settings:
+      arguments: --no-sandbox
+      executable:
+        linux: chromium
+```
+
+Now you'll be able to run tests targeting web via `pub run test test -p chromium`
+
 ## Go
 
 The best way to test Go projects is by using [official Go Docker images](https://hub.docker.com/_/golang/). Here is
