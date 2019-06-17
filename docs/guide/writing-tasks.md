@@ -1,22 +1,15 @@
-Task defines where and how your scripts will be executed. Let's see a line-by-line example of a `.cirrus.yml` configuration file first:
+A `task` simply defines a sequence of [instructions](#supported-instructions) to execute and an [execution environment](#execution-environment)
+to execute these instructions in. Let's see a line-by-line example of a `.cirrus.yml` configuration file first:
 
 ```yaml
 test_task:
   container:
-    image: gradle:jdk8
+    image: gradle:jdk11
   test_script: gradle test
 ```
 
-The example above defines a single task that will be scheduled and executed on the Community Cluster using the `gradle:jdk8` Docker image.
-Only one user defined script instruction to run `gradle test` will be executed. Pretty simple, isn't it?
-
-A `task` simply defines a [compute service](supported-computing-services.md) to schedule the task on and 
-a sequence of instructions to execute. The following instructions are supported:
-
-* [`script`](#script-instruction) instruction to execute a script.
-* [`background_script`](#background-script-instruction) instruction to execute a script in a background.
-* [`cache`](#cache-instruction) instruction to persist files between task runs.
-* [`artifacts`](#artifacts-instruction) instruction to store and expose files created via a task.
+The example above defines a single task that will be scheduled and executed on [Linux Community Cluster](linux.md) using `gradle:jdk11` Docker image.
+Only one user defined [script instruction](#script-instruction) to run `gradle test` will be executed. Pretty simple, isn't it?
 
 Please read topics below if you want better understand what's doing on in a more complex `.cirrus.yml` configuration file such as this:
 
@@ -24,40 +17,28 @@ Please read topics below if you want better understand what's doing on in a more
 # global default
 container:
   image: node:latest
-  
-lint_task:      
+
+task:      
   node_modules_cache:
     folder: node_modules
     fingerprint_script: cat yarn.lock
     populate_script: yarn install
-
-  test_script: yarn run lint
-
-test_task:
-  container:
-    matrix:
-      - image: node:latest
-      - image: node:lts
-      
-  node_modules_cache:
-    folder: node_modules
-    fingerprint_script: cat yarn.lock
-    populate_script: yarn install
-
-  test_script: yarn run test
-
-publish_task:
-  depends_on: 
-    - test 
-    - lint
-  only_if: $BRANCH == "master"
-
-  node_modules_cache:
-    folder: node_modules
-    fingerprint_script: cat yarn.lock
-    populate_script: yarn install
-
-  publish_script: yarn run publish
+    
+  matrix:
+    - name: Lint
+      lint_script: yarn run lint
+    - name: Test
+      container:
+        matrix:
+          - image: node:latest
+          - image: node:lts
+      test_script: yarn run test
+    - name: Publish
+      depends_on: 
+        - Lint 
+        - Test
+      only_if: $BRANCH == "master"
+      publish_script: yarn run publish
 ```
 
 !!! tip "Task Naming"
@@ -72,7 +53,45 @@ publish_task:
     
     **Note:** instructions withing a task can only be named via a prefix (e.g. `test_script`). 
 
-## Script Instruction
+## Execution Environment
+
+In order to specify where to execute a particular task you can choose from variety of options by defining one of the
+following fields of a `task`:
+
+Field Name                 | Computing Service                                     | Description
+-------------------------- | ----------------------------------------------------- | -----------------------
+`container`                | [Linux Community Cluster][container]                  | Linux Docker Container
+`windows_container`        | [Windows Community Cluster][windows_container]        | Windows Docker Container
+`osx_instance`             | [macOS Community Cluster][osx_instance]               | macOS Virtual Machines
+`freebsd_instance`         | [FreeBSD Community Cluster][freebsd_instance]         | FreeBSD Virtual Machines
+`gce_instance`             | [Google Compute Engine][gce_instance]                 | Linux, Windows and FreeBSD Virtual Machines in your GCP project
+`gke_container`            | [Google Kubernetes Engine][gke_container]             | Linux Docker Containers on private GKE cluster
+`ec2_instance`             | [Amazon Elastic Compute Cloud][ec2_instance]          | Linux Virtual Machines in your AWS
+`eks_instance`             | [Amazon Elastic Container Service][eks_instance]      | Linux Docker Containers on private EKS cluster
+`azure_container_instance` | [Azure Container Instances][azure_container_instance] | Linux and Windows Docker Container on Azure
+`anka_instance`            | [Anka Build by Veertu][anka_instance]                 | macOS VMs on your Anka Build
+
+[container]: linux.md
+[windows_container]: windows.md
+[osx_instance]: macOS.md
+[freebsd_instance]: FreeBSD.md
+[gce_instance]: supported-computing-services.md#compute-engine
+[gke_container]: supported-computing-services.md#kubernetes-engine
+[ec2_instance]: supported-computing-services.md#ec2
+[eks_instance]: supported-computing-services.md#eks
+[azure_container_instance]: supported-computing-services.md#azure-container-instances
+[anka_instance]: supported-computing-services.md#anka
+    
+## Supported Instructions
+
+Each task is essentially a collection of instructions that are executed sequentially. The following instructions are supported:
+                                                                                      
+* [`script`](#script-instruction) instruction to execute a script.
+* [`background_script`](#background-script-instruction) instruction to execute a script in a background.
+* [`cache`](#cache-instruction) instruction to persist files between task runs.
+* [`artifacts`](#artifacts-instruction) instruction to store and expose files created via a task.
+
+### Script Instruction
 
 A `script` instruction executes commands via `shell` on Unix or `batch` on Windows. A `script` instruction can be named by
 adding a name as a prefix. For example `test_script` or `my_very_specific_build_step_script`. Naming script instructions
@@ -91,7 +110,7 @@ check_task:
     - gradle check
 ```
 
-## Background Script Instruction
+### Background Script Instruction
 
 A `background_script` instruction is absolutely the same as `script` instruction but Cirrus CI won't wait for the script to finish 
 and will continue execution of following instructions.
@@ -110,7 +129,7 @@ android_test_task:
   test_script: gradle test
 ``` 
 
-## Cache Instruction
+### Cache Instruction
 
 A `cache` instruction allows to persist a folder and reuse it during the next execution of the task. A `cache` instruction can be named the same way as `script` instruction.
 
@@ -161,7 +180,7 @@ test_task:
     Cache artifacts are shared between tasks, so two caches with the same name on e.g. Linux containers and macOS VMs will share the same set of files.
     This may introduce binary incompatibility between caches. To avoid that, add `echo $CIRRUS_OS` into `fingerprint_script` which will distinguish caches based on OS.
 
-## Artifacts Instruction
+### Artifacts Instruction
 
 An `artifacts` instruction allows to store files and expose them in the UI for downloading later. An `artifacts` instruction 
 can be named the same way as `script` instruction and has only one required `path` field which accepts a [glob pattern](https://en.wikipedia.org/wiki/Glob_(programming))
@@ -196,7 +215,7 @@ build_and_test_task:
     https://api.cirrus-ci.com/v1/artifact/github/<USER OR ORGANIZATION>/<REPOSITORY>/<TASK NAME>/<ARTIFACTS NAME>.zip
     ```
     
-### Artifact Format
+#### Artifact Format
 
 Cirrus CI supports parsing artifacts in order to extract information that can be presented in the UI for better user experience. 
 Simply use `format` field of an artifact instruction to specify artifact's format:
@@ -210,7 +229,7 @@ junit_artifacts:
 Currently Cirrus CI can only parse JUnit XML artifacts but many tools use this format already. Please [let us know](https://github.com/cirruslabs/cirrus-ci-annotations/issues/new)
 what kind of formats Cirrus CI should support next!
 
-## Execution Behavior of Instructions
+### Execution Behavior of Instructions
 
 By default Cirrus CI executes instructions one after another and stops the overall task execution on the first failure.
 Sometimes there might be situations when some scripts should always be executed or some debug information needs to be saved 
