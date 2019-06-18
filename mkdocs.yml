@@ -73,14 +73,16 @@ nav:
       - 'Quick Start': guide/quick-start.md
       - 'Writing Tasks': guide/writing-tasks.md
       - 'Configuration Tips and Tricks': guide/tips-and-tricks.md
-      - 'Linux Containers': guide/linux.md
-      - 'Windows Containers': guide/windows.md
-      - 'macOS VMs': guide/macOS.md
-      - 'FreeBSD VMs': guide/FreeBSD.md
-      - 'Docker Builder': guide/docker-builder.md
+      - 'Execution Environment':
+        - 'Linux Containers': guide/linux.md
+        - 'Windows Containers': guide/windows.md
+        - 'macOS VMs': guide/macOS.md
+        - 'FreeBSD VMs': guide/FreeBSD.md
+        - 'Docker Builder': guide/docker-builder.md
+        - 'Docker Pipe': guide/docker-pipe.md
+        - 'Computing Services': guide/supported-computing-services.md
       - 'Life of a Build': guide/build-life.md
       - 'Notifications': guide/notifications.md
-    - 'Supported Computing Services': guide/supported-computing-services.md
     - API: api.md
     - FAQ: faq.md
     - Legal:
