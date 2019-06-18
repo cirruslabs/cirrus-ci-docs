@@ -8,10 +8,10 @@ test_task:
   test_script: gradle test
 ```
 
-The example above defines a single task that will be scheduled and executed on [Linux Community Cluster](linux.md) using `gradle:jdk11` Docker image.
-Only one user defined [script instruction](#script-instruction) to run `gradle test` will be executed. Pretty simple, isn't it?
+The example above defines a single task that will be scheduled and executed on the [Linux Community Cluster](linux.md) using the `gradle:jdk11` Docker image.
+Only one user-defined [script instruction](#script-instruction) to run `gradle test` will be executed. Pretty simple, isn't it?
 
-Please read topics below if you want better understand what's doing on in a more complex `.cirrus.yml` configuration file such as this:
+Please read the topics below if you want better understand what's doing on in a more complex `.cirrus.yml` configuration file, such as this:
 
 ```yaml
 # global default
@@ -55,8 +55,8 @@ task:
 
 ## Execution Environment
 
-In order to specify where to execute a particular task you can choose from variety of options by defining one of the
-following fields of a `task`:
+In order to specify where to execute a particular task you can choose from a variety of options by defining one of the
+following fields for a `task`:
 
 Field Name                 | Computing Service                                     | Description
 -------------------------- | ----------------------------------------------------- | -----------------------
@@ -113,7 +113,7 @@ check_task:
 ### Background Script Instruction
 
 A `background_script` instruction is absolutely the same as `script` instruction but Cirrus CI won't wait for the script to finish 
-and will continue execution of following instructions.
+and will continue execution of further instructions.
 
 Background scripts can be useful when something needs to be executed in the background. For example, a database or
 some emulators. Traditionally the same effect is achieved by adding `&` to a command like `$: command &`. Problem here 
