@@ -360,7 +360,7 @@ lint_task:
   script: flake8 *.py
 ```
 
-### `Unittests` and Annotations
+### `Unittest` Annotations
 
 Cirrus CI annotations are available for Python Unittest results. This way you can see what tests are failing without leaving the pull request you are reviewing!
 
