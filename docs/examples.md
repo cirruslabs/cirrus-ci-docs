@@ -323,7 +323,7 @@ that caches installed packages based on contents of `requirements.txt` and runs 
 
 ```yaml
 container:
-  image: python:latest
+  image: python:slim
 
 test_task:
   pip_cache:
@@ -339,7 +339,7 @@ Also using the Python Docker images, you can run tests if you are making package
 
 ```yaml
 container:
-  image: python:latest
+  image: python:slim
 
 build_package_test_task:
   pip_cache:
@@ -366,7 +366,8 @@ Cirrus CI annotations are available for Python Unittest results. This way you ca
 
 This can be set up by doing the following:
 
-1. Add tests if you haven't already. Here is a basic one that just makes sure you are running it from Cirrus CI:
+First, add tests if you haven't already. Here is a basic one that just makes sure you are running it from Cirrus CI:
+
 ```python
 import unittest
 
@@ -380,7 +381,9 @@ class Tests(unittest.TestCase):
 if __name__ == '__main__':
     unittest.main()
 ```
-1. Add this to your `.cirrus.yml`:
+
+Next, add this to your `.cirrus.yml`:
+
 ```yaml
 unittest_with_cool_annotations_task:
   # feel free to rename the task
