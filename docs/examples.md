@@ -360,6 +360,43 @@ lint_task:
   script: flake8 *.py
 ```
 
+### `Unittests` and Annotations
+
+Cirrus CI annotations are available for Python Unittest results. This way you can see what tests are failing without leaving the pull request you are reviewing!
+
+This can be set up by doing the following:
+
+1. Add tests if you haven't already. Here is a basic one that just makes sure you are running it from Cirrus CI:
+```python
+import unittest
+
+class Tests(unittest.TestCase):
+    def setUp(self):
+        self.is_ci = os.getenv("CI") != None
+
+    def test_env(self):
+        self.assertTrue(self.is_ci)
+
+if __name__ == '__main__':
+    unittest.main()
+```
+1. Add this to your `.cirrus.yml`:
+```yaml
+unittest_with_cool_annotations_task:
+  # feel free to rename the task
+  container:
+    image: python:slim
+  install_dependencies_script: |
+    pip3 install unittest_xml_reporting
+  run_tests_script: |
+    python3 -m xmlrunner tests
+  always:
+    upload_results_artifacts:
+      path: ./*.xml
+```
+
+And you should get annotations for your test results.
+
 ## Release Assets
 
 Cirrus CI doesn't provide a built-in functionality to upload artifacts on a GitHub release but this functionality can be
