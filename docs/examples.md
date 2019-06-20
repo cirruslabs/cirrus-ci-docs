@@ -393,6 +393,8 @@ unittest_with_cool_annotations_task:
   always:
     upload_results_artifacts:
       path: ./*.xml
+      format: junit
+      # yes, it must say junit to work
 ```
 
 And you should get annotations for your test results.
