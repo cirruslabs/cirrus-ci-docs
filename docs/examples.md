@@ -362,7 +362,9 @@ lint_task:
 
 ### `Unittest` Annotations
 
-Cirrus CI annotations are available for Python Unittest results. This way you can see what tests are failing without leaving the pull request you are reviewing!
+Python Unittest reports are supported by [Cirrus CI Annotations](https://medium.com/cirruslabs/github-annotations-support-227d179cde31).
+This way you can see what tests are failing without leaving the pull request you are reviewing! Here is an example
+of `.cirrus.yml` that produces and stores `Unittest` reports:
 
 This can be set up by doing the following:
 
