@@ -385,7 +385,7 @@ if __name__ == '__main__':
 Next, add this to your `.cirrus.yml`:
 
 ```yaml
-unittest_with_cool_annotations_task:
+unittest_task:
   # feel free to rename the task
   container:
     image: python:slim
