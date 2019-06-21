@@ -323,7 +323,7 @@ that caches installed packages based on contents of `requirements.txt` and runs 
 
 ```yaml
 container:
-  image: python:latest
+  image: python:slim
 
 test_task:
   pip_cache:
@@ -339,7 +339,7 @@ Also using the Python Docker images, you can run tests if you are making package
 
 ```yaml
 container:
-  image: python:latest
+  image: python:slim
 
 build_package_test_task:
   pip_cache:
@@ -359,6 +359,30 @@ lint_task:
     image: alpine/flake8:latest
   script: flake8 *.py
 ```
+
+### `Unittest` Annotations
+
+Python Unittest reports are supported by [Cirrus CI Annotations](https://medium.com/cirruslabs/github-annotations-support-227d179cde31).
+This way you can see what tests are failing without leaving the pull request you are reviewing! Here is an example
+of `.cirrus.yml` that produces and stores `Unittest` reports:
+
+```yaml
+unittest_task:
+  container:
+    image: python:slim
+  install_dependencies_script: |
+    pip3 install unittest_xml_reporting
+  run_tests_script: python3 -m xmlrunner tests
+  # replace 'tests' with the module,
+  # unittest.TestCase, or unittest.TestSuite
+  # that the tests are in
+  always:
+    upload_results_artifacts:
+      path: ./*.xml
+      format: junit
+```
+
+Now you should get annotations for your test results.
 
 ## Release Assets
 
