@@ -366,7 +366,6 @@ Python Unittest reports are supported by [Cirrus CI Annotations](https://medium.
 This way you can see what tests are failing without leaving the pull request you are reviewing! Here is an example
 of `.cirrus.yml` that produces and stores `Unittest` reports:
 
-
 ```yaml
 unittest_task:
   container:
