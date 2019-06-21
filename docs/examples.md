@@ -367,7 +367,6 @@ This way you can see what tests are failing without leaving the pull request you
 of `.cirrus.yml` that produces and stores `Unittest` reports:
 
 
-Add this task to your `.cirrus.yml`:
 
 ```yaml
 unittest_task:
