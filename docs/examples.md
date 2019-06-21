@@ -385,7 +385,7 @@ unittest_task:
       format: junit
 ```
 
-And you should get annotations for your test results.
+Now you should get annotations for your test results.
 
 ## Release Assets
 
