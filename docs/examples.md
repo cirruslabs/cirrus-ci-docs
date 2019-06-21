@@ -368,23 +368,7 @@ of `.cirrus.yml` that produces and stores `Unittest` reports:
 
 This can be set up by doing the following:
 
-First, add tests if you haven't already. Here is a basic one that just makes sure you are running it from Cirrus CI:
-
-```python
-import unittest
-
-class Tests(unittest.TestCase):
-    def setUp(self):
-        self.is_ci = os.getenv("CI") != None
-
-    def test_env(self):
-        self.assertTrue(self.is_ci)
-
-if __name__ == '__main__':
-    unittest.main()
-```
-
-Next, add this to your `.cirrus.yml`:
+Add this task to your `.cirrus.yml`:
 
 ```yaml
 unittest_task:
@@ -393,8 +377,10 @@ unittest_task:
     image: python:slim
   install_dependencies_script: |
     pip3 install unittest_xml_reporting
-  run_tests_script: |
-    python3 -m xmlrunner tests
+  run_tests_script: python3 -m xmlrunner tests
+  # replace 'tests' with the module,
+  # unittest.TestCase, or unittest.TestSuite
+  # that the tests are in
   always:
     upload_results_artifacts:
       path: ./*.xml
