@@ -372,7 +372,6 @@ Add this task to your `.cirrus.yml`:
 
 ```yaml
 unittest_task:
-  # feel free to rename the task
   container:
     image: python:slim
   install_dependencies_script: |
