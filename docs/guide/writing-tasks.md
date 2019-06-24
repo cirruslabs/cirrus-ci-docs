@@ -110,6 +110,8 @@ check_task:
     - gradle check
 ```
 
+**Note:** Each script instruction is executed in a newly created process, therefore environment variables are not preserved between them.
+
 ### Background Script Instruction
 
 A `background_script` instruction is absolutely the same as `script` instruction but Cirrus CI won't wait for the script to finish 
