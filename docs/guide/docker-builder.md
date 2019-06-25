@@ -34,6 +34,17 @@ docker_builder:
 !!! info "Example"
     For more examples please check how we use Docker Builder to build and publish Cirrus CI's Docker Images for [Android](https://github.com/cirruslabs/docker-images-android).
     
+### Pre-installed Packages
+
+For your convenience Docker Builder VM has some common packages pre-installed:
+
+* AWS CLI
+* Docker Compose
+* Heroku CLI
+* OpenJDK 11
+* Python
+* Ruby with Bundler
+    
 ### Layer Caching
 
 Docker has `--cache-from` flag which allows to use a previously built image as a cache source. This way only changed

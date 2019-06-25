@@ -7,7 +7,7 @@ AppVeyor
 Azure
 BitBucket
 Brew
-backend
+Bundler
 CI
 CIRRUS_BASE_BRANCH
 CIRRUS_BASE_SHA
@@ -54,6 +54,7 @@ Gb
 GitHub
 Google
 GraphQL
+Heroku
 Homebrew
 Hypervisor
 IPs
@@ -66,6 +67,7 @@ Node.JS
 Node.js
 NodeJS
 OAuth
+OpenJDK
 Parallelization
 PowerShell
 Preemptible
@@ -80,6 +82,7 @@ Windows
 Xcode
 Zero-config
 autoscaler
+backend
 bazel
 caching
 checksum
