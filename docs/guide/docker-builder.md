@@ -38,12 +38,12 @@ docker_builder:
 
 For your convenience Docker Builder VM has some common packages pre-installed:
 
-  * AWS CLI
-  * Docker Compose
-  * Heroku CLI
-  * OpenJDK 11
-  * Python
-  * Ruby with Bundler
+* AWS CLI
+* Docker Compose
+* Heroku CLI
+* OpenJDK 11
+* Python
+* Ruby with Bundler
     
 ### Layer Caching
 
