@@ -18,12 +18,12 @@ Please read the topics below if you want better understand what's doing on in a 
 container:
   image: node:latest
 
-task:      
+task:
   node_modules_cache:
     folder: node_modules
     fingerprint_script: cat yarn.lock
     populate_script: yarn install
-    
+
   matrix:
     - name: Lint
       lint_script: yarn run lint
@@ -34,8 +34,8 @@ task:
           - image: node:lts
       test_script: yarn run test
     - name: Publish
-      depends_on: 
-        - Lint 
+      depends_on:
+        - Lint
         - Test
       only_if: $BRANCH == "master"
       publish_script: yarn run publish
@@ -44,14 +44,14 @@ task:
 !!! tip "Task Naming"
     To name a task one can simply use the `name` field. `foo_task` syntax is simply a syntactic sugar. Separate name
     field is very useful when you want to have a rich task name:
-    
+
     ```yaml
     task:
       name: Tests (macOS)
       ...
     ```
-    
-    **Note:** instructions withing a task can only be named via a prefix (e.g. `test_script`). 
+
+    **Note:** instructions within a task can only be named via a prefix (e.g. `test_script`).
 
 ## Execution Environment
 
@@ -81,11 +81,11 @@ Field Name                 | Computing Service                                  
 [eks_instance]: supported-computing-services.md#eks
 [azure_container_instance]: supported-computing-services.md#azure-container-instances
 [anka_instance]: supported-computing-services.md#anka
-    
+
 ## Supported Instructions
 
 Each task is essentially a collection of instructions that are executed sequentially. The following instructions are supported:
-                                                                                      
+
 * [`script`](#script-instruction) instruction to execute a script.
 * [`background_script`](#background-script-instruction) instruction to execute a script in a background.
 * [`cache`](#cache-instruction) instruction to persist files between task runs.
@@ -95,7 +95,7 @@ Each task is essentially a collection of instructions that are executed sequenti
 
 A `script` instruction executes commands via `shell` on Unix or `batch` on Windows. A `script` instruction can be named by
 adding a name as a prefix. For example `test_script` or `my_very_specific_build_step_script`. Naming script instructions
-helps gather more granular information about task execution. Cirrus CI will use it in future to auto-detect performance 
+helps gather more granular information about task execution. Cirrus CI will use it in future to auto-detect performance
 regressions.
 
 Script commands can be specified as a single string value or a list of string values in a `.cirrus.yml` configuration file
@@ -114,12 +114,12 @@ check_task:
 
 ### Background Script Instruction
 
-A `background_script` instruction is absolutely the same as `script` instruction but Cirrus CI won't wait for the script to finish 
+A `background_script` instruction is absolutely the same as `script` instruction but Cirrus CI won't wait for the script to finish
 and will continue execution of further instructions.
 
 Background scripts can be useful when something needs to be executed in the background. For example, a database or
-some emulators. Traditionally the same effect is achieved by adding `&` to a command like `$: command &`. Problem here 
-is that logs from `command` will be mixed into regular logs of the following commands. By using background scripts 
+some emulators. Traditionally the same effect is achieved by adding `&` to a command like `$: command &`. Problem here
+is that logs from `command` will be mixed into regular logs of the following commands. By using background scripts
 not only logs will be properly saved and displayed, but also `command` itself will be properly killed in the end of a task.
 
 Here is an example of how `background_script` instruction can be used to run an android emulator:
@@ -129,7 +129,7 @@ android_test_task:
   start_emulator_background_script: emulator -avd test -no-audio -no-window
   wait_for_emulator_to_boot_script: adb wait-for-device
   test_script: gradle test
-``` 
+```
 
 ### Cache Instruction
 
@@ -160,7 +160,7 @@ To avoid a time-costly re-upload, remove volatile files from the cache (for exam
 `populate_script` should create the `folder` if it doesn't exist before the `cache` instruction.
 If your dependencies are updated often, please pay attention to `fingerprint_script` and make sure it will produce different outputs for different versions of your dependency (ideally just print locked versions of dependencies).
 
-That means the only difference between the example above and below is that `yarn install` will always be executed in the 
+That means the only difference between the example above and below is that `yarn install` will always be executed in the
 example below where in the example above only when `yarn.lock` has changes.
 
 ```yaml
@@ -184,12 +184,12 @@ test_task:
 
 ### Artifacts Instruction
 
-An `artifacts` instruction allows to store files and expose them in the UI for downloading later. An `artifacts` instruction 
+An `artifacts` instruction allows to store files and expose them in the UI for downloading later. An `artifacts` instruction
 can be named the same way as `script` instruction and has only one required `path` field which accepts a [glob pattern](https://en.wikipedia.org/wiki/Glob_(programming))
 of files to store.
 
-In the example below, *Build and Test* task produces two artifacts: `binaries` artifacts with all executables built during a 
-successful task completion and `junit` artifacts with all test reports regardless of the final task status (more about 
+In the example below, *Build and Test* task produces two artifacts: `binaries` artifacts with all executables built during a
+successful task completion and `junit` artifacts with all test reports regardless of the final task status (more about
 that you can learn in the [next section describing execution behavior](#execution-behavior-of-instructions)).
 
 ```yaml
@@ -206,20 +206,20 @@ build_and_test_task:
 !!! tip "URL to the latest artifacts"
     It is possible to refer to the latest artifacts directly. Use the following link format to download the latest artifact
     of a particular task:
-    
+
     ```yaml
     https://api.cirrus-ci.com/v1/artifact/github/<USER OR ORGANIZATION>/<REPOSITORY>/<TASK NAME>/<ARTIFACTS NAME>/<PATH>
     ```
-    
+
     It is possible to also **download an archive** of all files within an artifact with the following link:
-    
+
     ```yaml
     https://api.cirrus-ci.com/v1/artifact/github/<USER OR ORGANIZATION>/<REPOSITORY>/<TASK NAME>/<ARTIFACTS NAME>.zip
     ```
-    
+
 #### Artifact Format
 
-Cirrus CI supports parsing artifacts in order to extract information that can be presented in the UI for better user experience. 
+Cirrus CI supports parsing artifacts in order to extract information that can be presented in the UI for better user experience.
 Simply use `format` field of an artifact instruction to specify artifact's format:
 
 ```yaml
@@ -234,7 +234,7 @@ what kind of formats Cirrus CI should support next!
 ### Execution Behavior of Instructions
 
 By default Cirrus CI executes instructions one after another and stops the overall task execution on the first failure.
-Sometimes there might be situations when some scripts should always be executed or some debug information needs to be saved 
+Sometimes there might be situations when some scripts should always be executed or some debug information needs to be saved
 on a failure. For such situations the `always` and `on_failure` keywords can be used to group instructions.
 
 ```yaml
@@ -294,7 +294,7 @@ Name | Value / Description
 CI | true
 CIRRUS_CI | true
 CI_NODE_INDEX | Index of the current task within `CI_NODE_TOTAL` tasks
-CI_NODE_TOTAL | Total amount of unique tasks for a given `CIRRUS_BUILD_ID` build 
+CI_NODE_TOTAL | Total amount of unique tasks for a given `CIRRUS_BUILD_ID` build
 CONTINUOUS_INTEGRATION | true
 CIRRUS_BASE_BRANCH | Base branch name if current build was triggered by a PR. For example `master`
 CIRRUS_BASE_SHA | Base SHA if current build was triggered by a PR
@@ -357,8 +357,8 @@ variable, it's just an internal ID. No one can brute force your secrets from suc
 a relation between an encrypted variable and a repository for which the encrypted variable was created.
 
 !!! tip "Organization Level Encrypted Variables"
-    Sometimes there might be secrets that are used in almost all repositories of an organization. For example, credentials 
-    to a [compute service](supported-computing-services.md) where tasks will be executed. In order to create such sharable 
+    Sometimes there might be secrets that are used in almost all repositories of an organization. For example, credentials
+    to a [compute service](supported-computing-services.md) where tasks will be executed. In order to create such sharable
     encrypted variable go to organization's settings page via clicking settings icon ![settings icon](https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_settings_black_24px.svg)
     on an organization's main page (for example `https://cirrus-ci.com/github/my-organization`) and follow instructions
     in *Organization Level Encrypted Variables* section.
@@ -432,7 +432,7 @@ test_task:
   script: yarn run test
 
 publish_task:
-  depends_on: 
+  depends_on:
     - test
     - lint
   script: yarn run publish
@@ -440,30 +440,30 @@ publish_task:
 
 !!! tip "Task Names"
     It is possible to specify task name via `name` field. `lint_task` syntax is simply a syntactic sugar that will be
-    expanded into: 
-    
+    expanded into:
+
     ```yaml
     task:
       name: lint
       ...
     ```
-    
+
     Names can be also pretty complex:
-    
-    
+
+
     ```yaml
     task:
       name: test (linux)
       ...
-    
+
     task:
       name: test (windows)
       ...
-    
+
     task:
       name: test (macOS)
       ...
-    
+
     deploy_task:
       depends_on:
         - test (linux)
@@ -474,7 +474,7 @@ publish_task:
 
 ## Conditional Task Execution
 
-Some tasks are meant to be created only if a certain condition is met. And some tasks can be skipped in some cases. 
+Some tasks are meant to be created only if a certain condition is met. And some tasks can be skipped in some cases.
 Cirrus CI supports the `only_if` and `skip` keywords in order to provide such flexibility:
 
 <!-- markdownlint-disable MD031 -->
@@ -499,8 +499,8 @@ Cirrus CI supports the `only_if` and `skip` keywords in order to provide such fl
 
 !!! tip "Skip CI Completely"
     Simply include `[skip ci]` or `[ci skip]` in your commit message in order to skip CI execution for a commit completely.
-    
-    If you push multiple commits at the same time, only the commit message of `HEAD` will be checked for `[skip ci]` 
+
+    If you push multiple commits at the same time, only the commit message of `HEAD` will be checked for `[skip ci]`
     or `[ci skip]`.
 
 ### Supported Operators
@@ -510,7 +510,7 @@ Currently only basic operators like `==`, `!=`, `=~`, `!=~`, `&&`, `||` and unar
 
 !!! tip "Pattern Matching Example"
     Use `=~` operator for pattern matching.
-    
+
     ```yaml
     check_aggreement_task:
       only_if: $CIRRUS_BRANCH =~ 'pull/.*'
@@ -536,7 +536,7 @@ lint_task:
 
 ## Auto-Cancellation of Tasks
 
-Cirrus CI can automatically cancel tasks in case of new pushes to the same branch. By default Cirrus CI auto-cancels 
+Cirrus CI can automatically cancel tasks in case of new pushes to the same branch. By default Cirrus CI auto-cancels
 all tasks for non default branch (for most repositories `master` branch) but this behavior can be changed by specifying
 `auto_cancellation` field:
 
@@ -548,7 +548,7 @@ task:
 
 ## Failure Toleration
 
-Sometimes tasks can play a role of sanity checks. For example, a task can check that your library is working with the latest nightly 
+Sometimes tasks can play a role of sanity checks. For example, a task can check that your library is working with the latest nightly
 version of some dependency package. It will be great to be notified about such failures but it's not necessary to fail the
 whole build when a failure occurs. Cirrus CI has the `allow_failures` keyword which will make a task to not affect the overall status of a build.
 
@@ -559,11 +559,11 @@ test_nightly_task:
 
 !!! tip "Skipping Notifications"
     You can also skip posting **red statuses** to GitHub via `skip_notifications` field.
-    
+
     ```yaml
     skip_notifications: $SOME_PACKAGE_DEPENDENCY_VERSION == 'nightly'
     ```
-    
+
     It can help to track potential issues overtime without distracting the main workflow.
 
 ## Manual tasks
@@ -589,14 +589,14 @@ You'll be able to manually trigger such paused tasks via Cirrus CI Web UI or dir
 
 For the most cases regular caching mechanism where Cirrus CI caches a folder is more than enough. But modern build systems
 like [Gradle](https://gradle.org/), [Bazel](https://bazel.build/) and [Pants](https://www.pantsbuild.org/) can take
-advantage of remote caching. Remote caching is when a build system uploads and downloads intermediate results of a build 
+advantage of remote caching. Remote caching is when a build system uploads and downloads intermediate results of a build
 execution while the build itself is still executing.
 
 Cirrus CI agent starts a local caching server and exposes it via `CIRRUS_HTTP_CACHE_HOST` environments variable. Caching server
 supports `GET`, `POST` and `HEAD` requests to upload, download and check presence of artifacts.
 
 !!! info
-    If port `12321` is available `CIRRUS_HTTP_CACHE_HOST` will be equal to `localhost:12321`.  
+    If port `12321` is available `CIRRUS_HTTP_CACHE_HOST` will be equal to `localhost:12321`.
 
 For example running the following command:
 
@@ -604,7 +604,7 @@ For example running the following command:
 curl -s -X POST --data-binary=@myfolder.tar.gz http://$CIRRUS_HTTP_CACHE_HOST/mykey
 ```
 
-... has the same effect as a [caching instruction](#cache-instruction) of `myfolder` folder where `sha1sum` of all the 
+... has the same effect as a [caching instruction](#cache-instruction) of `myfolder` folder where `sha1sum` of all the
 `myfolder` contents is equal to `mykey`:
 
 ```yaml
@@ -614,7 +614,7 @@ myfolder_cache:
 
 !!! info
     To see how HTTP Cache can be used with Gradle's Build Cache please check [this example](../examples.md#build-cache).
-    
+
 ## Additional Containers
 
 Sometimes one container is not enough to run a CI build. For example, your application might use a MySQL database
@@ -624,10 +624,10 @@ One option here is to pre-install MySQL and use a [`background_script`](#backgro
 approach has some inconveniences like the need to pre-install MySQL by building a custom Docker container.
 
 For such use cases Cirrus CI allows to run additional containers in parallel with the main container that executes a task.
-Each additional container is defined under `additional_containers` keyword in `.cirrus.yml`. Each additional container 
+Each additional container is defined under `additional_containers` keyword in `.cirrus.yml`. Each additional container
 should have a unique `name` and specify at least Docker `image` and `port` that this container exposes.
 
-In the example below we use an [official MySQL Docker image](https://hub.docker.com/_/mysql/) that exposes 
+In the example below we use an [official MySQL Docker image](https://hub.docker.com/_/mysql/) that exposes
 the standard MySQL port (3306). Tests will be able to access MySQL instance via `localhost:3306`.
 
 ```yaml
@@ -650,7 +650,7 @@ Additional container can be very handy in many scenarios. Please check [Cirrus C
     via `cpu` and `memory` fields.
 
 !!! warning
-    **Note** that `additional_containers` can be used only with [Community Cluster](supported-computing-services.md#community-cluster) 
+    **Note** that `additional_containers` can be used only with [Community Cluster](supported-computing-services.md#community-cluster)
     or [Google's Kubernetes Engine](supported-computing-services.md#kubernetes-engine).
 
 ## Embedded Badges
