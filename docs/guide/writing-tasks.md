@@ -604,6 +604,20 @@ test_task:
 
 **Note:** `required_pr_labels` has no affect on tasks created for non-PR builds.
 
+You can also require multiple labels to continue executing the task for even more flexibility:
+
+```yaml
+deploy_task:
+  required_pr_labels: 
+    - initial-review
+    - ready-for-staging
+  depends_on: build
+  # ...
+```
+
+In the example above both `initial-review` and `ready-for-staging` labels should be presented on a PR in order to perform
+a deployment via `deploy` task.
+
 ## HTTP Cache
 
 For the most cases regular caching mechanism where Cirrus CI caches a folder is more than enough. But modern build systems
