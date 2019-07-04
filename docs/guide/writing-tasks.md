@@ -585,6 +585,39 @@ task:
 
 You'll be able to manually trigger such paused tasks via Cirrus CI Web UI or directly from GitHub Checks page.
 
+## Required PR Labels
+
+Similar to [manual tasks](#manual-tasks) Cirrus CI can pause execution of tasks until a corresponding PR gets labeled.
+This can be particular useful when you'd like to do an initial review before running all unit and integration
+tests on every [supported platform](supported-computing-services.md). Simply use `required_pr_labels` field to specify
+a list of labels a PR requires to have in order to trigger a task. Here is a simple example of `.cirrus.yml` config
+that automatically runs a linting tool but requires `initial-review` label being presented in order to run tests:
+
+```yaml
+lint_task:
+  # ...
+
+test_task:
+  required_pr_labels: initial-review
+  # ...
+```
+
+**Note:** `required_pr_labels` has no affect on tasks created for non-PR builds.
+
+You can also require multiple labels to continue executing the task for even more flexibility:
+
+```yaml
+deploy_task:
+  required_pr_labels: 
+    - initial-review
+    - ready-for-staging
+  depends_on: build
+  # ...
+```
+
+In the example above both `initial-review` and `ready-for-staging` labels should be presented on a PR in order to perform
+a deployment via `deploy` task.
+
 ## HTTP Cache
 
 For the most cases regular caching mechanism where Cirrus CI caches a folder is more than enough. But modern build systems
