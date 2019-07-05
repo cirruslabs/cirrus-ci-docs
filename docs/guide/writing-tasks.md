@@ -634,7 +634,7 @@ supports `GET`, `POST` and `HEAD` requests to upload, download and check presenc
 For example running the following command:
 
 ```bash
-curl -s -X POST --data-binary=@myfolder.tar.gz http://$CIRRUS_HTTP_CACHE_HOST/mykey
+curl -s -X POST --data-binary @myfolder.tar.gz http://$CIRRUS_HTTP_CACHE_HOST/mykey
 ```
 
 ... has the same effect as a [caching instruction](#cache-instruction) of `myfolder` folder where `sha1sum` of all the
