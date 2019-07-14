@@ -333,8 +333,7 @@ CIRRUS_WORKING_DIR | `cirrus-ci-build` folder inside of a system's temporary fol
 
 ## Encrypted Variables
 
-It is possible to securely add sensitive information to a `.cirrus.yml` file. Encrypted variables are only available to
-builds initialized or approved by users with write permission to a corresponding repository.
+It is possible to add encrypted variables to a `.cirrus.yml` file. These variables are decrypted only in builds for commits and pull requests that are made by users with `write` permission or approved by them.
 
 In order to encrypt a variable go to repository's settings page via clicking settings icon ![settings icon](https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_settings_black_24px.svg)
 on a repository's main page (for example `https://cirrus-ci.com/github/my-organization/my-repository`) and follow instructions.
