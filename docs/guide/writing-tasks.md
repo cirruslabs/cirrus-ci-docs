@@ -497,9 +497,9 @@ Cirrus CI supports the `only_if` and `skip` keywords in order to provide such fl
 <!-- markdownlint-enable MD031 -->
 
 !!! tip "Skip CI Completely"
-    Simply include `[skip ci]` or `[ci skip]` in your commit message in order to skip CI execution for a commit completely.
+    Simply include `[skip ci]` or `[ci skip]` in the first line of your commit message in order to skip CI execution for a commit completely.
 
-    If you push multiple commits at the same time, only the commit message of `HEAD` will be checked for `[skip ci]`
+    If you push multiple commits at the same time, only the first line of the last commit message will be checked for `[skip ci]`
     or `[ci skip]`.
 
 ### Supported Operators
