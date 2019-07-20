@@ -361,6 +361,19 @@ a relation between an encrypted variable and a repository for which the encrypte
     encrypted variable go to organization's settings page via clicking settings icon ![settings icon](https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_settings_black_24px.svg)
     on an organization's main page (for example `https://cirrus-ci.com/github/my-organization`) and follow instructions
     in *Organization Level Encrypted Variables* section.
+    
+!!! warning "Encrypted Variable for Cloud Credentials"
+    In case you use integration with [one of supported computing services](supported-computing-services.md), an encrypted variable
+    used to store credentials that Cirrus is using to communicate with the computing service won't be decrypted if used
+    in [environment variables](#encrypted-variables). These credentials have too many permissions for most of the cases,
+    please create separate credentials with the minimum needed permissions for your specific case.
+    
+    ```yaml
+    gcp_credentials: SECURED[!qwerty]
+    
+    env:
+      CREDENTIALS: SECURED[!qwerty] # won't be decrypted in any case
+    ```
 
 ## Matrix Modification
 
