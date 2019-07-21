@@ -78,7 +78,8 @@ nav:
         - 'Windows Containers': guide/windows.md
         - 'macOS VMs': guide/macOS.md
         - 'FreeBSD VMs': guide/FreeBSD.md
-        - 'Docker Builder': guide/docker-builder.md
+        - 'Docker Builder on VM': guide/docker-builder-vm.md
+        - 'Docker Builds on GKE': guide/docker-builds-on-kubernetes.md
         - 'Docker Pipe': guide/docker-pipe.md
         - 'Computing Services': guide/supported-computing-services.md
       - 'Life of a Build': guide/build-life.md

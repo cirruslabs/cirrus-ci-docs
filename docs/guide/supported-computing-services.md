@@ -346,6 +346,8 @@ gke_container:
           port: 2375
     ```
 
+  For a full example on leveraging this to do docker-in-docker builds on Kubernetes checkout [Docker Builds on Kubernetes](docker-builds-on-kubernetes.md)
+
 ## AWS
 
 <p align="center">

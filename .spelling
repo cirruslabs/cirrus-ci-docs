@@ -59,9 +59,11 @@ Homebrew
 Hypervisor
 IPs
 JUnit
+Kaniko
 Kubernetes
 Lifecycle
 MacStadium
+Makisu
 MySQL
 Node.JS
 Node.js
@@ -73,6 +75,7 @@ PowerShell
 Preemptible
 PyPI
 ReadMe
+Skaffold
 SSDs
 VMs
 Veertu
@@ -126,6 +129,7 @@ pre-install
 pre-installed
 preemptible
 raised_hands
+roadmap
 ruby
 safelisting
 sh
