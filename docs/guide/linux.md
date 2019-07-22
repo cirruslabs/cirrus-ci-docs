@@ -25,7 +25,7 @@ Containers on Community Cluster can use maximum 8.0 CPUs and up to 24 GB of memo
     require resources faster it will be scheduled.
 
 !!! info "Privileged Access"
-    If you need to run privileged docker containers, take a look at the [docker builder](docker-builder.md).
+    If you need to run privileged docker containers, take a look at the [docker builder](docker-builder-vm.md).
 
 ### Working with Private Registries
 

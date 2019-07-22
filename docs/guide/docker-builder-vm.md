@@ -1,4 +1,6 @@
-Docker Builder is a way to build and publish Docker Images to Docker Registries of their choice.
+## Docker Builder VM
+
+"Docker Builder" tasks are a way to build and publish Docker Images to Docker Registries of your choice using a VM as build environment.
 In essence, a `docker_builder` is basically [a `task`](writing-tasks.md) that is executed in a VM with pre-installed Docker. 
 `docker_builder` can be defined the same way as a `task`:
 
@@ -89,7 +91,7 @@ You will see such `build_docker_image_HASH` tasks in the UI.
 
 !!! info "Using with private GKE clusters"
 
-    To use `dockerfile` with `gke_container` you first need to create a VM with Docker installed withint your GCP project.
+    To use `dockerfile` with `gke_container` you first need to create a VM with Docker installed within your GCP project.
     This image will be used to perform building of Docker images for caching. Once this image is available, for example, by 
     `MY_DOCKER_VM` name, you can simply use it like this:
     
@@ -102,7 +104,7 @@ You will see such `build_docker_image_HASH` tasks in the UI.
       namespace: default
     ```
     
-    If your builder image is strored in another project. You can also specify it by using `builder_image_project` field.
+    If your builder image is stored in another project you can also specify it by using `builder_image_project` field.
     By default, Cirrus CI assumes builder image is stored within the same project as the GKE cluster.
 
 ### Windows Support
