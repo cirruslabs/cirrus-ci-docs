@@ -1,6 +1,6 @@
 repo_url: https://github.com/cirruslabs/cirrus-ci-docs/
 site_url: https://cirrus-ci.org
-edit_uri: docs/
+edit_uri: blob/master/docs/
 
 site_name: Cirrus CI
 site_author: Cirrus Labs
