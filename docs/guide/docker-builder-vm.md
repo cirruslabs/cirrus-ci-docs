@@ -9,8 +9,8 @@ docker_builder:
   build_script: docker build --tag myrepo/foo:latest .
 ```
 
-Leveraging features like [Task Dependencies](writing-tasks.md#depepndencies), [Conditional Execution](writing-tasks.md#conditional-execution)
-and [Encrypted Variables](writing-tasks.md#encrypted-variables) with a Docker Builder can help building some pretty
+Leveraging features such as [Task Dependencies](writing-tasks.md#depepndencies), [Conditional Execution](writing-tasks.md#conditional-execution)
+and [Encrypted Variables](writing-tasks.md#encrypted-variables) with a Docker Builder can help building some relatively
 complex pipelines. It can also be used to execute builds which need special privileges.
 
 In the example below, a `docker_builder` will be only executed on a tag creation, once both `test` and `lint` 
@@ -64,8 +64,8 @@ docker build --cache-from myrepo/foo:latest \
 ### Dockerfile as a CI environment
 
 With Docker Builder there is no need to build and push custom containers so they can be used as an environment to run CI tasks in. 
-Cirrus CI can do it for you! Just specify path to a `Dockerfile` via `dockerfile` field for you container 
-declaration in `.cirrus.yml` like this:
+Cirrus CI can do it for you! Just specify path to a `Dockerfile` with the `dockerfile` field for you container 
+declaration for the `.cirrus.yml` like this:
 
 ```yaml
 efficient_task:
@@ -74,6 +74,7 @@ efficient_task:
     docker_arguments:
       foo: bar
   test_script: ...
+
 inefficient_task:
   container:
     image: node:latest
