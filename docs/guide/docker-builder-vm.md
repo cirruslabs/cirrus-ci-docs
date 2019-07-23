@@ -49,7 +49,7 @@ For your convenience Docker Builder VM has some common packages pre-installed:
     
 ### Layer Caching
 
-Docker has `--cache-from` flag which allows to use a previously built image as a cache source. This way only changed
+Docker has the `--cache-from` flag which allows to use a previously built image as a cache source. This way only changed
 layers will be rebuilt which can drastically improve performance of `build_script`. Here is a snippet that uses 
 `--cache-from` flag:
 
