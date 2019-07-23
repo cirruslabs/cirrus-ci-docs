@@ -9,8 +9,8 @@ docker_builder:
   build_script: docker build --tag myrepo/foo:latest .
 ```
 
-Leveraging features like [Task Dependencies](writing-tasks.md#depepndencies), [Conditional Execution](writing-tasks.md#conditional-execution)
-and [Encrypted Variables](writing-tasks.md#encrypted-variables) with a Docker Builder can help building some pretty
+Leveraging features such as [Task Dependencies](writing-tasks.md#depepndencies), [Conditional Execution](writing-tasks.md#conditional-execution)
+and [Encrypted Variables](writing-tasks.md#encrypted-variables) with a Docker Builder can help building some relatively
 complex pipelines. It can also be used to execute builds which need special privileges.
 
 In the example below, a `docker_builder` will be only executed on a tag creation, once both `test` and `lint` 
@@ -38,7 +38,7 @@ docker_builder:
     
 ### Pre-installed Packages
 
-For your convenience Docker Builder VM has some common packages pre-installed:
+For your convenience, a Docker Builder VM has some common packages pre-installed:
 
 * AWS CLI
 * Docker Compose
@@ -50,8 +50,8 @@ For your convenience Docker Builder VM has some common packages pre-installed:
 ### Layer Caching
 
 Docker has the `--cache-from` flag which allows to use a previously built image as a cache source. This way only changed
-layers will be rebuilt which can drastically improve performance of `build_script`. Here is a snippet that uses 
-`--cache-from` flag:
+layers will be rebuilt which can drastically improve performance of the `build_script`. Here is a snippet that uses 
+the `--cache-from` flag:
 
 ```bash
 # pull an image if available
@@ -64,8 +64,8 @@ docker build --cache-from myrepo/foo:latest \
 ### Dockerfile as a CI environment
 
 With Docker Builder there is no need to build and push custom containers so they can be used as an environment to run CI tasks in. 
-Cirrus CI can do it for you! Just specify path to a `Dockerfile` via `dockerfile` field for you container 
-declaration in `.cirrus.yml` like this:
+Cirrus CI can do it for you! Just specify path to a `Dockerfile` with the `dockerfile` field for you container 
+declaration in your `.cirrus.yml` like this:
 
 ```yaml
 efficient_task:
@@ -74,6 +74,7 @@ efficient_task:
     docker_arguments:
       foo: bar
   test_script: ...
+
 inefficient_task:
   container:
     image: node:latest
