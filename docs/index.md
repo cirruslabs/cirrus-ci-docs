@@ -34,7 +34,7 @@ patterns from Cirrus CI customers:
       </a>
     </td>
     <td>
-      <a href="https://flutter.io/">Flutter</a> is a mobile app SDK with over 70,000 stars on GitHub.
+      <a href="https://flutter.io/">Flutter</a> is a mobile app SDK with <span id="flutterstars">over 70,000</span> stars on GitHub.
       Flutter team uses <a href="/pricing/#compute-credits">compute credits</a> to get unlimited prioritized builds and
       only pay for resources that these builds used. 
     </td>
@@ -56,3 +56,16 @@ patterns from Cirrus CI customers:
     <td></td>
   </tr>
 </table>
+
+<script type="text/javascript">
+// Copyright (c) 2018-present Param Thakkar and Reece Dunham
+// Taken from a private repository (please ask permission before using)
+var xhttp=new XMLHttpRequest();
+xhttp.onreadystatechange=function(){
+  if(this.readyState==4 && this.status==200){
+    document.getElementById("flutterstars").innerHTML=JSON.parse(this.responseText).stargazers_count;
+  }
+};
+xhttp.open("GET", "https://api.github.com/repos/flutter/flutter", true);
+xhttp.send();
+</script>
