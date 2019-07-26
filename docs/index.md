@@ -58,8 +58,6 @@ patterns from Cirrus CI customers:
 </table>
 
 <script type="text/javascript">
-// Copyright (c) 2018-present Param Thakkar and Reece Dunham
-// Taken from a private repository (please ask permission before using)
 var xhttp=new XMLHttpRequest();
 xhttp.onreadystatechange=function(){
   if(this.readyState==4 && this.status==200){
