@@ -37,7 +37,7 @@ task:
   name: Deploy
   only_if: $CIRRUS_BRANCH == 'master'
   depends_on:
-    - Build and Validate Links
+    - Build Site and Validate Links
     - Markdown Lint
     - Spell Check
   container:
