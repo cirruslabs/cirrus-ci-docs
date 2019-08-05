@@ -90,6 +90,7 @@ Each task is essentially a collection of instructions that are executed sequenti
 * [`background_script`](#background-script-instruction) instruction to execute a script in a background.
 * [`cache`](#cache-instruction) instruction to persist files between task runs.
 * [`artifacts`](#artifacts-instruction) instruction to store and expose files created via a task.
+* [`file`](#file-instruction) instruction to create a file from an environment variable.
 
 ### Script Instruction
 
@@ -231,6 +232,22 @@ junit_artifacts:
 Currently Cirrus CI can only parse JUnit XML artifacts but many tools use this format already. Please [let us know](https://github.com/cirruslabs/cirrus-ci-annotations/issues/new)
 what kind of formats Cirrus CI should support next!
 
+### File Instruction
+
+A `file` instruction allows to create a file from an environment variable. It is especially useful for situations when
+execution environment doesn't have proper shell to use `echo ... >> ...` syntax, for example, within [scratch Docker containers](https://docs.docker.com/samples/library/scratch/).
+
+Here is an example of how to populate Docker config from an [encrypted environment variable](#encrypted-variables):
+
+```yaml
+task:
+  environment:
+    DOCKER_CONFIG: ENCRYPTED[qwerty]
+  docker_config_file:
+    path: /root/.docker/config
+    variable_name: DOCKER_CONFIG
+```
+
 ### Execution Behavior of Instructions
 
 By default Cirrus CI executes instructions one after another and stops the overall task execution on the first failure.
@@ -328,7 +345,7 @@ And some environment variables can be set to control behavior of the Cirrus CI A
 Name | Default Value | Description
 ---  | --- | ---
 CIRRUS_CLONE_DEPTH | `0` which will reflect in a full clone of a single branch | Clone depth.
-CIRRUS_SHELL | `sh` on Linux/macOS and `cmd.exe` on Windows | Shell that Cirrus CI uses to execute scripts. By default `sh` is used.
+CIRRUS_SHELL | `sh` on Linux/macOS/FreeBSD and `cmd.exe` on Windows. Set to `direct` to execute each script directly without wrapping the commands in a shell script. | Shell that Cirrus CI uses to execute scripts. By default `sh` is used.
 CIRRUS_WORKING_DIR | `cirrus-ci-build` folder inside of a system's temporary folder | Working directory where Cirrus CI executes builds. Default to `cirrus-ci-build` folder inside of a system's temporary folder.
 
 ## Encrypted Variables
