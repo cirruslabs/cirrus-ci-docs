@@ -27,3 +27,7 @@ pipe:
     memory: 5G
   # ...
 ```
+
+!!! tip "Docker Pipes on your own GKE cluster"
+    Check [GKE documentation](supported-computing-services.md#gke-docker-pipe) for instructions on how to run Docker Pipes
+    on your own Google Kubernetes Engine cluster.
