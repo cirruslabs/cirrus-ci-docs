@@ -733,6 +733,8 @@ If you want a badge for a particular branch, simply use `?branch=<BRANCH NAME>` 
 https://api.cirrus-ci.com/github/<USER OR ORGANIZATION>/<REPOSITORY>.svg?branch=<BRANCH NAME>
 ```
 
+By default, Cirrus picks the lastest build in a final state for the repository or a particular branch if `branch` parameter is specified. It's also possible to explicitly set a concrete build to use with `?buildId=<BUILD ID>` query parameter.
+
 If you want a badge for a particular task within the latest finished build, simply use `?task=<TASK NAME>` query parameter (at the end of the URL) like this:
 
 ```yaml
