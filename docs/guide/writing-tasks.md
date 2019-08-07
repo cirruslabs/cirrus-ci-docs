@@ -220,7 +220,7 @@ build_and_test_task:
 
 #### Artifact Format
 
-Cirrus CI supports parsing artifacts in order to extract information that can be presented in the UI for better user experience.
+Cirrus CI supports parsing artifacts in order to extract information that can be presented in the UI for a [better user experience](https://medium.com/cirruslabs/github-annotations-support-227d179cde31).
 Simply use `format` field of an artifact instruction to specify artifact's format:
 
 ```yaml
