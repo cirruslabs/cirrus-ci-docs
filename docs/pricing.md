@@ -30,7 +30,7 @@ for orchestrating CI workloads on these compute services.
 
 * Need to configure and connect one or several [compute services](guide/supported-computing-services.md). Might be
   nonintuitive for cases like Anka Build Cloud for macOS.
-* Might not worth the effort for a small team.
+* Might not be worth the effort for a small team.
 
 !!! info "What is a seat?"
 
@@ -45,8 +45,7 @@ for orchestrating CI workloads on these compute services.
     
 ## Compute Credits
 
-Sometimes configuring your own [compute services](#compute-services) isn't worth it. It takes time and effort to configure
-and maintain them. For such cases there is a way to use the same community clusters that the Open Source community is enjoying.
+Sometimes configuring your own [compute services](#compute-services) isn't worth it. It takes time and effort to maintain them. For such cases there is a way to use the same community clusters that the Open Source community is enjoying.
 Use compute credits with your private or public repositories of any scale.
 
 1 compute credit can be bought for 1 US dollar. Here is how much 1000 minutes of CPU time will cost for different platforms:
