@@ -22,6 +22,7 @@ Any of the official FreeBSD VMs on Google Cloud Platform are supported. Here are
 
 * `freebsd-12-0-release-amd64`
 * `freebsd-11-2-release-amd64`
+* `freebsd-11-3-stable-amd64-v20190808`
 * `freebsd-11-1-release-amd64`
 * `freebsd-10-4-release-amd64`
 
