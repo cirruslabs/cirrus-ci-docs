@@ -392,6 +392,21 @@ a relation between an encrypted variable and a repository for which the encrypte
       CREDENTIALS: SECURED[!qwerty] # won't be decrypted in any case
     ```
 
+!!! tip "Skipping Task in Forked Repository"
+    In forked repository the decryption of variable fails, which causes failure of task depending on it.
+    To avoid this by default, make the sensitive task conditional:
+
+    ```yaml
+    task:
+      name: task requiring decrypted variable
+      only_if: $CIRRUS_REPO_OWNER == 'my-organization'
+      ...
+    ```
+
+    Owner of forked repository can re-enable the task, if they have the required sensitive data, by encrypting
+    the variable by themselves and editing both the encrypted variable and repo-owner condition
+    in the `.cirrus.yml` file.
+
 ## Matrix Modification
 
 Sometimes it's useful to run the same task against different software versions. Or run different batches of tests based
