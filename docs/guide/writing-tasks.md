@@ -372,14 +372,14 @@ the same organization cannot re-use them. `qwerty239abc` from the example above 
 variable, it's just an internal ID. No one can brute force your secrets from such ID. In addition, Cirrus CI doesn't know
 a relation between an encrypted variable and a repository for which the encrypted variable was created.
 
-!!! tip "Organization Level Encrypted Variables"
+??? tip "Organization Level Encrypted Variables"
     Sometimes there might be secrets that are used in almost all repositories of an organization. For example, credentials
     to a [compute service](supported-computing-services.md) where tasks will be executed. In order to create such sharable
     encrypted variable go to organization's settings page via clicking settings icon ![settings icon](https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_settings_black_24px.svg)
     on an organization's main page (for example `https://cirrus-ci.com/github/my-organization`) and follow instructions
     in *Organization Level Encrypted Variables* section.
     
-!!! warning "Encrypted Variable for Cloud Credentials"
+??? warning "Encrypted Variable for Cloud Credentials"
     In case you use integration with [one of supported computing services](supported-computing-services.md), an encrypted variable
     used to store credentials that Cirrus is using to communicate with the computing service won't be decrypted if used
     in [environment variables](#encrypted-variables). These credentials have too many permissions for most of the cases,
@@ -391,6 +391,21 @@ a relation between an encrypted variable and a repository for which the encrypte
     env:
       CREDENTIALS: SECURED[!qwerty] # won't be decrypted in any case
     ```
+
+??? tip "Skipping Task in Forked Repository"
+    In forked repository the decryption of variable fails, which causes failure of task depending on it.
+    To avoid this by default, make the sensitive task conditional:
+
+    ```yaml
+    task:
+      name: Task requiring decrypted variables
+      only_if: $CIRRUS_REPO_OWNER == 'my-organization'
+      ...
+    ```
+
+    Owner of forked repository can re-enable the task, if they have the required sensitive data, by encrypting
+    the variable by themselves and editing both the encrypted variable and repo-owner condition
+    in the `.cirrus.yml` file.
 
 ## Matrix Modification
 
