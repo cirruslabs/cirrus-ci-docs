@@ -398,7 +398,7 @@ a relation between an encrypted variable and a repository for which the encrypte
 
     ```yaml
     task:
-      name: task requiring decrypted variable
+      name: Task requiring decrypted variables
       only_if: $CIRRUS_REPO_OWNER == 'my-organization'
       ...
     ```
