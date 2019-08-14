@@ -18,6 +18,8 @@ task:
   `cocoapods`, `fastlane`, `rake` and `xctool`.
 * `mojave-xcode-10.2` - based of `mojave-base` with Xcode and couple other packages pre-installed: 
   `cocoapods`, `fastlane`, `rake` and `xctool`.
+* `mojave-xcode-11` - based of `mojave-base` with Xcode 11 Beta 5 and couple other packages pre-installed: 
+  `cocoapods`, `fastlane`, `rake` and `xctool`.
 * `mojave-flutter` - based of `mojave-xcode-10.1` with pre-installed [Flutter](https://flutter.dev/) and Android SDK/NDK.
 * `mojave-xcode-10.2-flutter` - based of `mojave-xcode-10.2` with pre-installed [Flutter](https://flutter.dev/) and Android SDK/NDK.
 * (**Not maintained**) `high-sierra-base` - vanilla macOS with [Homebrew](https://brew.sh) and Command Line Tools pre-installed.
