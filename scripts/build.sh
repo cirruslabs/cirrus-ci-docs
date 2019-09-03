@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-docker run --rm -it -v ${PWD}:/docs squidfunk/mkdocs-material:4.4.0 build
+docker run --rm -it -v ${PWD}:/docs squidfunk/mkdocs-material:4.4.2 build
