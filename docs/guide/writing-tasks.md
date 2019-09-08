@@ -548,6 +548,8 @@ Cirrus CI supports the `only_if` and `skip` keywords in order to provide such fl
 
     If you push multiple commits at the same time, only the first line of the last commit message will be checked for `[skip ci]`
     or `[ci skip]`.
+    
+    If you open a PR, PR title will be checked for `[skip ci]` or `[ci skip]` instead of the last commit message on the PR branch.
 
 ### Supported Operators
 
