@@ -21,8 +21,8 @@ filed to override it. Cirrus CI support all versions of Windows Containers inclu
 
 !!! warning "Deprecation of 2016 Windows Docker Containers"
     Windows Containers 2019 got many performance improvements and image size optimizations comparing to 2016 version. 
-    Therefore Cirrus CI will switch the default `os_version` to `2019` on August 1st 2019 and completely remove support
-    of 2016 Windows Containers on community cluster starting from September 1st 2019.
+    Therefore Cirrus CI will switch the default `os_version` to `2019` on September 16th 2019 and completely remove support
+    of 2016 Windows Containers on community cluster starting from October 1st 2019.
 
 ```yaml
 windows_container:
