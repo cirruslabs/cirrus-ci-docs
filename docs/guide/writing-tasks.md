@@ -206,8 +206,8 @@ build_and_test_task:
 ```
 
 !!! tip "URL to the latest artifacts"
-    It is possible to refer to the latest artifacts directly. Use the following link format to download the latest artifact
-    of a particular task:
+    It is possible to refer to the latest artifacts directly (artifacts of the latests **successful** build).
+    Use the following link format to download the latest artifact of a particular task:
 
     ```yaml
     https://api.cirrus-ci.com/v1/artifact/github/<USER OR ORGANIZATION>/<REPOSITORY>/<TASK NAME>/<ARTIFACTS NAME>/<PATH>
@@ -218,6 +218,9 @@ build_and_test_task:
     ```yaml
     https://api.cirrus-ci.com/v1/artifact/github/<USER OR ORGANIZATION>/<REPOSITORY>/<TASK NAME>/<ARTIFACTS NAME>.zip
     ```
+    
+    By default, Cirrus looks up the latest **successful** build of the default branch for the repository but the branch name
+    can be customized via `?branch=<BRANCH>` query paramter. 
 
 #### Artifact Format
 
