@@ -5,7 +5,7 @@ Simply use `freebsd_instance` in `.cirrus.yml` files:
 
 ```yaml
 freebsd_instance:
-  image: freebsd-11-2-release-amd64
+  image_family: freebsd-12-0
 
 task:
   install_script: pkg install -y ...
@@ -16,17 +16,18 @@ task:
     Under the hood a simple integration with [Google Compute Engine](supported-computing-services.md#compute-engine) 
     is used.
 
-## List of available images
+## List of available image families
 
 Any of the official FreeBSD VMs on Google Cloud Platform are supported. Here are a few of them which are self explanatory:
 
-* `freebsd-12-0-release-amd64`
-* `freebsd-11-2-release-amd64`
-* `freebsd-11-3-stable-amd64-v20190808`
-* `freebsd-11-1-release-amd64`
-* `freebsd-10-4-release-amd64`
+* `freebsd-13-0-snap`
+* `freebsd-12-0`
+* `freebsd-11-3`
+* `freebsd-11-2`
+* `freebsd-10-4`
 
-To get a full list of available images please run the following [gcloud](https://cloud.google.com/sdk/gcloud/) command:
+It's also possible to specify a concrete version of an image by name via `image_name` field. To get a full list of
+available images please run the following [gcloud](https://cloud.google.com/sdk/gcloud/) command:
 
 ```bash
 gcloud compute images list --project freebsd-org-cloud-dev --no-standard-images
