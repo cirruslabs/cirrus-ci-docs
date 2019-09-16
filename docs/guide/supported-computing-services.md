@@ -182,6 +182,16 @@ task:
       disk: 20
     ```
 
+!!! tip "Specify Image Family"
+    It's also possible to specify image family instead of the concrete image name. Simply specify `image_family` field
+    instead of `image_name`:
+
+    ```yaml
+    gce_instance:
+      image_project: ubuntu-os-cloud
+      image_family: ubuntu-1904
+    ```
+
 #### Custom VM images
 
 Building an immutable VM image with all necessary software pre-configured is a known best practice with many benefits.
@@ -219,7 +229,7 @@ platform of an image like this:
 ```yaml
 gce_instance:
   image_project: freebsd-org-cloud-dev
-  image_name: freebsd-11-2-release-amd64
+  image_family: freebsd-12-0
   platform: FreeBSD
   zone: us-central1-a
   cpu: 8
