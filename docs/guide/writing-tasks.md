@@ -187,7 +187,7 @@ test_task:
 
 An `artifacts` instruction allows to store files and expose them in the UI for downloading later. An `artifacts` instruction
 can be named the same way as `script` instruction and has only one required `path` field which accepts a [glob pattern](https://en.wikipedia.org/wiki/Glob_(programming))
-of files to store.
+of files relative to `$CIRRUS_WORKING_DIR` to store. Right now only storing files under [`$CIRRUS_WORKING_DIR` folder](#environment-variables) as artifacts are supported.
 
 In the example below, *Build and Test* task produces two artifacts: `binaries` artifacts with all executables built during a
 successful task completion and `junit` artifacts with all test reports regardless of the final task status (more about
