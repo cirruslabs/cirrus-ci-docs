@@ -222,7 +222,20 @@ build_and_test_task:
     By default, Cirrus looks up the latest **successful** build of the default branch for the repository but the branch name
     can be customized via `?branch=<BRANCH>` query paramter. 
 
-#### Artifact Format
+#### Artifact Type
+
+If you want the Cirrus CI API to return a mimetype other then `application/octet-stream`, for example if you wanted certain files to download in a way you don't need to change the extension for, you can specify the `type` parameter, for example:
+
+```yaml
+  my_task:
+    my_dotjar_artifacts:
+      path: build/*.jar
+      type: application/java-archive
+```
+
+A list of some of the basic types supported can be found [here](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Complete_list_of_MIME_types).
+
+#### Artifact Parsing
 
 Cirrus CI supports parsing artifacts in order to extract information that can be presented in the UI for a [better user experience](https://medium.com/cirruslabs/github-annotations-support-227d179cde31).
 Simply use `format` field of an artifact instruction to specify artifact's format:
