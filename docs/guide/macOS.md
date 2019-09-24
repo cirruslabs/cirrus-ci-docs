@@ -5,7 +5,7 @@ Simply use `osx_instance` in your `.cirrus.yml` files:
 
 ```yaml
 osx_instance:
-  image: mojave-xcode-10.2
+  image: mojave-xcode
 
 task:
   script: echo "Hello World from macOS!"
@@ -18,12 +18,15 @@ task:
   `cocoapods`, `fastlane`, `rake` and `xctool`.
 * `mojave-xcode-10.2` - based of `mojave-base` with Xcode and couple other packages pre-installed: 
   `cocoapods`, `fastlane`, `rake` and `xctool`.
-* `mojave-xcode-11` - based of `mojave-base` with Xcode 11 Beta 5 and couple other packages pre-installed: 
-  `cocoapods`, `fastlane`, `rake` and `xctool`.
-* `mojave-flutter` - based of `mojave-xcode-10.1` with pre-installed [Flutter](https://flutter.dev/) and Android SDK/NDK.
 * `mojave-xcode-10.2-flutter` - based of `mojave-xcode-10.2` with pre-installed [Flutter](https://flutter.dev/) and Android SDK/NDK.
-* (**Not maintained**) `high-sierra-base` - vanilla macOS with [Homebrew](https://brew.sh) and Command Line Tools pre-installed.
-* (**Not maintained**) `high-sierra-xcode-9.4.1` and `high-sierra-xcode-10.0` - based on `high-sierra-base` with Xcode and couple other packages pre-installed: `cocoapods`, `fastlane`, `rake` and `xctool`.
+* `mojave-xcode-11` - based of `mojave-base` with Xcode 11 GM and couple other packages pre-installed: 
+  `cocoapods`, `fastlane`, `rake` and `xctool`.
+* `mojave-xcode-11-flutter` - based of `mojave-xcode-11` with pre-installed [Flutter](https://flutter.dev/) and Android SDK/NDK.
+
+Note that there are couple of aliases available for images:
+
+* `mojave-xcode` - point to the latest `mojave-xcode-NN` image.
+* `mojave-flutter` - point to the latest `mojave-xcode-NN-flutter` image.
 
 Please refer to the [`osx-images`](https://github.com/cirruslabs/osx-images) repository on how the images were built and
 don't hesitate to [create issues](https://github.com/cirruslabs/osx-images/issues) if current images are missing something.
