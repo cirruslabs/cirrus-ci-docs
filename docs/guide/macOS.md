@@ -23,7 +23,7 @@ task:
   `cocoapods`, `fastlane`, `rake` and `xctool`.
 * `mojave-xcode-11-flutter` - based of `mojave-xcode-11` with pre-installed [Flutter](https://flutter.dev/) and Android SDK/NDK.
 
-Note that there are couple of aliasas availabel for images:
+Note that there are couple of aliases available for images:
 
 * `mojave-xcode` - point to the latest `mojave-xcode-NN` image.
 * `mojave-flutter` - point to the latest `mojave-xcode-NN-flutter` image.
