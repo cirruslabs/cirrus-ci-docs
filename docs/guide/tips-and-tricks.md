@@ -1,7 +1,7 @@
 ## Custom Clone Command
 
 By default Cirrus CI uses a [Git client implemented purely in Go](https://github.com/src-d/go-git) to perform a clone of
-a single branch with full Git history. It is possible to control clone depth via `CIRRUS_CLONE_DEPTH` [environment variable](#behavioral-environment-variables).
+a single branch with full Git history. It is possible to control clone depth via `CIRRUS_CLONE_DEPTH` [environment variable](writing-tasks.md#behavioral-environment-variables).
 
 Customizing clone behavior is a simple as overriding `clone_script`. For example, here an override to use a pre-installed
 Git client (if your build environment has it) to do a shallow clone of a single branch:
