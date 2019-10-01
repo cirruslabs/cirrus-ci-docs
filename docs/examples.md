@@ -225,12 +225,17 @@ Please make sure you are running Gradle commands with `--build-cache` flag or ha
 Here is an example of a `gradle.properties` file that we use internally for all Gradle projects:
 
 ```properties
-org.gradle.daemon=true
+org.gradle.daemon=false
 org.gradle.caching=true
 org.gradle.parallel=true
 org.gradle.configureondemand=true
 org.gradle.jvmargs=-Dfile.encoding=UTF-8
 ```
+
+### Daemon
+
+If you are running builds in a container (Windows or DockerLinux), you will want to *disable* the daemon.
+The containers are not preserved, meaning the daemon will not be able to stay between the builds.
 
 ## JUnit
 
