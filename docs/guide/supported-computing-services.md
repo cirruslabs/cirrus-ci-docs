@@ -240,6 +240,40 @@ task:
   script: printenv
 ```
 
+#### Docker Containers on Dedicated VMs
+
+It is possible to run a container directly on a Compute Engine VM with pre-installed Docker. Simply use `gce_container`
+to specify a VM image and a Docker container to execute on the VM (`gce_container` simply extends `gce_instance` definition
+with a few additional fields):
+
+```yaml
+gce_container:
+  image_project: my-project
+  image_name: my-custom-ubuntu-with-docker
+  container: golang:latest
+  additional_containers:
+    - name: redis
+      image: redis:3.2-alpine
+      port: 6379
+```
+
+Note that `gce_container` always runs containers in privileged mode.
+
+If your VM image has [Nested Visualization Enabled](https://cloud.google.com/compute/docs/instances/enable-nested-virtualization-vm-instances)
+it's possible to use KVM from the container by specifying `enable_nested_virtualization` flag. Here is an example of
+using KVM-enabled container to run a hardware accelerated Android emulator:
+
+```yaml
+gce_container:
+  image_project: my-project
+  image_name: my-custom-ubuntu-with-docker-and-KVM
+  container: cirrusci/android-sdk:29
+  enable_nested_virtualization: true
+  accel_check_script:
+    - sudo chown cirrus:cirrus /dev/kvm
+    - emulator -accel-check
+```
+
 #### Instance Scopes
 
 By default Cirrus CI will create Google Compute instances without any [scopes](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes) 
