@@ -261,7 +261,6 @@ task:
     image: maven:latest
   maven_cache:
     folder: ~/.m2
-    fingerprint_script: cat pom.xml
   test_script: mvn test -B
 ```
 
