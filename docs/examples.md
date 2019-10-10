@@ -1,5 +1,7 @@
 # Examples
 
+Here you can find example configurations per different programming languages/frameworks.
+
 ## Android
 
 Cirrus CI has a [set of Docker images ready for Android development](https://hub.docker.com/r/cirrusci/android-sdk/). 
@@ -119,8 +121,8 @@ test_task:
 
 ## Flutter
 
-Cirrus CI provides a [set of Docker images with Flutter and Dart SDK pre-installed](https://hub.docker.com/r/cirrusci/flutter/). Here is
-an example of how `.cirrus.yml` can look like for Flutter:
+Cirrus CI provides a [set of Docker images with Flutter and Dart SDK pre-installed](https://hub.docker.com/r/cirrusci/flutter/).
+Here is an example of how `.cirrus.yml` can be written for Flutter:
 
 ```yaml
 container:
@@ -139,7 +141,7 @@ If these images are not the right fit for your project you can always use any cu
 [Our Docker images with Flutter and Dart SDK pre-installed](https://hub.docker.com/r/cirrusci/flutter/) have special `*-web` tags
 with [Chromium](https://www.chromium.org/) pre-installed. You can use these tags to run Flutter Web 
 
-First define new `chromium` platform in your `dart_test.yaml`:
+First define a new `chromium` platform in your `dart_test.yaml`:
 
 ```yaml
 define_platforms:
@@ -243,6 +245,7 @@ junit_test_task:
     junit_result_artifacts:
       path: "**/test-results/**/*.xml"
       format: junit
+      type: text/xml
 ```
 
 If it is running on a pull request, annotations will also be displayed in-line.
@@ -335,7 +338,7 @@ test_task:
 
 ### Building PyPI Packages  
 
-Also using the Python Docker images, you can run tests if you are making packages for [PyPI](https://pypi.org).  Here is an example `.cirrus.yml` for doing so:
+Also using the Python Docker images, you can run tests if you are making packages for [PyPI](https://pypi.org). Here is an example `.cirrus.yml` for doing so:
 
 ```yaml
 container:
@@ -345,13 +348,13 @@ build_package_test_task:
   pip_cache:
     folder: ~/.cache/pip
     fingerprint_script: echo $PYTHON_VERSION
-    populate_script: python3 -m pip install --upgrade setuptools wheel twine
-  build_package_test_script: python3 setup.py sdist bdist_wheel bdist_egg
+    populate_script: python3 -m pip install --upgrade setuptools wheel
+  build_package_test_script: python3 setup.py sdist bdist_wheel
 ```
 
 ### Linting
 
-You can easily set up linting with Cirrus CI and flake8, here is an example:
+You can easily set up linting with Cirrus CI and flake8, here is an example `.cirrus.yml`:
 
 ```yaml
 lint_task:
@@ -364,7 +367,7 @@ lint_task:
 
 Python Unittest reports are supported by [Cirrus CI Annotations](https://medium.com/cirruslabs/github-annotations-support-227d179cde31).
 This way you can see what tests are failing without leaving the pull request you are reviewing! Here is an example
-of `.cirrus.yml` that produces and stores `Unittest` reports:
+of a `.cirrus.yml` that produces and stores `Unittest` reports:
 
 ```yaml
 unittest_task:
@@ -380,6 +383,7 @@ unittest_task:
     upload_results_artifacts:
       path: ./*.xml
       format: junit
+      type: text/xml
 ```
 
 Now you should get annotations for your test results.
