@@ -26,6 +26,29 @@ Containers on Community Cluster can use maximum 8.0 CPUs and up to 24 GB of memo
 
 !!! info "Privileged Access"
     If you need to run privileged docker containers, take a look at the [docker builder](docker-builder-vm.md).
+    
+### KVM-enabled Privileged Containers
+
+It is possible to run containers with [KVM](https://www.linux-kvm.org/) enabled. Some type of CI tasks can tremendously
+benefit from native visualization. For example, Android related tasks can benefit from running hardware accelerated
+emulators instead of software emulated ARM emulators.
+
+In order to enable KVM module for your `container`s simply add `kvm: true` to your `container` declaration. Here is an
+example of how to configured a task capable of running hardware accelerated Android emulators:
+
+ ```yaml
+task:
+  name: Integration Tests (x86)
+  container:
+    image: cirrusci/android-sdk:29
+    kvm: true
+  accel_check_script:
+    - sudo chown cirrus:cirrus /dev/kvm
+    - emulator -accel-check
+```
+
+!!! warning "Scheduling Times of KVM-enabled Containers"
+    Since of an additional visualization layer it takes about a minute to acquire necessary resources to start a task.
 
 ### Working with Private Registries
 
