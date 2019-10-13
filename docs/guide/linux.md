@@ -29,12 +29,12 @@ Containers on Community Cluster can use maximum 8.0 CPUs and up to 24 GB of memo
     
 ### KVM-enabled Privileged Containers
 
-It is possible to run containers with [KVM](https://www.linux-kvm.org/) enabled. Some type of CI tasks can tremendously
+It is possible to run containers with [KVM](https://www.linux-kvm.org/) enabled. Some types of CI tasks can tremendously
 benefit from native visualization. For example, Android related tasks can benefit from running hardware accelerated
 emulators instead of software emulated ARM emulators.
 
-In order to enable KVM module for your `container`s simply add `kvm: true` to your `container` declaration. Here is an
-example of how to configured a task capable of running hardware accelerated Android emulators:
+In order to enable KVM module for your `container`s, simply add `kvm: true` to your `container` declaration. Here is an
+example of how to configure a task capable of running hardware accelerated Android emulators:
 
  ```yaml
 task:
@@ -48,7 +48,7 @@ task:
 ```
 
 !!! warning "Scheduling Times of KVM-enabled Containers"
-    Since of an additional visualization layer it takes about a minute to acquire necessary resources to start a task.
+    Because of the additional visualization layer, it takes about a minute extra to acquire necessary resources to start a task.
 
 ### Working with Private Registries
 
