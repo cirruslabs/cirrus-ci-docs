@@ -36,7 +36,7 @@ emulators instead of software emulated ARM emulators.
 In order to enable KVM module for your `container`s, simply add `kvm: true` to your `container` declaration. Here is an
 example of how to configure a task capable of running hardware accelerated Android emulators:
 
- ```yaml
+```yaml
 task:
   name: Integration Tests (x86)
   container:
