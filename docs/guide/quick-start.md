@@ -60,3 +60,12 @@ Newly created PRs will also get Cirrus CI's status checks.
 !!! info "Life of a build"
     Please check [a high level overview of what's happening under the hood](build-life.md) when a changed is pushed
     and [this guide](writing-tasks.md) to learn more about how to write tasks.
+
+## Enabling New Repositories after Installation
+
+If you choose initially to allow Cirrus CI to access all of your repositories then simply push `.cirrus.yml` to start
+building your repository on Cirrus CI.
+
+If you choose initially to allow Cirrus CI to access only particular repositories then first add your new repository to
+the list of repositories Cirrus CI has access to via [this page](https://github.com/apps/cirrus-ci/installations/new) and
+then push `.cirrus.yml` to start building on Cirrus CI.
