@@ -1,3 +1,7 @@
+At the moment Cirrus CI only supports repositories hosted on GitHub. This guide will walk you through the installation process.
+If you are interested in a support for other code hosting platforms please fill up [this form](https://forms.gle/CkcxPnMjA2u5ctQf7)
+to help us prioritize the support and notify you once the support is available.
+
 Start by configuring the [Cirrus CI application](https://github.com/marketplace/cirrus-ci) from GitHub Marketplace.
 
 <img src="/assets/images/screenshots/github/marketplace/step1.png" />
@@ -8,7 +12,7 @@ Choose a plan for your personal account or for an organization you have admin wr
 
 GitHub Apps can be installed on all repositories or on repository-by-repository basis for granular access control. For
 example, Cirrus CI can be installed only on public repositories and will only have access to these public repositories.
-In contrast, classic OAuth Apps [don't have such restrictions](https://developer.github.com/apps/differences-between-apps/#what-can-github-apps-and-oauth-apps-access).  
+In contrast, classic OAuth Apps [don't have such restrictions](https://developer.github.com/apps/differences-between-apps/#what-can-github-apps-and-oauth-apps-access).
 
 <img src="/assets/images/screenshots/github/marketplace/step3.png" />
 
