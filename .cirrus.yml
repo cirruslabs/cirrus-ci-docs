@@ -47,7 +47,7 @@ task:
 task:
   name: Danger PR
   env:
-    DANGER_GITHUB_API_TOKEN: 
+    DANGER_GITHUB_API_TOKEN: ENCRYPTED[fbf2f9b7dc97cc3d960126b1540f19c36b96768c46b8eb99389e02b8c54080418d1fb90094dc2e3a36767df34acb5d5d]
   only_if: $CIRRUS_PR != ''
   install_script: yarn global add danger
   run_danger_script: danger ci
