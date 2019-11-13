@@ -2,7 +2,20 @@
 
 Cirrus CI exposes GraphQL API for integrators to use through `https://api.cirrus-ci.com/graphql` endpoint. Please check
 [Cirrus CI GraphQL Schema](https://github.com/cirruslabs/cirrus-ci-web/blob/master/schema.graphql) for a full list of 
-available types and methods.
+available types and methods. Here is an example of how to get a build for a particular SHA of a given repository:
+
+```bash
+curl -X POST --data \
+'{
+  "query": "query BuildBySHAQuery($owner: String!, $name: String!, $SHA: String) { searchBuilds(repositoryOwner: $owner, repositoryName: $name, SHA: $SHA) { id } }",
+  "variables": {
+    "owner": "ORGANIZATION",
+    "name": "REPOSITORY NAME",
+    "SHA": "SOME SHA"
+  }
+}' \
+https://api.cirrus-ci.com/graphql | python -m json.tool
+```
 
 ## Authorization
 
