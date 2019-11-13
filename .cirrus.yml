@@ -1,6 +1,7 @@
 container:
   cpu: 1
   memory: 1G
+  image: node:latest
 
 env:
   MKDOCS_VERSION: 4.4.3
@@ -18,16 +19,12 @@ pipe:
 task:
   name: Markdown Lint
   only_if: $CIRRUS_BRANCH != 'gh-pages'
-  container:
-    image: node:latest
   install_script: npm install -g markdownlint-cli
   lint_script: markdownlint --config=.markdownlint.yml docs/
 
 task:
   name: Spell Check
   only_if: $CIRRUS_BRANCH != 'gh-pages'
-  container:
-    image: node:latest
   install_tool_script:
     # WARNING: DO NOT try to cache this, symlinks will not be created and task will fail
     - npm install -g markdown-spellcheck@0.11.0
@@ -46,3 +43,11 @@ task:
     DEPLOY_TOKEN: ENCRYPTED[fbf2f9b7dc97cc3d960126b1540f19c36b96768c46b8eb99389e02b8c54080418d1fb90094dc2e3a36767df34acb5d5d]
   install_script: pip install --upgrade pymdown-extensions
   deploy_script: ./.ci/deploy.sh
+
+task:
+  name: Danger PR
+  env:
+    DANGER_GITHUB_API_TOKEN: 
+  only_if: $CIRRUS_PR != ''
+  install_script: yarn global add danger
+  run_danger_script: danger ci
