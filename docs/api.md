@@ -14,7 +14,7 @@ curl -X POST --data \
     "SHA": "SOME SHA"
   }
 }' \
-https://api.cirrus-ci.com/graphql | python -m json.tool | grep id | wc -l
+https://api.cirrus-ci.com/graphql | python -m json.tool
 ```
 
 ## Authorization
