@@ -650,6 +650,22 @@ task:
 
 You'll be able to manually trigger such paused tasks via Cirrus CI Web UI or directly from GitHub Checks page.
 
+## Task Execution Lock
+
+Some CI tasks perform external operations which are required to be executed one at a time. For example, parallel deploys
+to the same environment is usually a bad idea. In order to restrict parallel execution of a certain task within a repository,
+you can use `execution_lock` to specify a task's lock key, a unique string that will be used to make sure that any tasks with the same `execution_lock` string
+are executed one at a time. Here is an example of how to make sure deployments 
+on a specific branch *can not* run in parallel:
+
+```yaml
+task:
+  name: "Automatic Staging Deploy"
+  execution_lock: $CIRRUS_BRANCH
+```
+
+You'll be able to manually trigger such paused tasks via the [Cirrus CI Web Dashboard](https://cirrus-ci.com) or directly from the commit's `checks` page on GitHub.
+
 ## Required PR Labels
 
 Similar to [manual tasks](#manual-tasks) Cirrus CI can pause execution of tasks until a corresponding PR gets labeled.
