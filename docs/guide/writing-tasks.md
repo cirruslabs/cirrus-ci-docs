@@ -330,7 +330,8 @@ CI | true
 CIRRUS_CI | true
 CI_NODE_INDEX | Index of the current task within `CI_NODE_TOTAL` tasks
 CI_NODE_TOTAL | Total amount of unique tasks for a given `CIRRUS_BUILD_ID` build
-CONTINUOUS_INTEGRATION | true
+CONTINUOUS_INTEGRATION | `true`
+CIRRUS_API_CREATED | `true` if the current build was created through the [API](/api.md).
 CIRRUS_BASE_BRANCH | Base branch name if current build was triggered by a PR. For example `master`
 CIRRUS_BASE_SHA | Base SHA if current build was triggered by a PR
 CIRRUS_BRANCH | Branch name. For example `my-feature`
