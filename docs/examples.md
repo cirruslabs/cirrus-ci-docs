@@ -179,7 +179,7 @@ test_task:
 
 ## Gradle
 
-We recommend to use the [official Gradle Docker containers](https://hub.docker.com/_/gradle/) since they have Gradle specific configurations already set up. For example, standard `java` containers don't have 
+We recommend use of the [official Gradle Docker containers](https://hub.docker.com/_/gradle/) since they have Gradle specific configurations already set up. For example, standard Java containers don't have 
 a pre-configured user and as a result don't have `HOME` environment variable presented which makes Gradle complain.
 
 ### Caching
@@ -266,7 +266,7 @@ task:
 
 ## MySQL
 
-[Additional Containers feature](guide/writing-tasks.md#additional-containers) makes it super simple to run the same Docker
+The [Additional Containers feature](guide/writing-tasks.md#additional-containers) makes it super simple to run the same Docker
 MySQL image as you might be running in production for your application. Getting a running instance of the latest GA 
 version of MySQL can be as simple as the following six lines in your `.cirrus.yml`:
 
