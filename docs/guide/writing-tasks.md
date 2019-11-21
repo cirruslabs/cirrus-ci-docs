@@ -764,7 +764,7 @@ Additional container can be very handy in many scenarios. Please check [Cirrus C
     via `cpu` and `memory` fields.
     
 !!! tip "Port Mapping"
-    It's also possible to map ports of additional containers by using `<HOST_PORT>:<CONTAINER_PORT>` format for `port` field.
+    It's also possible to map ports of additional containers by using `<HOST_PORT>:<CONTAINER_PORT>` format for the `port` field.
     For example, `port: 80:8080` will map port `8080` of the container to be available on local port `80` within a task.
 
 !!! warning
