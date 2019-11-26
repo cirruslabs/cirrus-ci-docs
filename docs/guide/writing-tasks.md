@@ -502,7 +502,7 @@ publish_task:
 ```
 
 ??? tip "Task Names and Aliases"
-    It is possible to specify task name via `name` field. `lint_task` syntax is simply a syntactic sugar that will be
+    It is possible to specify the task's name via the `name` field. `lint_task` syntax is simply a syntactic sugar that will be
     expanded into:
 
     ```yaml
