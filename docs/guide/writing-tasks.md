@@ -501,7 +501,7 @@ publish_task:
   script: yarn run publish
 ```
 
-!!! tip "Task Names"
+??? tip "Task Names and Aliases"
     It is possible to specify task name via `name` field. `lint_task` syntax is simply a syntactic sugar that will be
     expanded into:
 
@@ -513,26 +513,46 @@ publish_task:
 
     Names can be also pretty complex:
 
-
     ```yaml
     task:
-      name: test (linux)
-      ...
-
-    task:
-      name: test (windows)
-      ...
-
-    task:
-      name: test (macOS)
-      ...
-
+      name: Tests Shard $TESTS_SPLIT
+      env:
+        matrix:
+          TESTS_SPLIT: 1/3
+          TESTS_SPLIT: 2/2
+          TESTS_SPLIT: 3/3
+      tests_script: ./.ci/tests.sh
+    
     deploy_task:
+      only_if: $CIRRUS_BRANCH == 'master'
       depends_on:
-        - test (linux)
-        - test (windows)
-        - test (macOS)
+        - Tests Shard 1/3
+        - Tests Shard 2/3
+        - Tests Shard 3/3
+      script: ./.ci/deploy.sh
       ...
+    ```
+    
+    Complex task names make it harder to list and **maintain** all of such task names in `depends_on` field. In order to 
+    make it simpler you can use `alias` field to have a short simplified name for several tasks to use in `depends_on`.
+    
+    Here is an example of a modified example above that leverages `alias` field:
+    
+    ```yaml hl_lines="3 13"
+    task:
+      name: Tests Shard $TESTS_SPLIT
+      alias: Tests
+      env:
+        matrix:
+          TESTS_SPLIT: 1/3
+          TESTS_SPLIT: 2/2
+          TESTS_SPLIT: 3/3
+      tests_script: ./.ci/tests.sh
+    
+    deploy_task:
+      only_if: $CIRRUS_BRANCH == 'master'
+      depends_on: Tests
+      script: ./.ci/deploy.sh
     ```
 
 ## Conditional Task Execution
