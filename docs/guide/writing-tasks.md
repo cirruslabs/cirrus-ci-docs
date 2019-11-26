@@ -533,10 +533,10 @@ publish_task:
       ...
     ```
     
-    Complex task names make it harder to list and **maintain** all of such task names in `depends_on` field. In order to 
-    make it simpler you can use `alias` field to have a short simplified name for several tasks to use in `depends_on`.
+    Complex task names make it difficult to list and **maintain** all of such task names in your `depends_on` field. In order to 
+    make it simpler you can use the `alias` field to have a short simplified name for several tasks to use in `depends_on`.
     
-    Here is an example of a modified example above that leverages `alias` field:
+    Here is a modified version of an example above that leverages the `alias` field:
     
     ```yaml hl_lines="3 13"
     task:
