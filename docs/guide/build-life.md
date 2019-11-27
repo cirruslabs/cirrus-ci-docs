@@ -1,28 +1,26 @@
-Any build starts with a change pushed to GitHub. Since Cirrus CI is a GitHub Application a webhook event 
-will be triggered by GitHub. From the webhook event Cirrus CI will parse a Git branch and a particular SHA 
-for the change. Based on parsed information a new build will be created.
+Any build starts with a change pushed to GitHub. Since Cirrus CI is a GitHub Application, a webhook event 
+will be triggered by GitHub. From the webhook event, Cirrus CI will parse a Git branch and the SHA 
+for the change. Based on said information, a new build will be created.
 
-After build creation Cirrus CI will use GitHub APIs to download a content of `.cirrus.yml` file for the SHA. Cirrus CI
-will parse it and create corresponding tasks defined in the configuration file.
+After build creation Cirrus CI will use GitHub's APIs to download a content of `.cirrus.yml` file for the SHA. Cirrus CI
+will evaluate it and create corresponding tasks.
 
-These tasks defined in `.cirrus.yml` file will be dispatched within Cirrus CI to different services responsible for scheduling on 
-[supported computing service](supported-computing-services.md). A scheduling service will use appropriate APIs to 
-schedule a VM instance or a Docker container on the particular computing service. The scheduling service will also 
-configure start-up script that downloads Cirrus CI agent, configures and starts it. Cirrus CI agent is a self-contained 
-executable written in Go which means it can be executed anywhere.
+These tasks (defined in the `.cirrus.yml` file) will be dispatched within Cirrus CI to different services responsible
+for scheduling on a [supported computing service](supported-computing-services.md).
+Cirrus CI's scheduling service will use appropriate APIs to create and manage a VM instance or a Docker container on the particular computing service. 
+The scheduling service will also configure start-up script that downloads the Cirrus CI agent, configures it to send logs back and starts it. Cirrus CI agent is a self-contained executable written in Go which means it can be executed anywhere.
 
-Cirrus CI agent will request commands to execute for a particular task and will stream back logs, caches and exit codes 
-of the commands upon execution.
-
-Once task finishes the same scheduling service will clean up a VM or a container.
+Cirrus CI's agent will request commands to execute for a particular task and will stream back logs, caches,
+artifacts and exit codes of the commands upon execution.
+Once the task finishes, the scheduling service will clean up the used VM or container.
 
 ![communication schema](/assets/images/cirrus-ci-communication.svg)
 
-Image above is a diagram of how Cirrus CI schedules a task on Google Cloud Platform. <span style="color:#2196F3">Blue arrows</span> 
-represent API calls and <span style="color:#AED581">green arrow</span> represents unidirectional communication between 
-an agent inside a VM or a container and Cirrus CI.
+This is a diagram of how Cirrus CI schedules a task on Google Cloud Platform (the community cluster's engine).
+The <span style="color:#2196F3">blue</span> arrows represent API calls and the <span style="color:#AED581">green</span> arrow
+represents unidirectional communication between an agent inside a VM or a container and Cirrus CI.
+Other chores such as health checking of the agent and GitHub status reporting happen in real time as a task is running.
 
-Other things like health checking of the agent and GitHub status reporting are happening at same time as a task is running 
-but the main flow was described above. Straight forward and nothing magical. :sweat_smile:
+Straight forward and nothing magical. :sweat_smile:
 
-For any question please use official [support channels](../support.md).
+For any questions, feel free to [contact us](../support.md).
