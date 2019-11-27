@@ -515,7 +515,7 @@ publish_task:
 
     ```yaml
     task:
-      name: Tests Shard $TESTS_SPLIT
+      name: Test Shard $TESTS_SPLIT
       env:
         matrix:
           TESTS_SPLIT: 1/3
@@ -526,9 +526,9 @@ publish_task:
     deploy_task:
       only_if: $CIRRUS_BRANCH == 'master'
       depends_on:
-        - Tests Shard 1/3
-        - Tests Shard 2/3
-        - Tests Shard 3/3
+        - Test Shard 1/3
+        - Test Shard 2/3
+        - Test Shard 3/3
       script: ./.ci/deploy.sh
       ...
     ```
@@ -540,7 +540,7 @@ publish_task:
     
     ```yaml hl_lines="3 13"
     task:
-      name: Tests Shard $TESTS_SPLIT
+      name: Test Shard $TESTS_SPLIT
       alias: Tests
       env:
         matrix:
