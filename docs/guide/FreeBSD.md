@@ -20,11 +20,12 @@ task:
 
 Any of the official FreeBSD VMs on Google Cloud Platform are supported. Here are a few of them which are self explanatory:
 
-* `freebsd-13-0-snap`
-* `freebsd-12-0`
-* `freebsd-11-3-snap` (stable `freebsd-11-3` doesn't boot properly at the moment)
-* `freebsd-11-2`
-* `freebsd-10-4`
+* `freebsd-13-0-snap` (13.0-CURRENT)
+* `freebsd-12-1-snap` (12.1-STABLE)
+* `freebsd-12-1`      (12.1-RELEASE)
+* `freebsd-12-0`      (12.0-RELEASE)
+* `freebsd-11-3-snap` (11.3-STABLE)
+* `freebsd-11-3`      (11.3-RELEASE, doesn't boot properly at the moment)
 
 It's also possible to specify a concrete version of an image by name via `image_name` field. To get a full list of
 available images please run the following [gcloud](https://cloud.google.com/sdk/gcloud/) command:
