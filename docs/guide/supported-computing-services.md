@@ -229,7 +229,7 @@ platform of an image like this:
 ```yaml
 gce_instance:
   image_project: freebsd-org-cloud-dev
-  image_family: freebsd-12-0
+  image_family: freebsd-12-1
   platform: FreeBSD
   zone: us-central1-a
   cpu: 8
