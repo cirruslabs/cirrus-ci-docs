@@ -200,6 +200,7 @@ check_task:
     - rm -rf ~/.gradle/caches/$GRADLE_VERSION/
     - rm -rf ~/.gradle/caches/transforms-1
     - rm -rf ~/.gradle/caches/journal-1
+    - rm -rf ~/.gradle/caches/jars-3/*/buildSrc.jar
     - find ~/.gradle/caches/ -name "*.lock" -type f -delete
 ```
 
