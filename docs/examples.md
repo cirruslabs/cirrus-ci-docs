@@ -211,17 +211,34 @@ Here is how [HTTP Cache](guide/writing-tasks.md#http-cache) can be used with Gra
 ```groovy
 ext.isCiServer = System.getenv().containsKey("CIRRUS_CI")
 ext.isMasterBranch = System.getenv()["CIRRUS_BRANCH"] == "master"
+ext.buildCacheHost = System.getenv().getOrDefault("CIRRUS_HTTP_CACHE_HOST", "localhost:12321")
 
 buildCache {
   local {
     enabled = !isCiServer
   }
   remote(HttpBuildCache) {
-    url = 'http://' + System.getenv().getOrDefault("CIRRUS_HTTP_CACHE_HOST", "localhost:12321") + "/"
+    url = "http://${buildCacheHost}/"
     enabled = isCiServer
     push = isMasterBranch
   }
 }
+```
+
+If your project uses a `buildSrc` directory, the build cache configuration should also be applied to `buildSrc/settings.gradle`.
+
+To do this, put the build cache configuration above into a separate `gradle/buildCacheSettings.gradle` file, then apply it to both your `settings.gradle` and `buildSrc/settings.gradle`.
+
+In `settings.gradle`:
+
+```groovy
+apply from: new File(settingsDir, 'gradle/buildCacheSettings.gradle')
+```
+
+In `buildSrc/settings.gradle`:
+
+```groovy
+apply from: new File(settingsDir, '../gradle/buildCacheSettings.gradle')
 ```
 
 Please make sure you are running Gradle commands with `--build-cache` flag or have `org.gradle.caching` enabled in `gradle.properties` file.
