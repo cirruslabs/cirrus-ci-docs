@@ -1,4 +1,4 @@
-A `task` simply defines a sequence of [instructions](#supported-instructions) to execute and an [execution environment](#execution-environment)
+A `task` defines a sequence of [instructions](#supported-instructions) to execute and an [execution environment](#execution-environment)
 to execute these instructions in. Let's see a line-by-line example of a `.cirrus.yml` configuration file first:
 
 ```yaml
@@ -42,7 +42,7 @@ task:
 ```
 
 !!! tip "Task Naming"
-    To name a task one can simply use the `name` field. `foo_task` syntax is simply a syntactic sugar. Separate name
+    To name a task one can use the `name` field. `foo_task` syntax is a syntactic sugar. Separate name
     field is very useful when you want to have a rich task name:
 
     ```yaml
@@ -238,7 +238,7 @@ A list of some of the basic types supported can be found [here](https://develope
 #### Artifact Parsing
 
 Cirrus CI supports parsing artifacts in order to extract information that can be presented in the UI for a [better user experience](https://medium.com/cirruslabs/github-annotations-support-227d179cde31).
-Simply use `format` field of an artifact instruction to specify artifact's format:
+Use the `format` field of an artifact instruction to specify artifact's format (mimetypes):
 
 ```yaml
 junit_artifacts:
@@ -502,7 +502,7 @@ publish_task:
 ```
 
 ??? tip "Task Names and Aliases"
-    It is possible to specify the task's name via the `name` field. `lint_task` syntax is simply a syntactic sugar that will be
+    It is possible to specify the task's name via the `name` field. `lint_task` syntax is a syntactic sugar that will be
     expanded into:
 
     ```yaml
@@ -581,7 +581,7 @@ Cirrus CI supports the `only_if` and `skip` keywords in order to provide such fl
 <!-- markdownlint-enable MD031 -->
 
 !!! tip "Skip CI Completely"
-    Simply include `[skip ci]` or `[ci skip]` in the first line of your commit message in order to skip CI execution for a commit completely.
+    Just include `[skip ci]` or `[ci skip]` in the first line of your commit message in order to skip CI execution for a commit completely.
 
     If you push multiple commits at the same time, only the first line of the last commit message will be checked for `[skip ci]`
     or `[ci skip]`.
@@ -690,7 +690,7 @@ You'll be able to manually trigger such paused tasks via the [Cirrus CI Web Dash
 
 Similar to [manual tasks](#manual-tasks) Cirrus CI can pause execution of tasks until a corresponding PR gets labeled.
 This can be particular useful when you'd like to do an initial review before running all unit and integration
-tests on every [supported platform](supported-computing-services.md). Simply use `required_pr_labels` field to specify
+tests on every [supported platform](supported-computing-services.md). Use the `required_pr_labels` field to specify
 a list of labels a PR requires to have in order to trigger a task. Here is a simple example of `.cirrus.yml` config
 that automatically runs a linting tool but requires `initial-review` label being presented in order to run tests:
 
@@ -797,13 +797,13 @@ Cirrus CI provides a way to embed a badge that can represent status of your buil
 
 For example, this is a badge for `cirruslabs/cirrus-ci-web` repository that contains Cirrus CI's front end: [![Passing build badge example](https://api.cirrus-ci.com/github/cirruslabs/cirrus-ci-web.svg)](https://github.com/cirruslabs/cirrus-ci-web)
 
-In order to embed such a check into your ReadMe file or your website, simply use a URL to a badge that looks like this:
+In order to embed such a check into a "read-me" file or your website, just use a URL to a badge that looks like this:
 
 ```yaml
 https://api.cirrus-ci.com/github/<USER OR ORGANIZATION>/<REPOSITORY>.svg
 ```
 
-If you want a badge for a particular branch, simply use `?branch=<BRANCH NAME>` query parameter (at the end of the URL) like this:
+If you want a badge for a particular branch, use the `?branch=<BRANCH NAME>` query parameter (at the end of the URL) like this:
 
 ```yaml
 https://api.cirrus-ci.com/github/<USER OR ORGANIZATION>/<REPOSITORY>.svg?branch=<BRANCH NAME>
@@ -811,7 +811,7 @@ https://api.cirrus-ci.com/github/<USER OR ORGANIZATION>/<REPOSITORY>.svg?branch=
 
 By default, Cirrus picks the latest build in a final state for the repository or a particular branch if `branch` parameter is specified. It's also possible to explicitly set a concrete build to use with `?buildId=<BUILD ID>` query parameter.
 
-If you want a badge for a particular task within the latest finished build, simply use `?task=<TASK NAME>` query parameter (at the end of the URL) like this:
+If you want a badge for a particular task within the latest finished build, use the `?task=<TASK NAME>` query parameter (at the end of the URL) like this:
 
 ```yaml
 https://api.cirrus-ci.com/github/<USER OR ORGANIZATION>/<REPOSITORY>.svg?task=tests
