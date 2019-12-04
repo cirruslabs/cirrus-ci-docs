@@ -14,9 +14,9 @@ within your current billing.
 Cirrus CI leverages elasticity of the modern clouds to always have available resources to process your builds.
 **Engineers should never wait for builds to start**.
 
-## Bring you own infrastructure 
+## Bring your own infrastructure 
 
-Cirrus CI allows to [bring your own infrastructure](guide/supported-computing-services.md) for your full control over security and for easy of integration with
+Cirrus CI supports [bringing your own infrastructure](guide/supported-computing-services.md) for full control over security and for easy integration with
 your current workflow.
 
 <p align="center">
@@ -50,7 +50,7 @@ Check [Quick Start](guide/quick-start.md) guide for more features.
 
 Here is a high level comparison with popular continuous-integration-as-a-service solutions:
 
-Name      | Linux Support           | Windows Support         | macOS Support             | FreeBSD Support            | Customizable CPU/Memory | Pricing
+**Name**      | **Linux Support**           | **Windows Support**         | **macOS Support**             | **FreeBSD Support**            | **Customizable CPU/Memory** | **Pricing**
 ----------| ----------------------  | ----------------------- | ------------------------  | ------------------------ | ----------------------- | -----------------------
 Cirrus CI | [:white_check_mark:][1] | [:white_check_mark:][2] | [:white_check_mark:][3]   | [:white_check_mark:][4]  | :white_check_mark:      | Only for used resources + [discounts][5]
 Travis CI | :white_check_mark:      | :white_check_mark:      | :white_check_mark:        | :x:                      | :x:                     | Max parallel builds
