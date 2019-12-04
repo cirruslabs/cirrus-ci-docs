@@ -23,4 +23,12 @@ Other chores such as health checking of the agent and GitHub status reporting ha
 
 Straight forward and nothing magical. :sweat_smile:
 
+## Visual Representation
+
+Too many words? Here is a diagram as to how builds are executed:
+
+![diagram](https://raw.githubusercontent.com/RDIL/cirrus-ci-diagrams/master/cirrus-flow-diagram.jpg)
+
+-----
+
 For any questions, feel free to [contact us](../support.md).
