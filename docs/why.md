@@ -3,8 +3,8 @@
 * "Why yet another CI? There are gazillions of them already!"
 * "We have X already configured. It's working for us. Why should we switch?"
 
-These are all valid concerns. And at [Cirrus Labs](http://cirruslabs.org/) we had them all before we decided to build a new CI. 
-We wouldn't have built it if we didn't think it's necessary and there is no need for a better CI.
+These are all valid concerns. Here at [Cirrus Labs](http://cirruslabs.org/), we tried them all before we decided to build a new CI. 
+We wouldn't have built it if we didn't think it was necessary and there was no need for a better CI.
 
 There are continuous integration systems that have been in development for 10+ years. They are super flexible and 
 can be configured for almost any workflow. But this flexibility and long history bring some fundamental problems:
@@ -13,7 +13,9 @@ can be configured for almost any workflow. But this flexibility and long history
 * Which plugins to install and which to uninstall?
 * How to configure builds?
 * How to configure auto-scalable agent pools? 
-* How to update agent pools so as to not affect builds in flight. Or old release branches can still be executed.
+* How to update agent pools...
+  * so as to not affect builds in flight?
+  * so old release branches can still be executed?
 
 Basically there should be someone very knowledgeable to properly configure and **maintain** CI.
 
