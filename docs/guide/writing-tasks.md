@@ -703,7 +703,7 @@ test_task:
   # ...
 ```
 
-**Note:** `required_pr_labels` has no affect on tasks created for non-PR builds.
+**Note:** `required_pr_labels` has no effect on tasks created for non-PR builds.
 
 You can also require multiple labels to continue executing the task for even more flexibility:
 
