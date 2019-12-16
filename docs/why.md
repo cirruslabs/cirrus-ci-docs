@@ -14,8 +14,8 @@ can be configured for almost any workflow. But this flexibility and long history
 * How to configure builds?
 * How to configure auto-scalable agent pools? 
 * How to update agent pools...
-  * so as to not affect builds in flight?
-  * so old release branches can still be executed?
+    * so as to not affect builds in flight?
+    * so old release branches can still be executed?
 
 Basically there should be someone very knowledgeable to properly configure and **maintain** CI.
 
