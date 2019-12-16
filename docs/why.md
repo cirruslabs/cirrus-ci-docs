@@ -13,7 +13,7 @@ can be configured for almost any workflow. But this flexibility and long history
 * Which plugins to install and which to uninstall?
 * How to configure builds?
 * How to configure auto-scalable agent pools? 
-* How to update agent pools so as to not affect builds in flight. Or old release branches can still be executed.
+* How to update agent pools so as to not to affect builds in flight. Or old release branches can still be executed.
 
 Basically there should be someone very knowledgeable to properly configure and **maintain** CI.
 
