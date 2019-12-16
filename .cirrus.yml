@@ -11,9 +11,7 @@ pipe:
   steps:
     - image: squidfunk/mkdocs-material:$MKDOCS_VERSION
       install_script: |
-        pip install --upgrade \
-          pymdown-extensions \
-          mkdocs-git-revision-date-localized-plugin
+        pip install --upgrade -r requirements.txt
       build_script: mkdocs build
     - image: raviqqe/liche:latest
       validate_script: /liche --document-root=site --recursive site/
@@ -47,5 +45,5 @@ task:
     image: squidfunk/mkdocs-material:$MKDOCS_VERSION
   env:
     DEPLOY_TOKEN: ENCRYPTED[fbf2f9b7dc97cc3d960126b1540f19c36b96768c46b8eb99389e02b8c54080418d1fb90094dc2e3a36767df34acb5d5d]
-  install_script: pip install --upgrade pymdown-extensions
+  install_script: pip install --upgrade -r requirements.txt
   deploy_script: ./.ci/deploy.sh

@@ -23,4 +23,6 @@ Other chores such as health checking of the agent and GitHub status reporting ha
 
 Straight forward and nothing magical. :sweat_smile:
 
+-----
+
 For any questions, feel free to [contact us](../support.md).
