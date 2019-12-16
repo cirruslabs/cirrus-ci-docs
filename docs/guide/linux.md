@@ -12,7 +12,7 @@ By default a container is given 2 CPUs and 4 GB of memory but it can be configur
 container:
   image: openjdk:8-jdk
   cpu: 4
-  memory: 12
+  memory: 12G
 
 task:
   script: ...

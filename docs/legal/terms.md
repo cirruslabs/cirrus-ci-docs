@@ -261,5 +261,3 @@ flood or other acts of God, labor conditions, power failures, and Internet distu
 
 We may assign this contract at any time to any parent, subsidiary, or any affiliated company, or as part of the sale to, 
 merger with, or other transfer of our company to another entity.
-
-This page was last updated on 02/03/2019.
