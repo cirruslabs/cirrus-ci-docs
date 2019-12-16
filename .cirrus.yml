@@ -3,15 +3,14 @@ container:
   memory: 1G
 
 env:
-  MKDOCS_VERSION: 4.6.0
+  MKDOCS_VERSION: 4.5.1
 
 pipe:
   name: Build Site and Validate Links
   only_if: $CIRRUS_BRANCH != 'gh-pages'
   steps:
     - image: squidfunk/mkdocs-material:$MKDOCS_VERSION
-      install_script: |
-        pip install --upgrade -r requirements.txt
+      install_script: pip install --upgrade pymdown-extensions
       build_script: mkdocs build
     - image: raviqqe/liche:latest
       validate_script: /liche --document-root=site --recursive site/
@@ -45,5 +44,5 @@ task:
     image: squidfunk/mkdocs-material:$MKDOCS_VERSION
   env:
     DEPLOY_TOKEN: ENCRYPTED[fbf2f9b7dc97cc3d960126b1540f19c36b96768c46b8eb99389e02b8c54080418d1fb90094dc2e3a36767df34acb5d5d]
-  install_script: pip install --upgrade -r requirements.txt
+  install_script: pip install --upgrade pymdown-extensions
   deploy_script: ./.ci/deploy.sh

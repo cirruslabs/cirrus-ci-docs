@@ -35,6 +35,7 @@ theme:
 extra_css:
   - 'stylesheets/extra.css'
 
+
 markdown_extensions:
   - markdown.extensions.admonition
   - markdown.extensions.codehilite:
@@ -61,10 +62,6 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tilde
-
-plugins:
-  - git-revision-date-localized:
-      type: timeago
 
 nav:
   - Home:
