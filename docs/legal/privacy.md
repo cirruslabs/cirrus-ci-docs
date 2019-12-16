@@ -104,5 +104,3 @@ Although most changes are likely to be minor, Cirrus Labs Inc may change its Pri
 and in Cirrus Labs Inc's sole discretion. Cirrus Labs Inc encourages visitors to frequently check this page for any changes 
 to its Privacy Policy. Your continued use of this site after any change in this Privacy Policy will constitute your 
 acceptance of such change.
-
-This page was last updated on 05/23/2019.
