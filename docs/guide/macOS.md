@@ -16,9 +16,9 @@ task:
 * `mojave-base` - vanilla macOS with Brew and Command Line Tools pre-installed.
 * `mojave-xcode-10.3` - based of `mojave-base` with Xcode and couple other packages pre-installed: 
   `cocoapods`, `fastlane`, `rake` and `xctool`.
-* `mojave-xcode-11.2.1` - based of `mojave-base` with Xcode 11.2.1 GM and couple other packages pre-installed: 
+* `mojave-xcode-11.3` - based of `mojave-base` with Xcode 11.3 and couple other packages pre-installed: 
   `cocoapods`, `fastlane`, `rake` and `xctool`.
-* `mojave-xcode-11.2.1-flutter` - based of `mojave-xcode-11.2.1` with pre-installed [Flutter](https://flutter.dev/) and Android SDK/NDK.
+* `mojave-xcode-11.3-flutter` - based of `mojave-xcode-11.3` with pre-installed [Flutter](https://flutter.dev/) and Android SDK/NDK.
 
 Note that there are couple of aliases available for images:
 
