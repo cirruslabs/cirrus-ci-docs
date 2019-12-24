@@ -259,7 +259,7 @@ gce_container:
 
 Note that `gce_container` always runs containers in privileged mode.
 
-If your VM image has [Nested Visualization Enabled](https://cloud.google.com/compute/docs/instances/enable-nested-virtualization-vm-instances)
+If your VM image has [Nested Virtualization Enabled](https://cloud.google.com/compute/docs/instances/enable-nested-virtualization-vm-instances)
 it's possible to use KVM from the container by specifying `enable_nested_virtualization` flag. Here is an example of
 using KVM-enabled container to run a hardware accelerated Android emulator:
 
