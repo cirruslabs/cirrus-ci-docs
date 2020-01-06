@@ -16,13 +16,12 @@ Cirrus CI will execute [scripts instructions](writing-tasks.md#script-instructio
     
 ## OS Versions
 
-By default, Cirrus CI assumes that the container image's host OS is Windows Server 2016. Please specify `os_version`
-filed to override it. Cirrus CI support all versions of Windows Containers including: `2016`, `1709`, `1803` and `2019`.
+By default, Cirrus CI assumes that the container image's host OS is Windows Server 2019. You can specify `os_version`
+to override it. Cirrus CI supports most versions of Windows Containers, including: `1709`, `1803` and `2019`.
 
-!!! warning "Deprecation of 2016 Windows Docker Containers"
+!!! warning "Removal of 2016 Windows Docker Containers"
     Windows Containers 2019 got many performance improvements and image size optimizations comparing to 2016 version. 
-    Therefore Cirrus CI will switch the default `os_version` to `2019` on September 16th 2019 and completely remove support
-    of 2016 Windows Containers on community cluster starting from October 1st 2019.
+    As such, Cirrus CI has completely removed support for 2016 Windows Containers on the community cluster.
 
 ```yaml
 windows_container:
