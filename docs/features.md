@@ -55,7 +55,7 @@ Here is a high level comparison with popular continuous-integration-as-a-service
 Cirrus CI       | [:white_check_mark:][1] | [:white_check_mark:][2] | [:white_check_mark:][3]   | [:white_check_mark:][4]  | :white_check_mark:          | Only for used resources + [discounts][5]
 Travis CI       | :white_check_mark:      | :white_check_mark:      | :white_check_mark:        | :x:                      | :x:                         | Max parallel builds
 CircleCI        | :white_check_mark:      | :x:                     | :white_check_mark:        | :x:                      | :white_check_mark:          | Max parallel builds
-AppVeyor        | :white_check_mark:      | :white_check_mark:      | :x:                       | :x:                      | :x:                         | Max parallel builds
+AppVeyor        | :white_check_mark:      | :white_check_mark:      | :white_check_mark:        | :x:                      | :x:                         | Max parallel builds
 Azure Pipelines | :white_check_mark:      | :white_check_mark:      | :white_check_mark:        | :x:                      | :x:                         | Max parallel builds + build minutes
 
 [1]: guide/linux.md
