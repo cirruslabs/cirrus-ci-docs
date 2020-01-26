@@ -106,7 +106,7 @@ like in the example below:
 check_task:
   compile_script: gradle --parallel classes testClasses
   check_script:
-    - echo "Here comes more then one script!"
+    - echo "Here comes more than one script!"
     - printenv
     - gradle check
 ```
@@ -224,7 +224,7 @@ build_and_test_task:
 
 #### Artifact Type
 
-If you want the Cirrus CI API to return a mimetype other then `application/octet-stream`, for example if you wanted certain files to download in a way you don't need to change the extension for, you can specify the `type` parameter, for example:
+If you want the Cirrus CI API to return a mimetype other than `application/octet-stream`, for example if you wanted certain files to download in a way you don't need to change the extension for, you can specify the `type` parameter, for example:
 
 ```yaml
   my_task:
