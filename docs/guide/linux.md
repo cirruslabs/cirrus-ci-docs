@@ -29,7 +29,7 @@ Containers on Community Cluster can use maximum 8.0 CPUs and up to 24 GB of memo
     
 ### KVM-enabled Privileged Containers
 
-It is possible to run containers with [KVM](https://www.linux-kvm.org/) enabled. Some types of CI tasks can tremendously
+It is possible to run containers with KVM enabled. Some types of CI tasks can tremendously
 benefit from native virtualization. For example, Android related tasks can benefit from running hardware accelerated
 emulators instead of software emulated ARM emulators.
 
