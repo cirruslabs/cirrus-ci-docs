@@ -538,3 +538,25 @@ test_task:
   test_script: cargo test
   before_cache_script: rm -rf $CARGO_HOME/registry/index
 ```
+
+??? tip "FreeBSD Caveats"
+
+    Vanila FreeBSD VMs don't set some environment variables required by Cargo for effective caching.
+    Specifying `HOME` environment variable to some arbitraly location should fix caching:
+
+    ```yaml
+    freebsd_instance:
+      image-family: freebsd-12-0
+    
+    task:
+      name: cargo test (stable)
+      env:
+        HOME: /tmp # cargo needs it
+      install_script: pkg install -y rust
+      cargo_cache:
+        folder: $HOME/.cargo/registry
+        fingerprint_script: cat Cargo.lock
+      build_script: cargo build --all
+      test_script: cargo test --all --all-targets
+      before_cache_script: rm -rf $HOME/.cargo/registry/index
+    ```
