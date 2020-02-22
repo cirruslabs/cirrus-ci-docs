@@ -64,7 +64,7 @@ docker build --cache-from myrepo/foo:latest \
 ### Dockerfile as a CI environment
 
 With Docker Builder there is no need to build and push custom containers so they can be used as an environment to run CI tasks in. 
-Cirrus CI can do it for you! Just specify path to a `Dockerfile` with the `dockerfile` field for you container 
+Cirrus CI can do it for you! Just declare a path to a `Dockerfile` with the `dockerfile` field for you container 
 declaration in your `.cirrus.yml` like this:
 
 ```yaml
@@ -94,7 +94,7 @@ You will see such `build_docker_image_HASH` tasks in the UI.
 
     To use `dockerfile` with `gke_container` you first need to create a VM with Docker installed within your GCP project.
     This image will be used to perform building of Docker images for caching. Once this image is available, for example, by 
-    `MY_DOCKER_VM` name, you can simply use it like this:
+    `MY_DOCKER_VM` name, you can use it like this:
     
     ```yaml
     gke_container:
@@ -110,7 +110,7 @@ You will see such `build_docker_image_HASH` tasks in the UI.
 
 ### Windows Support
 
-Docker builder also supports building Windows Docker containers. Simply specify `platform` and `os_version` fields:
+Docker builder also supports building Windows Docker containers - use the `platform` and `os_version` fields:
 
 ```yaml
 docker_builder:
