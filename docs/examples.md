@@ -474,7 +474,7 @@ rspec_task:
 
 ??? tip "Git Dependencies"
     When you are using dependencies from Git repositories and therefore can't use `Gemfile.lock` you can always
-    run `bundle install` instead of running only for cache population. Cirrus Agent is clever enough to only re-upload 
+    run `bundle install` instead of running it only for cache population. Cirrus Agent is clever enough to only re-upload 
     cache entry only if cached folder has been changed during task execution. Here is an example of a `.cirrus.yml`
     that always runs `bundle install`:
     
