@@ -465,13 +465,30 @@ container:
   image: ruby:latest
 
 rspec_task:
-  install_bundler_script: gem install bundler
   bundle_cache:
     folder: /usr/local/bundle
     fingerprint_script: echo $RUBY_VERSION && cat Gemfile && cat Gemfile.lock
     populate_script: bundle install
   rspec_script: bundle exec rspec
 ```
+
+??? tip "Git Dependencies"
+    When you are using dependencies from Git repositories and therefore can't use `Gemfile.lock` you can always
+    run `bundle install` instead of running it only for cache population. Cirrus Agent is clever enough to only re-upload 
+    cache entry only if cached folder has been changed during task execution. Here is an example of a `.cirrus.yml`
+    that always runs `bundle install`:
+    
+    ```yaml
+    container:
+      image: ruby:latest
+    
+    rspec_task:
+      bundle_cache:
+        folder: /usr/local/bundle
+        fingerprint_script: echo $RUBY_VERSION && cat Gemfile && cat *.gemspec
+      install_script: bundle install
+      rspec_script: bundle exec rspec
+    ```
 
 !!! tip "Test Parallelization"
     It's super easy to add intelligent test splitting by using [Knapsack Pro](https://knapsackpro.com/) and [matrix modification](guide/writing-tasks.md#matrix-modification).
