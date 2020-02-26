@@ -162,7 +162,7 @@ To avoid a time-costly re-upload, remove volatile files from the cache (for exam
 If your dependencies are updated often, please pay attention to `fingerprint_script` and make sure it will produce different outputs for different versions of your dependency (ideally just print locked versions of dependencies).
 
 `reupload_on_changes` is an *optional* field that can specify whether Cirrus Agent should check if 
-contents of cached `folder` have chaneged during task execution and reuplaod a cache entry in case of any changes.
+contents of cached `folder` have changed during task execution and reupload a cache entry in case of any changes.
 `reupload_on_changes` option is enabled by defaut and Cirrus Agent will detect additions, deletions and modifications
 of any files under specified `folder`. All of the detected changes will be logged under `Upload '$CACHE_NAME' cache` instructions for easier debugging of chache invalidations.
 
