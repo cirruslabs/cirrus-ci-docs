@@ -343,6 +343,7 @@ CIRRUS_BRANCH | Branch name. For example `my-feature`
 CIRRUS_BUILD_ID | Unique build ID
 CIRRUS_CHANGE_IN_REPO | Git SHA
 CIRRUS_CHANGE_MESSAGE | Commit message or PR title and description, depending on trigger event (Non-PRs or PRs respectively).
+CIRRUS_CRON | [Cron Build](#cron-builds) name if builds was triggered by Cron.
 CIRRUS_DEFAULT_BRANCH | Default repository branch name. For example `master`
 CIRRUS_LAST_GREEN_BUILD_ID | The build id of the last successful build on the same branch at the time of the current build creation.
 CIRRUS_LAST_GREEN_CHANGE | Corresponding to `CIRRUS_LAST_GREEN_BUILD_ID` SHA (used in [`changesInclude` function](#supported-functions)).
@@ -430,6 +431,15 @@ a relation between an encrypted variable and a repository for which the encrypte
     Owner of forked repository can re-enable the task, if they have the required sensitive data, by encrypting
     the variable by themselves and editing both the encrypted variable and repo-owner condition
     in the `.cirrus.yml` file.
+
+## Cron Builds
+
+It is possible to configure invocations of re-occurring builds via a well-known Cron expressions. Cron builds can be
+configured on a repository's settings page instead of configuring them in `.cirrus.yml`.
+
+It's possible to configure several cron builds with unique `names` which will be avaialbale via `CIRRUS_CRON` [environment variable](#environment-variables).
+Each cron build should specify *branch* to trigger new builds for and a cron expression compatible with Quarts. Please use
+[this generator](https://www.freeformatter.com/cron-expression-generator-quartz.html) to generate/validate your expressions.
 
 ## Matrix Modification
 
