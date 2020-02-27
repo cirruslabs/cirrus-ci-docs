@@ -438,7 +438,7 @@ It is possible to configure invocations of re-occurring builds via the well-know
 configured on a repository's settings page (not in `.cirrus.yml`).
 
 It's possible to configure several cron builds with unique `names` which will be available via `CIRRUS_CRON` [environment variable](#environment-variables).
-Each cron build should specify *branch* to trigger new builds for and a cron expression compatible with Quarts. You can use
+Each cron build should specify *branch* to trigger new builds for and a cron expression compatible with Quartz. You can use
 [this generator](https://www.freeformatter.com/cron-expression-generator-quartz.html) to generate/validate your expressions.
 
 **Note:** Cron Builds are timed with the UTC timezone.
