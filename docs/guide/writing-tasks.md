@@ -435,7 +435,7 @@ a relation between an encrypted variable and a repository for which the encrypte
 ## Cron Builds
 
 It is possible to configure invocations of re-occurring builds via the well-known Cron expressions. Cron builds can be
-configured on a repository's settings page instead of configuring them in `.cirrus.yml`.
+configured on a repository's settings page (not in `.cirrus.yml`).
 
 It's possible to configure several cron builds with unique `names` which will be available via `CIRRUS_CRON` [environment variable](#environment-variables).
 Each cron build should specify *branch* to trigger new builds for and a cron expression compatible with Quarts. You can use
