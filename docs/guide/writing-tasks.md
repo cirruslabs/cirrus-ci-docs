@@ -434,14 +434,14 @@ a relation between an encrypted variable and a repository for which the encrypte
 
 ## Cron Builds
 
-It is possible to configure invocations of re-occurring builds via a well-known Cron expressions. Cron builds can be
+It is possible to configure invocations of re-occurring builds via the well-known Cron expressions. Cron builds can be
 configured on a repository's settings page instead of configuring them in `.cirrus.yml`.
 
-It's possible to configure several cron builds with unique `names` which will be avaialbale via `CIRRUS_CRON` [environment variable](#environment-variables).
-Each cron build should specify *branch* to trigger new builds for and a cron expression compatible with Quarts. Please use
+It's possible to configure several cron builds with unique `names` which will be available via `CIRRUS_CRON` [environment variable](#environment-variables).
+Each cron build should specify *branch* to trigger new builds for and a cron expression compatible with Quarts. You can use
 [this generator](https://www.freeformatter.com/cron-expression-generator-quartz.html) to generate/validate your expressions.
 
-**Note:** Cron Builds are using UTC timezone.
+**Note:** Cron Builds are timed with the UTC timezone.
 
 ## Matrix Modification
 
