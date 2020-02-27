@@ -441,6 +441,8 @@ It's possible to configure several cron builds with unique `names` which will be
 Each cron build should specify *branch* to trigger new builds for and a cron expression compatible with Quarts. Please use
 [this generator](https://www.freeformatter.com/cron-expression-generator-quartz.html) to generate/validate your expressions.
 
+**Note:** Cron Builds are using UTC timezone.
+
 ## Matrix Modification
 
 Sometimes it's useful to run the same task against different software versions. Or run different batches of tests based
