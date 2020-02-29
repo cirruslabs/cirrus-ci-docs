@@ -457,8 +457,9 @@ done
 
 ## Ruby
 
-Official [Ruby Docker images](https://hub.docker.com/_/ruby/) can be used for builds. Here is an example of a `.cirrus.yml` 
-that caches installed gems based on contents of `Gemfile.lock` and runs `rspec`:
+Official [Ruby Docker images](https://hub.docker.com/_/ruby/) can be used for builds.
+Here is an example of a `.cirrus.yml` that caches installed gems based on Ruby version,
+contents of `Gemfile.lock`, and runs `rspec`:
 
 ```yaml
 container:
@@ -467,16 +468,19 @@ container:
 rspec_task:
   bundle_cache:
     folder: /usr/local/bundle
-    fingerprint_script: echo $RUBY_VERSION && cat Gemfile && cat Gemfile.lock
+    fingerprint_script:
+      - echo $RUBY_VERSION
+      - cat Gemfile.lock
     populate_script: bundle install
   rspec_script: bundle exec rspec
 ```
 
-??? tip "Git Dependencies"
-    When you are using dependencies from Git repositories and therefore can't use `Gemfile.lock` you can always
-    run `bundle install` instead of running it only for cache population. Cirrus Agent is clever enough to only re-upload 
-    cache entry only if cached folder has been changed during task execution. Here is an example of a `.cirrus.yml`
-    that always runs `bundle install`:
+??? tip "Repositories without `Gemfile.lock`"
+    When you are not committing `Gemfile.lock` (in Ruby gems repositories, for example)
+    you can run `bundle install` (or `bundle update`) in `install_script`
+    instead of `populate_script` in `bundle_cache`. Cirrus Agent is clever enough to re-upload
+    cache entry only if cached folder has been changed during task execution.
+    Here is an example of a `.cirrus.yml` that always runs `bundle install`:
     
     ```yaml
     container:
@@ -485,8 +489,11 @@ rspec_task:
     rspec_task:
       bundle_cache:
         folder: /usr/local/bundle
-        fingerprint_script: echo $RUBY_VERSION && cat Gemfile && cat *.gemspec
-      install_script: bundle install
+        fingerprint_script:
+          - echo $RUBY_VERSION
+          - cat Gemfile
+          - cat *.gemspec
+      install_script: bundle install # or `update` for the freshest bundle
       rspec_script: bundle exec rspec
     ```
 
