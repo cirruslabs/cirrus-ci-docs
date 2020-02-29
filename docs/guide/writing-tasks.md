@@ -591,7 +591,7 @@ Cirrus CI supports the `only_if` and `skip` keywords in order to provide such fl
   if no source files have changed since the last successful run.
   ```yaml
   lint_task:
-    skip: "!changesInclude('.cirrus.yml', '*.js', '**/*.js')"
+    skip: "!changesInclude('.cirrus.yml', '**.{js,ts}')"
     script: yarn run lint
   ```
 <!-- markdownlint-enable MD032 -->
@@ -632,7 +632,7 @@ last successful Cirrus CI build.
 
 ```yaml
 lint_task:
-  skip: "!changesInclude('.cirrus.yml', '*.js', '**/*.js')"
+  skip: "!changesInclude('.cirrus.yml', '**.{js,ts}')"
   script: yarn run lint
 ```
 
