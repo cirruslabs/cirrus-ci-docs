@@ -149,7 +149,7 @@ test_task:
   test_script: yarn run test
 ```
 
-The `folder` is a *required* field that tells the agent which folder to cache. It should be relative to the working directory, or the root directory of the machine (ex. `node_modules` or `/usr/bin/bundler`).
+The `folder` is a *required* field that tells the agent which folder to cache. It should be relative to the working directory, or the root directory of the machine (ex. `node_modules` or `/usr/local/bundle`).
 
 A `fingerprint_script` is an *optional* field that can specify a script that will be executed and console output of which
 will be used as a key for the given cache. By default the task name is used as a fingerprint value.
