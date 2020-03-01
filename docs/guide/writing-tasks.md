@@ -348,6 +348,7 @@ CIRRUS_DEFAULT_BRANCH | Default repository branch name. For example `master`
 CIRRUS_LAST_GREEN_BUILD_ID | The build id of the last successful build on the same branch at the time of the current build creation.
 CIRRUS_LAST_GREEN_CHANGE | Corresponding to `CIRRUS_LAST_GREEN_BUILD_ID` SHA (used in [`changesInclude` function](#supported-functions)).
 CIRRUS_PR | PR number if current build was triggered by a PR. For example `239`.
+CIRRUS_PR_DRAFT | `true` if current build was triggered by a Draft PR.
 CIRRUS_TAG | Tag name if current build was triggered by a new tag. For example `v1.0`
 CIRRUS_OS, OS | Host OS. Either `linux`, `windows` or `darwin`.
 CIRRUS_TASK_NAME | Task name
