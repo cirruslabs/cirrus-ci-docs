@@ -4,44 +4,16 @@ Cirrus CI is free for Open Source projects. For private projects Cirrus CI has c
 
 1. For private personal repositories there is a [very affordable $10 a month plan](https://github.com/marketplace/cirrus-ci/plan/MDIyOk1hcmtldHBsYWNlTGlzdGluZ1BsYW45OTI=#pricing-and-setup) with 
    access to community clusters for [Linux](guide/linux.md), [Windows](guide/windows.md) and [macOS](guide/macOS.md) workloads.
-2. Configure access to [your own infrastructure](#compute-services) and [pay $10/seat/month](https://github.com/marketplace/cirrus-ci/plan/MDIyOk1hcmtldHBsYWNlTGlzdGluZ1BsYW45OTM=#pricing-and-setup)
+2. Buy [compute credits](#compute-credits) to access managed and pre-configured community clusters for [Linux](guide/linux.md), [FreeBSD](guide/FreeBSD.md), [Windows](guide/windows.md) and [macOS](guide/macOS.md) workloads.
+3. Configure access to [your own infrastructure](#compute-services) and [pay $10/seat/month](https://github.com/marketplace/cirrus-ci/plan/MDIyOk1hcmtldHBsYWNlTGlzdGluZ1BsYW45OTM=#pricing-and-setup)
    fee for orchestrating your CI workloads on your infrastructure.
-3. Buy [compute credits](#compute-credits) to access managed and pre-configured community clusters for [Linux](guide/linux.md),  [FreeBSD](guide/FreeBSD.md), [Windows](guide/windows.md) and [macOS](guide/macOS.md) workloads.
 
-Here is a pricing model of Cirrus CI:
+Here is the pricing model of Cirrus CI:
 
 User | Public Repository | Private Repository
 --- | --- | ---
 Person | Free + Access to community cluster | [$10/month](https://github.com/marketplace/cirrus-ci/plan/MDIyOk1hcmtldHBsYWNlTGlzdGluZ1BsYW45OTI=#pricing-and-setup) + Access to community cluster
-Organization | Free + Access to community cluster | <ul><li>[$10/seat/month](#compute-services) for managing CI workloads on your [compute services](#compute-services)</li><li>Buy [compute credits](#compute-credits) to access community clusters instead</li></ul> 
-
-## Compute Services
-
-Configure and connect one or several [compute services](guide/supported-computing-services.md) to Cirrus CI and [pay $10/seat/month](https://github.com/marketplace/cirrus-ci/plan/MDIyOk1hcmtldHBsYWNlTGlzdGluZ1BsYW45OTM=#pricing-and-setup) 
-for orchestrating CI workloads on these compute services. 
-
-**Pros** of this approach:
-
-* Full control of underlying infrastructure. Any type of VMs and containers with any amount of CPUs and memory.
-* Most secure. Setup any firewall and access rules.
-* Pay for CI within your existing cloud and GitHub bills. 
-  
-**Cons** of this approach:
-
-* Need to configure and connect one or several [compute services](guide/supported-computing-services.md). Might be
-  nonintuitive for cases like Anka Build Cloud for macOS.
-* Might not be worth the effort for a small team.
-
-!!! info "What is a seat?"
-
-    Seat is simply a GitHub user that initiates CI builds by pushing commints and/or creating pull requests in a **private** repository. 
-    It can be a real person or a bot.
-    
-    For example, there are 10 people in your GitHub Organization and only 5 of them are working on several private repositories 
-    where Cirrus CI is configured. The remaining 5 people are working on public repositories or not pushing changes at all. Let's say [dependabot](https://dependabot.com/) 
-    is also configured for these private repositories. 
-    
-    In that case there are `5 + 1 = 6` seats you need to purchase Cirrus CI plan for.
+Organization | Free + Access to community cluster | <ul><li>[$10/seat/month](#compute-services) for managing CI workloads on your [compute services](#compute-services)</li><li>Buy [compute credits](#compute-credits) to access community clusters instead of configuring your own infrastructure and paying $10/seat/month</li></ul> 
     
 ## Compute Credits
 
@@ -57,6 +29,8 @@ Use compute credits with your private or public repositories of any scale.
 
 All tasks using compute credits are charged on per-second basis. 2 CPU Linux task takes 2 minutes? Pay **2 cents**.
 
+**Note:** orchestration costs are included in compute credits and there is no need to purchase additional seats on your plan.
+
 !!! info "Priority Scheduling"
     Tasks that are using compute credits will be prioritized and will be scheduled as fast as possible.
 
@@ -67,14 +41,14 @@ All tasks using compute credits are charged on per-second basis. 2 CPU Linux tas
 **Pros** of this approach:
   
 * Use the same pre-configured infrastructure as the Open Source community is enjoying.
-* No need to configure anything. Let Cirrus CI team manage and upgrade infrastructure for you.
+* No need to configure anything. Let Cirrus CI's team manage and upgrade infrastructure for you.
 * Per-second billing with no additional minimum or monthly fees.
-* Cost efficient for small teams. 
+* Cost efficient for small to medium teams. 
   
 **Cons** of this approach:
   
-* Not cost efficient for big teams.
 * No support for exotic use cases like GPUs, SSDs and 100+ cores machines.
+* Not cost efficient for big teams.
 
 ### Buying Compute Credits
 
@@ -118,3 +92,32 @@ task:
     task:
       use_compute_credits: $CIRRUS_BRANCH == 'master'
     ```
+
+## Compute Services
+
+Configure and connect one or more [compute services](guide/supported-computing-services.md) to Cirrus CI and [pay $10/seat/month](https://github.com/marketplace/cirrus-ci/plan/MDIyOk1hcmtldHBsYWNlTGlzdGluZ1BsYW45OTM=#pricing-and-setup) 
+for orchestrating CI workloads on these compute services. 
+
+**Pros** of this approach:
+
+* Full control of underlying infrastructure. Use any type of VMs and containers with any amount of CPUs and memory.
+* More secure. Setup any firewall and access rules.
+* Pay for CI within your existing cloud and GitHub bills. 
+  
+**Cons** of this approach:
+
+* Need to configure and connect one or several [compute services](guide/supported-computing-services.md). Might be
+  nonintuitive for cases like Anka Build Cloud for macOS.
+* Might not be worth the effort for a small team.
+* Need to pay $10/seat/month plan.
+
+!!! info "What is a seat?"
+    A seat is simply a GitHub user that initiates CI builds by pushing commits and/or creating pull requests in a **private** repository. 
+    It can be a real person or a bot. If you are using [Cron Builds](guide/writing-tasks.md#cron-builds) or creating builds through [Cirrus's API](api.md)
+    it will be counted as an additional seat (like a bot).
+    
+    For example, if there are 10 people in your GitHub Organization and only 5 of them are working on private repositories 
+    where Cirrus CI is configured, the remaining 5 people are working on public repositories or not modifying any repositories at all. 
+    Let's say [Dependabot](https://dependabot.com/) is also configured for these private repositories. 
+    
+    In that case there are `5 + 1 = 6` seats you need to purchase Cirrus CI plan for.
