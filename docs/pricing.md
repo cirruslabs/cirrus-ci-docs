@@ -8,7 +8,7 @@ Cirrus CI is free for Open Source projects. For private projects Cirrus CI has c
 3. Configure access to [your own infrastructure](#compute-services) and [pay $10/seat/month](https://github.com/marketplace/cirrus-ci/plan/MDIyOk1hcmtldHBsYWNlTGlzdGluZ1BsYW45OTM=#pricing-and-setup)
    fee for orchestrating your CI workloads on your infrastructure.
 
-Here is a pricing model of Cirrus CI:
+Here is the pricing model of Cirrus CI:
 
 User | Public Repository | Private Repository
 --- | --- | ---
