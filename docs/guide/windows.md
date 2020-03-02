@@ -6,7 +6,6 @@ Simply use `windows_container` instead of `container` in `.cirrus.yml` files:
 ```yaml
 windows_container:
   image: cirrusci/windowsservercore:2019
-  os_version: 2019
   
 task:
   script: ...
@@ -19,14 +18,9 @@ Cirrus CI will execute [scripts instructions](writing-tasks.md#script-instructio
 By default, Cirrus CI assumes that the container image's host OS is Windows Server 2019. You can specify `os_version`
 to override it. Cirrus CI supports most versions of Windows Containers, including: `1709`, `1803` and `2019`.
 
-!!! warning "Removal of 2016 Windows Docker Containers"
-    Windows Containers 2019 got many performance improvements and image size optimizations comparing to 2016 version. 
-    As such, Cirrus CI has completely removed support for 2016 Windows Containers on the community cluster.
-
 ```yaml
 windows_container:
   image: cirrusci/windowsservercore:2019
-  os_version: 2019
 
 windows_task:
   install_script: choco install -y ...
