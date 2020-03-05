@@ -64,6 +64,8 @@ task(id: $taskId) {
   statusTimestamp
   creationTimestamp
   uniqueLabels
+  automaticReRun
+  automaticallyReRunnable
 }
 ```
 
