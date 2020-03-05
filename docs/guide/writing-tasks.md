@@ -848,3 +848,14 @@ Here is how Cirrus CI's badge can be embeded in a Markdown file:
 ```markdown
 [![Build Status](https://api.cirrus-ci.com/github/<USER OR ORGANIZATION>/<REPOSITORY>.svg)](https://cirrus-ci.com/github/<USER OR ORGANIZATION>/<REPOSITORY>)
 ```
+
+## CCTray XML
+
+Cirrus CI support exporting information about the latest repository builds via [CCTray XML format](https://cctray.org/).
+Use the following URL format with a tool of your choice like [CCMenu](http://ccmenu.org/):
+
+```console
+https://api.cirrus-ci.com/github/<USER OR ORGANIZATION>/<REPOSITORY>/cctray.xml
+```
+
+**Note:** for private repositories you'll need to configure [access token](../api.md#authorization).
