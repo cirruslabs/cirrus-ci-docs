@@ -482,22 +482,22 @@ test_task:
 The `matrix` modification makes it easy to create some pretty complex testing scenarios like this:
 
 ```yaml
-test_task:
+task:
   container:
     matrix:
       - image: node:latest
       - image: node:lts
-  env:
-    matrix:
-      - COMMAND: test
-      - COMMAND: lint
   node_modules_cache:
     folder: node_modules
     fingerprint_script:
       - node --version
       - cat yarn.lock
     populate_script: yarn install
-  test_script: yarn run $COMMAND
+  matrix:
+    - name: Build
+      build_script: yarn build
+    - name: Test
+      test_script: yarn run test
 ```
 
 ## Task Execution Dependencies
