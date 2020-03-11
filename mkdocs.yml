@@ -39,7 +39,7 @@ plugins:
   - search
   - progress
   - minify
-  - git-revision-date-localized-plugin:
+  - git-revision-date-localized:
       type: timeago
 
 markdown_extensions:
