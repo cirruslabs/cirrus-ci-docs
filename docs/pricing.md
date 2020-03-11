@@ -4,9 +4,8 @@ Cirrus CI is free for Open Source projects. For private projects, Cirrus CI has 
 
 1. For private personal repositories there is a [very affordable $10 a month plan](https://github.com/marketplace/cirrus-ci/plan/MDIyOk1hcmtldHBsYWNlTGlzdGluZ1BsYW45OTI=#pricing-and-setup) with 
    access to community clusters for [Linux](guide/linux.md), [Windows](guide/windows.md) and [macOS](guide/macOS.md) workloads.
-2. Configure access to [your own infrastructure](#compute-services) and [pay a $10/seat/month](https://github.com/marketplace/cirrus-ci/plan/MDIyOk1hcmtldHBsYWNlTGlzdGluZ1BsYW45OTM=#pricing-and-setup)
-   fee for orchestrating your CI workloads on your infrastructure.
-3. Buy [compute credits](#compute-credits) to access managed and pre-configured clusters for [Linux](guide/linux.md), [FreeBSD](guide/FreeBSD.md), [Windows](guide/windows.md) and [macOS](guide/macOS.md) workloads.
+2. Buy [compute credits](#compute-credits) to access managed and pre-configured community clusters for [Linux](guide/linux.md), [FreeBSD](guide/FreeBSD.md), [Windows](guide/windows.md), and [macOS](guide/macOS.md) workloads.
+3. Configure access to [your own infrastructure](#compute-services) and [pay $10/seat/month](https://github.com/marketplace/cirrus-ci/plan/MDIyOk1hcmtldHBsYWNlTGlzdGluZ1BsYW45OTM=#pricing-and-setup).
 
 Here is the pricing model of Cirrus CI:
 
