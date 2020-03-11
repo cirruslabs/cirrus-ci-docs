@@ -21,9 +21,6 @@ theme:
   logo: 'assets/images/logo.svg'
   icon:
     repo: fontawesome/brands/github
-  # Don't include MkDocs' JavaScript
-  include_search_page: false
-  search_index_only: true
   language: en
   palette:
     primary: indigo
