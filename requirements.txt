@@ -1,2 +1,4 @@
 pymdown-extensions
 mkdocs-git-revision-date-localized-plugin
+mkdocs-plugin-progress
+mkdocs-minify-plugin

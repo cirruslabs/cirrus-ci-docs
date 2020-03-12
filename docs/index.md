@@ -13,10 +13,6 @@ patterns from Cirrus CI customers:
 
 <table style="width:100%;box-shadow:none;">
   <tr>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
     <td>
       <a style="float: left;" href="#google-cloud" href="https://google.com/">
         <img width="239" src="/assets/images/customers/Google.svg"/>
@@ -34,7 +30,7 @@ patterns from Cirrus CI customers:
       </a>
     </td>
     <td>
-      <a href="https://flutter.io/">Flutter</a> is a mobile app SDK with over 75,000 stars on GitHub.
+      <a href="https://flutter.dev/">Flutter</a> is a mobile app SDK with over 80,000 stars on GitHub.
       Flutter team uses <a href="/pricing/#compute-credits">compute credits</a> to get unlimited prioritized builds and
       only pay for resources that these builds used. 
     </td>
@@ -50,9 +46,5 @@ patterns from Cirrus CI customers:
       to bring their own infrastructure to Cirrus CI. SonarSource runs their integration tests in parallel on more than 
       a hundred dedicated VMs to get test results in minutes rather than hours.
     </td>
-  </tr>
-  <tr>
-    <td></td>
-    <td></td>
   </tr>
 </table>

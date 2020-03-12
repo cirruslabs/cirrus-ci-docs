@@ -1,12 +1,11 @@
 # Pricing
 
-Cirrus CI is free for Open Source projects. For private projects Cirrus CI has couple of options depending on your needs:
+Cirrus CI is free for Open Source projects. For private projects, Cirrus CI has couple of options depending on your needs:
 
 1. For private personal repositories there is a [very affordable $10 a month plan](https://github.com/marketplace/cirrus-ci/plan/MDIyOk1hcmtldHBsYWNlTGlzdGluZ1BsYW45OTI=#pricing-and-setup) with 
    access to community clusters for [Linux](guide/linux.md), [Windows](guide/windows.md) and [macOS](guide/macOS.md) workloads.
-2. Buy [compute credits](#compute-credits) to access managed and pre-configured community clusters for [Linux](guide/linux.md), [FreeBSD](guide/FreeBSD.md), [Windows](guide/windows.md) and [macOS](guide/macOS.md) workloads.
-3. Configure access to [your own infrastructure](#compute-services) and [pay $10/seat/month](https://github.com/marketplace/cirrus-ci/plan/MDIyOk1hcmtldHBsYWNlTGlzdGluZ1BsYW45OTM=#pricing-and-setup)
-   fee for orchestrating your CI workloads on your infrastructure.
+2. Buy [compute credits](#compute-credits) to access managed and pre-configured community clusters for [Linux](guide/linux.md), [FreeBSD](guide/FreeBSD.md), [Windows](guide/windows.md), and [macOS](guide/macOS.md) workloads.
+3. Configure access to [your own infrastructure](#compute-services) and [pay $10/seat/month](https://github.com/marketplace/cirrus-ci/plan/MDIyOk1hcmtldHBsYWNlTGlzdGluZ1BsYW45OTM=#pricing-and-setup).
 
 Here is the pricing model of Cirrus CI:
 
@@ -52,7 +51,7 @@ All tasks using compute credits are charged on per-second basis. 2 CPU Linux tas
 
 ### Buying Compute Credits
 
-To see your current balance, recent transactions and to buy more compute credits go to your organization's settings page:
+To see your current balance, recent transactions and to buy more compute credits, go to your organization's settings page:
 
 ```bash
 https://cirrus-ci.com/settings/github/MY-ORGANIZATION

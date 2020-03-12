@@ -35,6 +35,12 @@ theme:
 extra_css:
   - 'stylesheets/extra.css'
 
+plugins:
+  - search
+  - progress
+  - minify
+  - git-revision-date-localized:
+      type: timeago
 
 markdown_extensions:
   - markdown.extensions.admonition
