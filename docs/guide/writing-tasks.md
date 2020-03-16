@@ -252,7 +252,7 @@ junit_artifacts:
   format: junit
 ```
 
-Currently Cirrus CI can only parse JUnit XML artifacts but many tools use this format already. Please [let us know](https://github.com/cirruslabs/cirrus-ci-annotations/issues/new)
+Currently Cirrus CI only support [JUnit's XML format](../examples.md#junit) and [GolangCI Lint's JSON format](../examples.md#golangci-lint) artifacts. Please [let us know](https://github.com/cirruslabs/cirrus-ci-annotations/issues/new)
 what kind of formats Cirrus CI should support next!
 
 ### File Instruction
