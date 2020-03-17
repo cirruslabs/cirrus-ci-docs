@@ -177,6 +177,25 @@ test_task:
   test_script: go test ./...
 ```
 
+## GolangCI Lint
+
+We highly recommend to configure some sort of linting for your Go project. One of the options is [GolangCI Lint](https://github.com/golangci/golangci-lint).
+The Cirrus CI annotator supports providing inline reports on PRs and can parse GolangCI Lint reports. Here is an example of a *GolangCI Lint*
+task that you can add to your `.cirrus.yml`:
+
+```yaml
+task:
+  name: GolangCI Lint
+  container:
+    image: golangci/golangci-lint:latest
+  run_script: golangci-lint run -v --out-format json > lint-report.json
+  always:
+    golangci_artifacts:
+      path: lint-report.json
+      type: text/json
+      format: golangci
+```
+
 ## Gradle
 
 We recommend use of the [official Gradle Docker containers](https://hub.docker.com/_/gradle/) since they have Gradle specific configurations already set up. For example, standard Java containers don't have 
