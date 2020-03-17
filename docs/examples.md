@@ -179,8 +179,8 @@ test_task:
 
 ## GolangCI Lint
 
-We highly recommend to configure some sort of linting for your Go project. One of the options is [Golang Lint](https://github.com/golangci/golangci-lint)
-- the Cirrus CI annotator supports providing inline reports on PRs. Here is an example of a *GolangCI Lint*
+We highly recommend to configure some sort of linting for your Go project. One of the options is [GolangCI Lint](https://github.com/golangci/golangci-lint).
+The Cirrus CI annotator supports providing inline reports on PRs and can parse GolangCI Lint reports. Here is an example of a *GolangCI Lint*
 task that you can add to your `.cirrus.yml`:
 
 ```yaml
