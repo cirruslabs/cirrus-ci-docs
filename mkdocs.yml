@@ -36,10 +36,7 @@ extra_css:
 
 plugins:
   - search
-  - progress
   - minify
-  - git-revision-date-localized:
-      type: timeago
 
 markdown_extensions:
   - markdown.extensions.admonition
