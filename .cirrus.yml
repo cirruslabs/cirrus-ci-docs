@@ -3,7 +3,7 @@ container:
   memory: 1G
 
 env:
-  MKDOCS_VERSION: 5.0.0rc2
+  MKDOCS_VERSION: 5.0.0rc3
 
 pipe:
   name: Build Site and Validate Links
