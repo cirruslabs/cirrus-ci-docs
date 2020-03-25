@@ -20,7 +20,7 @@ https://api.cirrus-ci.com/graphql | python -m json.tool
 ## Authorization
 
 In order for a tool to access Cirrus CI API, an organization admin should generate an access token through Cirrus CI
-Settings page for a corresponding organization. Here is a direct link to the settings page: `https://cirrus-ci.com/settings/github/<ORGANIZATION>`
+Settings page for a corresponding organization. Here is a direct link to the settings page: `https://cirrus-ci.com/settings/github/<ORGANIZATION>`. Access tokens will allow full write and read access to both public and private repositories of your organization on Cirrus CI: it will be possible to create new builds and perform any other GraphQL mutations. If you only need read access to public repositories of your organizaion you can skip this step and don't provide `Authorization` header.
 
 Once an access token is generated and securely stored, it can be used to authorize API requests by setting `Authorization`
 header to `Bearer $TOKEN`.
