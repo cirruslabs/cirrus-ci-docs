@@ -19,9 +19,8 @@ theme:
   custom_dir: 'theme'
   favicon: 'assets/images/favicon.ico'
   logo: 'assets/images/logo.svg'
-  # Don't include MkDocs' JavaScript
-  include_search_page: false
-  search_index_only: true
+  icon:
+    repo: fontawesome/brands/github
   language: en
   palette:
     primary: indigo
@@ -29,18 +28,15 @@ theme:
   font:
     text: Roboto
     code: Roboto Mono
-  feature:
-    tabs: true
+  features:
+    - tabs
 
 extra_css:
   - 'stylesheets/extra.css'
 
 plugins:
   - search
-  - progress
   - minify
-  - git-revision-date-localized:
-      type: timeago
 
 markdown_extensions:
   - markdown.extensions.admonition
@@ -105,7 +101,7 @@ nav:
 
 extra:
   social:
-    - type: 'github'
+    - icon: fontawesome/brands/github-alt
       link: 'https://github.com/cirruslabs'
-    - type: 'twitter'
+    - icon: fontawesome/brands/twitter
       link: 'https://twitter.com/cirrus_labs'
