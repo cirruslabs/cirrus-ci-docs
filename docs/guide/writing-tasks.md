@@ -252,8 +252,13 @@ junit_artifacts:
   format: junit
 ```
 
-Currently Cirrus CI only support [JUnit's XML format](../examples.md#junit) and [GolangCI Lint's JSON format](../examples.md#golangci-lint) artifacts. Please [let us know](https://github.com/cirruslabs/cirrus-ci-annotations/issues/new)
-what kind of formats Cirrus CI should support next!
+Currently, Cirrus CI supports:
+
+- [Android Lint Report format](../examples.md#android-lint)
+- [GolangCI Lint's JSON format](../examples.md#golangci-lint)
+- [JUnit's XML format](../examples.md#junit)
+  
+Please [let us know](https://github.com/cirruslabs/cirrus-ci-annotations/issues/new) what kind of formats Cirrus CI should support next!
 
 ### File Instruction
 
