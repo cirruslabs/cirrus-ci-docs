@@ -254,10 +254,10 @@ junit_artifacts:
 
 Currently, Cirrus CI supports:
 
-- [Android Lint Report format](../examples.md#android-lint)
-- [GolangCI Lint's JSON format](../examples.md#golangci-lint)
-- [JUnit's XML format](../examples.md#junit)
-    - [Python's Unittest format](../examples.md#unittest-annotations)
+* [Android Lint Report format](../examples.md#android-lint)
+* [GolangCI Lint's JSON format](../examples.md#golangci-lint)
+* [JUnit's XML format](../examples.md#junit)
+    * [Python's Unittest format](../examples.md#unittest-annotations)
   
 Please [let us know](https://github.com/cirruslabs/cirrus-ci-annotations/issues/new) what kind of formats Cirrus CI should support next!
 
