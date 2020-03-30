@@ -10,7 +10,7 @@ images `.cirrus.yml` configuration file can look like:
 
 ```yaml
 container:
-  image: cirrusci/android-sdk:27
+  image: cirrusci/android-sdk:29
 
 check_android_task:
   check_script: ./gradlew check connectedCheck
@@ -20,7 +20,7 @@ Or like this if a running emulator is needed for the tests:
 
 ```yaml
 container:
-  image: cirrusci/android-sdk:18
+  image: cirrusci/android-sdk:29
   cpu: 4
   memory: 10G
 
@@ -28,7 +28,7 @@ check_android_task:
   create_device_script:
     echo no | avdmanager create avd --force
         -n test
-        -k "system-images;android-18;default;armeabi-v7a"
+        -k "system-images;android-29;default;armeabi-v7a"
   start_emulator_background_script:
     $ANDROID_HOME/emulator/emulator
         -avd test
@@ -42,6 +42,22 @@ check_android_task:
 
 !!! info
     Please don't forget to setup [Remote Build Cache](#build-cache) for your Gradle project. Or at least [simple folder caching](#gradle-caching).
+    
+### Android Lint
+
+The Cirrus CI annotator supports providing inline reports on PRs and can parse Android Lint reports. Here is an example of an *Android Lint*
+task that you can add to your `.cirrus.yml`:
+
+```yaml
+task:
+  name: Android Lint
+  lint_script: ./gradlew lintDebug
+  always:
+    android-lint_artifacts:
+      path: "**/reports/lint-results-debug.xml"
+      type: text/xml
+      format: android-lint
+```
 
 ## Bazel
 
