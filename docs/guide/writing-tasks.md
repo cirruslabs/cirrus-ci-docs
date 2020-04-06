@@ -162,9 +162,9 @@ To avoid a time-costly re-upload, remove volatile files from the cache (for exam
 If your dependencies are updated often, please pay attention to `fingerprint_script` and make sure it will produce different outputs for different versions of your dependency (ideally just print locked versions of dependencies).
 
 `reupload_on_changes` is an *optional* field that can specify whether Cirrus Agent should check if 
-contents of cached `folder` have changed during task execution and reupload a cache entry in case of any changes.
-`reupload_on_changes` option is enabled by defaut and Cirrus Agent will detect additions, deletions and modifications
-of any files under specified `folder`. All of the detected changes will be logged under `Upload '$CACHE_NAME' cache` instructions for easier debugging of chache invalidations.
+contents of cached `folder` have changed during task execution and re-upload a cache entry in case of any changes.
+`reupload_on_changes` option is enabled by default and Cirrus Agent will detect additions, deletions and modifications
+of any files under specified `folder`. All of the detected changes will be logged under `Upload '$CACHE_NAME' cache`instructions for easier debugging of cache invalidations.
 
 That means the only difference between the example above and below is that `yarn install` will always be executed in the
 example below where in the example above only when `yarn.lock` has changes.
@@ -211,7 +211,7 @@ build_and_test_task:
 ```
 
 !!! tip "URL to the latest artifacts"
-    It is possible to refer to the latest artifacts directly (artifacts of the latests **successful** build).
+    It is possible to refer to the latest artifacts directly (artifacts of the latest **successful** build).
     Use the following link format to download the latest artifact of a particular task:
 
     ```yaml
