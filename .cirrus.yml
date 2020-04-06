@@ -30,8 +30,8 @@ task:
     image: node:latest
   install_tool_script:
     # WARNING: DO NOT try to cache this, symlinks will not be created and task will fail
-    - npm install -g markdown-spellcheck@0.11.0
-  script: mdspell '**/*.md' '!**/legal/*.md' --ignore-numbers --ignore-acronyms --report --en-us;
+    - npm install -g markdown-spellcheck@1.3.1
+  spellcheck_script: mdspell '**/*.md' '!**/legal/*.md' --ignore-numbers --ignore-acronyms --report --en-us;
 
 task:
   name: Deploy
