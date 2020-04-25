@@ -14,11 +14,9 @@ task:
 ### List of available images
 
 * `catalina-base` - vanilla macOS with Brew and Command Line Tools pre-installed.
-* `catalina-xcode-11.3.1` - based of `catalina-base` with Xcode 11.3.1 and couple other packages pre-installed: 
+* `catalina-xcode-11.4.1` - based of `catalina-base` with Xcode 11.4.1 and couple other packages pre-installed: 
   `cocoapods`, `fastlane`, `rake` and `xctool`.  
-* `catalina-xcode-11.4` - based of `catalina-base` with Xcode 11.4 GM and couple other packages pre-installed: 
-  `cocoapods`, `fastlane`, `rake` and `xctool`.
-* `catalina-xcode-11.3.1-flutter` - based of `catalina-xcode-11.3` with pre-installed [Flutter](https://flutter.dev/) and Android SDK/NDK.
+* `catalina-xcode-11.4.1-flutter` - based of `catalina-xcode-11.4.1` with pre-installed [Flutter](https://flutter.dev/) and Android SDK/NDK.
 
 Note that there are couple of aliases available for images:
 
