@@ -645,13 +645,28 @@ lint_task:
 
 ## Auto-Cancellation of Tasks
 
-Cirrus CI can automatically cancel tasks in case of new pushes to the same branch. By default Cirrus CI auto-cancels
+Cirrus CI can automatically cancel tasks in case of new pushes to the same branch. By default, Cirrus CI auto-cancels
 all tasks for non default branch (for most repositories `master` branch) but this behavior can be changed by specifying
 `auto_cancellation` field:
 
 ```yaml
 task:
   auto_cancellation: $CIRRUS_BRANCH != 'master' && $CIRRUS_BRANCH !=~ 'release/.*'
+  ...
+```
+
+## Stateful Tasks
+
+It's possible to tell Cirrus CI that a certain task is stateful and Cirrus CI will use a slightly different scheduling algorithm
+to minimize chances of such tasks being interrupted. **Scheduling times of such stateful tasks might be a bit longer then usual.**
+
+By default, Cirrus CI marks a task as stateful if it's name contain one of the following terms: `deploy`, `push`, `publish`, 
+`upload` or `release`. Otherwise, you can explicitly mark a task as stateful via `stateful` field:
+
+```yaml
+task:
+  name: Propogate to Production
+  stateful: true
   ...
 ```
 
