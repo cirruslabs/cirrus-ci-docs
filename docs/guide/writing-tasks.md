@@ -144,9 +144,13 @@ test_task:
     image: node:latest
   node_modules_cache:
     folder: node_modules
-    fingerprint_script: cat yarn.lock
-    populate_script: yarn install
-  test_script: yarn run test
+    reupload_on_changes: false # since there is a fingerprint script
+    fingerprint_script:
+      - node --version
+      - cat package-lock.json
+    populate_script: 
+      - npm install
+  test_script: npm run test
 ```
 
 The `folder` is a *required* field that tells the agent which folder to cache. It should be relative to the working directory, or the root directory of the machine (ex. `node_modules` or `/usr/local/bundle`).
