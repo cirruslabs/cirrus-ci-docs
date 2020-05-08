@@ -146,6 +146,7 @@ test_task:
     folder: node_modules
     reupload_on_changes: false # since there is a fingerprint script
     fingerprint_script:
+      - echo $CIRRUS_OS
       - node --version
       - cat package-lock.json
     populate_script: 
