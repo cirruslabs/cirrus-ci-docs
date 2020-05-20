@@ -90,12 +90,13 @@ gcloud iam service-accounts create cirrus-ci \
 ```
 
 Depending on a compute service Cirrus CI will need different [roles](https://cloud.google.com/iam/docs/understanding-roles) 
-assigned to the service account. But Cirrus CI will always need permissions to act as a service account:
+assigned to the service account. But Cirrus CI will always need permissions to act as a service account and be able to view monitoring:
 
 ```bash
 gcloud projects add-iam-policy-binding $PROJECT_ID \
     --member serviceAccount:cirrus-ci@$PROJECT_ID.iam.gserviceaccount.com \
-    --role roles/iam.serviceAccountUser
+    --role roles/iam.serviceAccountUser \
+    --role roles/monitoring.viewer
 ```
 
 Cirrus CI uses Google Cloud Storage to store logs and caches. In order to give Google Cloud Storage permissions
