@@ -54,7 +54,7 @@ task:
     **Note:** instructions within a task can only be named via a prefix (e.g. `test_script`).
 
 !!! tip "Visual Task Creation for Beginners"
-    If you are just getting started and prefer a more simple way of creating tasks, the
+    If you are just getting started and prefer a more visual way of creating tasks, there
     is a third-party [Cirrus CI Configuration Builder](https://cirrusbuilder.rdil.rocks) for generating YAML config that might be helpful.
 
 ## Execution Environment
