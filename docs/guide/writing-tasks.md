@@ -53,6 +53,10 @@ task:
 
     **Note:** instructions within a task can only be named via a prefix (e.g. `test_script`).
 
+!!! tip "Task Creation for Beginners"
+    If you are just getting started and prefer a more simple way of creating tasks, the
+    [Cirrus CI Configuration Builder](https://cirrusbuilder.rdil.rocks) might help.
+
 ## Execution Environment
 
 In order to specify where to execute a particular task you can choose from a variety of options by defining one of the
