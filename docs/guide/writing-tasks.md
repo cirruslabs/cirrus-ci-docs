@@ -53,7 +53,7 @@ task:
 
     **Note:** instructions within a task can only be named via a prefix (e.g. `test_script`).
 
-!!! tip "Task Creation for Beginners"
+!!! tip "Visual Task Creation for Beginners"
     If you are just getting started and prefer a more simple way of creating tasks, the
     [Cirrus CI Configuration Builder](https://cirrusbuilder.rdil.rocks) might help.
 
