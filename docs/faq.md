@@ -24,7 +24,7 @@ publish_task:
 
 ## Are there any limits?
 
-Cirrus CI has following limitations on how many CPUs for different platforms a single user can run on community clusters
+Cirrus CI has the following limitations on how many CPUs for different platforms a single user can run on community clusters
 for public repositories for free:
 
 * 16.0 CPUs for Linux platform (Containers or VMs).
@@ -44,7 +44,7 @@ There are no limits on how many VMs or Containers you can run in parallel if you
 or use [Compute Credits](pricing.md#compute-credits) for either private or public repositories.
 
 !!! note "No per repository limits"
-    Cirrus CI doesn't enforce any limits on repository or organization levels. All the limits are on per-user basis.
+    Cirrus CI doesn't enforce any limits on repository or organization levels. All the limits are on a per-user basis.
     
 !!! note "Cache and Logs Redundancy"
     By default Cirrus CI persists caches and logs for 90 days. If you bring your own [compute services](guide/supported-computing-services.md)
