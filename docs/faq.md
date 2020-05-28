@@ -45,8 +45,6 @@ or use [Compute Credits](pricing.md#compute-credits) for either private or publi
 
 !!! note "No per repository limits"
     Cirrus CI doesn't enforce any limits on repository or organization levels. All the limits are on per-user basis.
-    For example, if you have 10 active contributors to a repository and using a single CPU containers for linting/bulding/testing/etc.
-    then you can end up with 160 tasks running in parallel for the repository.
     
 !!! note "Cache and Logs Redundancy"
     By default Cirrus CI persists caches and logs for 90 days. If you bring your own [compute services](guide/supported-computing-services.md)
