@@ -50,13 +50,13 @@ might be useful for safelisting while integrating your CI builds with external s
 
 Infrastructure | NAT hostname | IP
 -------------- | ------------ | --
-OS X | macstadium.community.nat.cirrus-ci.com | 207.254.42.60
 Linux | gcp.community.nat.cirrus-ci.com | 35.222.255.190
 FreeBSD | gcp.community.nat.cirrus-ci.com | 35.222.255.190
 Windows 2019 | gcp.community.nat.cirrus-ci.com | 35.222.255.190
-Windows 1803 | gcp.community.nat.cirrus-ci.com | 35.222.255.190
-Windows 1709 | gcp.community.nat.cirrus-ci.com | 35.222.255.190
+Windows 1803 (**deprecated**) | gcp.community.nat.cirrus-ci.com | 35.222.255.190
+Windows 1709 (**deprecated**) | gcp.community.nat.cirrus-ci.com | 35.222.255.190
 Windows 2016 (**deprecated**) | **Not Supported** | **Not Available**
+OS X | **Not Supported** | **Not Available**
 
 ## CI agent stopped responding!
 
