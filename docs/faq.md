@@ -24,20 +24,27 @@ publish_task:
 
 ## Are there any limits?
 
-Cirrus CI has following limitations on how many VMs or Containers a single user can run on community clusters for public repositories for free or for private personal repositories under the [$10/month plan](https://github.com/marketplace/cirrus-ci/plan/MDIyOk1hcmtldHBsYWNlTGlzdGluZ1BsYW45OTI=#pricing-and-setup):
+Cirrus CI has the following limitations on how many CPUs for different platforms a single user can run on community clusters
+for public repositories for free:
 
-* 8 Linux Containers or VMs
-* 2 Windows Containers or VMs
-* 2 FreeBSD VMs
-* 1 macOS VM
+* 16.0 CPUs for Linux platform (Containers or VMs).
+* 8.0 CPUs for Windows platform (Containers or VMs)
+* 8.0 CPUs for FreeBSD VMs.
+* 2.0 CPUs macOS VM (1 VM with hyper-threading).
 
-There are no limits on how many VMs or Containers you can run in parallel if you bring your own [compute services](guide/supported-computing-services.md)
+If you are using Cirrus CI with your private personal repositories under the [$10/month plan](https://github.com/marketplace/cirrus-ci/plan/MDIyOk1hcmtldHBsYWNlTGlzdGluZ1BsYW45OTI=#pricing-and-setup)
+**you'll have twice the limits**:
+
+* 32.0 CPUs for Linux platform (Containers or VMs).
+* 16.0 CPUs for Windows platform (Containers or VMs)
+* 16.0 CPUs for FreeBSD VMs.
+* 4.0 CPUs macOS VM (2 VMs with hyper-threading).
+
+There are no limits on how many VMs or Containers you can run in parallel if you bring [your own infrastructure](guide/supported-computing-services.md)
 or use [Compute Credits](pricing.md#compute-credits) for either private or public repositories.
 
 !!! note "No per repository limits"
-    Cirrus CI doesn't enforce any limits on repository or organization levels. All the limits are on per user basis.
-    For example, if you have 10 active contributors to a repository then you can end up with 130 tasks running in parallel 
-    for the repository.
+    Cirrus CI doesn't enforce any limits on repository or organization levels. All the limits are on a per-user basis.
     
 !!! note "Cache and Logs Redundancy"
     By default Cirrus CI persists caches and logs for 90 days. If you bring your own [compute services](guide/supported-computing-services.md)
