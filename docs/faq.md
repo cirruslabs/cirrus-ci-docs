@@ -52,18 +52,18 @@ or use [Compute Credits](pricing.md#compute-credits) for either private or publi
 
 ## IP Addresses of Community Clusters
 
-Instances running on Community Clusters are using static IPs for outgoing traffic from the instances. Knowing these IPs
-might be useful for safelisting while integrating your CI builds with external services.
+Instances running on Community Clusters are using dynamic IPs by default. It's possible to request
+a static `35.222.255.190` IP for all the community instance types except macOS VMs via `use_static_ip` field.
+Here is an example of a Linux Docker container with a static IP:
 
-Infrastructure | NAT hostname | IP
--------------- | ------------ | --
-Linux | gcp.community.nat.cirrus-ci.com | 35.222.255.190
-FreeBSD | gcp.community.nat.cirrus-ci.com | 35.222.255.190
-Windows 2019 | gcp.community.nat.cirrus-ci.com | 35.222.255.190
-Windows 1803 (**deprecated**) | gcp.community.nat.cirrus-ci.com | 35.222.255.190
-Windows 1709 (**deprecated**) | gcp.community.nat.cirrus-ci.com | 35.222.255.190
-Windows 2016 (**deprecated**) | **Not Supported** | **Not Available**
-OS X | **Not Supported** | **Not Available**
+```yaml
+task:
+  name: Test IP
+  container:
+    image: cirrusci/wget:latest
+    use_static_ip: true
+  script: wget -qO- ifconfig.co
+```
 
 ## CI agent stopped responding!
 
