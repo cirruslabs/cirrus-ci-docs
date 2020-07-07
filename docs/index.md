@@ -20,7 +20,7 @@ patterns from Cirrus CI customers:
     </td>
     <td>
       Several Google teams are using Cirrus CI for their OSS projects free of charge by using <a href="/guide/linux/">community clusters</a>. 
-      Projects vary from small Node.js libraries to complex Rust applications. 
+      The projects vary from small Node.js libraries to complex Rust applications. 
     </td>
   </tr>
   <tr>
@@ -30,9 +30,9 @@ patterns from Cirrus CI customers:
       </a>
     </td>
     <td>
-      <a href="https://flutter.dev/">Flutter</a> is a mobile app SDK with over 80,000 stars on GitHub.
-      Flutter team uses <a href="/pricing/#compute-credits">compute credits</a> to get unlimited prioritized builds and
-      only pay for resources that these builds used. 
+      <a href="https://flutter.dev/">Flutter</a> is a mobile app SDK with over 95,000 stars on GitHub.
+      The Flutter team uses <a href="/pricing/#compute-credits">compute credits</a> to get unlimited prioritized builds and
+      only pay for resources that the builds use. 
     </td>
   </tr>
   <tr>
@@ -42,7 +42,7 @@ patterns from Cirrus CI customers:
       </a>
     </td>
     <td>
-      <a href="https://www.sonarsource.com/">SonarSource</a> is using <a href="/guide/supported-computing-services/">integration with Google Cloud Platform</a>
+      <a href="https://www.sonarsource.com/">SonarSource</a> is using <a href="/guide/supported-computing-services/">our integration with Google Cloud Platform</a>
       to bring their own infrastructure to Cirrus CI. SonarSource runs their integration tests in parallel on more than 
       a hundred dedicated VMs to get test results in minutes rather than hours.
     </td>
