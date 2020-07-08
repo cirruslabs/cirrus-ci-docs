@@ -557,7 +557,7 @@ rspec_task:
 
 Cirrus CI natively supports [RSpec](https://rspec.info/) and [RuboCop](https://rubocop.org/) machine-parsable JSON reports.
 
-To get Behaviour-Driven Development test annotations, simply generate a `rspec` artifact from your linter task:
+To get behavior-driven test annotations, simply generate a `rspec` artifact from your lint task:
 
 ```yaml
 task:
