@@ -560,7 +560,11 @@ Cirrus CI natively supports [RSpec](https://rspec.info/) and [RuboCop](https://r
 To get behavior-driven test annotations, simply generate a `rspec` artifact from your lint task:
 
 ```yaml
+container:
+  image: ruby:latest
+
 task:
+  name: RSpec
   script: rspec --format json --out rspec.json
   always:
     rspec_artifacts:
@@ -572,7 +576,11 @@ task:
 Generate a `rubocop` artifact to quickly gain context for linter/formatter annotations:
 
 ```yaml
+container:
+  image: ruby:latest
+
 task:
+  name: RuboCop
   script: rubocop --format json --out rubocop.json
   always:
     rubocop_artifacts:
