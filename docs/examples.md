@@ -553,6 +553,34 @@ rspec_task:
     Which will create four shards that will theoretically **run tests 4x faster** by equaly splitting all tests between 
     these four shards.
 
+### RSpec and RuboCop Annotations
+
+Cirrus CI natively supports [RSpec](https://rspec.info/) and [RuboCop](https://rubocop.org/) machine-parsable JSON reports.
+
+To get Behaviour-Driven Development test annotations, simply generate a `rspec` artifact from your linter task:
+
+```yaml
+task:
+  script: rspec --format json --out rspec.json
+  always:
+    rspec_artifacts:
+      path: "rspec.json"
+      type: text/json
+      format: rspec
+```
+
+Generate a `rubocop` artifact to quickly gain context for linter/formatter annotations:
+
+```yaml
+task:
+  script: rubocop --format json --out rubocop.json
+  always:
+    rubocop_artifacts:
+      path: "rubocop.json"
+      type: text/json
+      format: rubocop
+```
+
 ## Rust
 
 Official [Rust Docker images](https://hub.docker.com/_/rust/) can be used for builds. Here is a simple example of `.cirrus.yml` 
