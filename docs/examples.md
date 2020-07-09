@@ -507,7 +507,12 @@ rspec_task:
       - echo $RUBY_VERSION
       - cat Gemfile.lock
     populate_script: bundle install
-  rspec_script: bundle exec rspec
+  rspec_script: bundle exec rspec --format json --out rspec.json
+  always:
+    rspec_report_artifacts:
+      path: rspec.json
+      type: text/json
+      format: rspec
 ```
 
 ??? tip "Repositories without `Gemfile.lock`"
