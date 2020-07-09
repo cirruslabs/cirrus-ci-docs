@@ -575,7 +575,7 @@ task:
     - rspec --format json --out rspec.json
   always:
     rspec_artifacts:
-      path: "rspec.json"
+      path: rspec.json
       type: text/json
       format: rspec
 ```
@@ -593,7 +593,7 @@ task:
     - rubocop --format json --out rubocop.json
   always:
     rubocop_artifacts:
-      path: "rubocop.json"
+      path: rubocop.json
       type: text/json
       format: rubocop
 ```
