@@ -570,9 +570,13 @@ container:
 
 task:
   name: RSpec
-  script:
-    - bundle install
-    - bundle exec rspec --format json --out rspec.json
+  bundle_cache:
+    folder: /usr/local/bundle
+    fingerprint_script:
+      - echo $RUBY_VERSION
+      - cat Gemfile.lock
+    populate_script: bundle install
+  script: bundle exec rspec --format json --out rspec.json
   always:
     rspec_artifacts:
       path: rspec.json
@@ -588,9 +592,13 @@ container:
 
 task:
   name: RuboCop
-  script:
-    - bundle install
-    - bundle exec rubocop --format json --out rubocop.json
+  bundle_cache:
+    folder: /usr/local/bundle
+    fingerprint_script:
+      - echo $RUBY_VERSION
+      - cat Gemfile.lock
+    populate_script: bundle install
+  script: bundle exec rubocop --format json --out rubocop.json
   always:
     rubocop_artifacts:
       path: rubocop.json
