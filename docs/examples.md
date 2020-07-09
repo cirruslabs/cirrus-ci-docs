@@ -571,8 +571,8 @@ container:
 task:
   name: RSpec
   script:
-    - gem install rspec
-    - rspec --format json --out rspec.json
+    - bundle install
+    - bundle exec rspec --format json --out rspec.json
   always:
     rspec_artifacts:
       path: rspec.json
@@ -589,8 +589,8 @@ container:
 task:
   name: RuboCop
   script:
-    - gem install rubocop
-    - rubocop --format json --out rubocop.json
+    - bundle install
+    - bundle exec rubocop --format json --out rubocop.json
   always:
     rubocop_artifacts:
       path: rubocop.json
