@@ -296,7 +296,7 @@ junit_test_task:
   junit_script: <replace this comment with instructions to run the test suites>
   always:
     junit_result_artifacts:
-      path: "**/test-results/**/*.xml"
+      path: "**/test-results/**.xml"
       format: junit
       type: text/xml
 ```
