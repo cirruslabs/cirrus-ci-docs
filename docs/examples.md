@@ -507,7 +507,12 @@ rspec_task:
       - echo $RUBY_VERSION
       - cat Gemfile.lock
     populate_script: bundle install
-  rspec_script: bundle exec rspec
+  rspec_script: bundle exec rspec --format json --out rspec.json
+  always:
+    rspec_report_artifacts:
+      path: rspec.json
+      type: text/json
+      format: rspec
 ```
 
 ??? tip "Repositories without `Gemfile.lock`"
@@ -552,6 +557,54 @@ rspec_task:
     
     Which will create four shards that will theoretically **run tests 4x faster** by equaly splitting all tests between 
     these four shards.
+
+### RSpec and RuboCop Annotations
+
+Cirrus CI natively supports [RSpec](https://rspec.info/) and [RuboCop](https://rubocop.org/) machine-parsable JSON reports.
+
+To get behavior-driven test annotations, simply generate a `rspec` artifact from your lint task:
+
+```yaml
+container:
+  image: ruby:latest
+
+task:
+  name: RSpec
+  bundle_cache:
+    folder: /usr/local/bundle
+    fingerprint_script:
+      - echo $RUBY_VERSION
+      - cat Gemfile.lock
+    populate_script: bundle install
+  script: bundle exec rspec --format json --out rspec.json
+  always:
+    rspec_artifacts:
+      path: rspec.json
+      type: text/json
+      format: rspec
+```
+
+Generate a `rubocop` artifact to quickly gain context for linter/formatter annotations:
+
+```yaml
+container:
+  image: ruby:latest
+
+task:
+  name: RuboCop
+  bundle_cache:
+    folder: /usr/local/bundle
+    fingerprint_script:
+      - echo $RUBY_VERSION
+      - cat Gemfile.lock
+    populate_script: bundle install
+  script: bundle exec rubocop --format json --out rubocop.json
+  always:
+    rubocop_artifacts:
+      path: rubocop.json
+      type: text/json
+      format: rubocop
+```
 
 ## Rust
 
