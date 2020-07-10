@@ -214,7 +214,7 @@ build_and_test_task:
     path: "build/*"
   always:
     junit_artifacts:
-      path: "**/test-results/**/*.xml"
+      path: "**/test-results/**.xml"
       type: text/xml
       format: junit
 ```
@@ -256,7 +256,7 @@ Use the `format` field of an artifact instruction to specify artifact's format (
 
 ```yaml
 junit_artifacts:
-  path: "**/test-results/**/*.xml"
+  path: "**/test-results/**.xml"
   type: text/xml
   format: junit
 ```
