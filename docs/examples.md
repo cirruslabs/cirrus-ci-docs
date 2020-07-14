@@ -116,7 +116,7 @@ spec_task:
   shard_cache:
     fingerprint_script: cat shard.lock
     populate_script: shards install
-    folder: ~/.cache/shards
+    folder: lib
   spec_script: crystal spec
 ```
 
