@@ -103,6 +103,23 @@ task:
   tests_script: make tests
 ```
 
+## Crystal
+
+Official [Crystal Docker images](https://hub.docker.com/r/crystallang/crystal/) can be used for builds. Here is an example
+of a `.cirrus.yml` that caches dependencies and runs tests:
+
+```yaml
+container:
+  image: crystallang/crystal:latest
+
+spec_task:
+  shard_cache:
+    fingerprint_script: cat shard.lock
+    populate_script: shards install
+    folder: ~/.cache/shards
+  spec_script: crystal spec
+```
+
 ## Elixir
 
 Official [Elixir Docker images](https://hub.docker.com/_/elixir/) can be used for builds. Here is an example of a `.cirrus.yml` that runs tests:
