@@ -20,11 +20,25 @@ task:
 
 Containers on Community Cluster can use maximum 8.0 CPUs and up to 24 GB of memory. 
 
-!!! warning "Scheduling Times on Community Cluster"
-    Since Community Cluster is shared, scheduling times for containers can vary from time to time. Also the smaller a container 
+??? warning "Scheduling Times on Community Cluster"
+    Since Community Cluster is shared, scheduling times for containers can vary from time to time. Also, the smaller a container 
     require resources faster it will be scheduled.
 
-!!! info "Privileged Access"
+??? info "Using in-memory disks"
+    Some I/O intensive tasks may benefit from using a `tmpfs` disk mounted as a working directory. Set `use_in_memory_disk` flag
+    to enable in-memory disk for a container:
+    
+    ```yaml
+    task:
+      name: Much I/O
+      container:
+        image: alpine:latest
+        use_in_memory_disk: true
+    ```
+    
+    **Note**: any files you write including cloned repository will count against your task's memory limit.
+
+??? info "Privileged Access"
     If you need to run privileged docker containers, take a look at the [docker builder](docker-builder-vm.md).
     
 ### KVM-enabled Privileged Containers
