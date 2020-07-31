@@ -87,15 +87,14 @@ and then contact [support](support.md) if it's still not clear what happened.
 
 ## Instance got rescheduled!
 
-Cirrus CI is trying to be as efficient as possible and uses an auto-scalable cluster of [preemptible VMs](https://cloud.google.com/preemptible-vms/)
-to run [Linux containers for OSS](guide/linux.md). It allows to drastically lower Cirrus CI's bill for parts of infrastructure 
-that **run tasks for OSS projects free of charge** but it comes with a rare edge case... 
+Cirrus CI is trying to be as efficient as possible and heavily uses [preemptible VMs](https://cloud.google.com/preemptible-vms/) to run majority
+of workloads. It allows to drastically lower Cirrus CI's infrastructure bill and allows to provide [the best pricing model with per-second billing](pricing.md)
+and [very generous limits for OSS projects](#are-there-any-limits), but it comes with a rare edge case... 
 
-Preemptible VMs can be preempted which will require to reschedule and automatically restart tasks that were executing on these VMs. 
-This is a rare event since autoscaler is constantly rotating instances but preemption still happens occasionally.
-
-!!! tip "Compute Credits"
-    Tasks that use [compute credits](pricing.md#compute-credits) are executed on standard VMs that don't get preempted.    
+Preemptible VMs can be preempted which will require rescheduling and automatically restart tasks that were executing on these VMs. 
+This is a rare event since autoscaler is constantly rotating instances but preemption still happens occasionally. 
+All automatic re-runs and [stateful](guide/writing-tasks.md#stateful-tasks) tasks using [compute credits](pricing.md#compute-credits)
+are always executed on regular VMs.
 
 ## Instance timed out!
 
