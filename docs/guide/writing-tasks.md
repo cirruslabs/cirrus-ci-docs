@@ -814,10 +814,10 @@ the standard MySQL port (3306). Tests will be able to access MySQL instance via 
 
 ```yaml
 container:
-  image: golang:1.9.4
+  image: golang:latest
   additional_containers:
     - name: mysql
-      image: mysql:8
+      image: mysql:latest
       port: 3306
       cpu: 1.0
       memory: 512Mi
@@ -827,15 +827,30 @@ container:
 
 Additional container can be very handy in many scenarios. Please check [Cirrus CI catalog of examples](../examples.md) for more details.
 
-!!! info "Default Resources"
+??? info "Default Resources"
     By default, each additional container will get `0.5` CPU and `512Mi` of memory. These values can be configured as usual
     via `cpu` and `memory` fields.
     
-!!! tip "Port Mapping"
+??? tip "Port Mapping"
     It's also possible to map ports of additional containers by using `<HOST_PORT>:<CONTAINER_PORT>` format for the `port` field.
     For example, `port: 80:8080` will map port `8080` of the container to be available on local port `80` within a task.
+    
+??? tip "Overriding Default Command"
+    It's also possible to override the default `CMD` of an additional container via `command` field:
+    
+    ```yaml
+    container:
+      image: golang:latest
+      additional_containers:
+        - name: mysql
+          image: mysql:latest
+          port: 7777
+          command: mysqld --port 7777
+          env:
+            MYSQL_ROOT_PASSWORD: ""
+    ```
 
-!!! warning
+??? warning
     **Note** that `additional_containers` can be used only with [Community Cluster](supported-computing-services.md#community-cluster)
     or [Google's Kubernetes Engine](supported-computing-services.md#kubernetes-engine).
 
