@@ -22,7 +22,7 @@ Containers on Community Cluster can use maximum 8.0 CPUs and up to 24 GB of memo
 
 ??? warning "Scheduling Times on Community Cluster"
     Since Community Cluster is shared, scheduling times for containers can vary from time to time. Also, the smaller a container 
-    require resources faster it will be scheduled.
+    require resources the faster it will be scheduled.
 
 ??? info "Using in-memory disks"
     Some I/O intensive tasks may benefit from using a `tmpfs` disk mounted as a working directory. Set `use_in_memory_disk` flag
