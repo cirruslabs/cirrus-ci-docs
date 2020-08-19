@@ -358,6 +358,7 @@ CIRRUS_BRANCH | Branch name. For example `my-feature`
 CIRRUS_BUILD_ID | Unique build ID
 CIRRUS_CHANGE_IN_REPO | Git SHA
 CIRRUS_CHANGE_MESSAGE | Commit message or PR title and description, depending on trigger event (Non-PRs or PRs respectively).
+CIRRUS_CHANGE_TITLE | First line of `CIRRUS_CHANGE_MESSAGE`
 CIRRUS_CRON | [Cron Build](#cron-builds) name if builds was triggered by Cron.
 CIRRUS_DEFAULT_BRANCH | Default repository branch name. For example `master`
 CIRRUS_LAST_GREEN_BUILD_ID | The build id of the last successful build on the same branch at the time of the current build creation.
