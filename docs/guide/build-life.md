@@ -17,8 +17,8 @@ Once the task finishes, the scheduling service will clean up the used VM or cont
 ![communication schema](/assets/images/cirrus-ci-communication.svg)
 
 This is a diagram of how Cirrus CI schedules a task on Google Cloud Platform (the community cluster's engine).
-The <span style="color:#2196F3">blue</span> arrows represent API calls and the <span style="color:#AED581">green</span> arrow
-represents unidirectional communication between an agent inside a VM or a container and Cirrus CI.
+The <span style="color:#2196F3">blue</span> arrows represent API calls and the <span style="color:#AED581">green</span> arrows
+represent unidirectional communication between an agent inside a VM or a container and Cirrus CI.
 Other chores such as health checking of the agent and GitHub status reporting happen in real time as a task is running.
 
 Straight forward and nothing magical. :sweat_smile:

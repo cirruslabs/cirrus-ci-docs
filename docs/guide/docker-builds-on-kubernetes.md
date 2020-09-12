@@ -3,7 +3,7 @@
 Besides the ability to build docker images using a dedicated `docker_builder` task which runs on VMs, it is also possible to run docker builds on Kubernetes.
 To do so we are leveraging the `additional_containers` and `docker-in-docker` functionality.
 
-Currently cirrus-ci supports running builds on following Kubernetes distributions:
+Currently Cirrus CI supports running builds on these Kubernetes distributions:
 
 - Google Kubernetes Engine (GKE)
 - AWS Elastic Kubernetes Service (EKS)
@@ -62,5 +62,5 @@ docker_build_task:
 
 ### Caveats
 
-Since the `additional_container` needs to run in privileged mode, the isolation between the docker build and the host are somewhat limited, hence you should create a separate cluster for cirrus-ci builds ideally.
+Since the `additional_container` needs to run in privileged mode, the isolation between the Docker build and the host are somewhat limited, you should create a separate cluster for Cirrus CI builds ideally.
 If this a concern you can also try out [Kaniko](https://github.com/GoogleContainerTools/kaniko) or [Makisu](https://github.com/uber/makisu) to run builds in unprivileged containers.

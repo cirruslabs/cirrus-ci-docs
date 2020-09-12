@@ -2,7 +2,7 @@
 
 "Docker Builder" tasks are a way to build and publish Docker Images to Docker Registries of your choice using a VM as build environment.
 In essence, a `docker_builder` is basically [a `task`](writing-tasks.md) that is executed in a VM with pre-installed Docker. 
-`docker_builder` can be defined the same way as a `task`:
+A `docker_builder` can be defined the same way as a `task`:
 
 ```yaml
 docker_builder:
@@ -10,7 +10,7 @@ docker_builder:
 ```
 
 Leveraging features such as [Task Dependencies](writing-tasks.md#depepndencies), [Conditional Execution](writing-tasks.md#conditional-execution)
-and [Encrypted Variables](writing-tasks.md#encrypted-variables) with a Docker Builder can help building some relatively
+and [Encrypted Variables](writing-tasks.md#encrypted-variables) with a Docker Builder can help building relatively
 complex pipelines. It can also be used to execute builds which need special privileges.
 
 In the example below, a `docker_builder` will be only executed on a tag creation, once both `test` and `lint` 
@@ -35,7 +35,7 @@ docker_builder:
 
 !!! info "Example"
     For more examples please check how we use Docker Builder to build and publish Cirrus CI's Docker Images for [Android](https://github.com/cirruslabs/docker-images-android).
-    
+
 ### Pre-installed Packages
 
 For your convenience, a Docker Builder VM has some common packages pre-installed:
@@ -46,10 +46,10 @@ For your convenience, a Docker Builder VM has some common packages pre-installed
 * OpenJDK 11
 * Python
 * Ruby with Bundler
-    
+
 ### Layer Caching
 
-Docker has the `--cache-from` flag which allows to use a previously built image as a cache source. This way only changed
+Docker has the `--cache-from` flag which allows using a previously built image as a cache source. This way only changed
 layers will be rebuilt which can drastically improve performance of the `build_script`. Here is a snippet that uses 
 the `--cache-from` flag:
 
@@ -91,7 +91,6 @@ Under the hood, for every `Dockerfile` that is needed to be built, Cirrus CI wil
 You will see such `build_docker_image_HASH` tasks in the UI.
 
 !!! info "Using with private GKE clusters"
-
     To use `dockerfile` with `gke_container` you first need to create a VM with Docker installed within your GCP project.
     This image will be used to perform building of Docker images for caching. Once this image is available, for example, by 
     `MY_DOCKER_VM` name, you can use it like this:
@@ -110,7 +109,7 @@ You will see such `build_docker_image_HASH` tasks in the UI.
 
 ### Windows Support
 
-Docker builder also supports building Windows Docker containers - use the `platform` and `os_version` fields:
+Docker builders also support building Windows Docker containers - use the `platform` and `os_version` fields:
 
 ```yaml
 docker_builder:
