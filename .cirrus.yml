@@ -43,6 +43,6 @@ task:
   container:
     image: squidfunk/mkdocs-material:$MKDOCS_VERSION
   env:
-    DEPLOY_TOKEN: ENCRYPTED[fbf2f9b7dc97cc3d960126b1540f19c36b96768c46b8eb99389e02b8c54080418d1fb90094dc2e3a36767df34acb5d5d]
+    DEPLOY_TOKEN: ENCRYPTED[177bcd0bea94a30fd6f1ac437b8c6a633b814da46b70892c9650577051e4d043a232a573b326523178074c96c9253313]
   install_script: python3 -m pip install --upgrade -r requirements.txt
   deploy_script: ./.ci/deploy.sh
