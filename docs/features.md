@@ -1,3 +1,4 @@
+
 ## Free for Open Source 
 
 To support Open Source community Cirrus CI provides [Linux](guide/linux.md), [Windows](guide/windows.md), [macOS](guide/macOS.md) and [FreeBSD](guide/FreeBSD.md)
@@ -43,8 +44,8 @@ Learn more about how to configure tasks [here](guide/writing-tasks.md). Configur
 * [Dependencies between tasks](guide/writing-tasks.md#dependencies)
 * [Conditional Task Execution](guide/writing-tasks.md#conditional-task-execution)
 * [Local HTTP Cache](guide/writing-tasks.md#http-cache)
-* [Dockerfile as a CI environment](guide/docker-builder-vm/#dockerfile-as-a-ci-environment)
-* [Monorepo Support](guide/writing-tasks/#supported-functions)
+* [Dockerfile as a CI environment](guide/docker-builder-vm.md#dockerfile-as-a-ci-environment)
+* [Monorepo Support](guide/writing-tasks.md#supported-functions)
 
 Check [Quick Start](guide/quick-start.md) guide for more features.
 
