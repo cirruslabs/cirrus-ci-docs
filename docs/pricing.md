@@ -1,19 +1,19 @@
 # Pricing
 
-Cirrus CI is free for Open Source projects. For private projects, Cirrus CI has couple of options depending on your needs:
+Cirrus CI is free for Open Source projects with some [limitations](faq.md#are-there-any-limits). For private projects, Cirrus CI has couple of options depending on your needs:
 
 1. For private personal repositories there is a [very affordable $10 a month plan](https://github.com/marketplace/cirrus-ci/plan/MDIyOk1hcmtldHBsYWNlTGlzdGluZ1BsYW45OTI=#pricing-and-setup) with 
    access to community clusters for [Linux](guide/linux.md), [Windows](guide/windows.md) and [macOS](guide/macOS.md) workloads.
 2. Buy [compute credits](#compute-credits) to access managed and pre-configured community clusters for [Linux](guide/linux.md), [FreeBSD](guide/FreeBSD.md), [Windows](guide/windows.md), and [macOS](guide/macOS.md) workloads.
 3. Configure access to [your own infrastructure](#compute-services) and [pay $10/seat/month](https://github.com/marketplace/cirrus-ci/plan/MDIyOk1hcmtldHBsYWNlTGlzdGluZ1BsYW45OTM=#pricing-and-setup).
 
-Here is the pricing model of Cirrus CI:
+Here is a comparison table of available [Cirrus CI plans](https://github.com/marketplace/cirrus-ci):
 
-User | Public Repository | Private Repository
---- | --- | ---
-Person | Free + Access to community cluster | [$10/month](https://github.com/marketplace/cirrus-ci/plan/MDIyOk1hcmtldHBsYWNlTGlzdGluZ1BsYW45OTI=#pricing-and-setup) + Access to community cluster
-Organization | Free + Access to community cluster | <ul><li>[$10/seat/month](#compute-services) for managing CI workloads on your [compute services](#compute-services)</li><li>Buy [compute credits](#compute-credits) to access community clusters instead of configuring your own infrastructure and paying $10/seat/month</li></ul> 
-    
+User         | [Free Public Repositories](https://github.com/marketplace/cirrus-ci/plan/MDIyOk1hcmtldHBsYWNlTGlzdGluZ1BsYW45OTA=#pricing-and-setup) | [Private Personal Repository](https://github.com/marketplace/cirrus-ci/plan/MDIyOk1hcmtldHBsYWNlTGlzdGluZ1BsYW45OTI=#pricing-and-setup) | [Private Organization Repositories](https://github.com/marketplace/cirrus-ci/plan/MDIyOk1hcmtldHBsYWNlTGlzdGluZ1BsYW45OTM=#pricing-and-setup)
+---          | --- | --- | ---
+Person       | <ul><li>Free access to community clusters for public repositories</li><li>[Bring your own infrastructure](#compute-services) for public repositories</li></ul> | <ul><li>Access to community clusters for public and **private** repositories</li><li>[Bring your own infrastructure](#compute-services) for public and **private** repositories</li></ul>  | **Not Applicable**
+Organization | <ul><li>Free access to community clusters for public repositories</li><li>Use [compute credits](#compute-credits) to access community clusters for private repositories and/or to avoid the [limits](faq.md#are-there-any-limits) on public repositories</li><li>[Bring your own infrastructure](#compute-services) for public repositories</li></ul> | **Not Applicable** | <ul><li>Free access to community clusters for public repositories</li><li>Use [compute credits](#compute-credits) to access community clusters for private repositories and/or to avoid the [limits](faq.md#are-there-any-limits) on public repositories</li><li>[Bring your own infrastructure](#compute-services) for public and **private** repositories</li></ul> 
+
 ## Compute Credits
 
 Sometimes configuring your own [compute services](#compute-services) isn't worth it. It takes time and effort to maintain them. For such cases there is a way to use the same community clusters that the Open Source community is enjoying.
@@ -47,7 +47,7 @@ All tasks using compute credits are charged on per-second basis. 2 CPU Linux tas
 **Cons** of this approach:
   
 * No support for exotic use cases like GPUs, SSDs and 100+ cores machines.
-* Not cost efficient for big teams.
+* Not that cost efficient for big teams.
 
 ### Buying Compute Credits
 
