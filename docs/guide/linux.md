@@ -56,9 +56,7 @@ task:
   container:
     image: cirrusci/android-sdk:29
     kvm: true
-  accel_check_script:
-    - sudo chown cirrus:cirrus /dev/kvm
-    - emulator -accel-check
+  accel_check_script: emulator -accel-check
 ```
 
 !!! warning "Scheduling Times of KVM-enabled Containers"
