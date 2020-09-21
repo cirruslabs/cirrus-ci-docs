@@ -13,7 +13,7 @@ pipe:
       install_script: python3 -m pip install --upgrade -r requirements.txt
       build_script: mkdocs build
     - image: raviqqe/liche:latest
-      validate_script: /liche --document-root=site --recursive site/
+      validate_script: /liche --concurrency 8 --document-root=site --recursive site/
 
 task:
   name: Markdown Lint
