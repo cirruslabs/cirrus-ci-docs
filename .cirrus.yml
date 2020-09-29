@@ -1,6 +1,6 @@
 container:
   cpu: 1
-  memory: 1G
+  memory: 2G
 
 env:
   MKDOCS_VERSION: 6.0.1
