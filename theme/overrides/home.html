@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+<!-- Render landing page under tabs -->
+{% block tabs %}
+  {{ super() }}
+
+  <!-- Additional styles for landing page -->
+  <style>
+
+    /* Application header should be static for the landing page */
+    .md-header {
+      position: initial;
+    }
+
+    /* Remove spacing, as we cannot hide it completely */
+    .md-main__inner {
+      margin: 0;
+    }
+
+    /* Hide main content for now */
+    .md-content {
+      display: none;
+    }
+
+    /* Hide table of contents */
+    @media screen and (min-width: 60em) {
+      .md-sidebar--secondary {
+        display: none;
+      }
+    }
+
+    /* Hide navigation */
+    @media screen and (min-width: 76.25em) {
+      .md-sidebar--primary {
+        display: none;
+      }
+    }
+  </style>
+
+  <!-- landing page for landing page -->
+  <section class="tx-container">
+    <div class="md-grid md-typeset">
+      <div class="tx-landing">
+
+        <!-- landing image -->
+        <div class="tx-landing__image">
+          <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+          <lottie-player id="lottieAnimation" background="transparent"
+                         style="max-width: 100%; height: auto;"
+                         speed="1" loop autoplay>
+          </lottie-player>
+          <script>
+            let randomAnimationIndex = Math.floor(Math.random() * 4) % 4;
+            let animation = document.getElementById("lottieAnimation");
+            animation.load("/assets/animations/"+ randomAnimationIndex + ".json");
+            animation.resize();
+          </script>
+        </div>
+
+        <!-- landing content -->
+        <div class="tx-landing__content">
+          <h2>Make your development cycle <b>fast</b>, <b>efficient</b>, and <b>secure</b></h2>
+          <p>{{ config.site_description }}</p>
+
+          <a
+            href="{{ page.next_page.url | url }}"
+            title="{{ page.next_page.title | e }}"
+            class="md-button"
+          >
+            {{ page.next_page.title }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+
+<!-- Content -->
+{% block content %}{% endblock %}
+
+<!-- Application footer -->
+{% block footer %}{% endblock %}

@@ -1,0 +1,75 @@
+.tx-container {
+  padding-top: 1rem;
+  background:
+    url("/assets/images/wave-regular.svg") no-repeat bottom,
+    linear-gradient(to bottom, var(--md-primary-fg-color), #2196f3 99%, var(--md-default-bg-color) 99%)
+}
+
+[data-md-color-scheme=slate] .tx-container {
+  background:
+    url("/assets/images/wave-slate.svg") no-repeat bottom,
+    linear-gradient(to bottom, var(--md-primary-fg-color), #2196f3 99%, var(--md-default-bg-color) 99%)
+}
+
+.tx-landing {
+  margin: 0 .8rem;
+  color: var(--md-primary-bg-color)
+}
+
+.tx-landing h1 {
+  margin-bottom: 1rem;
+  color: currentColor;
+  font-weight: 700
+}
+
+@media screen and (max-width: 29.9375em) {
+  .tx-landing h1 {
+    font-size: 1.4rem
+  }
+}
+
+.tx-landing__content {
+  padding-bottom: 6rem
+}
+
+@media screen and (min-width: 60em) {
+  .tx-landing {
+    display: flex;
+    align-items: stretch
+  }
+
+  .tx-landing__content {
+    max-width: 19rem;
+    margin-top: 3.5rem;
+    padding-bottom: 14vw
+  }
+
+  .tx-landing__image {
+    order: 1;
+    width: 38rem;
+    transform: translateX(4rem)
+  }
+}
+
+@media screen and (min-width: 76.25em) {
+  .tx-landing__image {
+    transform: translateX(8rem)
+  }
+}
+
+.tx-landing .md-button {
+  margin-top: .5rem;
+  margin-right: .5rem;
+  color: var(--md-primary-bg-color)
+}
+
+.tx-landing .md-button:hover, .tx-landing .md-button:focus {
+  color: var(--md-default-bg-color);
+  background-color: #8bc34a;
+  border-color: #8bc34a
+}
+
+.md-typeset lottie-player {
+  max-width: 100%;
+  height: auto;
+}

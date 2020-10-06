@@ -7,8 +7,8 @@ site_author: Cirrus Labs
 copyright: © Cirrus Labs 2017-present
 site_description: >
   Cirrus CI is a modern Continuous Integration system built for the era of cloud computing.
-  Cirrus CI supports both Linux and Windows environments as well as various cloud computing
-  services like Kubernetes and Google Cloud Platform.
+  Cirrus CI supports Linux, Windows macOS and FreeBSD environments as well as various cloud computing
+  services like Kubernetes, Google Cloud, AWS and Azure.
 
 google_analytics: ['UA-110620457-1', 'cirrus-ci.org']
 remote_branch: master
@@ -23,8 +23,7 @@ theme:
     repo: fontawesome/brands/github
   language: en
   palette:
-    primary: indigo
-    accent: indigo
+    scheme: preference
   font:
     text: Roboto
     code: Roboto Mono
@@ -33,6 +32,7 @@ theme:
 
 extra_css:
   - 'stylesheets/extra.css'
+  - 'stylesheets/landing.css'
 
 plugins:
   - search
