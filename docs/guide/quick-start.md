@@ -41,11 +41,13 @@ check_task:
 That's all! After pushing a `.cirrus.yml` a build with all the tasks defined in the `.cirrus.yml`
 file will be created.
 
+**Note:** Please check the [full guide on configuring Cirrus Tasks](writing-tasks.md) and/or check [a list of available examples](examples.md).
+
 !!! tip "Zero-config Docker Builds"
     If your repository happened to have a `Dockerfile` in the root, Cirrus CI will attempt to build it even without
     a corresponding `.cirrus.yml` configuration file.
 
-You will see all your Cirrus CI builds on [cirrus-ci.com](https://cirrus-ci.com/) once signing in. 
+You will see all your Cirrus CI builds on [cirrus-ci.com](https://cirrus-ci.com/) once signed in. 
 
 <img src="/assets/images/screenshots/github/recent-builds.png" />
 
