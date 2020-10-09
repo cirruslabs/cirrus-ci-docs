@@ -73,3 +73,7 @@
   max-width: 100%;
   height: auto;
 }
+
+.md-announce div a {
+  color: var(--md-primary-bg-color);
+}
