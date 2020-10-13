@@ -634,6 +634,9 @@ Currently only basic operators like `==`, `!=`, `=~`, `!=~`, `&&`, `||` and unar
     check_aggreement_task:
       only_if: $CIRRUS_BRANCH =~ 'pull/.*'
     ```
+    
+    Note that `=~` operator can match agains multiline values (dotall mode) and therefore looking for the exact occurance of the regular expression
+    so don't forget to use `.*` around your term for matching it at any position (for example, `$CIRRUS_CHANGE_TITLE =~ '.*[docs].*'`).
 
 ### Supported Functions
 
