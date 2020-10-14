@@ -25,6 +25,7 @@ List of available Xcode versions:
 * 11.5
 * 11.6
 * 12.0
+* 12.1
 
 Note that there are couple of aliases available for images:
 
