@@ -393,28 +393,6 @@ gke_container:
 
   For a full example on leveraging this to do docker-in-docker builds on Kubernetes checkout [Docker Builds on Kubernetes](docker-builds-on-kubernetes.md)
 
-#### GKE Docker Pipe
-
-It is possible to also launch [Docker Pipes](docker-pipe.md) on your own GKE cluster. Simply use `gke_pipe` instead of `pipe`
-and don't forget to specify at least `cluster_name` the same way as for [`gke_container`](#kubernetes-engine). Here is an example
-of `.cirrus.yml`:
-
-```yaml
-gcp_credentials: ENCRYPTED[qwerty239abc]
-
-gke_pipe:
-  cluster_name: my-gke-cluster
-  zone: us-west1-c # optional. default is us-central1-a
-  namespace: cirrus-ci # optional. default is default
-
-  name: Build Site and Validate Links
-  steps:
-    - image: squidfunk/mkdocs-material:latest
-      build_script: mkdocs build
-    - image: raviqqe/liche:latest # links validation tool in a separate container
-      validate_script: /liche --document-root=site --recursive site/
-```
-
 ## AWS
 
 <p align="center">
