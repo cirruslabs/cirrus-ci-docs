@@ -389,6 +389,22 @@ test_task:
   test_script: yarn run test
 ```
 
+### Yarn v2
+
+Yarn v2 (also known as Yarn Berry), has a different way of caching packages.
+It stores all packages inside the repository, as files that should be committed.
+This means that as long as you upload these files once you update your `package.json` and lockfile,
+you should be able to just use Yarn without even needing to run `yarn install`.
+
+To run tests, it would look like this:
+
+```yaml
+test_task:
+  container:
+    image: node:latest
+  test_script: yarn run test
+```
+
 ## Python
 
 Official [Python Docker images](https://hub.docker.com/_/python/) can be used for builds. Here is an example of a `.cirrus.yml` 
