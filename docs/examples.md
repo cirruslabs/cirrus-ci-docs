@@ -401,7 +401,7 @@ test_task:
   yarn_cache:
     folder: .yarn/cache
     fingerprint_script: cat yarn.lock
-    populate_script: yarn install
+  install_script: yarn install
   test_script: yarn run test
 ```
 
