@@ -391,17 +391,17 @@ test_task:
 
 ### Yarn 2
 
-Yarn 2 (also known as Yarn Berry), has a different way of caching packages.
-It stores all packages inside the repository, as files that should be committed.
-This means that as long as you upload these files once you update your `package.json` and `yarn.lock`,
-you should be able to just use Yarn without even needing to run `yarn install`.
-
+Yarn 2 (also known as Yarn Berry), has a different package cache location (`.yarn/cache`).
 To run tests, it would look like this:
 
 ```yaml
+container:
+  image: node:latest
 test_task:
-  container:
-    image: node:latest
+  yarn_cache:
+    folder: .yarn/cache
+    fingerprint_script: cat yarn.lock
+    populate_script: yarn install
   test_script: yarn run test
 ```
 
