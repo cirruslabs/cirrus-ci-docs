@@ -401,7 +401,9 @@ test_task:
   yarn_cache:
     folder: .yarn/cache
     fingerprint_script: cat yarn.lock
-  install_script: yarn install
+  install_script:
+    - yarn set version berry
+    - yarn install
   test_script: yarn run test
 ```
 
