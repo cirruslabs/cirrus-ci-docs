@@ -393,7 +393,7 @@ test_task:
 
 Yarn v2 (also known as Yarn Berry), has a different way of caching packages.
 It stores all packages inside the repository, as files that should be committed.
-This means that as long as you upload these files once you update your `package.json` and lockfile,
+This means that as long as you upload these files once you update your `package.json` and `yarn.lock`,
 you should be able to just use Yarn without even needing to run `yarn install`.
 
 To run tests, it would look like this:
