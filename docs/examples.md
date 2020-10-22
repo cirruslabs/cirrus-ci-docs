@@ -389,6 +389,24 @@ test_task:
   test_script: yarn run test
 ```
 
+### Yarn 2
+
+Yarn 2 (also known as Yarn Berry), has a different package cache location (`.yarn/cache`).
+To run tests, it would look like this:
+
+```yaml
+container:
+  image: node:latest
+test_task:
+  yarn_cache:
+    folder: .yarn/cache
+    fingerprint_script: cat yarn.lock
+  install_script:
+    - yarn set version berry
+    - yarn install
+  test_script: yarn run test
+```
+
 ## Python
 
 Official [Python Docker images](https://hub.docker.com/_/python/) can be used for builds. Here is an example of a `.cirrus.yml` 
