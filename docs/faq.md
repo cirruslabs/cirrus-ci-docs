@@ -32,6 +32,8 @@ for public repositories for free:
 * 8.0 CPUs for FreeBSD VMs.
 * 2.0 CPUs macOS VM (1 VM with hyper-threading).
 
+**Note:** there are no limits on how many minutes a month you'll use! But please don't try to mine crypto coins! Most of the options are blocked via firewall rules and there are other anti-fraud mechanisms in place. Be a good citizen on OSS community!
+
 If you are using Cirrus CI with your private personal repositories under the [$10/month plan](https://github.com/marketplace/cirrus-ci/plan/MDIyOk1hcmtldHBsYWNlTGlzdGluZ1BsYW45OTI=#pricing-and-setup)
 **you'll have twice the limits**:
 
