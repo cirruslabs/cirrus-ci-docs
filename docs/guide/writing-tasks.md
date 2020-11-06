@@ -234,7 +234,7 @@ build_and_test_task:
     ```
     
     By default, Cirrus looks up the latest **successful** build of the default branch for the repository but the branch name
-    can be customized via `?branch=<BRANCH>` query paramter. 
+    can be customized via `?branch=<BRANCH>` query parameter. 
 
 #### Artifact Type
 
@@ -678,7 +678,7 @@ By default, Cirrus CI marks a task as stateful if it's name contain one of the f
 
 ```yaml
 task:
-  name: Propogate to Production
+  name: Propagate to Production
   stateful: true
   ...
 ```
