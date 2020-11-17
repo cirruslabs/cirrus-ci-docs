@@ -15,8 +15,8 @@ task:
 
 * `catalina-base` - vanilla macOS with Brew and Command Line Tools pre-installed.
 * `catalina-xcode-NN` - based of `catalina-base` with Xcode NN and couple other packages pre-installed: 
-  `cocoapods`, `fastlane`, `rake` and `xctool`.
-* `catalina-xcode-NN-flutter` - based of `catalina-xcode-NN` with pre-installed [Flutter](https://flutter.dev/) and Android SDK/NDK.
+  `cocoapods`, `fastlane`, `rake` and `xctool`. **Starting from Xcode 12.1 [Flutter](https://flutter.dev/) and Android SDK/NDK are also pre-installed.**
+* `catalina-xcode-NN-flutter` (**deprecated** since Xcode 12.1) - based of `catalina-xcode-NN` with pre-installed [Flutter](https://flutter.dev/) and Android SDK/NDK.
 
 List of available Xcode versions:
 
@@ -26,11 +26,12 @@ List of available Xcode versions:
 * 11.6
 * 12.0
 * 12.1
+* 12.2
 
 Note that there are couple of aliases available for images:
 
 * `catalina-xcode` - point to the latest stable `catalina-xcode-NN` image.
-* `catalina-flutter` - point to the latest `catalina-xcode-NN-flutter` image.
+* `catalina-flutter` - point to the latest image with.
 
 Please refer to the [`osx-images`](https://github.com/cirruslabs/osx-images) repository on how the images were built and
 don't hesitate to [create issues](https://github.com/cirruslabs/osx-images/issues) if current images are missing something.
