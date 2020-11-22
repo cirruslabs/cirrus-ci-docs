@@ -29,6 +29,9 @@ theme:
     code: Roboto Mono
   features:
     - navigation.tabs
+    - search.suggest
+    - search.highlight
+    - header.autohide
 
 extra_css:
   - 'stylesheets/extra.css'

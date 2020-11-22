@@ -1,3 +1,8 @@
+---
+hide:
+- navigation
+---
+
 # Support
 
 The best way to ask general questions about a particular use cases is to email us at [support+ci@cirruslabs.org](mailto:support+ci@cirruslabs.org).

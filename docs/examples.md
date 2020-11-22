@@ -1,3 +1,8 @@
+---
+hide:
+  - navigation
+---
+  
 # Examples
 
 Here you can find example configurations per different programming languages/frameworks.
