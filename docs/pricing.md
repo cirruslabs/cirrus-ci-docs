@@ -1,3 +1,7 @@
+---
+hide:
+  - navigation
+---
 # Pricing
 
 Cirrus CI is free for Open Source projects with some [limitations](faq.md#are-there-any-limits). For private projects, Cirrus CI has couple of options depending on your needs:

@@ -1,4 +1,7 @@
-
+---
+hide:
+  - navigation
+---
 ## Free for Open Source 
 
 To support Open Source community Cirrus CI provides [Linux](guide/linux.md), [Windows](guide/windows.md), [macOS](guide/macOS.md) and [FreeBSD](guide/FreeBSD.md)

@@ -2,14 +2,11 @@ container:
   cpu: 1
   memory: 2G
 
-env:
-  MKDOCS_VERSION: 6.1.4
-
 pipe:
   name: Build Site and Validate Links
   only_if: $CIRRUS_BRANCH != 'gh-pages'
   steps:
-    - image: squidfunk/mkdocs-material:$MKDOCS_VERSION
+    - image: ghcr.io/squidfunk/mkdocs-material:latest
       install_script: python3 -m pip install --upgrade -r requirements.txt
       build_script: mkdocs build
     - image: raviqqe/liche:latest
@@ -41,7 +38,8 @@ task:
     - Markdown Lint
     - Spell Check
   container:
-    image: squidfunk/mkdocs-material:$MKDOCS_VERSION
+    image: ghcr.io/squidfunk/mkdocs-material-insiders:latest
+    registry_config: ENCRYPTED[!538bb6f5645bd9f45c62d9a172d5e4bd7c464dbf79767f312f897e997ed79b4f4a6567f3dabee54b64bc1e0af12a9846!]
   env:
     DEPLOY_TOKEN: ENCRYPTED[177bcd0bea94a30fd6f1ac437b8c6a633b814da46b70892c9650577051e4d043a232a573b326523178074c96c9253313]
   install_script: python3 -m pip install --upgrade -r requirements.txt
