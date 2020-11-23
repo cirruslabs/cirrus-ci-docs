@@ -86,9 +86,16 @@ After a successful login, Docker config file located in `~/.docker/config.json` 
     }
   }
 }
-``` 
+```
 
-Create an [encrypted variable](writing-tasks.md#encrypted-variables) from the Docker config and put in in `.cirrus.yml`:
+If you don't see `auth` for your registry it means your Docker installation is using a credentials store. In this case
+you can manually auth, it's simply a Base64 encoded string of your username and your PAT ([Personal Access Token](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token)):
+
+```bash
+echo $USERNAME:$PATH | base64
+```
+
+Create an [encrypted variable](writing-tasks.md#encrypted-variables) from the Docker config and put in `.cirrus.yml`:
 
 ```yaml
 registry_config: ENCRYPTED[...]
