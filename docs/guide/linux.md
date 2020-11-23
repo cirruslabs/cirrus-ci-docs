@@ -92,7 +92,7 @@ If you don't see `auth` for your registry it means your Docker installation is u
 you can manually auth, it's simply a Base64 encoded string of your username and your PAT ([Personal Access Token](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token)):
 
 ```bash
-echo $USERNAME:$PATH | base64
+echo $USERNAME:$PAT | base64
 ```
 
 Create an [encrypted variable](writing-tasks.md#encrypted-variables) from the Docker config and put in `.cirrus.yml`:
