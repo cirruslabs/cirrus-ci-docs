@@ -594,7 +594,7 @@ Now Cirrus CI can interact with Azure APIs.
   </a>
 </p>
 
-[Azure Container Instances (ACI)](https://azure.microsoft.com/en-us/services/container-instances/) allows is an ideal 
+[Azure Container Instances (ACI)](https://azure.microsoft.com/en-us/services/container-instances/) is an ideal 
 candidate for running modern CI workloads. ACI allows *just* to run Linux and Windows containers without thinking about 
 underlying infrastructure.
 
