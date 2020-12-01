@@ -12,7 +12,6 @@ site_description: >
 
 google_analytics: ['UA-110620457-1', 'cirrus-ci.org']
 remote_branch: master
-strict: true
 
 theme:
   name: 'material'
