@@ -59,8 +59,10 @@ task:
   accel_check_script: emulator -accel-check
 ```
 
-!!! warning "Scheduling Times of KVM-enabled Containers"
-    Because of the additional virtualization layer, it takes about a minute extra to acquire necessary resources to start a task.
+!!! warning "Limitations of KVM-enabled Containers"
+    Because of the additional virtualization layer, it takes about a minute to acquire necessary resources to start such tasks.
+    KVM-enabled Containers are backed by dedicated VMs which imply restriction on amount of CPU resources such tasks can use: cpu value
+    should be integer, either 1 or an even number. One can not use `0.5` or `3` CPUs for KVM-enabled Containers 
 
 ### Working with Private Registries
 
