@@ -60,9 +60,9 @@ task:
 ```
 
 !!! warning "Limitations of KVM-enabled Containers"
-    Because of the additional virtualization layer, it takes about a minute to acquire necessary resources to start such tasks.
-    KVM-enabled Containers are backed by dedicated VMs which imply restriction on amount of CPU resources such tasks can use: cpu value
-    should be integer, either 1 or an even number. One can not use `0.5` or `3` CPUs for KVM-enabled Containers 
+    Because of the additional virtualization layer, it takes about a minute to acquire the necessary resources to start such tasks.
+    KVM-enabled containers are backed by dedicated VMs which restrict the amount of CPU resources such tasks can use: the value of `cpu`
+    must be `1` or an even integer. Values like `0.5` or `3` are not supported for KVM-enabled containers 
 
 ### Working with Private Registries
 
