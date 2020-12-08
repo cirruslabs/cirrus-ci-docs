@@ -29,7 +29,6 @@ theme:
   features:
     - navigation.tabs
     - search.suggest
-    - search.highlight
     - header.autohide
 
 extra_css:
