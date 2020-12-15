@@ -28,8 +28,8 @@ theme:
     code: Roboto Mono
   features:
     - navigation.tabs
+    - navigation.tabs.sticky
     - search.suggest
-    - header.autohide
 
 extra_css:
   - 'stylesheets/extra.css'
@@ -97,9 +97,10 @@ nav:
     - Examples: examples.md
   - Pricing:
     - Pricing: pricing.md
-  - Blog: https://medium.com/cirruslabs
   - Support:
     - Support: support.md
+  - Blog: https://medium.com/cirruslabs
+  - Go to App: https://cirrus-ci.com/
 
 extra:
   social:
