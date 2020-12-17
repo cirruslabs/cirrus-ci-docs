@@ -6,8 +6,8 @@ Instead, Cirrus CI just [uses APIs of cloud providers](supported-computing-servi
 design difference has multiple benefits comparing to more traditional CIs:
 
 1. **By design each execution environment is ephemeral.** Each Cirrus CI task starts in a fresh VM or a container without any state left by previous tasks.
-2. **Infrastructure as code.** All VM versions and container tags are specified in .cirrus.yml configuration file in your Git repository.
-   For any revision in the past Cirrus tasks can be identically reproduced at any point in time in the future using the exact versions of VMs or container tags specified in .cirrus.yml at the particular revision. Just imagine how difficult it is to do a security release for a 6 months old version if your CI environment independently changes.
+2. **Infrastructure as code.** All VM versions and container tags are specified in `.cirrus.yml` configuration file in your Git repository.
+   For any revision in the past Cirrus tasks can be identically reproduced at any point in time in the future using the exact versions of VMs or container tags specified in `.cirrus.yml` at the particular revision. Just imagine how difficult it is to do a security release for a 6 months old version if your CI environment independently changes.
 3. **Predictability and cost efficiency.** Cirrus CI uses elasticity of modern clouds and creates VMs and containers on demand
    only when they are needed for executing Cirrus tasks and deletes them right after. Immediately scale from 0 to hundreds or
    thousands of parallel Cirrus tasks without a need to over provision infrastructure or constantly monitor if your team has reached maximum parallelism of your current CI plan.
@@ -22,7 +22,7 @@ This is precisely what Persistent Workers for Cirrus CI are: a simple way to run
 
 ### Configuration
 
-First, create a persistent workers pool for [your personal account](https://cirrus-ci.com/settings/profile/) or a GitHub organization (`https://cirrus-ci.com/settings/github/<ORGANIZATION>`).
+First, create a persistent workers pool for [your personal account](https://cirrus-ci.com/settings/profile/) or a GitHub organization (`https://cirrus-ci.com/settings/github/<ORGANIZATION>`):
 
 <img src="/assets/images/screenshots/worker-pools.png" />
 
