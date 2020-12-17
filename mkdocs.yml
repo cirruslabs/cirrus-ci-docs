@@ -10,7 +10,6 @@ site_description: >
   Cirrus CI supports Linux, Windows, macOS and FreeBSD environments as well as various cloud computing
   services like Kubernetes, Google Cloud, AWS and Azure.
 
-google_analytics: ['UA-110620457-1', 'cirrus-ci.org']
 remote_branch: master
 
 theme:
