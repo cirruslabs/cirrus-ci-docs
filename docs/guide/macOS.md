@@ -21,9 +21,9 @@ task:
   
 List of available Xcode versions:
 
-* big-sur-xcode-12.3
+* `big-sur-xcode-12.3`
 
-Note that there is a `big-sur-xcode` alias available to always refence to the latest stable `big-sur-xcode-NN` image.
+Note that there is a `big-sur-xcode` alias available to always reference to the latest stable `big-sur-xcode-NN` image.
 
 #### macOS Catalina
 
@@ -34,14 +34,13 @@ Note that there is a `big-sur-xcode` alias available to always refence to the la
 
 List of available Xcode versions:
 
-* catalina-xcode-11.3.1
-* catalina-xcode-11.4.1
-* catalina-xcode-11.5
-* catalina-xcode-11.6
-* catalina-xcode-12.0
-* catalina-xcode-12.1
-* catalina-xcode-12.2
-* big-sur-xcode-12.3
+* `catalina-xcode-11.3.1`
+* `catalina-xcode-11.4.1`
+* `catalina-xcode-11.5`
+* `catalina-xcode-11.6`
+* `catalina-xcode-12.0`
+* `catalina-xcode-12.1`
+* `catalina-xcode-12.2`
 
 Note that there are a couple of aliases available for images:
 
