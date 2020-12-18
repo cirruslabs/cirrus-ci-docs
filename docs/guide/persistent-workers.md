@@ -39,3 +39,11 @@ task:
       arch: arm64
   script: echo "running on-premise"
 ```
+
+Or remove `labels` filed if you want to target any worker:
+
+```yaml
+task:
+  persistent_worker: {}
+  script: echo "running on-premise"
+```
