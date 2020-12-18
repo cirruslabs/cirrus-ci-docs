@@ -5,7 +5,7 @@ instead of requiring users to manage their own infrastructure, configuring serve
 Instead, Cirrus CI just [uses APIs of cloud providers](supported-computing-services.md) to create virtual machines or containers on demand. This fundamental
 design difference has multiple benefits comparing to more traditional CIs:
 
-1. **By design each execution environment is ephemeral.** Each Cirrus CI task starts in a fresh VM or a container without any state left by previous tasks.
+1. **Ephemeral environment.** Each Cirrus CI task starts in a fresh VM or a container without any state left by previous tasks.
 2. **Infrastructure as code.** All VM versions and container tags are specified in `.cirrus.yml` configuration file in your Git repository.
    For any revision in the past Cirrus tasks can be identically reproduced at any point in time in the future using the exact versions of VMs or container tags specified in `.cirrus.yml` at the particular revision. Just imagine how difficult it is to do a security release for a 6 months old version if your CI environment independently changes.
 3. **Predictability and cost efficiency.** Cirrus CI uses elasticity of modern clouds and creates VMs and containers on demand
@@ -14,7 +14,7 @@ design difference has multiple benefits comparing to more traditional CIs:
 
 For some use cases the traditional CI setup is still useful. Not everything is available in the cloud! For example,
 Apple releases new ARM-based products and there is simply no virtualization yet available for the new hardware. 
-Another use case is to test hardware itself, not everyone is working on websites and mobile apps after all! For such use cases
+Another use case is to test the hardware itself, since not everyone is working on websites and mobile apps after all! For such use cases
 it makes sense to go with a traditional CI setup: install some binary on the hardware which will constantly pull for new tasks 
 and will execute them one after another.
 
