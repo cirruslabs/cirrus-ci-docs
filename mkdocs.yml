@@ -80,6 +80,7 @@ nav:
         - 'Windows Containers': guide/windows.md
         - 'macOS VMs': guide/macOS.md
         - 'FreeBSD VMs': guide/FreeBSD.md
+        - 'Persistent Workers': guide/persistent-workers.md
         - 'Docker Builder on VM': guide/docker-builder-vm.md
         - 'Docker Builds on GKE': guide/docker-builds-on-kubernetes.md
         - 'Docker Pipe': guide/docker-pipe.md
