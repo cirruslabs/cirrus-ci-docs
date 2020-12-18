@@ -1,5 +1,7 @@
 ## Persistent Workers
 
+### Introduction
+
 Cirrus CI pioneered an [idea of directly using compute services](https://medium.com/cirruslabs/core-principle-of-continuous-integration-systems-is-obsolete-8d926e17c721)
 instead of requiring users to manage their own infrastructure, configuring servers for running CI jobs, performing upgrades, etc.
 Instead, Cirrus CI just [uses APIs of cloud providers](supported-computing-services.md) to create virtual machines or containers on demand. This fundamental
@@ -11,6 +13,8 @@ design difference has multiple benefits comparing to more traditional CIs:
 3. **Predictability and cost efficiency.** Cirrus CI uses elasticity of modern clouds and creates VMs and containers on demand
    only when they are needed for executing Cirrus tasks and deletes them right after. Immediately scale from 0 to hundreds or
    thousands of parallel Cirrus tasks without a need to over provision infrastructure or constantly monitor if your team has reached maximum parallelism of your current CI plan.
+   
+### What is a Persistent Worker
 
 For some use cases the traditional CI setup is still useful. Not everything is available in the cloud! For example,
 Apple releases new ARM-based products and there is simply no virtualization yet available for the new hardware. 
