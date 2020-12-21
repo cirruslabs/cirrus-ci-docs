@@ -595,7 +595,7 @@ rspec_task:
       rspec_script: bundle exec rake knapsack_pro:rspec
     ```
     
-    Which will create four shards that will theoretically **run tests 4x faster** by equaly splitting all tests between 
+    Which will create four shards that will theoretically **run tests 4x faster** by equally splitting all tests between 
     these four shards.
 
 ### RSpec and RuboCop Annotations
@@ -694,7 +694,7 @@ test_task:
 ??? tip "FreeBSD Caveats"
 
     Vanila FreeBSD VMs don't set some environment variables required by Cargo for effective caching.
-    Specifying `HOME` environment variable to some arbitraly location should fix caching:
+    Specifying `HOME` environment variable to some arbitrarily location should fix caching:
 
     ```yaml
     freebsd_instance:
