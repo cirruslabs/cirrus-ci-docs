@@ -67,6 +67,25 @@ Newly created PRs will also get Cirrus CI's status checks.
     Please check [a high level overview of what's happening under the hood](build-life.md) when a changed is pushed
     and [this guide](writing-tasks.md) to learn more about how to write tasks.
 
+## Authorization on Cirrus CI Web App
+
+All builds created by your account can be viewed on [Cirrus CI Web App](https://cirrus-ci.com/) after signing in with
+your GitHub Account:
+
+<img src="/assets/images/screenshots/github/cirrus-web-sign-in.png" />
+
+After clicking on `Sign In` you'll be redirected to GitHub in order to authorize access:
+
+<img src="/assets/images/screenshots/github/github-app-auth.png" />
+
+!!! note "Note about *Act on your behalf*"
+    Cirrus CI only asks for several kinds of permissions that you can see on [your installation page](https://github.com/apps/cirrus-ci/installations/new).
+    These permissions are read-only except for write access to checks and commit statuses in order for Cirrus CI to
+    be able to report task statuses via checks or commit statuses.
+
+    There is a long thread disscussing this weird "*Act on your behalf*" wording [here](https://github.community/t/why-does-this-forum-need-permission-to-act-on-my-behalf/120453/7)
+    on GitHub's own commuity forum.
+
 ## Enabling New Repositories after Installation
 
 If you choose initially to allow Cirrus CI to access all of your repositories, simply push a `.cirrus.yml` to start
