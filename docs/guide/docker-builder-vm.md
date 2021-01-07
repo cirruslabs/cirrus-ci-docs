@@ -93,7 +93,7 @@ You will see such `build_docker_image_HASH` tasks in the UI.
 !!! warning "Danger of using `COPY` and `ADD` instructions"
     Cirrus doesn't include files added or copied into a container image in the cache key. This means that for a public repository
     a potential bad actor can create a PR with malicious scripts included into a container, wait for it to be cached and then
-    reset the PR so it looks harmful.
+    reset the PR so it looks harmless.
 
 ??? info "Using with private GKE clusters"
     To use `dockerfile` with `gke_container` you first need to create a VM with Docker installed within your GCP project.
