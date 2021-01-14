@@ -66,7 +66,7 @@ Field Name                 | Computing Service                                  
 -------------------------- | ----------------------------------------------------- | -----------------------
 `container`                | [Linux Community Cluster][container]                  | Linux Docker Container
 `windows_container`        | [Windows Community Cluster][windows_container]        | Windows Docker Container
-`osx_instance`             | [macOS Community Cluster][osx_instance]               | macOS Virtual Machines
+`macos_instance`           | [macOS Community Cluster][macos_instance]             | macOS Virtual Machines
 `freebsd_instance`         | [FreeBSD Community Cluster][freebsd_instance]         | FreeBSD Virtual Machines
 `gce_instance`             | [Google Compute Engine][gce_instance]                 | Linux, Windows and FreeBSD Virtual Machines in your GCP project
 `gke_container`            | [Google Kubernetes Engine][gke_container]             | Linux Docker Containers on private GKE cluster
@@ -77,7 +77,7 @@ Field Name                 | Computing Service                                  
 
 [container]: linux.md
 [windows_container]: windows.md
-[osx_instance]: macOS.md
+[macos_instance]: macOS.md
 [freebsd_instance]: FreeBSD.md
 [gce_instance]: supported-computing-services.md#compute-engine
 [gke_container]: supported-computing-services.md#kubernetes-engine

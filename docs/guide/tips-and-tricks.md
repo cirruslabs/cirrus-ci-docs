@@ -50,7 +50,7 @@ task:
 task:
   << : *REGULAR_TASK_TEMPLATE
   name: osx
-  osx_instance:
+  macos_instance:
     image: catalina-xcode
   test_script: ls -w "${FRAMEWORK_PATH}"
 ```

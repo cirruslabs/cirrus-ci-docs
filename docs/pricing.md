@@ -67,7 +67,7 @@ https://cirrus-ci.com/settings/github/MY-ORGANIZATION
 
 ### Configuring Compute Credits
 
-Compute credits can be used with any of the following instance types: `container`, `windows_container` and `osx_instance`.
+Compute credits can be used with any of the following instance types: `container`, `windows_container` and `macos_instance`.
 No additional configuration needed.
 
 ```yaml
