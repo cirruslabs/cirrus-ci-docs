@@ -5,7 +5,7 @@ Simply use `freebsd_instance` in `.cirrus.yml` files:
 
 ```yaml
 freebsd_instance:
-  image_family: freebsd-12-1
+  image_family: freebsd-13-0
 
 task:
   install_script: pkg install -y ...
@@ -21,6 +21,7 @@ task:
 Any of the official FreeBSD VMs on Google Cloud Platform are supported. Here are a few of them which are self explanatory:
 
 * `freebsd-13-0-snap` (13.0-CURRENT)
+* `freebsd-13-0`      (13.0-ALPHA)
 * `freebsd-12-1-snap` (12.1-STABLE)
 * `freebsd-12-1`      (12.1-RELEASE)
 * `freebsd-12-0`      (12.0-RELEASE)
