@@ -661,7 +661,9 @@ test_task:
     fingerprint_script: cat Cargo.lock
   target_cache:
     folder: target
-    fingerprint_script: cat Cargo.lock
+    fingerprint_script:
+      - rustc --version
+      - cat Cargo.lock
   build_script: cargo build
   test_script: cargo test
   before_cache_script: rm -rf $CARGO_HOME/registry/index
@@ -691,7 +693,9 @@ test_task:
     fingerprint_script: cat Cargo.lock
   target_cache:
     folder: target
-    fingerprint_script: cat Cargo.lock
+    fingerprint_script:
+      - rustc --version
+      - cat Cargo.lock
   build_script: cargo build
   test_script: cargo test
   before_cache_script: rm -rf $CARGO_HOME/registry/index
