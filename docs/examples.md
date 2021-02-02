@@ -656,9 +656,14 @@ container:
   image: rust:latest
 
 test_task:
-  cargo_cache:
+  registry_cache:
     folder: $CARGO_HOME/registry
     fingerprint_script: cat Cargo.lock
+  target_cache:
+    folder: target
+    fingerprint_script:
+      - rustc --version
+      - cat Cargo.lock
   build_script: cargo build
   test_script: cargo test
   before_cache_script: rm -rf $CARGO_HOME/registry/index
@@ -683,9 +688,14 @@ test_task:
     - allow_failures: true
       container:
         image: rustlang/rust:nightly
-  cargo_cache:
+  registry_cache:
     folder: $CARGO_HOME/registry
     fingerprint_script: cat Cargo.lock
+  target_cache:
+    folder: target
+    fingerprint_script:
+      - rustc --version
+      - cat Cargo.lock
   build_script: cargo build
   test_script: cargo test
   before_cache_script: rm -rf $CARGO_HOME/registry/index
