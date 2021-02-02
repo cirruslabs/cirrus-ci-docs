@@ -62,7 +62,7 @@ To be fair there are of course some disadvantages of starting a new VM or a cont
   [built-in caching mechanism](writing-tasks.md#cache-instruction). Some tools like [Gradle](https://gradle.org/) can 
   even take advantages of [built-in HTTP cache](writing-tasks.md#http-cache)!
 
-Please check the list of currently supported cloud compute services below and please see what's [coming next](#coming-soon).
+Please check the list of currently supported cloud compute services below.
 
 ## Google Cloud
 
