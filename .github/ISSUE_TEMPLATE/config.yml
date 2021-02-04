@@ -1,9 +1,6 @@
 blank_issues_enabled: false
 
 contact_links:
-  - name: Security Vulnerability Reports
-    url: https://cirrus-ci.org/security/
-    about: Please report security vulnerabilities here.
   - name: Questions and community creations
     url: https://github.com/cirruslabs/cirrus-ci-docs/discussions
     about: Please use discussions if you have a question (not a bug or feature report), or just something to share with the community.
