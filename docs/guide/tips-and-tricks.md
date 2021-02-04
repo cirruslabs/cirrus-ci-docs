@@ -21,9 +21,9 @@ task:
 ```
 
 !!! note "`go-git` benefits"
-    Using `go-git` made it possible to not require a pre-installed Git from an execution environment. For example, 
-    most of `alpine`-based containers doesn't have Git pre-installed. Because of `go-git` you can even use distroless 
-    containers with Cirrus CI which don't even have Operation System.
+    Using `go-git` made it possible not to require a pre-installed Git from an execution environment. For example,
+    most of `alpine`-based containers don't have Git pre-installed. Because of `go-git` you can even use distroless
+    containers with Cirrus CI, which don't even have an Operating System.
 
 ## Sharing configuration between tasks
 
