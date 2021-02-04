@@ -1,9 +1,8 @@
 ---
 name: Feature Request
-about: Request a new feature
+about: Request a new feature to be added to the Cirrus CI platform
 labels: feature
-assignees: ''
-
+assignees: ""
 ---
 
 # Description
