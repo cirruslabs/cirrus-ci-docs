@@ -80,6 +80,12 @@ it happens because of two reasons:
 
 2. Your CI task used too much memory which led to a crash of a VM or a container.
 
+## Agent process on a persistent worker exited unexpectedly!
+
+This means that either an agent process or a VM with an agent process exited before reporting the last instruction of a task.
+
+If it's happening for a [`mancos_instance`](guide/macOS.md) then please contact [support](support.md).
+
 ## Instance failed to start!
 
 It means that Cirrus CI have made a successful API call to a [computing service](guide/supported-computing-services.md) 
