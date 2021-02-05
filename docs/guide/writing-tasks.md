@@ -173,9 +173,9 @@ If your dependencies are updated often, please pay attention to `fingerprint_scr
 
 `reupload_on_changes` is an *optional* field that can specify whether Cirrus Agent should check if 
 contents of cached `folder` have changed during task execution and re-upload a cache entry in case of any changes.
-If `reupload_on_changes` option is not set explicitly then it will be set to `false` if `fingerprint_script` is presented and `true` tohervise.
+If `reupload_on_changes` option is not set explicitly then it will be set to `false` if `fingerprint_script` is presented and `true` otherwise.
 Cirrus Agent will detect additions, deletions and modifications of any files under specified `folder`. All of the detected changes will be
-logged under `Upload '$CACHE_NAME' cache`instructions for easier debugging of cache invalidations.
+logged under `Upload '$CACHE_NAME' cache` instructions for easier debugging of cache invalidations.
 
 That means the only difference between the example above and below is that `yarn install` will always be executed in the
 example below where in the example above only when `yarn.lock` has changes.
