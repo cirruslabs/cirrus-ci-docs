@@ -279,8 +279,8 @@ gce_container:
 
 By default Cirrus CI will create Google Compute instances without any [scopes](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes) 
 so an instance can't access Google Cloud Storage for example. But sometimes it can be useful to give some permissions to an 
-instance by using `scopes` key of `gce_instance`.  For example if a particular task builds Docker images and then pushes 
-them to [Container Registry](https://cloud.google.com/container-registry/) it's configuration file can look something like:
+instance by using `scopes` key of `gce_instance`.  For example, if a particular task builds Docker images and then pushes 
+them to [Container Registry](https://cloud.google.com/container-registry/), its configuration file can look something like:
 
 ```yaml
 gcp_credentials: ENCRYPTED[qwerty239abc]
@@ -644,7 +644,7 @@ to Anka Cloud's private network and securely expose API for Cirrus CI to connect
 Please check [Anka Controller Extended Documentation](https://github.com/cirruslabs/anka-controller-extended) for details
 and don't hesitate to reach out [support](../support.md) with any question.
 
-Once Anka Controller Extended is up and running, Cirrus CI can use it's API to schedule tasks. Simply use `anka_instance`
+Once Anka Controller Extended is up and running, Cirrus CI can use its API to schedule tasks. Simply use `anka_instance`
 in your `.cirrus.yml` file like this: 
 
 ```yaml
