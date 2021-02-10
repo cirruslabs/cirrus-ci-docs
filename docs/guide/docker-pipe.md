@@ -1,4 +1,4 @@
-Docker Pipe is a way to execute each [instruction](writing-tasks.md#supported-instructions) in it's own Docker container
+Docker Pipe is a way to execute each [instruction](writing-tasks.md#supported-instructions) in its own Docker container
 while persisting working directory between each of the containers. For example, you can build your application in 
 one container, run some lint tools in another containers and finally deploy your app via CLI from another container.
 

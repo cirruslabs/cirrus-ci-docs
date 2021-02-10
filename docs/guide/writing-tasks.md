@@ -696,7 +696,7 @@ task:
 It's possible to tell Cirrus CI that a certain task is stateful and Cirrus CI will use a slightly different scheduling algorithm
 to minimize chances of such tasks being interrupted. **Scheduling times of such stateful tasks might be a bit longer then usual.**
 
-By default, Cirrus CI marks a task as stateful if it's name contain one of the following terms: `deploy`, `push`, `publish`, 
+By default, Cirrus CI marks a task as stateful if its name contains one of the following terms: `deploy`, `push`, `publish`, 
 `upload` or `release`. Otherwise, you can explicitly mark a task as stateful via `stateful` field:
 
 ```yaml
@@ -728,7 +728,7 @@ test_nightly_task:
 
 ## Manual tasks
 
-By default a Cirrus CI task is automatically triggered when all it's [dependency tasks](#task-execution-dependencies)
+By default a Cirrus CI task is automatically triggered when all its [dependency tasks](#task-execution-dependencies)
 finished successfully. Sometimes though, it can be very handy to trigger some tasks manually, for example, perform a
 deployment to staging for manual testing upon all automation checks have succeeded. In order change the default behavior
 please use `trigger_type` field like this:
