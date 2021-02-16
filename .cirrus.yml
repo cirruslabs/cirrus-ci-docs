@@ -9,6 +9,8 @@ pipe:
     - image: ghcr.io/squidfunk/mkdocs-material:latest
       install_script: python3 -m pip install --upgrade -r requirements.txt
       build_script: mkdocs build
+      site_artifact:
+        path: "site/**"
     - image: raviqqe/liche:latest
       validate_script: /liche --concurrency 8 --document-root=site --recursive site/
 
