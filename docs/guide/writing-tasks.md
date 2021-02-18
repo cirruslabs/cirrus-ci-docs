@@ -217,7 +217,6 @@ build_and_test_task:
   always:
     junit_artifacts:
       path: "**/test-results/**.xml"
-      type: text/xml
       format: junit
 ```
 
@@ -261,7 +260,8 @@ build_and_test_task:
 
 #### Artifact Type
 
-If you want the Cirrus CI API to return a mimetype other than `application/octet-stream`, for example if you wanted certain files to download in a way you don't need to change the extension for, you can specify the `type` parameter, for example:
+By default, Cirrus CI will try to guess mimetype of files in artifacts by looking at their extensions. In case when artifacts
+don't have extensions, it's possible to explicitly set the `Content-Type` via `type` field:
 
 ```yaml
   my_task:
