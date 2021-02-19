@@ -1,13 +1,13 @@
 .tx-container {
   padding-top: 1rem;
   background:
-    url("assets/images/wave-regular.svg") no-repeat bottom,
+    url("/assets/images/wave-regular.svg") no-repeat bottom,
     linear-gradient(to bottom, var(--md-primary-fg-color), #2196f3 99%, var(--md-default-bg-color) 99%)
 }
 
 [data-md-color-scheme=slate] .tx-container {
   background:
-    url("assets/images/wave-slate.svg") no-repeat bottom,
+    url("/assets/images/wave-slate.svg") no-repeat bottom,
     linear-gradient(to bottom, var(--md-primary-fg-color), #2196f3 99%, var(--md-default-bg-color) 99%)
 }
 
