@@ -25,6 +25,10 @@ Settings page for a corresponding organization. Here is a direct link to the set
 Once an access token is generated and securely stored, it can be used to authorize API requests by setting `Authorization`
 header to `Bearer $TOKEN`.
 
+!!! note "User API Token Permission Scope"
+    It is also possible to generate API tokens for personal accounts but they will be scoped **only** to access personal public and private repositories
+    of a particular user. It won't be possible to access private repositories of an organization, _even if_ they have access.
+
 ## WebHooks
 
 It is possible to subscribe for updates of builds and tasks. If a WebHook URL is configured on Cirrus CI Settings page for 
