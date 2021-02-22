@@ -47,6 +47,23 @@ For your convenience, a Docker Builder VM has some common packages pre-installed
 * Python
 * Ruby with Bundler
 
+### Under the hood
+
+Under the hood a simple integration with [Google Compute Engine](supported-computing-services.md#compute-engine)
+is used and basically `docker_builder` is a syntactic sugar for the following [`compute_engine_instance`](custom-vms.md) configuration:
+
+```yaml
+task:
+  compute_engine_instance:
+    image_project: cirrus-images
+    image: family/docker-builder
+    platform: linux	
+    cpu: 4
+    memory: 16G
+```
+
+You can check Packer templates of the VM image in [`cirruslabs/vm-images` repository](https://github.com/cirruslabs/vm-images).
+
 ### Layer Caching
 
 Docker has the `--cache-from` flag which allows using a previously built image as a cache source. This way only changed

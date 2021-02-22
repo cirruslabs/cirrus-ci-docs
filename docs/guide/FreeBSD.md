@@ -14,7 +14,14 @@ task:
 
 !!! info "Under the Hood"
     Under the hood a simple integration with [Google Compute Engine](supported-computing-services.md#compute-engine) 
-    is used.
+    is used and basically `freebsd_instance` is a syntactic sugar for the following [`compute_engine_instance`](custom-vms.md) configuration:
+
+    ```yaml
+    compute_engine_instance:
+      image_project: freebsd-org-cloud-dev
+      image: family/freebsd-13-0
+      platform: freebsd
+    ```
 
 ## List of available image families
 

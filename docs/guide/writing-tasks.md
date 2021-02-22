@@ -62,23 +62,27 @@ task:
 In order to specify where to execute a particular task you can choose from a variety of options by defining one of the
 following fields for a `task`:
 
-Field Name                 | Computing Service                                     | Description
--------------------------- | ----------------------------------------------------- | -----------------------
-`container`                | [Linux Community Cluster][container]                  | Linux Docker Container
-`windows_container`        | [Windows Community Cluster][windows_container]        | Windows Docker Container
-`macos_instance`           | [macOS Community Cluster][macos_instance]             | macOS Virtual Machines
-`freebsd_instance`         | [FreeBSD Community Cluster][freebsd_instance]         | FreeBSD Virtual Machines
-`gce_instance`             | [Google Compute Engine][gce_instance]                 | Linux, Windows and FreeBSD Virtual Machines in your GCP project
-`gke_container`            | [Google Kubernetes Engine][gke_container]             | Linux Docker Containers on private GKE cluster
-`ec2_instance`             | [Amazon Elastic Compute Cloud][ec2_instance]          | Linux Virtual Machines in your AWS
-`eks_instance`             | [Amazon Elastic Container Service][eks_instance]      | Linux Docker Containers on private EKS cluster
-`azure_container_instance` | [Azure Container Instances][azure_container_instance] | Linux and Windows Docker Container on Azure
-`anka_instance`            | [Anka Build by Veertu][anka_instance]                 | macOS VMs on your Anka Build
+Field Name                 | Managed by | Description
+-------------------------- | ---------- | -----------------------
+`container`                | **us**     | [Linux Docker Container][container]
+`windows_container`        | **us**     | [Windows Docker Container][windows_container]
+`docker_builder `          | **us**     | [Full-fledged VM pre-configured for running Docker][docker_builder]
+`macos_instance`           | **us**     | [macOS Virtual Machines][macos_instance]
+`freebsd_instance`         | **us**     | [FreeBSD Virtual Machines][freebsd_instance]
+`compute_engine_instance`  | **us**     | [Full-fledged custom VM][compute_engine_instance]
+`gce_instance`             | **you**    | [Linux, Windows and FreeBSD Virtual Machines in your GCP project][gce_instance]
+`gke_container`            | **you**    | [Linux Docker Containers on private GKE cluster][gke_container]
+`ec2_instance`             | **you**    | [Linux Virtual Machines in your AWS][ec2_instance]
+`eks_instance`             | **you**    | [Linux Docker Containers on private EKS cluster][eks_instance]
+`azure_container_instance` | **you**    | [Linux and Windows Docker Container on Azure][azure_container_instance]
+`anka_instance`            | **you**    | [macOS VMs on your Anka Build][anka_instance]
 
 [container]: linux.md
 [windows_container]: windows.md
+[docker_builder]: docker-builder-vm.md
 [macos_instance]: macOS.md
 [freebsd_instance]: FreeBSD.md
+[compute_engine_instance]: custom-vms.md
 [gce_instance]: supported-computing-services.md#compute-engine
 [gke_container]: supported-computing-services.md#kubernetes-engine
 [ec2_instance]: supported-computing-services.md#ec2

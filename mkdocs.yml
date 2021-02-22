@@ -95,6 +95,7 @@ nav:
         - 'Docker Builder on VM': guide/docker-builder-vm.md
         - 'Docker Builds on GKE': guide/docker-builds-on-kubernetes.md
         - 'Docker Pipe': guide/docker-pipe.md
+        - 'Custom VMs': guide/custom-vms.md
         - 'Computing Services': guide/supported-computing-services.md
       - 'Life of a Build': guide/build-life.md
       - 'Notifications': guide/notifications.md
