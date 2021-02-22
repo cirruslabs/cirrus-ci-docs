@@ -27,7 +27,7 @@ header to `Bearer $TOKEN`.
 
 !!! note "User API Token Permission Scope"
     It is also possible to generate API tokens for personal accounts but they will be scoped **only** to access personal public and private repositories
-    of a particular user. It won't be possible to access private repositories of an organization a particular user belongs and has access to.
+    of a particular user. It won't be possible to access private repositories of an organization, _even if_ they have access.
 
 ## WebHooks
 
