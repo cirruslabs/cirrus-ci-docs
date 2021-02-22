@@ -66,7 +66,7 @@ Field Name                 | Managed by | Description
 -------------------------- | ---------- | -----------------------
 `container`                | **us**     | [Linux Docker Container][container]
 `windows_container`        | **us**     | [Windows Docker Container][windows_container]
-`docker_builder `          | **us**     | [Full-fledged VM pre-configured for running Docker][docker_builder]
+`docker_builder`           | **us**     | [Full-fledged VM pre-configured for running Docker][docker_builder]
 `macos_instance`           | **us**     | [macOS Virtual Machines][macos_instance]
 `freebsd_instance`         | **us**     | [FreeBSD Virtual Machines][freebsd_instance]
 `compute_engine_instance`  | **us**     | [Full-fledged custom VM][compute_engine_instance]

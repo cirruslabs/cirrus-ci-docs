@@ -9,9 +9,11 @@ With `compute_engine_instance` it is possible to use any publicly available imag
 Such instances are particularly useful when you can't use Docker containers, for example, when you need to test things
 against newer versions of Linux kernel then the Docker host has.
 
+Here is an example of using a `compute_engine_instance` to run a VM with KVM available:
+
 ```yaml
 compute_engine_instance:
-  image_project: cirrus-images
+  image_project: cirrus-images # GCP project
   image: family/docker-kvm # family or simply a full image name.
   platform: linux
   cpu: 4

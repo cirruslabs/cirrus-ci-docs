@@ -57,7 +57,7 @@ task:
   compute_engine_instance:
     image_project: cirrus-images
     image: family/docker-builder
-    platform: linux	
+    platform: linux
     cpu: 4
     memory: 16G
 ```
