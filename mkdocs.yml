@@ -77,10 +77,8 @@ markdown_extensions:
   - pymdownx.tilde
 
 nav:
-  - Home:
-    - Home: index.md
-  - Features:
-    - Features: features.md
+  - Home: index.md
+  - Features: features.md
   - Documentation:
     - 'User Guide':
       - 'Quick Start': guide/quick-start.md
@@ -105,12 +103,9 @@ nav:
       - 'Privacy': legal/privacy.md
       - 'Terms of Service': legal/terms.md
     - Security: security.md
-  - Examples:
-    - Examples: examples.md
-  - Pricing:
-    - Pricing: pricing.md
-  - Support:
-    - Support: support.md
+  - Examples: examples.md
+  - Pricing: pricing.md
+  - Support: support.md
   - Blog: https://medium.com/cirruslabs
   - Go to App: https://cirrus-ci.com/
 
