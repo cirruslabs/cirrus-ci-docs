@@ -13,23 +13,23 @@ Only one user-defined [script instruction](#script-instruction) to run `gradle t
 
 Please read the topics below if you want better understand what's doing on in a more complex `.cirrus.yml` configuration file, such as this:
 
-```yaml
-# global default
-container:
-  image: node:latest
-
+``` {: .yaml .annotate }
 task:
-  node_modules_cache:
+  container:
+    image: node:latest # (1)
+
+  node_modules_cache: # (2)
     folder: node_modules
     fingerprint_script: cat yarn.lock
     populate_script: yarn install
 
-  matrix:
+  matrix: # (3)
     - name: Lint
+      skip: !changesInclude('.cirrus.yml', '**.{js,ts}') # (4)
       lint_script: yarn run lint
     - name: Test
       container:
-        matrix:
+        matrix: # (5)
           - image: node:latest
           - image: node:lts
       test_script: yarn run test
@@ -37,9 +37,17 @@ task:
       depends_on:
         - Lint
         - Test
-      only_if: $BRANCH == "master"
+      only_if: $BRANCH == "master" # (6)
       publish_script: yarn run publish
 ```
+
+1. Use any Docker image from public or [private](linux.md#working-with-private-registries) registries
+2. Use [cache instruction](#cache-instruction) to persist folders based on an arbitrary `fingerprint_script`.
+3. Use [`matrix` modification](#matrix-modification) to produce many similar tasks.
+4. See what kind of files were changes and skip tasks that are not applicable.
+   See [`changesInclude`](#supported-functions) documentation for details.
+5. Use nested [`matrix` modification](#matrix-modification) to produce even more tasks.
+6. Completely exclude tasks from execution graph by [any custom condition](#conditional-task-execution).
 
 !!! tip "Task Naming"
     To name a task one can use the `name` field. `foo_task` syntax is a syntactic sugar. Separate name
