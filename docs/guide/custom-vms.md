@@ -16,9 +16,10 @@ compute_engine_instance:
   image_project: cirrus-images # GCP project
   image: family/docker-kvm # family or simply a full image name.
   platform: linux
-  cpu: 4
-  memory: 16G
-  nested_virtualization: true # Whether to enable Intel VT-x. Defaults to false. 
+  cpu: 4 # optional. Defaults to 2 CPUs.
+  memory: 16G # optional. Defaults to 4G.
+  disk: 100 # optional. By default uses the smallest disk size required by the image.
+  nested_virtualization: true # optional. Whether to enable Intel VT-x. Defaults to false.
 ```
 
 # Building custom image for Compute Engine
