@@ -481,6 +481,29 @@ unittest_task:
 
 Now you should get annotations for your test results.
 
+## Qodana
+
+[Qodana by JetBrains](https://github.com/JetBrains/Qodana) is a code quality monitoring tool that identifies and suggests fixes for bugs,
+security vulnerabilities, duplications, and imperfections. It brings all the smart features you love in the JetBrains IDEs.
+
+Here is an example of `.cirrus.yml` configuration file which will save Qodana's report as an artifact, will parse it and
+report as [annotations](guide/writing-tasks.md#artifact-parsing):
+
+```yaml
+task:
+  name: Qodana
+  container:
+    image: jetbrains/qodana:latest
+  env:
+    CIRRUS_WORKING_DIR: /data/project
+  generate_report_script:
+    - /opt/idea/bin/entrypoint --save-report --report-dir=report
+  always:
+    results_artifacts:
+      path: "report/results/result-allProblems.json"
+      format: qodana
+```
+
 ## Release Assets
 
 Cirrus CI doesn't provide a built-in functionality to upload artifacts on a GitHub release but this functionality can be
@@ -722,26 +745,3 @@ test_task:
       test_script: cargo test --all --all-targets
       before_cache_script: rm -rf $HOME/.cargo/registry/index
     ```
-
-# Qodana
-
-[Qodana by JetBrains](https://github.com/JetBrains/Qodana) is a code quality monitoring tool that identifies and suggests fixes for bugs,
-security vulnerabilities, duplications, and imperfections. It brings all the smart features you love in the JetBrains IDEs.
-
-Here is an example of `.cirrus.yml` configuration file which will save Qodana's report as an artifact, will parse it and
-report as [annotations](guide/writing-tasks.md#artifact-parsing):
-
-```yaml
-task:
-  name: Qodana
-  container:
-    image: jetbrains/qodana:latest
-  env:
-    CIRRUS_WORKING_DIR: /data/project
-  generate_report_script:
-    - /opt/idea/bin/entrypoint --save-report --report-dir=report
-  always:
-    results_artifacts:
-      path: "report/results/result-allProblems.json"
-      format: qodana
-```
