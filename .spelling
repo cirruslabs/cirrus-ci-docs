@@ -73,6 +73,7 @@ Heroku
 Homebrew
 Hypervisor
 IPs
+JetBrains
 JUnit
 Kaniko
 Kubernetes
@@ -174,3 +175,4 @@ RSpec
 RuboCop
 natively
 machine-parsable
+Qodana
