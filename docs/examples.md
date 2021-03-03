@@ -725,7 +725,7 @@ test_task:
 
 # Qodana
 
-[Qodana by Jetbrains](https://github.com/JetBrains/Qodana) is a code quality monitoring tool that identifies and suggests fixes for bugs,
+[Qodana by JetBrains](https://github.com/JetBrains/Qodana) is a code quality monitoring tool that identifies and suggests fixes for bugs,
 security vulnerabilities, duplications, and imperfections. It brings all the smart features you love in the JetBrains IDEs.
 
 Here is an example of `.cirrus.yml` configuration file which will save Qodana's report as an artifact, will parse it and
@@ -744,6 +744,4 @@ task:
     results_artifacts:
       path: "report/results/result-allProblems.json"
       format: qodana
-    report_artifacts:
-      path: "report/**"
 ```
