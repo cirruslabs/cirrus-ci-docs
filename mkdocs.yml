@@ -39,6 +39,7 @@ theme:
   features:
     - navigation.tabs
     - navigation.tabs.sticky
+    - navigation.top
     - search.suggest
 
 extra_css:
