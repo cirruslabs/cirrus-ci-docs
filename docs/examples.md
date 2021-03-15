@@ -745,3 +745,27 @@ test_task:
       test_script: cargo test --all --all-targets
       before_cache_script: rm -rf $HOME/.cargo/registry/index
     ```
+
+## XCLogParser
+
+[XCLogParser](https://github.com/spotify/XCLogParser) is a CLI tool that parses Xcode and `xcodebuild`'s logs (`xcactivitylog` files) and produces reports in different formats.
+
+Here is an example of `.cirrus.yml` configuration file which will save XCLogParser's flat JSON report as an artifact, will parse it and report as [annotations](https://cirrus-ci.org/guide/writing-tasks/#artifact-parsing):
+
+```yaml
+macos_instance:
+  image: big-sur-xcode
+
+task:
+  name: XCLogParser
+  build_script:
+    - xcodebuild -scheme noapp -derivedDataPath ~/dd
+  always:
+    xclogparser_parse_script:
+      - brew install xclogparser
+      - xclogparser parse --project noapp --reporter flatJson --output xclogparser.json --derived_data ~/dd
+    xclogparser_upload_artifacts:
+      path: "xclogparser.json"
+      type: text/json
+      format: xclogparser
+```
