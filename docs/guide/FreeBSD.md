@@ -1,7 +1,7 @@
 ## FreeBSD Virtual Machines
 
-It is possible to run FreeBSD Virtual Machines the same way one can run [Linux containers](linux.md) on FreeBSD Community Cluster. 
-Simply use `freebsd_instance` in `.cirrus.yml` files:
+It is possible to run FreeBSD Virtual Machines the same way one can run [Linux containers](linux.md) on the FreeBSD Community Cluster. 
+To accomplish this, use `freebsd_instance` in your `.cirrus.yml`:
 
 ```yaml
 freebsd_instance:
@@ -13,8 +13,8 @@ task:
 ```
 
 !!! info "Under the Hood"
-    Under the hood a simple integration with [Google Compute Engine](supported-computing-services.md#compute-engine) 
-    is used and basically `freebsd_instance` is a syntactic sugar for the following [`compute_engine_instance`](custom-vms.md) configuration:
+    Under the hood, a basic integration with [Google Compute Engine](supported-computing-services.md#compute-engine) 
+    is used and `freebsd_instance` is a syntactic sugar for the following [`compute_engine_instance`](custom-vms.md) configuration:
 
     ```yaml
     compute_engine_instance:

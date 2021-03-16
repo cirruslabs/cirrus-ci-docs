@@ -35,7 +35,7 @@ It is possible to subscribe for updates of builds and tasks. If a WebHook URL is
 an organization, Cirrus CI will try to `POST` a webhook event payload to this URL.
 
 `POST` request will contain `X-Cirrus-Event` header to specify if the update was made to a `build` or a `task`. The event 
-payload itself is pretty simple:
+payload itself is pretty basic:
 
 ```json
 {

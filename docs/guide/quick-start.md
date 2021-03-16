@@ -24,7 +24,7 @@ In contrast, classic OAuth Apps [don't have such restrictions](https://developer
 Once Cirrus CI is installed for a particular repository, a `.cirrus.yml` configuration file should be added to the root of the repository. 
 The `.cirrus.yml` defines tasks that will be executed for every build for the repository. 
 
-For a simple Node.js project, your `.cirrus.yml` can look like:
+For a Node.js project, your `.cirrus.yml` could look like:
 
 ```yaml
 container:

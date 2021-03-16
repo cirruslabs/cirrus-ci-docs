@@ -46,7 +46,7 @@ check_android_task:
 ```
 
 !!! info
-    Please don't forget to setup [Remote Build Cache](#build-cache) for your Gradle project. Or at least [simple folder caching](#gradle-caching).
+    Please don't forget to setup [Remote Build Cache](#build-cache) for your Gradle project. Or at least [basic folder caching](#gradle-caching).
     
 ### Android Lint
 
@@ -311,7 +311,7 @@ org.gradle.jvmargs=-Dfile.encoding=UTF-8
 
 ## JUnit
 
-Here is a `.cirrus.yml` that (once succeeded or failed), parses and uploads JUnit reports:
+Here is a `.cirrus.yml` that, parses and uploads JUnit reports at the end of the build:
 
 ```yaml
 junit_test_task:
@@ -343,7 +343,7 @@ task:
 
 The [Additional Containers feature](guide/writing-tasks.md#additional-containers) makes it super simple to run the same Docker
 MySQL image as you might be running in production for your application. Getting a running instance of the latest GA 
-version of MySQL can be as simple as the following six lines in your `.cirrus.yml`:
+version of MySQL can used with the following six lines in your `.cirrus.yml`:
 
 ```yaml hl_lines="3 4 5 6 7 8"
 container:
@@ -507,7 +507,7 @@ task:
 ## Release Assets
 
 Cirrus CI doesn't provide a built-in functionality to upload artifacts on a GitHub release but this functionality can be
-added via a simple script. For a release Cirrus CI will provide `CIRRUS_RELEASE` environment variable along with `CIRRUS_TAG` 
+added via a script. For a release, Cirrus CI will provide `CIRRUS_RELEASE` environment variable along with `CIRRUS_TAG` 
 environment variable. `CIRRUS_RELEASE` indicates release id which can be used to upload assets.
 
 Cirrus CI only requires write access to Check API and doesn't require write access to repository contents because of security 
@@ -520,7 +520,7 @@ env:
   GITHUB_TOKEN: ENCRYPTED[qwerty]
 ```
 
-Now you can use a simple script to upload your assets:
+Now you can use a script to upload your assets:
 
 ```bash
 #!/usr/bin/env bash
@@ -671,7 +671,7 @@ task:
 
 ## Rust
 
-Official [Rust Docker images](https://hub.docker.com/_/rust/) can be used for builds. Here is a simple example of `.cirrus.yml` 
+Official [Rust Docker images](https://hub.docker.com/_/rust/) can be used for builds. Here is a basic example of `.cirrus.yml` 
 that caches crates in `$CARGO_HOME` based on contents of `Cargo.lock`:
 
 ```yaml
@@ -696,7 +696,7 @@ test_task:
 
     Please note `before_cache_script` that removes registry index from the cache before uploading it in the end of a successful task. 
     Registry index is [changing very rapidly](https://github.com/rust-lang/crates.io-index) making the cache invalid. `before_cache_script`
-    deletes the index and leaves just the required crates for caching.
+    deletes the index and leaves only the required crates for caching.
 
 ### Rust Nightly
 
