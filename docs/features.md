@@ -5,13 +5,13 @@ hide:
 ---
 ## Free for Open Source 
 
-To support Open Source community Cirrus CI provides [Linux](guide/linux.md), [Windows](guide/windows.md), [macOS](guide/macOS.md) and [FreeBSD](guide/FreeBSD.md)
+To support the Open Source community, Cirrus CI provides [Linux](guide/linux.md), [Windows](guide/windows.md), [macOS](guide/macOS.md) and [FreeBSD](guide/FreeBSD.md)
 services free of charge with [some limits](faq.md#are-there-any-limits) but *without* a cap on how many minutes a month OSS projects can consume.
 
 ## Per-second billing
 
 Use [compute credits](pricing.md#compute-credits) to run as many parallel tasks as you want and pay only for CPU time
-used by these tasks. Or [bring your own infrastructure](#bring-you-own-infrastructure) and pay directly to your cloud provider
+used by these tasks. Another approach is to [bring your own infrastructure](#bring-you-own-infrastructure) and pay directly to your cloud provider
 within your current billing.
 
 ## No concurrency limit. No queues
@@ -36,13 +36,14 @@ your current workflow.
   </a>
 </p>
 
-## Flexible execution environment
+## Flexible runtime environment
  
-Cirrus CI allows to use any Unix or Windows VMs, any Docker containers, any amount of CPUs, optional SSDs and GPUs.
+Cirrus CI allows you to use any Unix or Windows VMs, any Docker containers, any amount of CPUs, optional SSDs and GPUs.
 
-## Simple but very powerful configuration format 
+## Basic but very powerful configuration format 
 
-Learn more about how to configure tasks [here](guide/writing-tasks.md). Configure things like:
+Learn more about how to configure tasks [here](guide/writing-tasks.md).
+Configure things like:
 
 * [Matrix Builds](guide/writing-tasks.md#matrix-modification)
 * [Dependencies between tasks](guide/writing-tasks.md#dependencies)
@@ -51,7 +52,7 @@ Learn more about how to configure tasks [here](guide/writing-tasks.md). Configur
 * [Dockerfile as a CI environment](guide/docker-builder-vm.md#dockerfile-as-a-ci-environment)
 * [Monorepo Support](guide/writing-tasks.md#supported-functions)
 
-Check [Quick Start](guide/quick-start.md) guide for more features.
+Check the [Quick Start](guide/quick-start.md) guide for more features.
 
 ## Comparison with popular CIaaS
 

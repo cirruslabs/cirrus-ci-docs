@@ -359,7 +359,7 @@ gke_container:
 ```
 
 !!! tip "Using in-memory disk"
-    By default Cirrus CI mounts a simple [emptyDir](https://kubernetes.io/docs/concepts/storage/volumes/#emptydir) into 
+    By default Cirrus CI mounts an [emptyDir](https://kubernetes.io/docs/concepts/storage/volumes/#emptydir) into 
     `/tmp` path to protect the pod from unnecessary eviction by autoscaler. It is possible to switch emptyDir's medium to 
     use in-memory `tmpfs` storage instead of a default one by setting `use_in_memory_disk` field of `gke_container` to `true`
     or any other expression that uses environment variables.
@@ -606,5 +606,5 @@ azure_container_instance:
 
 !!! info "About Docker Images to use with ACI"
     Linux-based images are usually pretty small and doesn't require much tweaking. For Windows containers ACI recommends
-    to follow a [few simple advices](https://docs.microsoft.com/en-us/azure/container-instances/container-instances-troubleshooting#container-takes-a-long-time-to-start)
+    to follow a [few basic tips](https://docs.microsoft.com/en-us/azure/container-instances/container-instances-troubleshooting#container-takes-a-long-time-to-start)
     in order to reduce startup time.

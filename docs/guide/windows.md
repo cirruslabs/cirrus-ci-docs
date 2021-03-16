@@ -45,7 +45,7 @@ windows_task:
     - ps: Get-Location
 ```
 
-`ps: COMMAND` is a simple syntactic sugar which transforms it to:
+`ps: COMMAND` is just a syntactic sugar which transforms it to:
 
 ```bash
 powershell.exe -NoLogo -EncodedCommand base64(COMMAND)

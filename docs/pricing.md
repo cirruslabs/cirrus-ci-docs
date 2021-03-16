@@ -41,7 +41,7 @@ All tasks using compute credits are charged on per-second basis. 2 CPU Linux tas
     Compute credits can be used for commercial OSS projects to avoid [concurrency limits](faq.md#are-there-any-limits).
     Note that only collaborators for the project will be able to use organization's compute credits.
 
-**Pros** of this approach:
+**Benefits** of this approach:
   
 * Use the same pre-configured infrastructure as the Open Source community is enjoying.
 * No need to configure anything. Let Cirrus CI's team manage and upgrade infrastructure for you.
@@ -101,7 +101,7 @@ task:
 Configure and connect one or more [compute services](guide/supported-computing-services.md) to Cirrus CI and [pay $10/seat/month](https://github.com/marketplace/cirrus-ci/plan/MDIyOk1hcmtldHBsYWNlTGlzdGluZ1BsYW45OTM=#pricing-and-setup) 
 for orchestrating CI workloads on these compute services. 
 
-**Pros** of this approach:
+**Benefits** of this approach:
 
 * Full control of underlying infrastructure. Use any type of VMs and containers with any amount of CPUs and memory.
 * More secure. Setup any firewall and access rules.
