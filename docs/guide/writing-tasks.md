@@ -83,7 +83,6 @@ Field Name                 | Managed by | Description
 `ec2_instance`             | **you**    | [Linux Virtual Machines in your AWS][ec2_instance]
 `eks_instance`             | **you**    | [Linux Docker Containers on private EKS cluster][eks_instance]
 `azure_container_instance` | **you**    | [Linux and Windows Docker Container on Azure][azure_container_instance]
-`anka_instance`            | **you**    | [macOS VMs on your Anka Build][anka_instance]
 
 [container]: linux.md
 [windows_container]: windows.md
@@ -96,7 +95,6 @@ Field Name                 | Managed by | Description
 [ec2_instance]: supported-computing-services.md#ec2
 [eks_instance]: supported-computing-services.md#eks
 [azure_container_instance]: supported-computing-services.md#azure-container-instances
-[anka_instance]: supported-computing-services.md#anka
 
 ## Supported Instructions
 

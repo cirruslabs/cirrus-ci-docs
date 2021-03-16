@@ -109,8 +109,7 @@ for orchestrating CI workloads on these compute services.
   
 **Cons** of this approach:
 
-* Need to configure and connect one or several [compute services](guide/supported-computing-services.md). Might be
-  nonintuitive for cases like Anka Build Cloud for macOS.
+* Need to configure and connect one or several [compute services](guide/supported-computing-services.md).
 * Might not be worth the effort for a small team.
 * Need to pay $10/seat/month plan.
 

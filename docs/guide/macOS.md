@@ -54,8 +54,5 @@ Please refer to the [`osx-images`](https://github.com/cirruslabs/osx-images) rep
 don't hesitate to [create issues](https://github.com/cirruslabs/osx-images/issues) if current images are missing something.
 
 !!! info "Underlying Technology"
-    Under the hood Cirrus CI is using [Anka Cloud][anka] hosted on [MacStadium][ms] for
-    orchestrating macOS VMs. Please refer to the [Anka documentation][anka] for more details.
-
-[anka]: supported-computing-services.md#anka
-[ms]: https://www.macstadium.com/
+    Under the hood Cirrus CI is using Cirrus CI's own [Persistent Workers](persistent-workers.md). See more details in
+    out [blog post](https://medium.com/cirruslabs/new-macos-task-execution-architecture-for-cirrus-ci-604250627c94).
