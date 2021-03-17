@@ -22,6 +22,10 @@ compute_engine_instance:
   nested_virtualization: true # optional. Whether to enable Intel VT-x. Defaults to false.
 ```
 
+??? note "Nested Virtualization License"
+    Make sure that your source image **already has a [necessary license](https://cloud.google.com/compute/docs/instances/enable-nested-virtualization-vm-instances#enablenestedvirt)**.
+    Otherwise, nested virtualization won't work.
+
 # Building custom image for Compute Engine
 
 We recommend to use [Packer](https://www.packer.io/) for building your custom images. As an example, please take a look at [our Packer templates](https://github.com/cirruslabs/osx-images)
