@@ -23,7 +23,7 @@ compute_engine_instance:
 ```
 
 ??? note "Nested Virtualization License"
-    Make sure that your **source image already** has a [necessary licence](https://cloud.google.com/compute/docs/instances/enable-nested-virtualization-vm-instances#enablenestedvirt).
+    Make sure that your **source image already** has a [necessary license](https://cloud.google.com/compute/docs/instances/enable-nested-virtualization-vm-instances#enablenestedvirt).
     Otherwise, nested virtualization won't work.
 
 # Building custom image for Compute Engine
