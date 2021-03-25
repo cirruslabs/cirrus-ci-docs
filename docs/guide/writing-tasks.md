@@ -709,7 +709,8 @@ task:
 ## Stateful Tasks
 
 It's possible to tell Cirrus CI that a certain task is stateful and Cirrus CI will use a slightly different scheduling algorithm
-to minimize chances of such tasks being interrupted. **Scheduling times of such stateful tasks might be a bit longer then usual.**
+to minimize chances of such tasks being interrupted. Stateful tasks are intended to use low CPU count.
+**Scheduling times of such stateful tasks might be a bit longer then usual especially for tasks with high CPU requirements.**
 
 By default, Cirrus CI marks a task as stateful if its name contains one of the following terms: `deploy`, `push`, `publish`, 
 `upload` or `release`. Otherwise, you can explicitly mark a task as stateful via `stateful` field:
