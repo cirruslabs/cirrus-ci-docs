@@ -56,7 +56,7 @@ or use [Compute Credits](pricing.md#compute-credits) for either private or publi
 ## Repository is blocked
 
 Free tier of Cirrus CI is intended for public OSS projects to run tests and other validations continuously.
-If your repository is configured to use Cirrus CI in a questionable way to just exploitate Cirrus CI infrastructure,
+If your repository is configured to use Cirrus CI in a questionable way to just exploit Cirrus CI infrastructure,
 your repository might be blocked.
 
 Here are a few examples of such questionable activities we've seen so far:
