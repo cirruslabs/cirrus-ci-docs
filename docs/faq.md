@@ -53,6 +53,18 @@ or use [Compute Credits](pricing.md#compute-credits) for either private or publi
     By default Cirrus CI persists caches and logs for 90 days. If you bring your own [compute services](guide/supported-computing-services.md)
     this period can be configured directly in your cloud provider's console.
 
+## Repository is blocked
+
+Free tier of Cirrus CI is intended for public OSS projects to run tests and other validations continuously.
+If your repository is configured to use Cirrus CI in a questionable way to just exploit Cirrus CI infrastructure,
+your repository might be blocked.
+
+Here are a few examples of such questionable activities we've seen so far:
+
+* Use Cirrus CI as a powerhouse for arbitrary CPU-intensive calculations including crypto mining.
+* Use Cirrus CI to download a pirated movie, re-encode it, upload as a Cirrus artifact and distribute it.
+* Use Cirrus CI distributed infrastructure to emulate user activity on a variety of websites to trick advertisers.
+
 ## IP Addresses of Community Clusters
 
 Instances running on Community Clusters are using dynamic IPs by default. It's possible to request
