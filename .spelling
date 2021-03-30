@@ -178,3 +178,5 @@ natively
 machine-parsable
 Qodana
 XCLogParser
+CIRRUS_CLONE_SUBMODULES
+submodules
