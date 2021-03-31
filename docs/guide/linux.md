@@ -21,6 +21,8 @@ task:
 Containers on Community Cluster can use maximum 8.0 CPUs and up to 32 GB of memory. Memory limit is tight to the amount
 of CPUs requested. For each CPU you can't get more than 4G of memory.
 
+Tasks using [Compute Credits](../pricing.md#compute-credits) has higher limits and can use up to 28.0 CPUs and 112G of memory respectively.
+
 ??? warning "Scheduling Times on Community Cluster"
     Since Community Cluster is shared, scheduling times for containers can vary from time to time. Also, the smaller a container 
     require resources the faster it will be scheduled.
