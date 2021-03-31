@@ -61,7 +61,7 @@ your repository might be blocked.
 
 Here are a few examples of such questionable activities we've seen so far:
 
-* Use Cirrus CI as a powerhouse for arbitrary CPU-intensive calculations including crypto mining.
+* Use Cirrus CI as a powerhouse for arbitrary CPU-intensive calculations (including crypto mining).
 * Use Cirrus CI to download a pirated movie, re-encode it, upload as a Cirrus artifact and distribute it.
 * Use Cirrus CI distributed infrastructure to emulate user activity on a variety of websites to trick advertisers.
 
