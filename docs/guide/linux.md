@@ -26,6 +26,9 @@ Tasks using [Compute Credits](../pricing.md#compute-credits) has higher limits a
 ??? warning "Scheduling Times on Community Cluster"
     Since Community Cluster is shared, scheduling times for containers can vary from time to time. Also, the smaller a container 
     require resources the faster it will be scheduled.
+    
+    If you have a popular project and experiencing long scheduling times, don't hesitate to reach out to [support](../support.md)
+    and we can whitelist your repository for use of extra resources.
 
 ??? info "Using in-memory disks"
     Some I/O intensive tasks may benefit from using a `tmpfs` disk mounted as a working directory. Set `use_in_memory_disk` flag
