@@ -877,6 +877,13 @@ Additional container can be very handy in many scenarios. Please check [Cirrus C
     It's also possible to map ports of additional containers by using `<HOST_PORT>:<CONTAINER_PORT>` format for the `port` field.
     For example, `port: 80:8080` will map port `8080` of the container to be available on local port `80` within a task.
     
+    To specify multiple mappings use the `ports` field instead of the `port`:
+    ```yaml
+    ports:
+      - 8080
+      - 3306
+    ```
+
 ??? tip "Overriding Default Command"
     It's also possible to override the default `CMD` of an additional container via `command` field:
     
