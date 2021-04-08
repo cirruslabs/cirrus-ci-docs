@@ -32,6 +32,15 @@
   padding-bottom: 6rem
 }
 
+.tx-landing__content p a {
+  color: inherit;
+  text-decoration: underline;
+}
+.tx-landing__content p a:hover {
+  color: darkblue;
+  text-decoration: underline;
+}
+
 @media screen and (min-width: 60em) {
   .tx-landing {
     display: flex;
