@@ -881,6 +881,13 @@ Additional container can be very handy in many scenarios. Please check [Cirrus C
     which start the service on the same port and there's no easy way to change that. Port mapping limits 
     the number of places the container can be scheduled and will affect how fast such tasks are scheduled.
     
+    To specify multiple mappings use the `ports` field, instead of the `port`:
+    ```yaml
+    ports:
+      - 8080
+      - 3306
+    ```
+
 ??? tip "Overriding Default Command"
     It's also possible to override the default `CMD` of an additional container via `command` field:
     
