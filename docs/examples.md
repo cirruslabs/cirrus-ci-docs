@@ -169,7 +169,11 @@ container:
 test_task:
   pub_cache:
     folder: ~/.pub-cache
-  test_script: flutter test
+  test_script: flutter test -machine > report.json
+  always:
+    report_artifacts:
+      path: report.json
+      format: flutter
 ```
 
 If these images are not the right fit for your project you can always use any custom Docker image with Cirrus CI.
