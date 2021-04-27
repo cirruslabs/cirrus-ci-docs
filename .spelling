@@ -132,6 +132,7 @@ embeded
 emptyDir
 executables
 exotic
+errored
 flake8
 gb
 gcloud
