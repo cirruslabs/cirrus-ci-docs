@@ -102,7 +102,7 @@ If it's happening for a [`mancos_instance`](guide/macOS.md) then please contact 
 
 ## Instance failed to start!
 
-It means that Cirrus CI have made a successful API call to a [computing service](guide/supported-computing-services.md) 
+It means that Cirrus CI has made a successful API call to a [computing service](guide/supported-computing-services.md) 
 to allocate resources. But a requested resource wasn't created. 
 
 If it happened for an OSS project, please contact [support](support.md) immediately. Otherwise check your cloud console first 
@@ -129,6 +129,11 @@ task:
   timeout_in: 90m
   ...
 ```
+
+## Container errored
+
+It means that Cirrus CI has made a successful API call to a [computing service](guide/supported-computing-services.md)
+to start a container but unfortunately container runtime or the corresponding computing service had an internal error.
 
 !!! note "Maximum timeout"
     There is a hard limit of 2 hours for community tasks. Use [compute credits](pricing.md#compute-credits) or
