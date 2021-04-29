@@ -23,6 +23,7 @@ List of available Xcode versions:
 
 * `big-sur-xcode-12.3`
 * `big-sur-xcode-12.4`
+* `big-sur-xcode-12.5`
 
 Note that there is a `big-sur-xcode` alias available to always reference to the latest stable `big-sur-xcode-NN` image.
 
