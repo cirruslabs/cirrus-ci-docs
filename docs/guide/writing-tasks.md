@@ -422,10 +422,11 @@ And some environment variables can be set to control behavior of the Cirrus CI A
 Name | Default Value | Description
 ---  | --- | ---
 CIRRUS_CLONE_DEPTH | `0` which will reflect in a full clone of a single branch | Clone depth.
+CIRRUS_CLONE_DIR | Defaults to `$CIRRUS_WORKING_DIR` if not empty and doesn't contain `$CIRRUS_CLONE_DIR` itself. Othervise `CIRRUS_CLONE_DIR` is set to `cirrus-ci-build` folder inside of a system's temporary folder | Directory to put repository sources into.
 CIRRUS_CLONE_SUBMODULES | `false` | Set to `true` to clone submodules recursively.
 CIRRUS_LOG_TIMESTAMP | `false` | Indicate Cirrus Agent to prepend timestamp to each line of logs.
 CIRRUS_SHELL | `sh` on Linux/macOS/FreeBSD and `cmd.exe` on Windows. Set to `direct` to execute each script directly without wrapping the commands in a shell script. | Shell that Cirrus CI uses to execute scripts. By default `sh` is used.
-CIRRUS_WORKING_DIR | `cirrus-ci-build` folder inside of a system's temporary folder | Working directory where Cirrus CI executes builds. Default to `cirrus-ci-build` folder inside of a system's temporary folder.
+CIRRUS_WORKING_DIR | `$CIRRUS_CLONE_DIR` | Working directory where Cirrus CI executes [instructions](#supported-instructions). Can be handy to override in monorepos for tasks targeting specific project in a sub-folder, e.g., `$CIRRUS_CLONE_DIR/frontend`.
 
 ## Encrypted Variables
 
