@@ -51,3 +51,56 @@ task:
   persistent_worker: {}
   script: echo "running on-premise"
 ```
+
+### Isolation
+
+By default, a persistent worker spawns all the tasks on the same host machine it's being run.
+
+However, using the `isolation` field, a persistent worker can utilize a VM or a container engine to increase the separation between tasks and to unlock the ability to use different operating systems.
+
+#### Parallels
+
+To use this isolation type, install the [Parallels Desktop](https://www.parallels.com/products/desktop/) on the persistent worker's host machine and create a base VM that will be later cloned for each task.
+
+This base VM needs to:
+
+* be either in a stopped or suspended state
+* provide SSH access on port 22
+
+Here's an example of a configuration that will run the task inside of a fresh macOS virtual machine created from the `big-sur-base` base VM:
+
+```yaml
+persistent_worker:
+  isolation:
+    parallels:
+      image: big-sur-base
+      user: admin
+      password: secret
+      platform: darwin
+
+task:
+  script: system_profiler
+```
+
+Once the VM spins up, persistent worker will connect to the VM's IP-address over SSH using `user` and `password` credentials and run the latest agent version targeted for the `platform`.
+
+#### Container
+
+To use this isolation type, install and configure a container engine like [Docker](https://github.com/cirruslabs/cirrus-cli/blob/master/INSTALL.md#docker) or [Podman](https://github.com/cirruslabs/cirrus-cli/blob/master/INSTALL.md#podman) (essentially the ones supported by the [Cirrus CLI](https://github.com/cirruslabs/cirrus-cli)).
+
+Here's an example that runs a task in a separate container with a couple directories from the host machine being accessible:
+
+```yaml
+persistent_worker:
+  isolation:
+    container:
+      image: debian:latest
+      cpu: 0.5
+      memory: 512
+      volumes:
+        - /var/cache:/host/var/cache
+        - /var/static:/host/var/static:ro
+
+task:
+  script: uname -a
+```
