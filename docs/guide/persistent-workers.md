@@ -95,11 +95,11 @@ persistent_worker:
   isolation:
     container:
       image: debian:latest
-      cpu: 0.5
-      memory: 512
+      cpu: 24
+      memory: 128G
       volumes:
-        - /var/cache:/host/var/cache
-        - /var/static:/host/var/static:ro
+        - /path/on/host:/path/in/container
+        - /tmp/persistent-cache:/tmp/cache:ro
 
 task:
   script: uname -a
