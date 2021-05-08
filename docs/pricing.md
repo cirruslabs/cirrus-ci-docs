@@ -61,10 +61,6 @@ To see your current balance, recent transactions and to buy more compute credits
 https://cirrus-ci.com/settings/github/MY-ORGANIZATION
 ```
 
-!!! info "200 hours worth of compute credits for free!"
-    Every organization on GitHub gets 60 compute credits upon Cirrus CI App installation. It has never been easier to try
-    Cirrus CI on private organizational repositories.
-
 ### Configuring Compute Credits
 
 Compute credits can be used with any of the following instance types: `container`, `windows_container` and `macos_instance`.
