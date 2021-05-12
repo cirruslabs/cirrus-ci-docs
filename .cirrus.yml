@@ -40,7 +40,7 @@ task:
     - Markdown Lint
     - Spell Check
   container:
-    image: ghcr.io/squidfunk/mkdocs-material-insiders:latest
+    image: ghcr.io/cirruslabs/mkdocs-material-insiders:latest
     registry_config: ENCRYPTED[!eca1f54076ecc1d8721532d2610a6593d14c72289e1545a69a7e893411a2941c3ee92179a4900b90a21bee78a212b4df!]
   env:
     DEPLOY_TOKEN: ENCRYPTED[177bcd0bea94a30fd6f1ac437b8c6a633b814da46b70892c9650577051e4d043a232a573b326523178074c96c9253313]
