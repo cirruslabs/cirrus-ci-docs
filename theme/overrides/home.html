@@ -2,78 +2,137 @@
 
 <!-- Render landing page under tabs -->
 {% block tabs %}
-  {{ super() }}
+{{ super() }}
 
-  <!-- Additional styles for landing page -->
-  <style>
+<!-- Additional styles for landing page -->
+<style>
 
-    /* Application header should be static for the landing page */
-    .md-header {
-      position: initial;
-    }
+  /* Application header should be static for the landing page */
+  .md-header {
+    position: initial;
+  }
 
-    /* Remove spacing, as we cannot hide it completely */
-    .md-main__inner {
-      margin: 0;
-    }
+  /* Remove spacing, as we cannot hide it completely */
+  .md-main__inner {
+    margin: 0;
+  }
 
-    /* Hide main content for now */
-    .md-content {
+  /* Hide main content for now */
+  .md-content {
+    display: none;
+  }
+
+  /* Hide table of contents */
+  @media screen and (min-width: 60em) {
+    .md-sidebar--secondary {
       display: none;
     }
+  }
 
-    /* Hide table of contents */
-    @media screen and (min-width: 60em) {
-      .md-sidebar--secondary {
-        display: none;
-      }
+  /* Hide navigation */
+  @media screen and (min-width: 76.25em) {
+    .md-sidebar--primary {
+      display: none;
     }
+  }
+</style>
 
-    /* Hide navigation */
-    @media screen and (min-width: 76.25em) {
-      .md-sidebar--primary {
-        display: none;
-      }
-    }
-  </style>
+<!-- landing page for landing page -->
+<section class="tx-container">
+  <div class="md-grid md-typeset">
+    <div class="tx-landing">
+      <!-- landing image -->
+      <div class="tx-landing__image">
+        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+        <lottie-player id="lottieAnimation" background="transparent"
+                       style="max-width: 100%; height: auto;"
+                       speed="1" loop autoplay>
+        </lottie-player>
+        <script>
+          let randomAnimationIndex = Math.floor(Math.random() * 4) % 4;
+          let animation = document.getElementById("lottieAnimation");
+          animation.load("assets/animations/" + randomAnimationIndex + ".json");
+        </script>
+      </div>
 
-  <!-- landing page for landing page -->
-  <section class="tx-container">
-    <div class="md-grid md-typeset">
-      <div class="tx-landing">
+      <!-- landing content -->
+      <div class="tx-landing__content">
+        <h2>Make your development cycle <b>fast</b>, <b>efficient</b>, and <b>secure</b></h2>
+        <p>Cirrus CI is an innovative Continuous Integration system that just scales without surprises.</p>
+        <p><a href="/guide/supported-computing-services">Bring your own infrastructure</a> or enjoy <a
+          href="/pricing/#compute-credits">per-second billing</a> with <b>no concurrency limits</b> on infrastructure
+          managed by us!</p>
+        <p><b>Build your Open Source projects on Linux, Windows, macOS and FreeBSD for free!</b></p>
 
-        <!-- landing image -->
-        <div class="tx-landing__image">
-          <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-          <lottie-player id="lottieAnimation" background="transparent"
-                         style="max-width: 100%; height: auto;"
-                         speed="1" loop autoplay>
-          </lottie-player>
-          <script>
-            let randomAnimationIndex = Math.floor(Math.random() * 4) % 4;
-            let animation = document.getElementById("lottieAnimation");
-            animation.load("assets/animations/"+ randomAnimationIndex + ".json");
-          </script>
-        </div>
-
-        <!-- landing content -->
-        <div class="tx-landing__content">
-          <h2>Make your development cycle <b>fast</b>, <b>efficient</b>, and <b>secure</b></h2>
-          <p>Cirrus CI is a modern Continuous Integration system built for the era of cloud computing.</p>
-          <p><a href="/guide/supported-computing-services">Bring your own infrastructure</a> or enjoy <a href="/pricing/#compute-credits">per-second billing</a> with <b>no concurrency limits</b> on infrastructure managed by us!</p>
-          <p><b>Build your OSS projects on Linux, Windows, macOS and FreeBSD for free!</b></p>
-
-          <a
-            href="/features"
-            title="Features"
-            class="md-button"
-          >
-            Learn More
-          </a>
+        <a
+          href="/features"
+          title="Features"
+          class="md-button"
+        >
+          Learn More
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="md-grid md-typeset">
+    <div class="tx-landing">
+      <div class="tx-landing__testimonials">
+        <h1>Trusted by Open Source</h1>
+        <div class="tx-landing__logos">
+          <img src="/assets/images/logos/bitcoin_core.png">
+          <img src="/assets/images/logos/flutter.png">
+          <img src="/assets/images/logos/freebsd.png">
+          <img src="/assets/images/logos/podman.png">
+          <img src="/assets/images/logos/postgresql.png">
+          <img src="/assets/images/logos/curl.svg">
+          <img src="/assets/images/logos/rust.png">
         </div>
       </div>
     </div>
-  </section>
+  </div>
+  <div class="md-grid md-typeset">
+    <div class="tx-landing">
+      <div class="tx-landing__quotes">
+        <h1>Trusted by Teams</h1>
+        <figure class="tx-landing__quote">
+          <a href="https://www.sonarsource.com/">
+            <img src="/assets/images/logos/sonarsource.png">
+          </a>
+          <blockquote>
+            Cirrus CI is a CI engine that was built "How we would have done it at SonarSource if we had the bandwidth
+            and the people"
+          </blockquote>
+          <figcaption>Olivier Gaudin, CEO & Co-Founder</figcaption>
+        </figure>
+        <figure class="tx-landing__quote">
+          <a href="https://www.redhat.com/en/">
+            <img src="/assets/images/logos/redhat.svg">
+          </a>
+          <blockquote>
+            The speed, reliability, and flexibility for Cirrus CI has been
+            outstanding for the Red Hat container-runtimes team. Configuration has
+            been easy to manage, with minimal duplication. Direct integration with
+            our cloud resources has allowed us to both scale and maintain great
+            low-level observability.
+          </blockquote>
+          <figcaption>Chris Evich, Senior Quality Assurance Engineer</figcaption>
+        </figure>
+        <figure class="tx-landing__quote">
+          <a href="https://smartrent.com/">
+            <img src="/assets/images/logos/smartrent.png">
+          </a>
+          <blockquote>
+            SmartRent has been using Cirrus CI since 2018 and in that time our CI needs have grown considerably; Cirrus
+            CI has allowed us to grow without having to scale our CI solution or worry about maintenance and updates.
+            Cirrus CI has also been very responsive to questions and worked with us to implement new features or show us
+            the best way to use Cirris CI to fit our needs.
+          </blockquote>
+          <figcaption>Matt Lorey, Vice President, Technology</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
 {% endblock %}
 
 <!-- Content -->

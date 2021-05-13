@@ -1,14 +1,25 @@
 .tx-container {
-  padding-top: 1rem;
   background:
-    url("/assets/images/wave-regular.svg") no-repeat bottom,
-    linear-gradient(to bottom, var(--md-primary-fg-color), #2196f3 99%, var(--md-default-bg-color) 99%)
+    linear-gradient(to bottom, var(--md-primary-fg-color), #2196f3 100%, var(--md-default-bg-color) 100%)
 }
 
 [data-md-color-scheme=slate] .tx-container {
   background:
-    url("/assets/images/wave-slate.svg") no-repeat bottom,
-    linear-gradient(to bottom, var(--md-primary-fg-color), #2196f3 99%, var(--md-default-bg-color) 99%)
+    linear-gradient(to bottom, var(--md-primary-fg-color), #2196f3 100%, var(--md-default-bg-color) 100%)
+}
+
+@media screen and (min-width: 60em) {
+  .tx-container {
+    background:
+      url("/assets/images/wave-regular.svg") no-repeat bottom,
+      linear-gradient(to bottom, var(--md-primary-fg-color), #2196f3 99%, var(--md-default-bg-color) 99%)
+  }
+
+  [data-md-color-scheme=slate] .tx-container {
+    background:
+      url("/assets/images/wave-slate.svg") no-repeat bottom,
+      linear-gradient(to bottom, var(--md-primary-fg-color), #2196f3 99%, var(--md-default-bg-color) 99%)
+  }
 }
 
 .tx-landing {
@@ -22,26 +33,75 @@
   font-weight: 700
 }
 
-@media screen and (max-width: 29.9375em) {
+@media screen and (max-width: 30em) {
   .tx-landing h1 {
     font-size: 1.4rem
   }
-}
-
-.tx-landing__content {
-  padding-bottom: 6rem
 }
 
 .tx-landing__content p a {
   color: inherit;
   text-decoration: underline;
 }
+
+.tx-landing__testimonials {
+  width: 100%;
+  text-align: center;
+}
+
 .tx-landing__content p a:hover {
   color: darkblue;
   text-decoration: underline;
 }
 
+.tx-landing__logos {
+  padding-bottom: 5em;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.tx-landing__logos img {
+  max-height: 10vh;
+  padding: 2vh;
+  vertical-align: middle;
+}
+
+.tx-landing__quotes {
+  padding-bottom: 5em;
+  text-align: center;
+  margin: 1em 5em;
+}
+
+.tx-landing__quotes figure {
+  margin: 2em auto 2em auto;
+}
+
+.tx-landing__quote {
+  display: flex;
+  border-radius: 1em;
+  padding: 1em 1em 0 1em;
+  background: var(--md-primary-fg-color);
+}
+
+.tx-landing__quote blockquote {
+  border: 0;
+  color: #fff;
+}
+
+.tx-landing__quote img {
+  max-height: 5vh;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 @media screen and (min-width: 60em) {
+  .tx-container {
+    padding-bottom: 14vw
+  }
+
   .tx-landing {
     display: flex;
     align-items: stretch
@@ -50,7 +110,6 @@
   .tx-landing__content {
     max-width: 19rem;
     margin-top: 3.5rem;
-    padding-bottom: 14vw
   }
 
   .tx-landing__image {
@@ -60,7 +119,7 @@
   }
 }
 
-@media screen and (min-width: 76.25em) {
+@media screen and (min-width: 77em) {
   .tx-landing__image {
     transform: translateX(8rem)
   }
