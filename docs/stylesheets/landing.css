@@ -62,7 +62,7 @@
 }
 
 .tx-landing__logos img {
-  max-height: 8vw;
+  max-height: 81px; /* max height of images */
   width: auto;
   padding: 2vh;
   vertical-align: middle;
