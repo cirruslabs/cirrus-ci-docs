@@ -71,7 +71,12 @@
 .tx-landing__quotes {
   padding-bottom: 5em;
   text-align: center;
-  margin: 1em 5em;
+}
+
+@media screen and (min-width: 60em) {
+  .tx-landing__quotes {
+    margin: 1em 5em;
+  }
 }
 
 .tx-landing__quotes figure {
