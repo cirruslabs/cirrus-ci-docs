@@ -62,9 +62,10 @@
 }
 
 .tx-landing__logos img {
+  height: 8vh;
   max-height: 81px; /* max height of images */
   width: auto;
-  padding: 2vh;
+  margin: 2vh;
   vertical-align: middle;
 }
 
@@ -95,8 +96,9 @@
   color: #fff;
 }
 
-.tx-landing__quote img {
-  max-height: 5vh;
+.tx-landing__quote a img {
+  height: 6vh;
+  max-height: 81px; /* max height of images */
   display: block;
   margin-left: auto;
   margin-right: auto;
