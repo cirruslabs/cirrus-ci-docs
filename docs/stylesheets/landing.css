@@ -55,7 +55,6 @@
 }
 
 .tx-landing__logos {
-  padding-bottom: 5em;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -63,7 +62,8 @@
 }
 
 .tx-landing__logos img {
-  max-height: 8vw;
+  max-height: 81px; /* min height of all images so no downscale */
+  width: auto;
   padding: 2vh;
   vertical-align: middle;
 }
