@@ -134,7 +134,6 @@ task:
 There is a hard limit of 2 hours for community tasks. Use [compute credits](pricing.md#compute-credits) or
 [compute service integration](guide/supported-computing-services.md) to avoid the limit.
 
-
 ## Container errored
 
 It means that Cirrus CI has made a successful API call to a [computing service](guide/supported-computing-services.md)
