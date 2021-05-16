@@ -130,14 +130,15 @@ task:
   ...
 ```
 
+!!! note "Maximum timeout"
+There is a hard limit of 2 hours for community tasks. Use [compute credits](pricing.md#compute-credits) or
+[compute service integration](guide/supported-computing-services.md) to avoid the limit.
+
+
 ## Container errored
 
 It means that Cirrus CI has made a successful API call to a [computing service](guide/supported-computing-services.md)
 to start a container but unfortunately container runtime or the corresponding computing service had an internal error.
-
-!!! note "Maximum timeout"
-    There is a hard limit of 2 hours for community tasks. Use [compute credits](pricing.md#compute-credits) or
-    [compute service integration](guide/supported-computing-services.md) to avoid the limit.
 
 ## Only GitHub Support?
 
