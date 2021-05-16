@@ -131,8 +131,8 @@ task:
 ```
 
 !!! note "Maximum timeout"
-There is a hard limit of 2 hours for community tasks. Use [compute credits](pricing.md#compute-credits) or
-[compute service integration](guide/supported-computing-services.md) to avoid the limit.
+    There is a hard limit of 2 hours for community tasks. Use [compute credits](pricing.md#compute-credits) or
+    [compute service integration](guide/supported-computing-services.md) to avoid the limit.
 
 ## Container errored
 
