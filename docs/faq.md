@@ -121,7 +121,7 @@ are always executed on regular VMs.
 
 ## Instance timed out!
 
-By default Cirrus CI has an execution limit of 60 minutes for each task. However, this default timeout duration can be changed
+By default, Cirrus CI has an execution limit of 60 minutes for each task. However, this default timeout duration can be changed
 by using `timeout_in` field in `.cirrus.yml` configuration file:
 
 ```yaml
