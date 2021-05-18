@@ -286,4 +286,3 @@ def is_java_archive(path):
 
     return False
 ```
-
