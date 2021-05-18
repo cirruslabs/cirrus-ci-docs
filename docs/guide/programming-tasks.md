@@ -33,7 +33,7 @@ def main():
     ]
 ```
 
-`main` simply returns a list of task objects which will be serialized into YAML presentation like this:
+`main()` simply returns a list of task objects which will be serialized into YAML presentation like this:
 
 ```yaml
 task:
@@ -69,9 +69,9 @@ def main(ctx):
 Different events will trigger execution of different top-level functions in the `.cirrus.star`. These functions reserve certain names
 and will be called with different arguments depending on the event which triggered the execution.
 
-#### `main`
+#### `main()`
 
-`main` is called once a Cirrus CI build is triggered in order to generate a list of tasks to execute within that particular build.
+`main()` is called once a Cirrus CI build is triggered in order to generate a list of tasks to execute within that particular build.
 
 #### Hooks
 
@@ -126,7 +126,7 @@ In the example above, the name of the `.star` file was not provided, because `li
 load("github.com/cirrus-modules/golang/lib.star@main", "task", "container")
 ```
 
-You can also specify an exact commit hash instead of the `main` branch name to prevent accidental changes.
+You can also specify an exact commit hash instead of the `main()` branch name to prevent accidental changes.
 
 To load `.star` files from repositories other than GitHub, add a `.git` suffix at the end of the repository name, for example:
 
