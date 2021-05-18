@@ -14,8 +14,8 @@ but ideal for embedding within any other system that want to safely allow user-d
 choose Starlark instead of common alternatives like JavaScript/TypeScript or WebAssembly:
 
 1. Starlark doesn't require compilation. No need to introduce full-blown compile -> deploy process for a few dozen lines of logic.
-2. Starlark script can be executed instantly on any platform. There is Starlark interpreter written in Go which integrates nicely with Cirrus infrastructure.
-3. Starlark has built-in functionality for loading external templates which is ideal for config sharing. See [module loading](#module-loading) for details.
+2. Starlark script can be executed instantly on any platform. There is Starlark interpreter written in Go which integrates nicely with Cirrus CLI / Cirrus CI infrastructure.
+3. Starlark has built-in functionality for loading external modules which is ideal for config sharing. See [module loading](#module-loading) for details.
 
 ## Writing Starlark scripts
 
@@ -112,7 +112,7 @@ load(".ci/notify-slack.star", "notify_slack")
 
 #### Remote from Git
 
-To load the default branch of the template from GitHub:
+To load the default branch of the module from GitHub:
 
 ```python
 load("github.com/cirrus-modules/golang", "task", "container")
@@ -177,7 +177,7 @@ def main(ctx):
 
 While not technically a builtin, `is_test` is a [`bool`](https://github.com/bazelbuild/starlark/blob/master/spec.md#booleans)
 that allows Starlark code to determine whether it's running in test environment via Cirrus CLI. This can be useful for limiting the test complexity,
-e.g. by not making a real HTTP request and mocking/skipping it instead. Read more about template testing in a [separate guide in Cirrus CLI repository](https://github.com/cirruslabs/cirrus-cli/blob/master/STARLARK-TEMPLATING.md#testing).
+e.g. by not making a real HTTP request and mocking/skipping it instead. Read more about module testing in a [separate guide in Cirrus CLI repository](https://github.com/cirruslabs/cirrus-cli/blob/master/STARLARK-TEMPLATING.md#testing).
 
 ### `env`
 
