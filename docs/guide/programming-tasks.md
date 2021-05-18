@@ -86,7 +86,7 @@ a single field `payload` containing the [same payload as a webhook](../api.md#we
 
 One caveat of Starlark Hooks execution is `CIRRUS_TOKEN` [environment variable](#env) that contains a token to access [Cirrus API](../api.md).
 Scope of `CIRRUS_TOKEN` is restricted to the build associated with that particular hook invocation and allows, for example,
-to automatically re-run tasks. Here is an example of a Cirrus Hook that automatically re-runs a failed task in case a particular
+to automatically re-run tasks. Here is an example of a Starlark Hook that automatically re-runs a failed task in case a particular
 transient issue found in logs:
 
 ```python
