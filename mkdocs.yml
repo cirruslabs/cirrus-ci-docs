@@ -84,6 +84,7 @@ nav:
     - 'User Guide':
       - 'Quick Start': guide/quick-start.md
       - 'Writing Tasks': guide/writing-tasks.md
+      - 'Programming Tasks in Starlark': guide/programming-tasks.md
       - 'Configuration Tips and Tricks': guide/tips-and-tricks.md
       - 'Execution Environment':
         - 'Linux Containers': guide/linux.md
