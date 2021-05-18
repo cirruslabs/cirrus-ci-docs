@@ -79,8 +79,10 @@ It's also possible to execute Starlark scripts on updates to the current build o
 Think of it as [WebHooks](../api.md#webhooks) running within Cirrus that doesn't require any infrastructure on your end.
 
 Expected names of Starlark Hook functions in `.cirrus.star` are `on_build_<STATUS>` or `on_task_<STATUS>` respectively.
-These functions should expect a single context argument passed by Cirrus Cloud. At the moment hook's context only contains
-a single field `payload` containing the [same payload as a webhook](../api.md#webhooks).
+Please refer to [Cirrus CI GraphQL Schema](https://github.com/cirruslabs/cirrus-ci-web/blob/master/schema.graphql) for a
+full list of existing statuses, but most commonly  `on_build_failed`/`on_build_completed` and `on_task_failed`/`on_task_completed`
+are used. These functions should expect a single context argument passed by Cirrus Cloud. At the moment hook's context only contains
+a single field `payload` containing the [same payload as a webhook](../api.md#webhooks). 
 
 One caveat of Starlark Hooks execution is `CIRRUS_TOKEN` [environment variable](#env) that contains a token to access [Cirrus API](../api.md).
 Scope of `CIRRUS_TOKEN` is restricted to the build associated with that particular hook invocation and allows, for example,
@@ -92,6 +94,8 @@ transient issue found in logs:
 load("github.com/cirrus-modules/graphql", "rerun_task_if_issue_in_logs")
 
 def on_task_failed(ctx):
+  if "Test" not in ctx.payload.data.task.name:
+    return
   if ctx.payload.data.task.automaticReRun:
     print("Task is already an automatic re-run! Won't even try to re-run it...")
     return
