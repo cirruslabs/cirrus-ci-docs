@@ -2,19 +2,19 @@
 
 Most commonly, Cirrus tasks are declared in `.cirrus.yml` file in YAML format as documented in [*Writing Tasks*](writing-tasks.md) guide.
 
-YAML, as a language, is great for declaring simple to moderate configurations but sometimes just using a declarative language is not enough.
+YAML, as a language, is great for declaring simple to moderate configurations, but sometimes just using a declarative language is not enough.
 One might need some conditional execution or have an easy way to generate multiple similar tasks. Most of the CIs solve this problem
 by introducing special DSL into the existing YAML. In case of Cirrus CI, we have [`only_if` keyword](writing-tasks.md#conditional-task-execution)
 for conditional execution and [`matrix` modification](writing-tasks.md#matrix-modification) for generating similar tasks.
-These optional are mostly hacks to workaround declarative nature of YAML language where in reality an imperative language
+These options are mostly hacks to workaround declarative nature of YAML language where in reality an imperative language
 looks like a better fit. This is why Cirrus CI allows in additional to YAML configure tasks via Starlark.
 
-Starlark language is a procedural programming language [originated from Bazel build tool](https://docs.bazel.build/versions/master/skylark/language.html)
+Starlark language is a procedural programming language [originated from Bazel build tool](https://docs.bazel.build/versions/master/skylark/language.html),
 but ideal for embedding within any other system that want to safely allow user-defined logic. There are a few key differences which made us
 choose Starlark instead of common alternatives like JavaScript/TypeScript or WebAssembly:
 
-1. Starlark doesn't require compilation. No need to introduce full-blown compile -> deploy process for a few dozen lines of logic.
-2. Starlark script can be executed instantly on any platform. There is Starlark interpreter written in Go which integrates nicely with Cirrus CLI / Cirrus CI infrastructure.
+1. Starlark doesn't require compilation. No need to introduce full-blown compile and deploy process for a few dozen lines of logic.
+2. Starlark script can be executed instantly on any platform. There is Starlark interpreter written in Go which integrates nicely with Cirrus CLI and Cirrus CI infrastructure.
 3. Starlark has built-in functionality for loading external modules which is ideal for config sharing. See [module loading](#module-loading) for details.
 
 ## Writing Starlark scripts
@@ -47,7 +47,7 @@ Then the generated YAML is appended to `.cirrus.yml` (if any) before passing the
 With Starlark, it's possible to generate parts of the configuration dynamically based on some external conditions: by [making an HTTP request](#http) to check the previous build status
 or by [parsing files inside the repository](#fs) to pick up some common settings (for example, parse `package.json` to see if it contains `lint` script and generate a linting task).
 
-Even more importantly: with the [module loading](#module-loading) you can re-use other people's code to avoid wasting time on things written from scratch.
+And with the [module loading](#module-loading), you can re-use other people's code to avoid wasting time on things written from scratch.
 For example, there are official [task helpers](https://github.com/cirrus-modules/helpers) available that reduce the boilerplate when generating tasks:
 
 ```python
@@ -100,7 +100,7 @@ def on_task_failed(ctx):
 
 Module loading is done through the Starlark's [`load()`](https://github.com/bazelbuild/starlark/blob/master/spec.md#load-statements) statement.
 
-Besides, the ability to load [builtins](#builtins) with it, Cirrus can load other `.star` files from local and remote locations to facilitate code re-use.
+Besides the ability to load [builtins](#builtins) with it, Cirrus can load other `.star` files from local and remote locations to facilitate code re-use.
 
 #### Local
 
@@ -203,7 +203,7 @@ def main(ctx):
 
 It takes at least one [`string`](https://github.com/bazelbuild/starlark/blob/master/spec.md#strings) with a pattern and returns a [`bool`](https://github.com/bazelbuild/starlark/blob/master/spec.md#booleans) that represents whether any of the specified patterns matched any of the affected files in the running context.
 
-Currently, supported contexts:
+Currently supported contexts:
 
 * [`main()` entrypoint](#build-generation)
 
