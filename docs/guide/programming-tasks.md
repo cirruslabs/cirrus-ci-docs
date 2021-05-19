@@ -46,8 +46,8 @@ Then the generated YAML is appended to `.cirrus.yml` (if any) before passing the
 
 With Starlark, it's possible to generate parts of the configuration dynamically based on some external conditions:
 
-  * [Parsing files inside the repository](#fs) to pick up some common settings (for example, parse `package.json` to see if it contains `lint` script and generate a linting task).
-  * [Making an HTTP request](#http) to check the previous build status.
+* [Parsing files inside the repository](#fs) to pick up some common settings (for example, parse `package.json` to see if it contains `lint` script and generate a linting task).
+* [Making an HTTP request](#http) to check the previous build status.
 
 And with the [module loading](#module-loading), you can re-use other people's code to avoid wasting time on things written from scratch.
 For example, there are official [task helpers](https://github.com/cirrus-modules/helpers) available that reduce the boilerplate when generating tasks:
