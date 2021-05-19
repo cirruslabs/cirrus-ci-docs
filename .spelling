@@ -8,6 +8,7 @@ Azure
 Base64
 BitBucket
 Brew
+Builtins
 Bundler
 CCMenu
 CCTray
@@ -58,6 +59,7 @@ Docker
 Dockerfile
 Dockerfiles
 Erlang
+Entrypoints
 FreeBSD
 GB
 GITHUB_CHECK_SUITE_ID
@@ -99,11 +101,13 @@ ReadMe
 RuboCop
 SSDs
 Skaffold
+Starlark
 Unittest
 VMs
 Veertu
 WebHooks
 Webhooks
+WebAssembly
 Windows
 XCLogParser
 Xcode
@@ -111,7 +115,9 @@ Zero-config
 autoscaler
 backend
 bazel
+builtins
 caching
+changesInclude
 checksum
 ci.com
 circleci
@@ -131,10 +137,12 @@ distroless
 e.g.
 embeded
 emptyDir
+entrypoint
 executables
 exotic
 errored
 flake8
+filesystem
 gb
 gcloud
 gcp.community.nat.cirrus
@@ -148,6 +156,7 @@ lifecycle
 macOS
 machine-parsable
 macstadium.community.nat.cirrus
+marshalling
 mimetype
 mimetypes
 namespace
@@ -170,11 +179,13 @@ safelisting
 sh
 sharding
 stateful
+starlib
 submodules
 support@cirruslabs.org
 sweat_smile
 timestamp
 unary
+unmarshalling
 vCPU
 vCPUs
 virtualization
