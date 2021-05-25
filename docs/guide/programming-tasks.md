@@ -66,7 +66,7 @@ With Starlark, it's possible to generate parts of the configuration dynamically 
 
 See a video tutorial on how to create a custom Cirrus module:
 
-[![Writing Cirrus Module for Node.js in Starlark](https://img.youtube.com/vi/fPEe-xocfxQ/0.jpg)](https://www.youtube.com/watch?v=fPEe-xocfxQ)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/fPEe-xocfxQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ### Entrypoints
 
