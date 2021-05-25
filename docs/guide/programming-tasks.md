@@ -33,6 +33,21 @@ def main():
     ]
 ```
 
+With the [module loading](#module-loading), you can re-use other people's code to avoid wasting time on things written from scratch.
+For example, with the official [task helpers](https://github.com/cirrus-modules/helpers) the example above can be refactored in:
+
+```python
+load("github.com/cirrus-modules/helpers", "task", "container", "script")
+
+def main(ctx):
+  return [
+    task(
+      instance=container("debian:latest"),
+      instructions=[script("make")]
+    ),
+  ]
+```
+
 `main()` simply returns a list of task objects which will be serialized into YAML presentation like this:
 
 ```yaml
@@ -49,20 +64,9 @@ With Starlark, it's possible to generate parts of the configuration dynamically 
 * [Parsing files inside the repository](#fs) to pick up some common settings (for example, parse `package.json` to see if it contains `lint` script and generate a linting task).
 * [Making an HTTP request](#http) to check the previous build status.
 
-And with the [module loading](#module-loading), you can re-use other people's code to avoid wasting time on things written from scratch.
-For example, there are official [task helpers](https://github.com/cirrus-modules/helpers) available that reduce the boilerplate when generating tasks:
+See a video tutorial on how to create a custom Cirrus module:
 
-```python
-load("github.com/cirrus-modules/helpers", "task", "container", "script")
-
-def main(ctx):
-  return [
-    task(
-      instance=container("debian:latest"),
-      instructions=[script("make")]
-    ),
-  ]
-```
+<iframe width="560" height="315" src="https://www.youtube.com/embed/fPEe-xocfxQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ### Entrypoints
 
