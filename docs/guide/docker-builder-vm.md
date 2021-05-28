@@ -39,7 +39,7 @@ docker_builder:
 ### Multi-arch builds
 
 Docker Builder VM has QEMU pre-installed and is able to execute multi-arch builds via [`buildx`](https://docs.docker.com/buildx/working-with-buildx/).
-Add the following `setup_script` to enabled `buildx` and then use `docker buildx build` instead of the regular `docker build`:
+Add the following `setup_script` to enable `buildx` and then use `docker buildx build` instead of the regular `docker build`:
 
 ```yaml
 docker_builder:
