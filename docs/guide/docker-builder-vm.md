@@ -36,6 +36,20 @@ docker_builder:
 !!! info "Example"
     For more examples please check how we use Docker Builder to build and publish Cirrus CI's Docker Images for [Android](https://github.com/cirruslabs/docker-images-android).
 
+### Multi-arch builds
+
+Docker Builder VM has QEMU pre-installed and is able to execute multi-arch builds via [`buildx`](https://docs.docker.com/buildx/working-with-buildx/).
+Add the following `setup_script` to enabled `buildx` and then use `docker buildx build` instead of the regular `docker build`:
+
+```yaml
+docker_builder:
+  setup_script:
+    - docker buildx create --name multibuilder
+    - docker buildx use multibuilder
+    - docker buildx inspect --bootstrap
+  build_script: docker buildx build --platform linux/amd64,linux/arm64 --tag myrepo/foo:$CIRRUS_TAG .
+```
+
 ### Pre-installed Packages
 
 For your convenience, a Docker Builder VM has some common packages pre-installed:
