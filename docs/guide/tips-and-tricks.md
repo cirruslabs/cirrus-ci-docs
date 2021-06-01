@@ -67,3 +67,19 @@ ENCRYPTED values:
       [3287dbace8346dfbe98347d1954eca923487fd8ea7251983\
       cb6d5edabdf6fe5abd711238764cbd6efbde6236abd6f274]"
 ```
+
+## Setting environment variables from scripts
+
+Even through most of the time you can configure environment variables via [`env`](writing-tasks.md#environment-variables), there are cases when a variable value is obtained only when the task is already running.
+
+Normally you'd use `export` for that, but since each script instruction is executed in a separate shell, the exported variables won't propagate to the next instruction.
+
+However, there's a simple solution: just write your variables in a `KEY=VALUE` format to the file referenced by the `CIRRUS_ENV` environment variable.
+
+Here's a simple example:
+
+```yaml
+task:
+  get_date_script: echo "MEMOIZED_DATE=$(date)" >> $CIRRUS_ENV
+  show_date_script: echo $MEMOIZED_DATE
+```

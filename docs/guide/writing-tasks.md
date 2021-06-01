@@ -414,6 +414,7 @@ CIRRUS_USER_COLLABORATOR | `true` if a user initialized a build is already a con
 CIRRUS_USER_PERMISSION | `admin`, `write`, `read` or `none`.
 CIRRUS_HTTP_CACHE_HOST | Host and port number on which [local HTTP cache](#http-cache) can be accessed on.
 GITHUB_CHECK_SUITE_ID | Monotonically increasing id of a corresponding [GitHub Check Suite](https://help.github.com/en/articles/about-status-checks#checks) which caused the Cirrus CI build.
+CIRRUS_ENV | Path to a file, by writing to which you can [set task-wide environment variables](tips-and-tricks.md#setting-environment-variables-from-scripts).
 
 ### Behavioral Environment Variables
 
