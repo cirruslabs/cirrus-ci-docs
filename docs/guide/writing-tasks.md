@@ -63,7 +63,7 @@ task:
 
 !!! tip "Visual Task Creation for Beginners"
     If you are just getting started and prefer a more visual way of creating tasks, there
-    is a third-party [Cirrus CI Configuration Builder](https://cirrusbuilder.rdil.rocks) for generating YAML config that might be helpful.
+    is a third-party [Cirrus CI Configuration Builder](https://rdil.rocks/cirrus-builder) for generating YAML config that might be helpful.
 
 ## Execution Environment
 
