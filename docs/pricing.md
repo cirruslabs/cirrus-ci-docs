@@ -15,8 +15,8 @@ Here is a comparison table of available [Cirrus CI plans](https://github.com/mar
 
 User         | [Free Public Repositories](https://github.com/marketplace/cirrus-ci/plan/MDIyOk1hcmtldHBsYWNlTGlzdGluZ1BsYW45OTA=#pricing-and-setup) | [Private Personal Repository](https://github.com/marketplace/cirrus-ci/plan/MDIyOk1hcmtldHBsYWNlTGlzdGluZ1BsYW45OTI=#pricing-and-setup) | [Private Organization Repositories](https://github.com/marketplace/cirrus-ci/plan/MDIyOk1hcmtldHBsYWNlTGlzdGluZ1BsYW45OTM=#pricing-and-setup)
 ---          | --- | --- | ---
-Person       | <ul><li>Free access to community clusters for public repositories</li><li>[Bring your own infrastructure](#compute-services) for public repositories</li></ul> | <ul><li>Access to community clusters for public and **private** repositories</li><li>[Bring your own infrastructure](#compute-services) for public and **private** repositories</li></ul>  | **Not Applicable**
-Organization | <ul><li>Free access to community clusters for public repositories</li><li>Use [compute credits](#compute-credits) to access community clusters for private repositories and/or to avoid the [limits](faq.md#are-there-any-limits) on public repositories</li><li>[Bring your own infrastructure](#compute-services) for public repositories</li></ul> | **Not Applicable** | <ul><li>Free access to community clusters for public repositories</li><li>Use [compute credits](#compute-credits) to access community clusters for private repositories and/or to avoid the [limits](faq.md#are-there-any-limits) on public repositories</li><li>[Bring your own infrastructure](#compute-services) for public and **private** repositories</li></ul> 
+Person       | <ul><li>Free access to community clusters for public repositories</li><li>[Bring your own infrastructure](#compute-services) for public repositories</li><li>Configure [persistent workers](guide/persistent-workers.md) for public repositories</li></ul> | <ul><li>Access to community clusters for public and **private** repositories</li><li>[Bring your own infrastructure](#compute-services) for public and **private** repositories</li><li>Configure [persistent workers](guide/persistent-workers.md) for public and **private** repositories</li></ul>  | **Not Applicable**
+Organization | <ul><li>Free access to community clusters for public repositories</li><li>Use [compute credits](#compute-credits) to access community clusters for private repositories and/or to avoid the [limits](faq.md#are-there-any-limits) on public repositories</li><li>[Bring your own infrastructure](#compute-services) for public repositories</li><li>Configure [persistent workers](guide/persistent-workers.md) for public repositories</li></ul> | **Not Applicable** | <ul><li>Free access to community clusters for public repositories</li><li>Use [compute credits](#compute-credits) to access community clusters for private repositories and/or to avoid the [limits](faq.md#are-there-any-limits) on public repositories</li><li>[Bring your own infrastructure](#compute-services) for public and **private** repositories</li><li>Configure [persistent workers](guide/persistent-workers.md) for public and **private** repositories</li></ul> 
 
 ## Compute Credits
 
@@ -94,8 +94,9 @@ task:
 
 ## Compute Services
 
-Configure and connect one or more [compute services](guide/supported-computing-services.md) to Cirrus CI and [pay $10/seat/month](https://github.com/marketplace/cirrus-ci/plan/MDIyOk1hcmtldHBsYWNlTGlzdGluZ1BsYW45OTM=#pricing-and-setup) 
-for orchestrating CI workloads on these compute services. 
+Configure and connect one or more [compute services](guide/supported-computing-services.md) and/or [persistent workers](guide/persistent-workers.md)
+to Cirrus CI for orchestrating CI workloads on them. It's free for your public repositories and [costs $10/seat/month](https://github.com/marketplace/cirrus-ci/plan/MDIyOk1hcmtldHBsYWNlTGlzdGluZ1BsYW45OTM=#pricing-and-setup)
+to use with private repositories.
 
 **Benefits** of this approach:
 
