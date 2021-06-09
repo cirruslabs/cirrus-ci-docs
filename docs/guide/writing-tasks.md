@@ -78,6 +78,7 @@ Field Name                 | Managed by | Description
 `macos_instance`           | **us**     | [macOS Virtual Machines][macos_instance]
 `freebsd_instance`         | **us**     | [FreeBSD Virtual Machines][freebsd_instance]
 `compute_engine_instance`  | **us**     | [Full-fledged custom VM][compute_engine_instance]
+`persistent_worker`        | **you**    | [Use any host on any platform and architecture][persistent_worker]
 `gce_instance`             | **you**    | [Linux, Windows and FreeBSD Virtual Machines in your GCP project][gce_instance]
 `gke_container`            | **you**    | [Linux Docker Containers on private GKE cluster][gke_container]
 `ec2_instance`             | **you**    | [Linux Virtual Machines in your AWS][ec2_instance]
@@ -90,6 +91,7 @@ Field Name                 | Managed by | Description
 [macos_instance]: macOS.md
 [freebsd_instance]: FreeBSD.md
 [compute_engine_instance]: custom-vms.md
+[persistent_worker]: persistent-workers.md
 [gce_instance]: supported-computing-services.md#compute-engine
 [gke_container]: supported-computing-services.md#kubernetes-engine
 [ec2_instance]: supported-computing-services.md#ec2
