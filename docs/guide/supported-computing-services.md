@@ -563,19 +563,36 @@ Command above will create a new service principal and will print something like:
 
 ```json
 {
-  "appId": "...",
-  "displayName": "CirrusCI",
-  "name": "http://CirrusCI",
-  "password": "...",
-  "tenant": "..."
+  "clientId": "...",
+  "clientSecret": "...",
+  "subscriptionId": "...",
+  "tenantId": "...",
+  ...
 }
-``` 
+```
+
+Please also remember `clientId` from the JSON as `$CIRRUS_CLIENT_ID`. It will be used later for configuring blob storage access.
 
 Please create an [encrypted variable](writing-tasks.md#encrypted-variables) from this output and 
 add it to the top of `.cirrus.yml` file:
 
 ```yaml
 azure_credentials: ENCRYPTED[qwerty239abc]
+```
+
+You also need to create a resource group that Cirrus CI will use for scheduling tasks:
+
+```console
+az group create --location eastus --name CirrusCI
+```
+
+Please also allow the newly created CirrusCI principle to access blob storage in order to manage logs and caches.
+
+```console
+az role assignment create \
+    --role "Storage Blob Data Contributor" \
+    --assignee $CIRRUS_CLIENT_ID \
+    --scope "/subscriptions/$SUBSCRIPTION_ID/resourceGroups/CirrusCI"
 ```
 
 Now Cirrus CI can interact with Azure APIs.
