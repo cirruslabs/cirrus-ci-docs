@@ -327,9 +327,9 @@ that takes a container cluster on GKE to start a container.
 To start scheduling tasks on a container cluster we first need to create one using `gcloud`. Here is a recommended configuration
 of a cluster that is very similar to what is used for the managed `contianer` instances. We recommend creating a cluster with two node pools:
 
-  * `default-pool` with a single node and no autoscaling for system pods required by Kubernetes.
-  * `workers-pool` that will use [Compute-Optimized instances](https://cloud.google.com/compute/docs/machine-types#compute-optimized_machine_type_family)
-    and SSD storage for better performance. This pool also will be able to scale to 0 when there are no tasks to run.
+* `default-pool` with a single node and no autoscaling for system pods required by Kubernetes.
+* `workers-pool` that will use [Compute-Optimized instances](https://cloud.google.com/compute/docs/machine-types#compute-optimized_machine_type_family)
+  and SSD storage for better performance. This pool also will be able to scale to 0 when there are no tasks to run.
 
 ```yaml
 gcloud container clusters create cirrus-ci-cluster \
