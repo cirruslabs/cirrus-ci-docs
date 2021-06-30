@@ -625,3 +625,67 @@ azure_container_instance:
     Linux-based images are usually pretty small and doesn't require much tweaking. For Windows containers ACI recommends
     to follow a [few basic tips](https://docs.microsoft.com/en-us/azure/container-instances/container-instances-troubleshooting#container-takes-a-long-time-to-start)
     in order to reduce startup time.
+
+## Oracle Cloud
+
+Cirrus CI can schedule tasks on several Oracle Cloud services. In order to interact with OCI APIs Cirrus CI needs permissions.
+Please create a user that Cirrus CI will behalf on:
+
+```bash
+oci iam user create --name cirrus --description "Cirrus CI Orchestrator"
+```
+
+Please configure the `cirrus` user to be able to access storage, launch instances and have access to Kubernetes clusters.
+The easiest way is to add `cirrus` user to `Administrators` group, but it's not as secure as granularly configuring the access.
+
+By default, for every repository you'll start using Cirrus CI with, Cirrus will create a bucket with 90 days lifetime policy.
+In order to allow Cirrus to configure lifecycle policies please add the following policy as described in the [documentation](https://docs.oracle.com/en-us/iaas/Content/Object/Tasks/usinglifecyclepolicies.htm#Service).
+Here is an example of the policy for `us-ashburn-1` region:
+
+```
+Allow service objectstorage-us-ashburn-1 to manage object-family in tenancy
+```
+
+Once you created and configured `cirrus` user you'll need to provide its API key. Once you generate an API key you should
+get a `*.pem` file with the private key that will be used by Cirrus CI.
+
+Normally your config file for local use looks like this:
+
+```properties
+[DEFAULT]
+user=ocid1.user.oc1..XXX
+fingerprint=11:22:...:99
+tenancy=ocid1.tenancy.oc1..YYY
+region=us-ashburn-1
+key_file=<path to your *.pem private keyfile>
+```
+
+For Cirrus to use, you'll need to use a different format:
+
+```
+<user value>
+<fingerprint value>
+<tenancy value>
+<region value>
+<content of your *.pem private keyfile>
+```
+
+This way you'll be able to create a single [encrypted variable](writing-tasks.md#encrypted-variables) with the contents
+of the Cirrus specific credentials above.
+
+```yaml
+oracle_credentials: ENCRYPTED[qwerty239abc]
+```
+
+### Kubernetes Cluster
+
+Please create a Kubernetes cluster and make sure *Kubernetes API Public Endpoint* is enabled for the cluster so Cirrus
+can access it. Then copy cluster id which can be used in configuring `oke_container`:
+
+```yaml  
+task:
+  oke_container:
+    cluster_id: ocid1.cluster.oc1.iad.xxxxxx
+    image: node:latest
+  script: ./run-ci.sh
+```
