@@ -324,15 +324,28 @@ Scheduling tasks on [Compute Engine](#google-compute-engine) has one big disadva
 start which usually takes around a minute. One minute is not that long but can't compete with hundreds of milliseconds
 that takes a container cluster on GKE to start a container.
 
-To start scheduling tasks on a container cluster we first need to create one using `gcloud`. Here is a command to create
-an auto-scalable cluster that will scale down to zero nodes when there is no load for some time and quickly scale up with
-the load during peak hours:
+To start scheduling tasks on a container cluster we first need to create one using `gcloud`. Here is a recommended configuration
+of a cluster that is very similar to what is used for the managed `contianer` instances. We recommend creating a cluster with two node pools:
+
+  * `default-pool` with a single node and no autoscaling for system pods required by Kubernetes.
+  * `workers-pool` that will use [Compute-Optimized instances](https://cloud.google.com/compute/docs/machine-types#compute-optimized_machine_type_family)
+    and SSD storage for better performance. This pool also will be able to scale to 0 when there are no tasks to run.
 
 ```yaml
 gcloud container clusters create cirrus-ci-cluster \
+  --autoscaling-profile optimize-utilization \
   --zone us-central1-a \
-  --num-nodes 1 --machine-type n1-standard-8 \
-  --enable-autoscaling --min-nodes=0 --max-nodes=10
+  --num-nodes "1" \
+  --machine-type "e2-standard-2" \
+  --disk-type "pd-standard" --disk-size "100"
+
+gcloud container node-pools create "workers-pool" \
+  --cluster cirrus-ci-cluster \
+  --zone "us-central1-a" \
+  --num-nodes "0" \
+  --enable-autoscaling --min-nodes "0" --max-nodes "8" \
+  --machine-type "c2-standard-30" \
+  --disk-type "pd-ssd" --disk-size "500"
 ```
 
 A service account that Cirrus CI operates via should be assigned with `container.admin` role that allows to administrate GKE clusters:
@@ -352,8 +365,8 @@ gcp_credentials: ENCRYPTED[qwerty239abc]
 gke_container:
   image: gradle:jdk8
   cluster_name: cirrus-ci-cluster
-  zone: us-central1-a
-  namespace: default
+  location: us-central1-a # cluster zone or region for multi-zone clusters
+  namespace: default # Kubernetes namespace to create pods in
   cpu: 6
   memory: 24GB
 ```
@@ -374,7 +387,7 @@ gke_container:
     gke_container:
       image: my-docker-client:latest
       cluster_name: my-gke-cluster
-      zone: us-west1-c
+      location: us-west1-c
       namespace: cirrus-ci
       additional_containers:
         - name: docker
