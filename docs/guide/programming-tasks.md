@@ -75,7 +75,44 @@ and will be called with different arguments depending on the event which trigger
 
 #### `main()`
 
-`main()` is called once a Cirrus CI build is triggered in order to generate a list of tasks to execute within that particular build.
+`main()` is called once a Cirrus CI build is triggered in order to generate a list of tasks to execute within that particular build:
+
+```python
+def main():
+    return [
+      {
+        "container": {
+          "image": "debian:latest"
+        },
+        "script": "make test"
+      },
+      {
+        "container": {
+          "image": "debian:latest"
+        },
+        "script": "make build"
+      }
+    ]
+```
+
+You can also return a dictionary that fully resembles a YAML configuration, just make sure to give the tasks different names, because Starlark does not permit duplicate dictonary keys:
+
+```python
+def main():
+    return {
+        "container": {
+          "image": "debian:latest",
+        },
+        "test_task": {
+          "script": "make test"
+        },
+        "build_task": {
+          "script": "make build"
+        }
+    }
+```
+
+Returning a dictonary like this is useful when you want to have a top-level overrides, just note that when using both YAML and Starlark configuration formats they get merged and the YAML configuration always comes first.
 
 #### Hooks
 
