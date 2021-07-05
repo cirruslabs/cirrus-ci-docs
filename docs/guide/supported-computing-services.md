@@ -344,6 +344,7 @@ gcloud container node-pools create "workers-pool" \
   --zone "us-central1-a" \
   --num-nodes "0" \
   --enable-autoscaling --min-nodes "0" --max-nodes "8" \
+  --node-taints dedicated=system:PreferNoSchedule \
   --machine-type "c2-standard-30" \
   --disk-type "pd-ssd" --disk-size "500"
 ```
