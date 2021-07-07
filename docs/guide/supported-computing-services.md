@@ -707,7 +707,7 @@ can access it. Then copy cluster id which can be used in configuring `oke_contai
 task:
   oke_container:
     cluster_id: ocid1.cluster.oc1.iad.xxxxxx
-    image: node:latest
+    image: golang:latest
   script: ./run-ci.sh
 ```
 
