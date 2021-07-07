@@ -34,6 +34,15 @@
   </a>
 </p>
 
+<p align="center">
+  <a href="#oracle-cloud">
+    <img style="height:128px;" src="/assets/images/oracle/oci.svg"/>
+  </a>
+  <a href="#kubernetes-cluster">
+    <img style="width:128px;height:128px;" src="/assets/images/common/kubernetes.svg"/>
+  </a>
+</p>
+
 For every [task](writing-tasks.md) Cirrus CI starts a new Virtual Machine or a new Docker Container on a given compute service.
 Using a new VM or a new Docker Container each time for running tasks has many benefits:
 
@@ -628,6 +637,12 @@ azure_container_instance:
 
 ## Oracle Cloud
 
+<p align="center">
+  <a href="#oracle-cloud">
+    <img style="height:128px;" src="/assets/images/oracle/oci.svg"/>
+  </a>
+</p>
+
 Cirrus CI can schedule tasks on several Oracle Cloud services. In order to interact with OCI APIs Cirrus CI needs permissions.
 Please create a user that Cirrus CI will behalf on:
 
@@ -678,6 +693,12 @@ oracle_credentials: ENCRYPTED[qwerty239abc]
 ```
 
 ### Kubernetes Cluster
+
+<p align="center">
+  <a href="#kubernetes-cluster">
+    <img  style="width:128px;height:128px;" src="/assets/images/common/kubernetes.svg"/>
+  </a>
+</p>
 
 Please create a Kubernetes cluster and make sure *Kubernetes API Public Endpoint* is enabled for the cluster so Cirrus
 can access it. Then copy cluster id which can be used in configuring `oke_container`:
