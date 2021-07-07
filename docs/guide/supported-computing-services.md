@@ -651,7 +651,7 @@ oci iam user create --name cirrus --description "Cirrus CI Orchestrator"
 ```
 
 Please configure the `cirrus` user to be able to access storage, launch instances and have access to Kubernetes clusters.
-The easiest way is to add `cirrus` user to `Administrators` group, but it's not as secure as granularly configuring the access.
+The easiest way is to add `cirrus` user to `Administrators` group, but it's not as secure as a granular access configuration.
 
 By default, for every repository you'll start using Cirrus CI with, Cirrus will create a bucket with 90 days lifetime policy.
 In order to allow Cirrus to configure lifecycle policies please add the following policy as described in the [documentation](https://docs.oracle.com/en-us/iaas/Content/Object/Tasks/usinglifecyclepolicies.htm#Service).
