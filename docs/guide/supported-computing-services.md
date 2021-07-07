@@ -710,3 +710,8 @@ task:
     image: node:latest
   script: ./run-ci.sh
 ```
+
+
+!!! note "Ampere A1 Support"
+    The cluster can utilize [Oracle's Ampere A1](https://www.oracle.com/cloud/compute/arm/) Arm instances in order to
+    run `arm64` CI workloads!
