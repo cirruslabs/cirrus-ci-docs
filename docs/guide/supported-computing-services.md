@@ -657,7 +657,7 @@ By default, for every repository you'll start using Cirrus CI with, Cirrus will 
 In order to allow Cirrus to configure lifecycle policies please add the following policy as described in the [documentation](https://docs.oracle.com/en-us/iaas/Content/Object/Tasks/usinglifecyclepolicies.htm#Service).
 Here is an example of the policy for `us-ashburn-1` region:
 
-```
+```text
 Allow service objectstorage-us-ashburn-1 to manage object-family in tenancy
 ```
 
@@ -677,7 +677,7 @@ key_file=<path to your *.pem private keyfile>
 
 For Cirrus to use, you'll need to use a different format:
 
-```
+```text
 <user value>
 <fingerprint value>
 <tenancy value>
@@ -710,7 +710,6 @@ task:
     image: golang:latest
   script: ./run-ci.sh
 ```
-
 
 !!! note "Ampere A1 Support"
     The cluster can utilize [Oracle's Ampere A1](https://www.oracle.com/cloud/compute/arm/) Arm instances in order to
