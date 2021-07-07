@@ -39,7 +39,7 @@
     <img style="height:128px;" src="/assets/images/oracle/oci.svg"/>
   </a>
   <a href="#kubernetes-cluster">
-    <img style="width:128px;height:128px;" src="/assets/images/common/kubernetes.svg"/>
+    <img style="width:128px;height:128px;" src="/assets/images/oracle/oke.svg"/>
   </a>
 </p>
 
@@ -696,7 +696,7 @@ oracle_credentials: ENCRYPTED[qwerty239abc]
 
 <p align="center">
   <a href="#kubernetes-cluster">
-    <img  style="width:128px;height:128px;" src="/assets/images/common/kubernetes.svg"/>
+    <img  style="width:128px;height:128px;" src="/assets/images/oracle/oke.svg"/>
   </a>
 </p>
 
