@@ -115,6 +115,7 @@ XCLogParser
 Xcode
 Zero-config
 autoscaler
+autoscaling
 backend
 bazel
 builtins
