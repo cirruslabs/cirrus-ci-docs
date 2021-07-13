@@ -46,6 +46,9 @@ Tasks using [Compute Credits](../pricing.md#compute-credits) has higher limits a
 
 ??? info "Privileged Access"
     If you need to run privileged docker containers, take a look at the [docker builder](docker-builder-vm.md).
+
+??? info "Greedy instances"
+    Greedy instances can potentially use more CPU resources if available. Please check [this blog post](https://medium.com/cirruslabs/introducing-greedy-container-instances-29aad06dc2b4) for more details.
     
 ### KVM-enabled Privileged Containers
 

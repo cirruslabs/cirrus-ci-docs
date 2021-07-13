@@ -410,6 +410,9 @@ gke_container:
 
   For a full example on leveraging this to do docker-in-docker builds on Kubernetes checkout [Docker Builds on Kubernetes](docker-builds-on-kubernetes.md)
 
+??? info "Greedy instances"
+    Greedy instances can potentially use more CPU resources if available. Please check [this blog post](https://medium.com/cirruslabs/introducing-greedy-container-instances-29aad06dc2b4) for more details.
+
 ## AWS
 
 <p align="center">
@@ -559,6 +562,9 @@ task:
 !!! info "S3 Access for Caching"
     Please add `AmazonS3FullAccess` policy to the role used for creation of EKS workers (same role you put in `aws-auth-cm.yaml`
     when [enabled worker nodes to join the cluster](https://docs.aws.amazon.com/eks/latest/userguide/launch-workers.html)).
+
+??? info "Greedy instances"
+    Greedy instances can potentially use more CPU resources if available. Please check [this blog post](https://medium.com/cirruslabs/introducing-greedy-container-instances-29aad06dc2b4) for more details.
 
 ## Azure
 
@@ -728,3 +734,6 @@ task:
 !!! note "Ampere A1 Support"
     The cluster can utilize [Oracle's Ampere A1](https://www.oracle.com/cloud/compute/arm/) Arm instances in order to
     run `arm64` CI workloads!
+
+??? info "Greedy instances"
+    Greedy instances can potentially use more CPU resources if available. Please check [this blog post](https://medium.com/cirruslabs/introducing-greedy-container-instances-29aad06dc2b4) for more details.
