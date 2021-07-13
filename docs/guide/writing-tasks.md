@@ -172,8 +172,11 @@ test_task:
   test_script: npm run test
 ```
 
-The `folder` is a *required* field that tells the agent which folder to cache. It should be relative to the working directory, or the root directory of the machine (ex. `node_modules` or `/usr/local/bundle`).
-`folder` also accepts a "glob" pattern within the working directory to cache multiple files/folders. For example, `**/node_modules` will cache every `node_modules` folder within the working directory.
+Either `folder` or a `folders` field (with a list of folder paths) is *required* and they tell the agent which folder paths to cache.
+
+Folder paths should be generally relative to the working directory (e.g. `node_modules`), with the exception of when only a single folder specified. In this case, it can be also an absolute path (`/usr/local/bundle`).
+
+Folder paths can contain a "glob" pattern to cache multiple files/folders within a working directory (e.g. `**/node_modules` will cache every `node_modules` folder within the working directory).
 
 A `fingerprint_script` is an *optional* field that can specify a script that will be executed and console output of which
 will be used as a key for the given cache. By default the task name is used as a fingerprint value.
