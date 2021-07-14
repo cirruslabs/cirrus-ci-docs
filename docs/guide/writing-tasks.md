@@ -216,6 +216,31 @@ test_task:
     Cache artifacts are shared between tasks, so two caches with the same name on e.g. Linux containers and macOS VMs will share the same set of files.
     This may introduce binary incompatibility between caches. To avoid that, add `echo $CIRRUS_OS` into `fingerprint_script` which will distinguish caches based on OS.
 
+#### Manual cache upload
+
+Normally caches are uploaded at the end of the task execution. However, you can override the default behavior and upload them earlier.
+
+To do this, use the `upload_caches` instruction, which uploads a list of caches passed to it once executed:
+
+```yaml
+test_task:
+  container:
+    image: node:latest
+  node_modules_cache:
+    folder: node_modules
+  upload_caches:
+    - node_modules
+  install_script: yarn install
+  test_script: yarn run test
+  pip_cache:
+    folder: ~/.cache/pip
+```
+
+Note that `pip` cache won't be uploaded in this example: using `upload_caches` disables the default behavior where all caches are automatically uploaded at the end of the task, so if you want to upload `pip` cache too, you'll have to either:
+
+* extend the list of uploaded caches in the first `upload_caches` instruction
+* insert a second `upload_caches` instruction that specifically targets `pip` cache
+
 ### Artifacts Instruction
 
 An `artifacts` instruction allows to store files and expose them in the UI for downloading later. An `artifacts` instruction
