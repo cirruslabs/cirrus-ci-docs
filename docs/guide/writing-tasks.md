@@ -906,7 +906,10 @@ Additional container can be very handy in many scenarios. Please check [Cirrus C
         - name: mysql
           image: mysql:latest
           port: 7777
-          command: mysqld --port 7777
+          command: # note that command is a list similar to CMD in a Dockerfile
+            - mysqld 
+            - --port
+            - 7777
           env:
             MYSQL_ROOT_PASSWORD: ""
     ```
