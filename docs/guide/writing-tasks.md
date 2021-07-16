@@ -181,12 +181,15 @@ Folder paths can contain a "glob" pattern to cache multiple files/folders within
 A `fingerprint_script` and `fingerprint_key` are *optional* fields that can specify either:
 
 * a script output of which will be hashed and used as a key for the given cache:
+
   ```yaml
   node_modules_cache:
     folder: node_modules
     fingerprint_script: cat yarn.lock
   ```
+
 * a final cache key:
+
   ```yaml
   node_modules_cache:
     folder: node_modules
