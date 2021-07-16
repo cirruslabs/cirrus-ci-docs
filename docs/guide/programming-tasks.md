@@ -95,7 +95,7 @@ def main():
     ]
 ```
 
-You can also return a dictionary that fully resembles a YAML configuration, just make sure to give the tasks different names, because Starlark does not permit duplicate dictonary keys:
+You can also return a dictionary that fully resembles a YAML configuration, just make sure to give the tasks different names, because Starlark does not permit duplicate dictionary keys:
 
 ```python
 def main():
@@ -112,7 +112,7 @@ def main():
     }
 ```
 
-Returning a dictonary like this is useful when you want to have a top-level overrides, just note that when using both YAML and Starlark configuration formats they get merged and the YAML configuration always comes first.
+Returning a dictionary like this is useful when you want to have a top-level overrides, just note that when using both YAML and Starlark configuration formats they get merged and the YAML configuration always comes first.
 
 #### Hooks
 
