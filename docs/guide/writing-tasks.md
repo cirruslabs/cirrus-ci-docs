@@ -178,10 +178,24 @@ Folder paths should be generally relative to the working directory (e.g. `node_m
 
 Folder paths can contain a "glob" pattern to cache multiple files/folders within a working directory (e.g. `**/node_modules` will cache every `node_modules` folder within the working directory).
 
-A `fingerprint_script` is an *optional* field that can specify a script that will be executed and console output of which
-will be used as a key for the given cache. By default the task name is used as a fingerprint value.
+A `fingerprint_script` and `fingerprint_key` are *optional* fields that can specify either:
 
-After the last `script` instruction for the task succeeds, Cirrus CI will calculate checksum of the cached folder (note that it's unrelated to `fingerprint_script` instruction) and re-upload the cache if it finds any changes.
+* a script output of which will be hashed and used as a key for the given cache:
+  ```json
+  node_modules_cache:
+    folder: node_modules
+    fingerprint_script: cat yarn.lock
+  ```
+* a final cache key:
+  ```json
+  node_modules_cache:
+    folder: node_modules
+    fingerprint_key: 2038-01-20
+  ```
+
+These two fields are mutually exclusive. By default the task name is used as a fingerprint value.
+
+After the last `script` instruction for the task succeeds, Cirrus CI will calculate checksum of the cached folder (note that it's unrelated to `fingerprint_script` or `fingerprint_key` fields) and re-upload the cache if it finds any changes.
 To avoid a time-costly re-upload, remove volatile files from the cache (for example, in the last `script` instruction of a task).
 
 `populate_script` is an *optional* field that can specify a script that will be executed to populate the cache.
@@ -190,7 +204,7 @@ If your dependencies are updated often, please pay attention to `fingerprint_scr
 
 `reupload_on_changes` is an *optional* field that can specify whether Cirrus Agent should check if 
 contents of cached `folder` have changed during task execution and re-upload a cache entry in case of any changes.
-If `reupload_on_changes` option is not set explicitly then it will be set to `false` if `fingerprint_script` is presented and `true` otherwise.
+If `reupload_on_changes` option is not set explicitly then it will be set to `false` if `fingerprint_script` or `fingerprint_key` is presented and `true` otherwise.
 Cirrus Agent will detect additions, deletions and modifications of any files under specified `folder`. All of the detected changes will be
 logged under `Upload '$CACHE_NAME' cache` instructions for easier debugging of cache invalidations.
 
@@ -214,7 +228,7 @@ test_task:
 
 !!! warning "Scope of cached artifacts"
     Cache artifacts are shared between tasks, so two caches with the same name on e.g. Linux containers and macOS VMs will share the same set of files.
-    This may introduce binary incompatibility between caches. To avoid that, add `echo $CIRRUS_OS` into `fingerprint_script` which will distinguish caches based on OS.
+    This may introduce binary incompatibility between caches. To avoid that, add `echo $CIRRUS_OS` into `fingerprint_script` or use `$CIRRUS_OS` in `fingerprint_key`, which will distinguish caches based on OS.
 
 #### Manual cache upload
 
@@ -858,15 +872,15 @@ supports `GET`, `POST` and `HEAD` requests to upload, download and check presenc
 For example running the following command:
 
 ```bash
-curl -s -X POST --data-binary @myfolder.tar.gz http://$CIRRUS_HTTP_CACHE_HOST/name-mykey
+curl -s -X POST --data-binary @myfolder.tar.gz http://$CIRRUS_HTTP_CACHE_HOST/name-key
 ```
 
-... has the same effect as a [caching instruction](#cache-instruction) of `name_cache` cache where `mykey` is a `sha256` sum
-of the `fingerprint_script`'s output:
+...has the same effect as the following [caching instruction](#cache-instruction):
 
 ```yaml
-myfolder_cache:
+name_cache:
   folder: myfolder
+  fingerprint_key: key
 ```
 
 !!! info
