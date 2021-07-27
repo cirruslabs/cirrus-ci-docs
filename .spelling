@@ -60,8 +60,8 @@ Customizable
 Docker
 Dockerfile
 Dockerfiles
-Erlang
 Entrypoints
+Erlang
 FreeBSD
 GB
 GITHUB_CHECK_SUITE_ID
@@ -107,9 +107,9 @@ Starlark
 Unittest
 VMs
 Veertu
+WebAssembly
 WebHooks
 Webhooks
-WebAssembly
 Windows
 XCLogParser
 Xcode
@@ -141,11 +141,11 @@ e.g.
 embeded
 emptyDir
 entrypoint
+errored
 executables
 exotic
-errored
-flake8
 filesystem
+flake8
 gb
 gcloud
 gcp.community.nat.cirrus
@@ -181,8 +181,8 @@ runtime
 safelisting
 sh
 sharding
-stateful
 starlib
+stateful
 submodules
 support@cirruslabs.org
 sweat_smile
