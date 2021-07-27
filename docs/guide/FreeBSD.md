@@ -29,9 +29,8 @@ Any of the official FreeBSD VMs on Google Cloud Platform are supported. Here are
 
 * `freebsd-14-0-snap` (14.0-SNAP)
 * `freebsd-13-0`      (13.0-RELEASE)
+* `freebsd-12-2-snap` (12.2-SNAP)
 * `freebsd-12-2`      (12.2-RELEASE)
-* `freebsd-12-1-snap` (12.1-STABLE)
-* `freebsd-12-1`      (12.1-RELEASE)
 * `freebsd-12-0`      (12.0-RELEASE)
 * `freebsd-11-4`      (11.4-RELEASE)
 * `freebsd-11-3-snap` (11.3-STABLE)
