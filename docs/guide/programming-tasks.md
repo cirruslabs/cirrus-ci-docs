@@ -268,6 +268,28 @@ def main(ctx):
     return tasks
 ```
 
+### `changes_include_only`
+
+`changes_include_only()` is a Starlark alternative to the [changesIncludeOnly()](writing-tasks.md#supported-functions) function commonly found in the YAML configuration files.
+
+It takes at least one [`string`](https://github.com/bazelbuild/starlark/blob/master/spec.md#strings) with a pattern and returns a [`bool`](https://github.com/bazelbuild/starlark/blob/master/spec.md#booleans) that represents whether any of the specified patterns matched all the affected files in the running context.
+
+Currently supported contexts:
+
+* [`main()` entrypoint](#build-generation)
+
+Example:
+
+```python
+load("cirrus", "changes_include_only")
+
+def main(ctx):
+    if changes_include_only("doc/*"):
+        return []
+
+    return base_tasks()
+```
+
 ### `http`
 
 Provides HTTP client implementation with `http.get()`, `http.post()` and other HTTP method functions.

@@ -45,7 +45,7 @@ task:
 2. Use [cache instruction](#cache-instruction) to persist folders based on an arbitrary `fingerprint_script`.
 3. Use [`matrix` modification](#matrix-modification) to produce many similar tasks.
 4. See what kind of files were changes and skip tasks that are not applicable.
-   See [`changesInclude`](#supported-functions) documentation for details.
+   See [`changesInclude`](#supported-functions) and [`changesIncludeOnly`](#supported-functions) documentation for details.
 5. Use nested [`matrix` modification](#matrix-modification) to produce even more tasks.
 6. Completely exclude tasks from execution graph by [any custom condition](#conditional-task-execution).
 
@@ -446,7 +446,7 @@ CIRRUS_CHANGE_TITLE | First line of `CIRRUS_CHANGE_MESSAGE`
 CIRRUS_CRON | [Cron Build](#cron-builds) name if builds was triggered by Cron.
 CIRRUS_DEFAULT_BRANCH | Default repository branch name. For example `master`
 CIRRUS_LAST_GREEN_BUILD_ID | The build id of the last successful build on the same branch at the time of the current build creation.
-CIRRUS_LAST_GREEN_CHANGE | Corresponding to `CIRRUS_LAST_GREEN_BUILD_ID` SHA (used in [`changesInclude` function](#supported-functions)).
+CIRRUS_LAST_GREEN_CHANGE | Corresponding to `CIRRUS_LAST_GREEN_BUILD_ID` SHA (used in [`changesInclude`](#supported-functions) and [`changesIncludeOnly`](#supported-functions) functions).
 CIRRUS_PR | PR number if current build was triggered by a PR. For example `239`.
 CIRRUS_PR_DRAFT | `true` if current build was triggered by a Draft PR.
 CIRRUS_TAG | Tag name if current build was triggered by a new tag. For example `v1.0`
@@ -727,12 +727,16 @@ Currently only basic operators like `==`, `!=`, `=~`, `!=~`, `&&`, `||` and unar
 
 ### Supported Functions
 
-Currently only one function is supported in the `only_if` and `skip` expressions. `changesInclude` function allows to check
-which files were changed. `changesInclude` behaves differently for PR builds and regular builds:
+Currently two functions are supported in the `only_if` and `skip` expressions:
 
-* For PR builds, `changesInclude` will check the list of files affected by the PR.
-* For regular builds, `changesInclude` will use the `CIRRUS_LAST_GREEN_CHANGE` [environment variable](#environment-variables)
-  to determine list of affected files between `CIRRUS_LAST_GREEN_CHANGE` and `CIRRUS_CHANGE_IN_REPO`.
+* `changesInclude` function allows to check which files were changed
+* `changesIncludeOnly` is a more strict version of `changesInclude`, i.e. it won't evaluate to `true` if there are changed files other than the ones covered by patterns
+
+These two functions behave differently for PR builds and regular builds:
+
+* For PR builds, functions check the list of files affected by the PR.
+* For regular builds, the `CIRRUS_LAST_GREEN_CHANGE` [environment variable](#environment-variables)
+  will be used to determine list of affected files between `CIRRUS_LAST_GREEN_CHANGE` and `CIRRUS_CHANGE_IN_REPO`.
 
 `changesInclude` function can be very useful for skipping some tasks when no changes to sources have been made since the
 last successful Cirrus CI build.
@@ -741,6 +745,13 @@ last successful Cirrus CI build.
 lint_task:
   skip: "!changesInclude('.cirrus.yml', '**.{js,ts}')"
   script: yarn run lint
+```
+
+`changesIncludeOnly` function can be used to skip running a heavyweight task if only documentation was changed, for example:
+
+```yaml
+build_task:
+  skip: "changesIncludeOnly('doc/*')"
 ```
 
 ## Auto-Cancellation of Tasks
