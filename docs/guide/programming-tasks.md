@@ -284,8 +284,8 @@ Example:
 load("cirrus", "changes_include_only")
 
 def main(ctx):
-  if changes_include_only("doc/*"):
-    return []
+    if changes_include_only("doc/*"):
+        return []
 
     return base_tasks()
 ```
