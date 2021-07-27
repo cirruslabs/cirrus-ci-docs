@@ -121,6 +121,7 @@ bazel
 builtins
 caching
 changesInclude
+changesIncludeOnly
 checksum
 ci.com
 circleci
@@ -153,6 +154,7 @@ git
 go-git
 gradle
 hostname
+i.e.
 iOS
 invalidations
 lifecycle
