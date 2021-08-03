@@ -475,6 +475,7 @@ CIRRUS_CLONE_DEPTH | `0` which will reflect in a full clone of a single branch |
 CIRRUS_CLONE_SUBMODULES | `false` | Set to `true` to clone submodules recursively.
 CIRRUS_LOG_TIMESTAMP | `false` | Indicate Cirrus Agent to prepend timestamp to each line of logs.
 CIRRUS_SHELL | `sh` on Linux/macOS/FreeBSD and `cmd.exe` on Windows. Set to `direct` to execute each script directly without wrapping the commands in a shell script. | Shell that Cirrus CI uses to execute scripts. By default `sh` is used.
+CIRRUS_VOLUME | `/tmp` | Defines a path for a temporary volume to be mounted into instances running in a Kubernetes cluster. This volume is mounted into all additional containers and is persisted between steps of a `pipe`.
 CIRRUS_WORKING_DIR | `cirrus-ci-build` folder inside of a system's temporary folder | Working directory where Cirrus CI executes builds. Default to `cirrus-ci-build` folder inside of a system's temporary folder.
 
 ## Encrypted Variables
