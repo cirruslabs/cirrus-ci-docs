@@ -149,6 +149,6 @@
   height: auto;
 }
 
-.md-announce div a {
-  color: var(--md-primary-bg-color);
+.md-announce a {
+  color: var(--md-code-bg-color);
 }
