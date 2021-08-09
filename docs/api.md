@@ -76,3 +76,25 @@ task(id: $taskId) {
 !!! info "Custom GraphQL Query"
     If you'd like to customize GraphQL query which will be executed and included in the event payload please contact support
     for further details.
+
+### Securing WebHooks
+
+Imagine you've been given a `https://example.com/webhook` endpoint by your administrator, and for some reason there's no easy way to change that. This kind of URL is easily discoverable on the internet, and an attacker can take advantage of this by sending requests to this URL, thus pretending to be the Cirrus CI.
+
+To avoid such situations, set the secret token in the repository settings, and then validate the `X-Cirrus-Signature` for each WebHook request.
+
+Once configured, the secret token and the request's body are fed into the HMAC algorithm to generate the `X-Cirrus-Signature` for each request coming from the Cirrus CI.
+
+!!! attention "Missing X-Cirrus-Signature header"
+When secret token is configured in the repository settings, all WebHook requests must contain the `X-Cirrus-Signature-Header`. Make sure to assert that in your validation code, otherwise an attacker can easily bypass the security benefits offered by this mechanism.
+
+Using HMAC is pretty straightforward in many languages, here's an example of how to validate the `X-Cirrus-Signature` using Python's [`hmac` module](https://docs.python.org/3/library/hmac.html):
+
+```python
+import hmac
+
+def is_signature_valid(secret_token: bytes, body: bytes, x_cirrus_signature: str) -> bool:
+    expected_signature = hmac.new(secret_token, body, "sha256").hexdigest()
+
+    return hmac.compare_digest(expected_signature, x_cirrus_signature)
+```
