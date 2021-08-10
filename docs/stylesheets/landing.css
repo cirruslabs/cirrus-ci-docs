@@ -152,3 +152,7 @@
 .md-announce a {
   color: var(--md-code-bg-color);
 }
+
+.md-banner a {
+  color: var(--md-code-bg-color);
+}
