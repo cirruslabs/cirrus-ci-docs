@@ -86,7 +86,7 @@ To avoid such situations, set the secret token in the repository settings, and t
 Once configured, the secret token and the request's body are fed into the HMAC algorithm to generate the `X-Cirrus-Signature` for each request coming from the Cirrus CI.
 
 !!! attention "Missing X-Cirrus-Signature header"
-When secret token is configured in the repository settings, all WebHook requests must contain the `X-Cirrus-Signature-Header`. Make sure to assert that in your validation code, otherwise an attacker can easily bypass the security benefits offered by this mechanism.
+When secret token is configured in the repository settings, all WebHook requests will contain the `X-Cirrus-Signature-Header`. Make sure to assert the presence of `X-Cirrus-Signature-Header` header and correctness of its value in your validation code.
 
 Using HMAC is pretty straightforward in many languages, here's an example of how to validate the `X-Cirrus-Signature` using Python's [`hmac` module](https://docs.python.org/3/library/hmac.html):
 
