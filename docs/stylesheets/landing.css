@@ -150,9 +150,9 @@
 }
 
 .md-announce a {
-  color: var(--md-code-bg-color);
+  color: var(--md-primary-bg-color);
 }
 
 .md-banner a {
-  color: var(--md-code-bg-color);
+  color: var(--md-primary-bg-color);
 }
