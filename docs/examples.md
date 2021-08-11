@@ -242,7 +242,7 @@ a pre-configured user and as a result don't have `HOME` environment variable pre
 
 ### Caching
 
-To preserve caches between Gradle runs simply add a [cache instruction](guide/writing-tasks.md#cache-instruction) as shown below.
+To preserve caches between Gradle runs, add a [cache instruction](guide/writing-tasks.md#cache-instruction) as shown below.
 The trick here is to clean up `~/.gradle/caches` folder in the very end of a build. Gradle creates some unique nondeterministic
 files in `~/.gradle/caches` folder on every run which makes Cirrus CI re-upload the cache *every time*. This way, you get faster builds!
 
@@ -264,7 +264,7 @@ check_task:
 
 ### Build Cache
 
-Here is how [HTTP Cache](guide/writing-tasks.md#http-cache) can be used with Gradle simply by adding following lines to `settings.gradle`:
+Here is how [HTTP Cache](guide/writing-tasks.md#http-cache) can be used with Gradle by adding the following code to `settings.gradle`:
 
 ```groovy
 ext.isCiServer = System.getenv().containsKey("CIRRUS_CI")
@@ -603,7 +603,7 @@ rspec_task:
 
 !!! tip "Test Parallelization"
     It's super easy to add intelligent test splitting by using [Knapsack Pro](https://knapsackpro.com/) and [matrix modification](guide/writing-tasks.md#matrix-modification).
-    After [setting up Knapsack Pro gem](https://docs.knapsackpro.com/knapsack_pro-ruby/guide/) simply add sharding like this:
+    After [setting up Knapsack Pro gem](https://docs.knapsackpro.com/knapsack_pro-ruby/guide/), you can add sharding like this:
     
     ```yaml
     task:
@@ -626,7 +626,7 @@ rspec_task:
 
 Cirrus CI natively supports [RSpec](https://rspec.info/) and [RuboCop](https://rubocop.org/) machine-parsable JSON reports.
 
-To get behavior-driven test annotations, simply generate a `rspec` artifact from your lint task:
+To get behavior-driven test annotations, generate and upload a `rspec` artifact from your lint task:
 
 ```yaml
 container:

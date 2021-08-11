@@ -187,7 +187,7 @@ task:
     ```
 
 !!! tip "Specify Image Family"
-    It's also possible to specify image family instead of the concrete image name. Simply specify `image_family` field
+    It's also possible to specify image family instead of the concrete image name. Use the `image_family` field
     instead of `image_name`:
 
     ```yaml
@@ -246,8 +246,8 @@ task:
 
 #### Docker Containers on Dedicated VMs
 
-It is possible to run a container directly on a Compute Engine VM with pre-installed Docker. Simply use `gce_container`
-to specify a VM image and a Docker container to execute on the VM (`gce_container` simply extends `gce_instance` definition
+It is possible to run a container directly on a Compute Engine VM with pre-installed Docker. Use the `gce_container` field
+to specify a VM image and a Docker container to execute on the VM (`gce_container` extends `gce_instance` definition
 with a few additional fields):
 
 ```yaml

@@ -1,7 +1,7 @@
 ## macOS Virtual Machines
 
-It is possible to run macOS Virtual Machines (the same way one can run [Linux containers](linux.md)) on the macOS Community Cluster. 
-Simply use `macos_instance` in your `.cirrus.yml` files:
+It is possible to run macOS Virtual Machines (like how one can run [Linux containers](linux.md)) on the macOS Community Cluster. 
+Use `macos_instance` in your `.cirrus.yml` files:
 
 ```yaml
 macos_instance:

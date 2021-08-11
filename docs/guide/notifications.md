@@ -6,7 +6,7 @@ Here is a full list of curated Cirrus Actions for GitHub including ones to send 
 ### Email Action
 
 It's possible to facilitate GitHub Action's own email notification mechanism to send emails about Cirrus CI failures. 
-Simply add the following `.github/workflows/email.yml` workflow file:
+To enable it, add the following `.github/workflows/email.yml` workflow file:
 
 ```YAML
 on:

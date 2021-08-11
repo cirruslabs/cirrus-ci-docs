@@ -111,12 +111,12 @@ to use with private repositories.
 * Need to pay $10/seat/month plan.
 
 !!! info "What is a seat?"
-    A seat is simply a GitHub user that initiates CI builds by pushing commits and/or creating pull requests in a **private** repository. 
+    A seat is a GitHub user that initiates CI builds by pushing commits and/or creating pull requests in a **private** repository. 
     It can be a real person or a bot. If you are using [Cron Builds](guide/writing-tasks.md#cron-builds) or creating builds through [Cirrus's API](api.md)
     it will be counted as an additional seat (like a bot).
     
     For example, if there are 10 people in your GitHub Organization and only 5 of them are working on private repositories 
-    where Cirrus CI is configured, the remaining 5 people are working on public repositories or not modifying any repositories at all. 
+    where Cirrus CI is configured, the remaining 5 people are not counted as seats, given that they aren't pushing to the private repository. 
     Let's say [Dependabot](https://dependabot.com/) is also configured for these private repositories. 
     
     In that case there are `5 + 1 = 6` seats you need to purchase Cirrus CI plan for.

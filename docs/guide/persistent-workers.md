@@ -17,7 +17,7 @@ design difference has multiple benefits comparing to more traditional CIs:
 ### What is a Persistent Worker
 
 For some use cases the traditional CI setup is still useful. However, not everything is available in the cloud. For example,
-Apple releases new ARM-based products and there is simply no virtualization yet available for the new hardware. 
+Apple releases new ARM-based products and there is no virtualization yet available for the new hardware. 
 Another use case is to test the hardware itself, since not everyone is working on websites and mobile apps after all! For such use cases
 it makes sense to go with a traditional CI setup: install some binary on the hardware which will constantly pull for new tasks 
 and will execute them one after another.
