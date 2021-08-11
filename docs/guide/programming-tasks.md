@@ -48,7 +48,7 @@ def main(ctx):
   ]
 ```
 
-`main()` needs to returns a list of task objects which will be serialized into YAML, like this:
+`main()` needs to return a list of task objects which will be serialized into YAML, like this:
 
 ```yaml
 task:
