@@ -88,9 +88,9 @@ After clicking on `Sign In` you'll be redirected to GitHub in order to authorize
 
 ## Enabling New Repositories after Installation
 
-If you choose initially to allow Cirrus CI to access all of your repositories, simply push a `.cirrus.yml` to start
+If you choose initially to allow Cirrus CI to access all of your repositories, all you need to do is push a `.cirrus.yml` to start
 building your repository on Cirrus CI.
 
-If you choose initially to allow Cirrus CI to access only particular repositories, then first add your new repository to
-the list of repositories Cirrus CI has access to via [this page](https://github.com/apps/cirrus-ci/installations/new) and
+If you only allowed Cirrus CI to access certain repositories, then add your new repository to
+the list of repositories Cirrus CI has access to via [this page](https://github.com/apps/cirrus-ci/installations/new),
 then push a `.cirrus.yml` to start building on Cirrus CI.

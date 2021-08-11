@@ -14,11 +14,11 @@ Here is an example of using a `compute_engine_instance` to run a VM with KVM ava
 ```yaml
 compute_engine_instance:
   image_project: cirrus-images # GCP project
-  image: family/docker-kvm # family or simply a full image name.
+  image: family/docker-kvm # family or a full image name.
   platform: linux
   cpu: 4 # optional. Defaults to 2 CPUs.
   memory: 16G # optional. Defaults to 4G.
-  disk: 100 # optional. By default uses the smallest disk size required by the image.
+  disk: 100 # optional. By default, uses the smallest disk size required by the image.
   nested_virtualization: true # optional. Whether to enable Intel VT-x. Defaults to false.
 ```
 

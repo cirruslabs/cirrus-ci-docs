@@ -56,8 +56,8 @@ It is possible to run containers with KVM enabled. Some types of CI tasks can tr
 benefit from native virtualization. For example, Android related tasks can benefit from running hardware accelerated
 emulators instead of software emulated ARM emulators.
 
-In order to enable KVM module for your `container`s, simply add `kvm: true` to your `container` declaration. Here is an
-example of how to configure a task capable of running hardware accelerated Android emulators:
+In order to enable KVM module for your `container`s, add `kvm: true` to your `container` declaration. Here is an
+example of a task that runs hardware accelerated Android emulators:
 
 ```yaml
 task:
@@ -70,8 +70,8 @@ task:
 
 !!! warning "Limitations of KVM-enabled Containers"
     Because of the additional virtualization layer, it takes about a minute to acquire the necessary resources to start such tasks.
-    KVM-enabled containers are backed by dedicated VMs which restrict the amount of CPU resources such tasks can use: the value of `cpu`
-    must be `1` or an even integer. Values like `0.5` or `3` are not supported for KVM-enabled containers 
+    KVM-enabled containers are backed by dedicated VMs which restrict the amount of CPU resources that can be used.
+    The value of `cpu` must be `1` or an even integer. Values like `0.5` or `3` are not supported for KVM-enabled containers 
 
 ### Working with Private Registries
 
@@ -99,8 +99,9 @@ After a successful login, Docker config file located in `~/.docker/config.json` 
 }
 ```
 
-If you don't see `auth` for your registry it means your Docker installation is using a credentials store. In this case
-you can manually auth, it's simply a Base64 encoded string of your username and your PAT ([Personal Access Token](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token)):
+If you don't see `auth` for your registry, it means your Docker installation is using a credentials store. In this case
+you can manually auth using a Base64 encoded string of your username and your PAT ([Personal Access Token](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token)).
+Here's how to generate that:
 
 ```bash
 echo $USERNAME:$PAT | base64
