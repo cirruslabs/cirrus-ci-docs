@@ -95,24 +95,19 @@ def main():
     ]
 ```
 
-You can also return a dictionary that fully resembles a YAML configuration, just make sure to give the tasks different names, because Starlark does not permit duplicate dictionary keys:
+If you want to return multiple tasks with the same name or a top-level override like `env`, use the tuple syntax below:
 
 ```python
 def main():
-    return {
-        "container": {
-          "image": "debian:latest",
-        },
-        "test_task": {
-          "script": "make test"
-        },
-        "build_task": {
-          "script": "make build"
-        }
-    }
+    return [
+      ("env", {"PARALLEL": "yes"}),
+      ("container", {"image": "debian:latest"}),
+      ("task", {"script": "make build"}),
+      ("task", {"script": "make test"})
+    ]
 ```
 
-Returning a dictionary like this is useful when you want to have a top-level overrides, just note that when using both YAML and Starlark configuration formats they get merged and the YAML configuration always comes first.
+In regard to top-level overrides, note that when using both YAML and Starlark configuration formats they get merged and the YAML configuration always comes first.
 
 #### Hooks
 
