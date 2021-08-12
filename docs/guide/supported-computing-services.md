@@ -46,8 +46,8 @@
 For every [task](writing-tasks.md) Cirrus CI starts a new Virtual Machine or a new Docker Container on a given compute service.
 Using a new VM or a new Docker Container each time for running tasks has many benefits:
 
-* **Atomic changes to an environment where tasks are executed.** Everything about a task is configured in `.cirrus.yml` file including
-  VM image version and Docker Container image version. After commiting changes to `.cirrus.yml` not only new tasks will use the new environment
+* **Atomic changes to an environment where tasks are executed.** Everything about a task is configured in `.cirrus.yml` file, including
+  VM image version and Docker Container image version. After committing changes to `.cirrus.yml` not only new tasks will use the new environment,
   but also outdated branches will continue using the old configuration.
 * **Reproducibility.** Fresh environment guarantees no corrupted artifacts or caches are presented from the previous tasks.
 * **Cost efficiency.** Most compute services are offering per-second pricing which makes them ideal for using with Cirrus CI. 
@@ -423,7 +423,7 @@ gke_container:
 </p>
 
 Cirrus CI can schedule tasks on several AWS services. In order to interact with AWS APIs Cirrus CI needs permissions. 
-Creating an [IMA user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html) for programmatic access 
+Creating an [IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html) for programmatic access
 is a common way to safely give granular access to parts of your AWS.
 
 Once you created a user for Cirrus CI you'll need to provide *key id* and *access key* itself. In order to do so
