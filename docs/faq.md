@@ -28,6 +28,7 @@ Cirrus CI has the following limitations on how many CPUs for different platforms
 for public repositories for free:
 
 * 16.0 CPUs for Linux platform (Containers or VMs).
+* 16.0 CPUs for Arm Linux platform (Containers).
 * 8.0 CPUs for Windows platform (Containers or VMs)
 * 8.0 CPUs for FreeBSD VMs.
 * 12.0 CPUs macOS VM (1 VM).
