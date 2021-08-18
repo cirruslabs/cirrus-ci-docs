@@ -66,7 +66,7 @@ To be fair there are of course some disadvantages of starting a new VM or a cont
   even take advantages of [built-in HTTP cache](writing-tasks.md#http-cache)!
 
 Please check the list of currently supported cloud compute services below. In case you have your own hardware please
-take a look as [Persistent Workers](persistent-workers.md) which allow connecting anything to Cirrus CI.
+take a look at [Persistent Workers](persistent-workers.md), which allow connecting anything to Cirrus CI.
 
 ## Google Cloud
 
