@@ -1,22 +1,41 @@
 ## Linux Containers
 
-Linux Community Cluster is a [Kubernetes](https://kubernetes.io/) cluster running on [Google Kubernetes Engine](supported-computing-services.md#google-kubernetes-engine)
-that is available free of charge for Open Source community. Paying customers can also use Community Cluster for 
-personal private repositories or buy CPU time with [compute credits](../pricing.md#compute-credits) for their private organization repositories.
+Cirrus CI supports `container` and `arm_container` instances in order to run your CI workloads on `amd64` and `arm64`
+platforms respectively. Cirrus CI uses Kubernetes clusters running in different clouds that are the most suitable for
+running each platform:
 
-Community Cluster is configured the same way as anyone can configure a personal GKE cluster as [described here](supported-computing-services.md#google-kubernetes-engine).
+* For `container` instances Cirrus CI uses a GKE cluster of compute-optimized instances running in Google Cloud.
+* For `arm_container` instances Cirrus CI uses a EKS cluster of Graviton2 instances running in AWS.
 
-By default, a container is given 2 CPUs and 4 GB of memory but it can be configured in `.cirrus.yml`:
+Community Clusters are configured the same way as anyone can configure a private Kubernetes cluster for their own
+repository. Cirrus CI supports connecting managed Kubernetes clusters from most of the cloud providers. Please check out
+all the [supported computing services](supported-computing-services.md) Cirrus CI can integrate with.
 
-```yaml
-container:
-  image: openjdk:8-jdk
-  cpu: 4
-  memory: 12G
+By default, a container is given 2 CPUs and 4 GB of memory, but it can be configured in `.cirrus.yml`:
 
-task:
-  script: ...
-``` 
+=== "amd64"
+
+    ```yaml
+    container:
+      image: openjdk:8-jdk
+      cpu: 4
+      memory: 12G
+    
+    task:
+      script: ...
+    ```
+
+=== "arm64"
+
+    ```yaml
+    arm_container:
+      image: openjdk:8-jdk
+      cpu: 4
+      memory: 12G
+    
+    task:
+      script: ...
+    ``` 
 
 Containers on Community Cluster can use maximum 8.0 CPUs and up to 32 GB of memory. Memory limit is tight to the amount
 of CPUs requested. For each CPU you can't get more than 4G of memory.
@@ -33,14 +52,26 @@ Tasks using [Compute Credits](../pricing.md#compute-credits) has higher limits a
 ??? info "Using in-memory disks"
     Some I/O intensive tasks may benefit from using a `tmpfs` disk mounted as a working directory. Set `use_in_memory_disk` flag
     to enable in-memory disk for a container:
+
+    === "amd64"
     
-    ```yaml
-    task:
-      name: Much I/O
-      container:
-        image: alpine:latest
-        use_in_memory_disk: true
-    ```
+        ```yaml
+        task:
+          name: Much I/O
+          container:
+            image: alpine:latest
+            use_in_memory_disk: true
+        ```
+
+    === "arm64"
+    
+        ```yaml
+        task:
+          name: Much I/O
+          arm_container:
+            image: alpine:latest
+            use_in_memory_disk: true
+        ```
     
     **Note**: any files you write including cloned repository will count against your task's memory limit.
 

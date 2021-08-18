@@ -73,6 +73,7 @@ following fields for a `task`:
 Field Name                 | Managed by | Description
 -------------------------- | ---------- | -----------------------
 `container`                | **us**     | [Linux Docker Container][container]
+`arm_container`            | **us**     | [Linux Arm Docker Container][container]
 `windows_container`        | **us**     | [Windows Docker Container][windows_container]
 `docker_builder`           | **us**     | [Full-fledged VM pre-configured for running Docker][docker_builder]
 `macos_instance`           | **us**     | [macOS Virtual Machines][macos_instance]
