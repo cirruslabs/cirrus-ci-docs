@@ -74,6 +74,7 @@ Golang
 GolangCI
 Google
 GraphQL
+Graviton2
 Heroku
 Homebrew
 Hypervisor
@@ -115,6 +116,8 @@ Windows
 XCLogParser
 Xcode
 Zero-config
+amd64
+arm64
 autoscaler
 autoscaling
 backend
