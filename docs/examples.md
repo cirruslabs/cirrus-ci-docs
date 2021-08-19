@@ -69,12 +69,23 @@ task:
 Bazel Team provides a [set of official Docker images with Bazel pre-installed](https://l.gcr.io/google/bazel). Here is
 an example of how `.cirrus.yml` can look like for Bazel:
 
-```yaml
-container:
-  image: l.gcr.io/google/bazel:latest
-task:
-  build_script: bazel build //...
-```
+=== "amd64"
+
+    ```yaml
+    container:
+      image: l.gcr.io/google/bazel:latest
+    task:
+      build_script: bazel build //...
+    ```
+
+=== "arm64"
+
+    ```yaml
+    arm_container:
+      image: l.gcr.io/google/bazel:latest
+    task:
+      build_script: bazel build //...
+    ```
 
 If these images are not the right fit for your project you can always use any custom Docker image with Cirrus CI.
 
@@ -84,29 +95,57 @@ Cirrus CI has [built-in HTTP Cache](guide/writing-tasks.md#http-cache) which is 
 
 Here is an example of how Cirrus CI HTTP Cache can be used with Bazel:
 
-```yaml
-container:
-  image: l.gcr.io/google/bazel:latest
-task:
-  build_script:
-    bazel build
-      --spawn_strategy=sandboxed
-      --strategy=Javac=sandboxed
-      --genrule_strategy=sandboxed
-      --remote_http_cache=http://$CIRRUS_HTTP_CACHE_HOST
-      //...
-```
+=== "amd64"
+
+    ```yaml
+    container:
+      image: l.gcr.io/google/bazel:latest
+    task:
+      build_script:
+        bazel build
+          --spawn_strategy=sandboxed
+          --strategy=Javac=sandboxed
+          --genrule_strategy=sandboxed
+          --remote_http_cache=http://$CIRRUS_HTTP_CACHE_HOST
+          //...
+    ```
+
+=== "arm64"
+
+    ```yaml
+    arm_container:
+      image: l.gcr.io/google/bazel:latest
+    task:
+      build_script:
+        bazel build
+          --spawn_strategy=sandboxed
+          --strategy=Javac=sandboxed
+          --genrule_strategy=sandboxed
+          --remote_http_cache=http://$CIRRUS_HTTP_CACHE_HOST
+          //...
+    ```
 
 ## C++
 
 Official [GCC Docker images](https://hub.docker.com/_/gcc/) can be used for builds. Here is an example of a `.cirrus.yml` that runs tests:
 
-```yaml
-container:
-  image: gcc:latest
-task:
-  tests_script: make tests
-```
+=== "amd64"
+
+    ```yaml
+    container:
+      image: gcc:latest
+    task:
+      tests_script: make tests
+    ```
+
+=== "arm64"
+
+    ```yaml
+    arm_container:
+      image: gcc:latest
+    task:
+      tests_script: make tests
+    ```
 
 ## Crystal
 
@@ -129,33 +168,65 @@ spec_task:
 
 Official [Elixir Docker images](https://hub.docker.com/_/elixir/) can be used for builds. Here is an example of a `.cirrus.yml` that runs tests:
 
-```yaml
-test_task:
-  container:
-    image: elixir:latest
-  mix_cache:
-    folder: deps
-    fingerprint_script: cat mix.lock
-    populate_script: mix deps.get
-  compile_script: mix compile
-  test_script: mix test
-```
+=== "amd64"
+
+    ```yaml
+    test_task:
+      container:
+        image: elixir:latest
+      mix_cache:
+        folder: deps
+        fingerprint_script: cat mix.lock
+        populate_script: mix deps.get
+      compile_script: mix compile
+      test_script: mix test
+    ```
+
+=== "arm64"
+
+    ```yaml
+    test_task:
+      arm_container:
+        image: elixir:latest
+      mix_cache:
+        folder: deps
+        fingerprint_script: cat mix.lock
+        populate_script: mix deps.get
+      compile_script: mix compile
+      test_script: mix test
+    ```
 
 ## Erlang
 
 Official [Erlang Docker images](https://hub.docker.com/_/erlang/) can be used for builds. Here is an example of a `.cirrus.yml` that runs tests:
 
-```yaml
-test_task:
-  container:
-    image: erlang:latest
-  rebar3_cache:
-    folder: _build
-    fingerprint_script: cat rebar.lock
-    populate_script: rebar3 compile --deps_only
-  compile_script: rebar3 compile
-  test_script: rebar3 ct
-```
+=== "amd64"
+
+    ```yaml
+    test_task:
+      container:
+        image: erlang:latest
+      rebar3_cache:
+        folder: _build
+        fingerprint_script: cat rebar.lock
+        populate_script: rebar3 compile --deps_only
+      compile_script: rebar3 compile
+      test_script: rebar3 ct
+    ```
+
+=== "arm64"
+
+    ```yaml
+    test_task:
+      arm_container:
+        image: erlang:latest
+      rebar3_cache:
+        folder: _build
+        fingerprint_script: cat rebar.lock
+        populate_script: rebar3 compile --deps_only
+      compile_script: rebar3 compile
+      test_script: rebar3 ct
+    ```
 
 ## Flutter
 
@@ -203,18 +274,35 @@ Now you'll be able to run tests targeting web via `pub run test test -p chromium
 The best way to test Go projects is by using [official Go Docker images](https://hub.docker.com/_/golang/). Here is
 an example of how `.cirrus.yml` can look like for a project using Go Modules:
 
-```yaml
-container:
-  image: golang:latest
+=== "amd64"
 
-test_task:
-  modules_cache:
-    fingerprint_script: cat go.sum
-    folder: $GOPATH/pkg/mod
-  get_script: go get ./...
-  build_script: go build ./...
-  test_script: go test ./...
-```
+    ```yaml
+    container:
+      image: golang:latest
+    
+    test_task:
+      modules_cache:
+        fingerprint_script: cat go.sum
+        folder: $GOPATH/pkg/mod
+      get_script: go get ./...
+      build_script: go build ./...
+      test_script: go test ./...
+    ```
+
+=== "arm64"
+
+    ```yaml
+    arm_container:
+      image: golang:latest
+    
+    test_task:
+      modules_cache:
+        fingerprint_script: cat go.sum
+        folder: $GOPATH/pkg/mod
+      get_script: go get ./...
+      build_script: go build ./...
+      test_script: go test ./...
+    ```
 
 ## GolangCI Lint
 
@@ -222,18 +310,35 @@ We highly recommend to configure some sort of linting for your Go project. One o
 The Cirrus CI annotator supports providing inline reports on PRs and can parse GolangCI Lint reports. Here is an example of a *GolangCI Lint*
 task that you can add to your `.cirrus.yml`:
 
-```yaml
-task:
-  name: GolangCI Lint
-  container:
-    image: golangci/golangci-lint:latest
-  run_script: golangci-lint run -v --out-format json > lint-report.json
-  always:
-    golangci_artifacts:
-      path: lint-report.json
-      type: text/json
-      format: golangci
-```
+=== "amd64"
+
+    ```yaml
+    task:
+      name: GolangCI Lint
+      container:
+        image: golangci/golangci-lint:latest
+      run_script: golangci-lint run -v --out-format json > lint-report.json
+      always:
+        golangci_artifacts:
+          path: lint-report.json
+          type: text/json
+          format: golangci
+    ```
+
+=== "arm64"
+
+    ```yaml
+    task:
+      name: GolangCI Lint
+      arm_container:
+        image: golangci/golangci-lint:latest
+      run_script: golangci-lint run -v --out-format json > lint-report.json
+      always:
+        golangci_artifacts:
+          path: lint-report.json
+          type: text/json
+          format: golangci
+    ```
 
 ## Gradle
 
@@ -246,21 +351,41 @@ To preserve caches between Gradle runs, add a [cache instruction](guide/writing-
 The trick here is to clean up `~/.gradle/caches` folder in the very end of a build. Gradle creates some unique nondeterministic
 files in `~/.gradle/caches` folder on every run which makes Cirrus CI re-upload the cache *every time*. This way, you get faster builds!
 
-```yaml
-container:
-  image: gradle:jdk8
+=== "amd64"
 
-check_task:
-  gradle_cache:
-    folder: ~/.gradle/caches
-  check_script: gradle check
-  cleanup_before_cache_script:
-    - rm -rf ~/.gradle/caches/$GRADLE_VERSION/
-    - rm -rf ~/.gradle/caches/transforms-1
-    - rm -rf ~/.gradle/caches/journal-1
-    - rm -rf ~/.gradle/caches/jars-3/*/buildSrc.jar
-    - find ~/.gradle/caches/ -name "*.lock" -type f -delete
-```
+    ```yaml
+    container:
+      image: gradle:jdk11
+    
+    check_task:
+      gradle_cache:
+        folder: ~/.gradle/caches
+      check_script: gradle check
+      cleanup_before_cache_script:
+        - rm -rf ~/.gradle/caches/$GRADLE_VERSION/
+        - rm -rf ~/.gradle/caches/transforms-1
+        - rm -rf ~/.gradle/caches/journal-1
+        - rm -rf ~/.gradle/caches/jars-3/*/buildSrc.jar
+        - find ~/.gradle/caches/ -name "*.lock" -type f -delete
+    ```
+
+=== "arm64"
+
+    ```yaml
+    arm_container:
+      image: gradle:jdk11
+    
+    check_task:
+      gradle_cache:
+        folder: ~/.gradle/caches
+      check_script: gradle check
+      cleanup_before_cache_script:
+        - rm -rf ~/.gradle/caches/$GRADLE_VERSION/
+        - rm -rf ~/.gradle/caches/transforms-1
+        - rm -rf ~/.gradle/caches/journal-1
+        - rm -rf ~/.gradle/caches/jars-3/*/buildSrc.jar
+        - find ~/.gradle/caches/ -name "*.lock" -type f -delete
+    ```
 
 ### Build Cache
 
@@ -330,15 +455,31 @@ If it is running on a pull request, annotations will also be displayed in-line.
 
 Official [Maven Docker images](https://hub.docker.com/_/maven/) can be used for building and testing Maven projects:
 
-```yaml
-task:
-  name: Cirrus CI
-  container:
-    image: maven:latest
-  maven_cache:
-    folder: ~/.m2
-  test_script: mvn test -B
-```
+=== "amd64"
+
+    ```yaml
+    container:
+      image: maven:latest
+
+    task:
+      name: Cirrus CI
+      maven_cache:
+        folder: ~/.m2
+      test_script: mvn test -B
+    ```
+
+=== "arm64"
+
+    ```yaml
+    arm_container:
+      image: maven:latest
+
+    task:
+      name: Cirrus CI
+      maven_cache:
+        folder: ~/.m2
+      test_script: mvn test -B
+    ```
 
 ## MySQL
 
@@ -346,16 +487,31 @@ The [Additional Containers feature](guide/writing-tasks.md#additional-containers
 MySQL image as you might be running in production for your application. Getting a running instance of the latest GA 
 version of MySQL can used with the following six lines in your `.cirrus.yml`:
 
-```yaml hl_lines="3 4 5 6 7 8"
-container:
-  image: golang:latest
-  additional_containers:
-    - name: mysql
-      image: mysql:latest
-      port: 3306
-      env:
-        MYSQL_ROOT_PASSWORD: ""
-```
+=== "amd64"
+
+    ```yaml hl_lines="3 4 5 6 7 8"
+    container:
+      image: golang:latest
+      additional_containers:
+        - name: mysql
+          image: mysql:latest
+          port: 3306
+          env:
+            MYSQL_ROOT_PASSWORD: ""
+    ```
+
+=== "arm64"
+
+    ```yaml hl_lines="3 4 5 6 7 8"
+    arm_container:
+      image: golang:latest
+      additional_containers:
+        - name: mysql
+          image: mysql:latest
+          port: 3306
+          env:
+            MYSQL_ROOT_PASSWORD: ""
+    ```
 
 With the configuration above MySQL will be available on `localhost:3306`. Use empty password to login as `root` user. 
 
@@ -367,95 +523,189 @@ Official [NodeJS Docker images](https://hub.docker.com/_/node/) can be used for 
 
 Here is an example of a `.cirrus.yml` that caches `node_modules` based on contents of `package-lock.json` file and runs tests:
 
-```yaml
-container:
-  image: node:latest
+=== "amd64"
 
-test_task:
-  node_modules_cache:
-    folder: node_modules
-    fingerprint_script: cat package-lock.json
-    populate_script: npm ci
-  test_script: npm test
-```
+    ```yaml
+    container:
+      image: node:latest
+    
+    test_task:
+      node_modules_cache:
+        folder: node_modules
+        fingerprint_script: cat package-lock.json
+        populate_script: npm ci
+      test_script: npm test
+    ```
+
+=== "arm64"
+
+    ```yaml
+    arm_container:
+      image: node:latest
+    
+    test_task:
+      node_modules_cache:
+        folder: node_modules
+        fingerprint_script: cat package-lock.json
+        populate_script: npm ci
+      test_script: npm test
+    ```
 
 ### Yarn
 
 Here is an example of a `.cirrus.yml` that caches `node_modules` based on the contents of a `yarn.lock` file and runs tests:
 
-```yaml
-container:
-  image: node:latest
+=== "amd64"
 
-test_task:
-  node_modules_cache:
-    folder: node_modules
-    fingerprint_script: cat yarn.lock
-    populate_script: yarn install
-  test_script: yarn run test
-```
+    ```yaml
+    container:
+      image: node:latest
+    
+    test_task:
+      node_modules_cache:
+        folder: node_modules
+        fingerprint_script: cat yarn.lock
+        populate_script: yarn install
+      test_script: yarn run test
+    ```
+
+=== "arm64"
+
+    ```yaml
+    arm_container:
+      image: node:latest
+    
+    test_task:
+      node_modules_cache:
+        folder: node_modules
+        fingerprint_script: cat yarn.lock
+        populate_script: yarn install
+      test_script: yarn run test
+    ```
 
 ### Yarn 2
 
 Yarn 2 (also known as Yarn Berry), has a different package cache location (`.yarn/cache`).
 To run tests, it would look like this:
 
-```yaml
-container:
-  image: node:latest
-test_task:
-  yarn_cache:
-    folder: .yarn/cache
-    fingerprint_script: cat yarn.lock
-  install_script:
-    - yarn set version berry
-    - yarn install
-  test_script: yarn run test
-```
+=== "amd64"
+
+    ```yaml
+    container:
+      image: node:latest
+
+    test_task:
+      yarn_cache:
+        folder: .yarn/cache
+        fingerprint_script: cat yarn.lock
+      install_script:
+        - yarn set version berry
+        - yarn install
+      test_script: yarn run test
+    ```
+
+=== "arm64"
+
+    ```yaml
+    arm_container:
+      image: node:latest
+
+    test_task:
+      yarn_cache:
+        folder: .yarn/cache
+        fingerprint_script: cat yarn.lock
+      install_script:
+        - yarn set version berry
+        - yarn install
+      test_script: yarn run test
+    ```
 
 ## Python
 
 Official [Python Docker images](https://hub.docker.com/_/python/) can be used for builds. Here is an example of a `.cirrus.yml` 
 that caches installed packages based on contents of `requirements.txt` and runs `pytest`:
 
-```yaml
-container:
-  image: python:slim
+=== "amd64"
 
-test_task:
-  pip_cache:
-    folder: ~/.cache/pip
-    fingerprint_script: echo $PYTHON_VERSION && cat requirements.txt
-    populate_script: pip install -r requirements.txt
-  test_script: pytest
-```
+    ```yaml
+    container:
+      image: python:slim
+    
+    test_task:
+      pip_cache:
+        folder: ~/.cache/pip
+        fingerprint_script: echo $PYTHON_VERSION && cat requirements.txt
+        populate_script: pip install -r requirements.txt
+      test_script: pytest
+    ```
+
+=== "arm64"
+
+    ```yaml
+    arm_container:
+      image: python:slim
+    
+    test_task:
+      pip_cache:
+        folder: ~/.cache/pip
+        fingerprint_script: echo $PYTHON_VERSION && cat requirements.txt
+        populate_script: pip install -r requirements.txt
+      test_script: pytest
+    ```
 
 ### Building PyPI Packages  
 
 Also using the Python Docker images, you can run tests if you are making packages for [PyPI](https://pypi.org). Here is an example `.cirrus.yml` for doing so:
 
-```yaml
-container:
-  image: python:slim
+=== "amd64"
 
-build_package_test_task:
-  pip_cache:
-    folder: ~/.cache/pip
-    fingerprint_script: echo $PYTHON_VERSION
-    populate_script: python3 -m pip install --upgrade setuptools wheel
-  build_package_test_script: python3 setup.py sdist bdist_wheel
-```
+    ```yaml
+    container:
+      image: python:slim
+    
+    build_package_test_task:
+      pip_cache:
+        folder: ~/.cache/pip
+        fingerprint_script: echo $PYTHON_VERSION
+        populate_script: python3 -m pip install --upgrade setuptools wheel
+      build_package_test_script: python3 setup.py sdist bdist_wheel
+    ```
+
+=== "arm64"
+
+    ```yaml
+    arm_container:
+      image: python:slim
+    
+    build_package_test_task:
+      pip_cache:
+        folder: ~/.cache/pip
+        fingerprint_script: echo $PYTHON_VERSION
+        populate_script: python3 -m pip install --upgrade setuptools wheel
+      build_package_test_script: python3 setup.py sdist bdist_wheel
+    ```
 
 ### Linting
 
 You can easily set up linting with Cirrus CI and flake8, here is an example `.cirrus.yml`:
 
-```yaml
-lint_task:
-  container:
-    image: alpine/flake8:latest
-  script: flake8 *.py
-```
+=== "amd64"
+
+    ```yaml
+    lint_task:
+      container:
+        image: alpine/flake8:latest
+      script: flake8 *.py
+    ```
+
+=== "arm64"
+
+    ```yaml
+    lint_task:
+      arm_container:
+        image: alpine/flake8:latest
+      script: flake8 *.py
+    ```
 
 ### `Unittest` Annotations
 
@@ -463,22 +713,43 @@ Python Unittest reports are supported by [Cirrus CI Annotations](https://medium.
 This way you can see what tests are failing without leaving the pull request you are reviewing! Here is an example
 of a `.cirrus.yml` that produces and stores `Unittest` reports:
 
-```yaml
-unittest_task:
-  container:
-    image: python:slim
-  install_dependencies_script: |
-    pip3 install unittest_xml_reporting
-  run_tests_script: python3 -m xmlrunner tests
-  # replace 'tests' with the module,
-  # unittest.TestCase, or unittest.TestSuite
-  # that the tests are in
-  always:
-    upload_results_artifacts:
-      path: ./*.xml
-      format: junit
-      type: text/xml
-```
+=== "amd64"
+
+    ```yaml
+    unittest_task:
+      container:
+        image: python:slim
+      install_dependencies_script: |
+        pip3 install unittest_xml_reporting
+      run_tests_script: python3 -m xmlrunner tests
+      # replace 'tests' with the module,
+      # unittest.TestCase, or unittest.TestSuite
+      # that the tests are in
+      always:
+        upload_results_artifacts:
+          path: ./*.xml
+          format: junit
+          type: text/xml
+    ```
+
+=== "arm64"
+
+    ```yaml
+    unittest_task:
+      arm_container:
+        image: python:slim
+      install_dependencies_script: |
+        pip3 install unittest_xml_reporting
+      run_tests_script: python3 -m xmlrunner tests
+      # replace 'tests' with the module,
+      # unittest.TestCase, or unittest.TestSuite
+      # that the tests are in
+      always:
+        upload_results_artifacts:
+          path: ./*.xml
+          format: junit
+          type: text/xml
+    ```
 
 Now you should get annotations for your test results.
 
@@ -560,32 +831,8 @@ Official [Ruby Docker images](https://hub.docker.com/_/ruby/) can be used for bu
 Here is an example of a `.cirrus.yml` that caches installed gems based on Ruby version,
 contents of `Gemfile.lock`, and runs `rspec`:
 
-```yaml
-container:
-  image: ruby:latest
+=== "amd64"
 
-rspec_task:
-  bundle_cache:
-    folder: /usr/local/bundle
-    fingerprint_script:
-      - echo $RUBY_VERSION
-      - cat Gemfile.lock
-    populate_script: bundle install
-  rspec_script: bundle exec rspec --format json --out rspec.json
-  always:
-    rspec_report_artifacts:
-      path: rspec.json
-      type: text/json
-      format: rspec
-```
-
-??? tip "Repositories without `Gemfile.lock`"
-    When you are not committing `Gemfile.lock` (in Ruby gems repositories, for example)
-    you can run `bundle install` (or `bundle update`) in `install_script`
-    instead of `populate_script` in `bundle_cache`. Cirrus Agent is clever enough to re-upload
-    cache entry only if cached folder has been changed during task execution.
-    Here is an example of a `.cirrus.yml` that always runs `bundle install`:
-    
     ```yaml
     container:
       image: ruby:latest
@@ -595,11 +842,77 @@ rspec_task:
         folder: /usr/local/bundle
         fingerprint_script:
           - echo $RUBY_VERSION
-          - cat Gemfile
-          - cat *.gemspec
-      install_script: bundle install # or `update` for the freshest bundle
-      rspec_script: bundle exec rspec
+          - cat Gemfile.lock
+        populate_script: bundle install
+      rspec_script: bundle exec rspec --format json --out rspec.json
+      always:
+        rspec_report_artifacts:
+          path: rspec.json
+          type: text/json
+          format: rspec
     ```
+
+=== "arm64"
+
+    ```yaml
+    arm_container:
+      image: ruby:latest
+    
+    rspec_task:
+      bundle_cache:
+        folder: /usr/local/bundle
+        fingerprint_script:
+          - echo $RUBY_VERSION
+          - cat Gemfile.lock
+        populate_script: bundle install
+      rspec_script: bundle exec rspec --format json --out rspec.json
+      always:
+        rspec_report_artifacts:
+          path: rspec.json
+          type: text/json
+          format: rspec
+    ```
+
+??? tip "Repositories without `Gemfile.lock`"
+    When you are not committing `Gemfile.lock` (in Ruby gems repositories, for example)
+    you can run `bundle install` (or `bundle update`) in `install_script`
+    instead of `populate_script` in `bundle_cache`. Cirrus Agent is clever enough to re-upload
+    cache entry only if cached folder has been changed during task execution.
+    Here is an example of a `.cirrus.yml` that always runs `bundle install`:
+
+    === "amd64"
+    
+        ```yaml
+        container:
+          image: ruby:latest
+        
+        rspec_task:
+          bundle_cache:
+            folder: /usr/local/bundle
+            fingerprint_script:
+              - echo $RUBY_VERSION
+              - cat Gemfile
+              - cat *.gemspec
+          install_script: bundle install # or `update` for the freshest bundle
+          rspec_script: bundle exec rspec
+        ```
+
+    === "arm64"
+    
+        ```yaml
+        arm_container:
+          image: ruby:latest
+        
+        rspec_task:
+          bundle_cache:
+            folder: /usr/local/bundle
+            fingerprint_script:
+              - echo $RUBY_VERSION
+              - cat Gemfile
+              - cat *.gemspec
+          install_script: bundle install # or `update` for the freshest bundle
+          rspec_script: bundle exec rspec
+        ```
 
 !!! tip "Test Parallelization"
     It's super easy to add intelligent test splitting by using [Knapsack Pro](https://knapsackpro.com/) and [matrix modification](guide/writing-tasks.md#matrix-modification).
@@ -628,70 +941,140 @@ Cirrus CI natively supports [RSpec](https://rspec.info/) and [RuboCop](https://r
 
 To get behavior-driven test annotations, generate and upload a `rspec` artifact from your lint task:
 
-```yaml
-container:
-  image: ruby:latest
+=== "amd64"
 
-task:
-  name: RSpec
-  bundle_cache:
-    folder: /usr/local/bundle
-    fingerprint_script:
-      - echo $RUBY_VERSION
-      - cat Gemfile.lock
-    populate_script: bundle install
-  script: bundle exec rspec --format json --out rspec.json
-  always:
-    rspec_artifacts:
-      path: rspec.json
-      type: text/json
-      format: rspec
-```
+    ```yaml
+    container:
+      image: ruby:latest
+    
+    task:
+      name: RSpec
+      bundle_cache:
+        folder: /usr/local/bundle
+        fingerprint_script:
+          - echo $RUBY_VERSION
+          - cat Gemfile.lock
+        populate_script: bundle install
+      script: bundle exec rspec --format json --out rspec.json
+      always:
+        rspec_artifacts:
+          path: rspec.json
+          type: text/json
+          format: rspec
+    ```
+
+=== "arm64"
+
+    ```yaml
+    arm_container:
+      image: ruby:latest
+    
+    task:
+      name: RSpec
+      bundle_cache:
+        folder: /usr/local/bundle
+        fingerprint_script:
+          - echo $RUBY_VERSION
+          - cat Gemfile.lock
+        populate_script: bundle install
+      script: bundle exec rspec --format json --out rspec.json
+      always:
+        rspec_artifacts:
+          path: rspec.json
+          type: text/json
+          format: rspec
+    ```
 
 Generate a `rubocop` artifact to quickly gain context for linter/formatter annotations:
 
-```yaml
-container:
-  image: ruby:latest
+=== "amd64"
 
-task:
-  name: RuboCop
-  bundle_cache:
-    folder: /usr/local/bundle
-    fingerprint_script:
-      - echo $RUBY_VERSION
-      - cat Gemfile.lock
-    populate_script: bundle install
-  script: bundle exec rubocop --format json --out rubocop.json
-  always:
-    rubocop_artifacts:
-      path: rubocop.json
-      type: text/json
-      format: rubocop
-```
+    ```yaml
+    container:
+      image: ruby:latest
+    
+    task:
+      name: RuboCop
+      bundle_cache:
+        folder: /usr/local/bundle
+        fingerprint_script:
+          - echo $RUBY_VERSION
+          - cat Gemfile.lock
+        populate_script: bundle install
+      script: bundle exec rubocop --format json --out rubocop.json
+      always:
+        rubocop_artifacts:
+          path: rubocop.json
+          type: text/json
+          format: rubocop
+    ```
+
+=== "arm64"
+
+    ```yaml
+    arm_container:
+      image: ruby:latest
+    
+    task:
+      name: RuboCop
+      bundle_cache:
+        folder: /usr/local/bundle
+        fingerprint_script:
+          - echo $RUBY_VERSION
+          - cat Gemfile.lock
+        populate_script: bundle install
+      script: bundle exec rubocop --format json --out rubocop.json
+      always:
+        rubocop_artifacts:
+          path: rubocop.json
+          type: text/json
+          format: rubocop
+    ```
 
 ## Rust
 
 Official [Rust Docker images](https://hub.docker.com/_/rust/) can be used for builds. Here is a basic example of `.cirrus.yml` 
 that caches crates in `$CARGO_HOME` based on contents of `Cargo.lock`:
 
-```yaml
-container:
-  image: rust:latest
+=== "amd64"
 
-test_task:
-  registry_cache:
-    folder: $CARGO_HOME/registry
-    fingerprint_script: cat Cargo.lock
-  target_cache:
-    folder: target
-    fingerprint_script:
-      - rustc --version
-      - cat Cargo.lock
-  build_script: cargo build
-  test_script: cargo test
-  before_cache_script: rm -rf $CARGO_HOME/registry/index
-```
+    ```yaml
+    container:
+      image: rust:latest
+    
+    test_task:
+      registry_cache:
+        folder: $CARGO_HOME/registry
+        fingerprint_script: cat Cargo.lock
+      target_cache:
+        folder: target
+        fingerprint_script:
+          - rustc --version
+          - cat Cargo.lock
+      build_script: cargo build
+      test_script: cargo test
+      before_cache_script: rm -rf $CARGO_HOME/registry/index
+    ```
+
+=== "arm64"
+
+    ```yaml
+    arm_container:
+      image: rust:latest
+    
+    test_task:
+      registry_cache:
+        folder: $CARGO_HOME/registry
+        fingerprint_script: cat Cargo.lock
+      target_cache:
+        folder: target
+        fingerprint_script:
+          - rustc --version
+          - cat Cargo.lock
+      build_script: cargo build
+      test_script: cargo test
+      before_cache_script: rm -rf $CARGO_HOME/registry/index
+    ```
 
 !!! tip "Caching Cleanup"
 
@@ -704,26 +1087,51 @@ test_task:
 It is possible to use nightly builds of Rust via an [official `rustlang/rust:nightly` container](https://hub.docker.com/r/rustlang/rust/). 
 Here is an example of a `.cirrus.yml` to run tests against the latest stable and nightly versions of Rust:
 
-```yaml
-test_task:
-  matrix:
-    - container:
-        image: rust:latest
-    - allow_failures: true
-      container:
-        image: rustlang/rust:nightly
-  registry_cache:
-    folder: $CARGO_HOME/registry
-    fingerprint_script: cat Cargo.lock
-  target_cache:
-    folder: target
-    fingerprint_script:
-      - rustc --version
-      - cat Cargo.lock
-  build_script: cargo build
-  test_script: cargo test
-  before_cache_script: rm -rf $CARGO_HOME/registry/index
-```
+=== "amd64"
+
+    ```yaml
+    test_task:
+      matrix:
+        - container:
+            image: rust:latest
+        - allow_failures: true
+          container:
+            image: rustlang/rust:nightly
+      registry_cache:
+        folder: $CARGO_HOME/registry
+        fingerprint_script: cat Cargo.lock
+      target_cache:
+        folder: target
+        fingerprint_script:
+          - rustc --version
+          - cat Cargo.lock
+      build_script: cargo build
+      test_script: cargo test
+      before_cache_script: rm -rf $CARGO_HOME/registry/index
+    ```
+
+=== "arm64"
+
+    ```yaml
+    test_task:
+      matrix:
+        - arm_container:
+            image: rust:latest
+        - allow_failures: true
+          arm_container:
+            image: rustlang/rust:nightly
+      registry_cache:
+        folder: $CARGO_HOME/registry
+        fingerprint_script: cat Cargo.lock
+      target_cache:
+        folder: target
+        fingerprint_script:
+          - rustc --version
+          - cat Cargo.lock
+      build_script: cargo build
+      test_script: cargo test
+      before_cache_script: rm -rf $CARGO_HOME/registry/index
+    ```
 
 ??? tip "FreeBSD Caveats"
 

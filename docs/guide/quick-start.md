@@ -26,17 +26,33 @@ The `.cirrus.yml` defines tasks that will be executed for every build for the re
 
 For a Node.js project, your `.cirrus.yml` could look like:
 
-```yaml
-container:
-  image: node:latest
+=== "amd64"
 
-check_task:
-  node_modules_cache:
-    folder: node_modules
-    fingerprint_script: cat yarn.lock
-    populate_script: yarn install
-  test_script: yarn test
-```
+    ```yaml
+    container:
+      image: node:latest
+    
+    check_task:
+      node_modules_cache:
+        folder: node_modules
+        fingerprint_script: cat yarn.lock
+        populate_script: yarn install
+      test_script: yarn test
+    ```
+
+=== "arm64"
+
+    ```yaml
+    arm_container:
+      image: node:latest
+    
+    check_task:
+      node_modules_cache:
+        folder: node_modules
+        fingerprint_script: cat yarn.lock
+        populate_script: yarn install
+      test_script: yarn test
+    ```
 
 That's all! After pushing a `.cirrus.yml` a build with all the tasks defined in the `.cirrus.yml`
 file will be created.
