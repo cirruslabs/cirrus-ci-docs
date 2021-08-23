@@ -17,7 +17,7 @@ By default, a container is given 2 CPUs and 4 GB of memory, but it can be config
 
     ```yaml
     container:
-      image: openjdk:8-jdk
+      image: openjdk:latest
       cpu: 4
       memory: 12G
     
@@ -29,7 +29,7 @@ By default, a container is given 2 CPUs and 4 GB of memory, but it can be config
 
     ```yaml
     arm_container:
-      image: openjdk:8-jdk
+      image: openjdk:latest
       cpu: 4
       memory: 12G
     
