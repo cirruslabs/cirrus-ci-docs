@@ -95,7 +95,7 @@ docker build --cache-from myrepo/foo:latest \
 ### Dockerfile as a CI environment
 
 With Docker Builder there is no need to build and push custom containers so they can be used as an environment to run CI tasks in. 
-Cirrus CI can do it for you! Just declare a path to a `Dockerfile` with the `dockerfile` field for you container 
+Cirrus CI can do it for you! Just declare a path to a `Dockerfile` with the `dockerfile` field for your `container` (`arm_container`s are not supported yet)
 declaration in your `.cirrus.yml` like this:
 
 ```yaml

@@ -66,12 +66,23 @@ https://cirrus-ci.com/settings/github/MY-ORGANIZATION
 Compute credits can be used with any of the following instance types: `container`, `windows_container` and `macos_instance`.
 No additional configuration needed.
 
-```yaml
-task:
-  container:
-    image: node:latest
-  ...
-```
+=== "amd64"
+
+    ```yaml
+    task:
+      container:
+        image: node:latest
+      ...
+    ```
+
+=== "arm64"
+
+    ```yaml
+    task:
+      arm_container:
+        image: node:latest
+      ...
+    ```
 
 !!! tip "Using compute credits for public or personal private repositories"
     If you willing to boost Cirrus CI for public or your personal private repositories you need to explicitly mark a task to use compute credits

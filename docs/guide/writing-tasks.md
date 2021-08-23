@@ -1,53 +1,104 @@
 A `task` defines a sequence of [instructions](#supported-instructions) to execute and an [execution environment](#execution-environment)
 to execute these instructions in. Let's see a line-by-line example of a `.cirrus.yml` configuration file first:
 
-```yaml
-test_task:
-  container:
-    image: gradle:jdk11
-  test_script: gradle test
-```
+=== "amd64"
+
+    ```yaml
+    test_task:
+      container:
+        image: openjdk:latest
+      test_script: ./gradlew test
+    ```
+
+=== "arm64"
+
+    ```yaml
+    test_task:
+      arm_container:
+        image: openjdk:latest
+      test_script: ./gradlew test
+    ```
 
 The example above defines a single task that will be scheduled and executed on the [Linux Community Cluster](linux.md) using the `gradle:jdk11` Docker image.
 Only one user-defined [script instruction](#script-instruction) to run `gradle test` will be executed. Not that complex, right?
 
 Please read the topics below if you want better understand what's doing on in a more complex `.cirrus.yml` configuration file, such as this:
 
-``` {: .yaml .annotate }
-task:
-  container:
-    image: node:latest # (1)
+=== "amd64"
 
-  node_modules_cache: # (2)
-    folder: node_modules
-    fingerprint_script: cat yarn.lock
-    populate_script: yarn install
-
-  matrix: # (3)
-    - name: Lint
-      skip: !changesInclude('.cirrus.yml', '**.{js,ts}') # (4)
-      lint_script: yarn run lint
-    - name: Test
+    ``` {: .yaml .annotate }
+    task:
       container:
-        matrix: # (5)
-          - image: node:latest
-          - image: node:lts
-      test_script: yarn run test
-    - name: Publish
-      depends_on:
-        - Lint
-        - Test
-      only_if: $BRANCH == "master" # (6)
-      publish_script: yarn run publish
-```
+        image: node:latest # (1)
+    
+      node_modules_cache: # (2)
+        folder: node_modules
+        fingerprint_script: cat yarn.lock
+        populate_script: yarn install
+    
+      matrix: # (3)
+        - name: Lint
+          skip: !changesInclude('.cirrus.yml', '**.{js,ts}') # (4)
+          lint_script: yarn run lint
+        - name: Test
+          container:
+            matrix: # (5)
+              - image: node:latest
+              - image: node:lts
+          test_script: yarn run test
+        - name: Publish
+          depends_on:
+            - Lint
+            - Test
+          only_if: $BRANCH == "master" # (6)
+          publish_script: yarn run publish
+    ```
 
-1. Use any Docker image from public or [private](linux.md#working-with-private-registries) registries
-2. Use [cache instruction](#cache-instruction) to persist folders based on an arbitrary `fingerprint_script`.
-3. Use [`matrix` modification](#matrix-modification) to produce many similar tasks.
-4. See what kind of files were changes and skip tasks that are not applicable.
-   See [`changesInclude`](#supported-functions) and [`changesIncludeOnly`](#supported-functions) documentation for details.
-5. Use nested [`matrix` modification](#matrix-modification) to produce even more tasks.
-6. Completely exclude tasks from execution graph by [any custom condition](#conditional-task-execution).
+    1. Use any Docker image from public or [private](linux.md#working-with-private-registries) registries
+    2. Use [cache instruction](#cache-instruction) to persist folders based on an arbitrary `fingerprint_script`.
+    3. Use [`matrix` modification](#matrix-modification) to produce many similar tasks.
+    4. See what kind of files were changes and skip tasks that are not applicable.
+       See [`changesInclude`](#supported-functions) and [`changesIncludeOnly`](#supported-functions) documentation for details.
+    5. Use nested [`matrix` modification](#matrix-modification) to produce even more tasks.
+    6. Completely exclude tasks from execution graph by [any custom condition](#conditional-task-execution).
+
+=== "arm64"
+
+    ``` {: .yaml .annotate }
+    task:
+      arm_container:
+        image: node:latest # (1)
+    
+      node_modules_cache: # (2)
+        folder: node_modules
+        fingerprint_script: cat yarn.lock
+        populate_script: yarn install
+    
+      matrix: # (3)
+        - name: Lint
+          skip: !changesInclude('.cirrus.yml', '**.{js,ts}') # (4)
+          lint_script: yarn run lint
+        - name: Test
+          arm_container:
+            matrix: # (5)
+              - image: node:latest
+              - image: node:lts
+          test_script: yarn run test
+        - name: Publish
+          depends_on:
+            - Lint
+            - Test
+          only_if: $BRANCH == "master" # (6)
+          publish_script: yarn run publish
+    ```
+
+    1. Use any Docker image from public or [private](linux.md#working-with-private-registries) registries
+    2. Use [cache instruction](#cache-instruction) to persist folders based on an arbitrary `fingerprint_script`.
+    3. Use [`matrix` modification](#matrix-modification) to produce many similar tasks.
+    4. See what kind of files were changes and skip tasks that are not applicable.
+       See [`changesInclude`](#supported-functions) and [`changesIncludeOnly`](#supported-functions) documentation for details.
+    5. Use nested [`matrix` modification](#matrix-modification) to produce even more tasks.
+    6. Completely exclude tasks from execution graph by [any custom condition](#conditional-task-execution).
 
 !!! tip "Task Naming"
     To name a task one can use the `name` field. `foo_task` syntax is a syntactic sugar. Separate name
@@ -73,6 +124,7 @@ following fields for a `task`:
 Field Name                 | Managed by | Description
 -------------------------- | ---------- | -----------------------
 `container`                | **us**     | [Linux Docker Container][container]
+`arm_container`            | **us**     | [Linux Arm Docker Container][container]
 `windows_container`        | **us**     | [Windows Docker Container][windows_container]
 `docker_builder`           | **us**     | [Full-fledged VM pre-configured for running Docker][docker_builder]
 `macos_instance`           | **us**     | [macOS Virtual Machines][macos_instance]
@@ -156,21 +208,41 @@ A `cache` instruction allows to persist a folder and reuse it during the next ex
 
 Here is an example:
 
-```yaml
-test_task:
-  container:
-    image: node:latest
-  node_modules_cache:
-    folder: node_modules
-    reupload_on_changes: false # since there is a fingerprint script
-    fingerprint_script:
-      - echo $CIRRUS_OS
-      - node --version
-      - cat package-lock.json
-    populate_script: 
-      - npm install
-  test_script: npm run test
-```
+=== "amd64"
+
+    ```yaml
+    test_task:
+      container:
+        image: node:latest
+      node_modules_cache:
+        folder: node_modules
+        reupload_on_changes: false # since there is a fingerprint script
+        fingerprint_script:
+          - echo $CIRRUS_OS
+          - node --version
+          - cat package-lock.json
+        populate_script: 
+          - npm install
+      test_script: npm run test
+    ```
+
+=== "arm64"
+
+    ```yaml
+    test_task:
+      arm_container:
+        image: node:latest
+      node_modules_cache:
+        folder: node_modules
+        reupload_on_changes: false # since there is a fingerprint script
+        fingerprint_script:
+          - echo $CIRRUS_OS
+          - node --version
+          - cat package-lock.json
+        populate_script: 
+          - npm install
+      test_script: npm run test
+    ```
 
 Either `folder` or a `folders` field (with a list of folder paths) is *required* and they tell the agent which folder paths to cache.
 
@@ -214,16 +286,31 @@ logged under `Upload '$CACHE_NAME' cache` instructions for easier debugging of c
 That means the only difference between the example above and below is that `yarn install` will always be executed in the
 example below where in the example above only when `yarn.lock` has changes.
 
-```yaml
-test_task:
-  container:
-    image: node:latest
-  node_modules_cache:
-    folder: node_modules
-    fingerprint_script: cat yarn.lock
-  install_script: yarn install
-  test_script: yarn run test
-```
+=== "amd64"
+
+    ```yaml
+    test_task:
+      container:
+        image: node:latest
+      node_modules_cache:
+        folder: node_modules
+        fingerprint_script: cat yarn.lock
+      install_script: yarn install
+      test_script: yarn run test
+    ```
+
+=== "arm64"
+
+    ```yaml
+    test_task:
+      arm_container:
+        image: node:latest
+      node_modules_cache:
+        folder: node_modules
+        fingerprint_script: cat yarn.lock
+      install_script: yarn install
+      test_script: yarn run test
+    ```
 
 !!! warning "Caching for Pull Requests"
     Tasks for PRs upload caches to a separate caching namespace to not interfere with caches used by other tasks.
@@ -239,19 +326,37 @@ Normally caches are uploaded at the end of the task execution. However, you can 
 
 To do this, use the `upload_caches` instruction, which uploads a list of caches passed to it once executed:
 
-```yaml
-test_task:
-  container:
-    image: node:latest
-  node_modules_cache:
-    folder: node_modules
-  upload_caches:
-    - node_modules
-  install_script: yarn install
-  test_script: yarn run test
-  pip_cache:
-    folder: ~/.cache/pip
-```
+=== "amd64"
+
+    ```yaml
+    test_task:
+      container:
+        image: node:latest
+      node_modules_cache:
+        folder: node_modules
+      upload_caches:
+        - node_modules
+      install_script: yarn install
+      test_script: yarn run test
+      pip_cache:
+        folder: ~/.cache/pip
+    ```
+
+=== "arm64"
+
+    ```yaml
+    test_task:
+      arm_container:
+        image: node:latest
+      node_modules_cache:
+        folder: node_modules
+      upload_caches:
+        - node_modules
+      install_script: yarn install
+      test_script: yarn run test
+      pip_cache:
+        folder: ~/.cache/pip
+    ```
 
 Note that `pip` cache won't be uploaded in this example: using `upload_caches` disables the default behavior where all caches are automatically uploaded at the end of the task, so if you want to upload `pip` cache too, you'll have to either:
 
@@ -557,71 +662,147 @@ from the original task by replacing the whole `matrix` YAML node with each `matr
 
 Let check an example of a `.cirrus.yml`:
 
-```yaml
-test_task:
-  container:
-    matrix:
-      - image: node:latest
-      - image: node:lts
-  test_script: yarn run test
-```
+=== "amd64"
+
+    ```yaml
+    test_task:
+      container:
+        matrix:
+          - image: node:latest
+          - image: node:lts
+      test_script: yarn run test
+    ```
+
+=== "arm64"
+
+    ```yaml
+    test_task:
+      arm_container:
+        matrix:
+          - image: node:latest
+          - image: node:lts
+      test_script: yarn run test
+    ```
 
 Which will be expanded into:
 
-```yaml
-test_task:
-  container:
-    image: node:latest
-  test_script: yarn run test
+=== "amd64"
 
-test_task:
-  container:
-    image: node:lts
-  test_script: yarn run test
-```
+    ```yaml
+    test_task:
+      container:
+        image: node:latest
+      test_script: yarn run test
+    
+    test_task:
+      container:
+        image: node:lts
+      test_script: yarn run test
+    ```
+
+=== "arm64"
+
+    ```yaml
+    test_task:
+      arm_container:
+        image: node:latest
+      test_script: yarn run test
+    
+    test_task:
+      arm_container:
+        image: node:lts
+      test_script: yarn run test
+    ```
 
 !!! tip
     The `matrix` modifier can be used multiple times within a task.
 
 The `matrix` modification makes it easy to create some pretty complex testing scenarios like this:
 
-```yaml
-task:
-  container:
-    matrix:
-      - image: node:latest
-      - image: node:lts
-  node_modules_cache:
-    folder: node_modules
-    fingerprint_script:
-      - node --version
-      - cat yarn.lock
-    populate_script: yarn install
-  matrix:
-    - name: Build
-      build_script: yarn build
-    - name: Test
-      test_script: yarn run test
-```
+=== "amd64"
+
+    ```yaml
+    task:
+      container:
+        matrix:
+          - image: node:latest
+          - image: node:lts
+      node_modules_cache:
+        folder: node_modules
+        fingerprint_script:
+          - node --version
+          - cat yarn.lock
+        populate_script: yarn install
+      matrix:
+        - name: Build
+          build_script: yarn build
+        - name: Test
+          test_script: yarn run test
+    ```
+
+=== "arm64"
+
+    ```yaml
+    task:
+      arm_container:
+        matrix:
+          - image: node:latest
+          - image: node:lts
+      node_modules_cache:
+        folder: node_modules
+        fingerprint_script:
+          - node --version
+          - cat yarn.lock
+        populate_script: yarn install
+      matrix:
+        - name: Build
+          build_script: yarn build
+        - name: Test
+          test_script: yarn run test
+    ```
 
 ## Task Execution Dependencies
 
 Sometimes it might be very handy to execute some tasks only after successful execution of other tasks. For such cases
 it is possible to specify task names that a particular task depends. Use `depends_on` keyword to define dependencies:
 
-```yaml
-lint_task:
-  script: yarn run lint
+=== "amd64"
 
-test_task:
-  script: yarn run test
+    ```yaml
+    container:
+      image: node:latest
 
-publish_task:
-  depends_on:
-    - test
-    - lint
-  script: yarn run publish
-```
+    lint_task:
+      script: yarn run lint
+    
+    test_task:
+      script: yarn run test
+    
+    publish_task:
+      depends_on:
+        - test
+        - lint
+      script: yarn run publish
+    ```
+
+=== "arm64"
+
+    ```yaml
+    arm_container:
+      image: node:latest
+
+    lint_task:
+      script: yarn run lint
+    
+    test_task:
+      script: yarn run test
+    
+    publish_task:
+      depends_on:
+        - test
+        - lint
+      script: yarn run publish
+    ```
 
 ??? tip "Task Names and Aliases"
     It is possible to specify the task's name via the `name` field. `lint_task` syntax is a syntactic sugar that will be
@@ -916,18 +1097,35 @@ should have a unique `name` and specify at least Docker `image` and `port` that 
 In the example below we use an [official MySQL Docker image](https://hub.docker.com/_/mysql/) that exposes
 the standard MySQL port (3306). Tests will be able to access MySQL instance via `localhost:3306`.
 
-```yaml
-container:
-  image: golang:latest
-  additional_containers:
-    - name: mysql
-      image: mysql:latest
-      port: 3306
-      cpu: 1.0
-      memory: 512Mi
-      env:
-        MYSQL_ROOT_PASSWORD: ""
-```
+=== "amd64"
+
+    ```yaml
+    container:
+      image: golang:latest
+      additional_containers:
+        - name: mysql
+          image: mysql:latest
+          port: 3306
+          cpu: 1.0
+          memory: 512Mi
+          env:
+            MYSQL_ROOT_PASSWORD: ""
+    ```
+
+=== "arm64"
+
+    ```yaml
+    arm_container:
+      image: golang:latest
+      additional_containers:
+        - name: mysql
+          image: mysql:latest
+          port: 3306
+          cpu: 1.0
+          memory: 512Mi
+          env:
+            MYSQL_ROOT_PASSWORD: ""
+    ```
 
 Additional container can be very handy in many scenarios. Please check [Cirrus CI catalog of examples](../examples.md) for more details.
 
@@ -952,18 +1150,34 @@ Additional container can be very handy in many scenarios. Please check [Cirrus C
 
 ??? tip "Overriding Default Command"
     It's also possible to override the default `CMD` of an additional container via `command` field:
-    
-    ```yaml
-    container:
-      image: golang:latest
-      additional_containers:
-        - name: mysql
-          image: mysql:latest
-          port: 7777
-          command: mysqld --port 7777
-          env:
-            MYSQL_ROOT_PASSWORD: ""
-    ```
+
+    === "amd64"
+
+        ```yaml
+        container:
+          image: golang:latest
+          additional_containers:
+            - name: mysql
+              image: mysql:latest
+              port: 7777
+              command: mysqld --port 7777
+              env:
+                MYSQL_ROOT_PASSWORD: ""
+        ```
+
+    === "arm64"
+
+        ```yaml
+        arm_container:
+          image: golang:latest
+          additional_containers:
+            - name: mysql
+              image: mysql:latest
+              port: 7777
+              command: mysqld --port 7777
+              env:
+                MYSQL_ROOT_PASSWORD: ""
+        ```
 
 ??? warning
     **Note** that `additional_containers` can be used only with [Community Cluster](supported-computing-services.md#community-cluster)
