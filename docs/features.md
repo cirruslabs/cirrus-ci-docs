@@ -21,13 +21,13 @@ Instance Type              | Managed by | Description
 `compute_engine_instance`  | **us**     | [Full-fledged custom VM][compute_engine_instance]
 `persistent_worker`        | **you**    | [Use any host on any platform and architecture][persistent_worker]
 
-[container]: linux.md
-[windows_container]: windows.md
-[docker_builder]: docker-builder-vm.md
-[macos_instance]: macOS.md
-[freebsd_instance]: FreeBSD.md
-[compute_engine_instance]: custom-vms.md
-[persistent_worker]: persistent-workers.md
+[container]: guide/linux.md
+[windows_container]: guide/windows.md
+[docker_builder]: guide/docker-builder-vm.md
+[macos_instance]: guide/macOS.md
+[freebsd_instance]: guide/FreeBSD.md
+[compute_engine_instance]: guide/custom-vms.md
+[persistent_worker]: guide/persistent-workers.md
 
 ## Per-second billing
 
