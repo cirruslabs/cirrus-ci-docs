@@ -1,6 +1,6 @@
 ## Custom Clone Command
 
-By default Cirrus CI uses a [Git client implemented purely in Go](https://github.com/src-d/go-git) to perform a clone of
+By default Cirrus CI uses a [Git client implemented purely in Go](https://github.com/go-git/go-git) to perform a clone of
 a single branch with full Git history. It is possible to control clone depth via `CIRRUS_CLONE_DEPTH` [environment variable](writing-tasks.md#behavioral-environment-variables).
 
 Customizing clone behavior is a simple as overriding `clone_script`. For example, here an override to use a pre-installed
