@@ -12,7 +12,7 @@ pipe:
       site_artifacts:
         path: "site/**"
     - image: fkorotkov/liche:latest
-      validate_script: /liche --concurrency 8 --document-root=site --recursive site/
+      validate_script: /liche --concurrency 2 --document-root=site --recursive site/
 
 task:
   name: Markdown Lint
