@@ -219,7 +219,7 @@ def main(ctx):
 
 While not technically a builtin, `is_test` is a [`bool`](https://github.com/bazelbuild/starlark/blob/master/spec.md#booleans)
 that allows Starlark code to determine whether it's running in test environment via Cirrus CLI. This can be useful for limiting the test complexity,
-e.g. by not making a real HTTP request and mocking/skipping it instead. Read more about module testing in a [separate guide in Cirrus CLI repository](https://github.com/cirruslabs/cirrus-cli/blob/master/STARLARK-TEMPLATING.md#testing).
+e.g. by not making a real HTTP request and mocking/skipping it instead. Read more about module testing in a [separate guide in Cirrus CLI repository](https://github.com/cirruslabs/cirrus-cli/blob/master/STARLARK-MODULES.md#testing).
 
 ### `env`
 

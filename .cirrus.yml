@@ -11,7 +11,7 @@ pipe:
       build_script: mkdocs build
       site_artifacts:
         path: "site/**"
-    - image: raviqqe/liche:latest
+    - image: fkorotkov/liche:latest
       validate_script: /liche --concurrency 8 --document-root=site --recursive site/
 
 task:
