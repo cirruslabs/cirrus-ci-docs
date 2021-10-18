@@ -22,7 +22,7 @@ to execute these instructions in. Let's see a line-by-line example of a `.cirrus
 The example above defines a single task that will be scheduled and executed on the [Linux Community Cluster](linux.md) using the `gradle:jdk11` Docker image.
 Only one user-defined [script instruction](#script-instruction) to run `gradle test` will be executed. Not that complex, right?
 
-Please read the topics below if you want better understand what's doing on in a more complex `.cirrus.yml` configuration file, such as this:
+Please read the topics below if you want better understand what's going on in a more complex `.cirrus.yml` configuration file, such as this:
 
 === "amd64"
 
@@ -252,7 +252,7 @@ Folder paths can contain a "glob" pattern to cache multiple files/folders within
 
 A `fingerprint_script` and `fingerprint_key` are *optional* fields that can specify either:
 
-* a script output of which will be hashed and used as a key for the given cache:
+* a script, the output of which will be hashed and used as a key for the given cache:
 
   ```yaml
   node_modules_cache:
