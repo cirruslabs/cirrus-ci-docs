@@ -623,7 +623,7 @@ To run tests, it would look like this:
 ### ESLint Annotations
 
 [ESLint](https://eslint.org/) reports are supported by [Cirrus CI Annotations](https://medium.com/cirruslabs/github-annotations-support-227d179cde31).
-This way you can see all the linting issues without leaving the pull request you are reviewing! You'll need to generate
+This way you can see all the linting issues without leaving the pull request you are reviewing! You'll need to generate an
 `ESLint` report file (for example, `eslint.json`) in one of your task's scripts. Then save it as an artifact in `eslint` format:
 
 ```yaml
