@@ -64,6 +64,7 @@ Dockerfile
 Dockerfiles
 Entrypoints
 Erlang
+ESLint
 FreeBSD
 GB
 GITHUB_CHECK_SUITE_ID

@@ -620,6 +620,22 @@ To run tests, it would look like this:
       test_script: yarn run test
     ```
 
+### ESLint Annotations
+
+[ESLint](https://eslint.org/) reports are supported by [Cirrus CI Annotations](https://medium.com/cirruslabs/github-annotations-support-227d179cde31).
+This way you can see all the linting issues without leaving the pull request you are reviewing! You'll need to generate
+`ESLint` report file (for example, `eslint.json`) in one of your task's scripts. Then save it as an artifact in `eslint` format:
+
+```yaml
+task:
+  # boilerplate
+  eslint_script: ...
+  always:
+    eslint_report_artifact:
+      path: eslint.json
+      format: eslint
+```
+
 ## Python
 
 Official [Python Docker images](https://hub.docker.com/_/python/) can be used for builds. Here is an example of a `.cirrus.yml` 
