@@ -419,7 +419,7 @@ build_and_test_task:
     https://api.cirrus-ci.com/v1/artifact/build/<CIRRUS_BUILD_ID>/<TASK_NAME>/<ARTIFACTS_NAME>.zip
     ```
 
-    It's also possible to download a particular file of an artifact and not the while archive by using `<ARTIFACTS_NAME>/<PATH>`
+    It's also possible to download a particular file of an artifact and not the whole archive by using `<ARTIFACTS_NAME>/<PATH>`
     instead of `<ARTIFACTS_NAME>.zip`.
 
 #### Artifact Type
