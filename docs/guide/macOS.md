@@ -17,7 +17,7 @@ task:
 
 * `monterey-base` - vanilla macOS with Brew and Command Line Tools pre-installed.
 * `monterey-xcode-NN` - based of `catalina-base` with Xcode NN and couple other packages pre-installed: 
-  `cocoapods`, `fastlane`, `rake` and `xctool`. [Flutter](https://flutter.dev/) and Android SDK/NDK are also pre-installed.**
+  `cocoapods`, `fastlane`, `rake` and `xctool`. [Flutter](https://flutter.dev/) and Android SDK/NDK are also pre-installed.
   
 List of available Xcode versions:
 
@@ -29,7 +29,7 @@ Note that there is a `monterey-xcode` alias available to always reference to the
 
 * `big-sur-base` - vanilla macOS with Brew and Command Line Tools pre-installed.
 * `big-sur-xcode-NN` - based of `catalina-base` with Xcode NN and couple other packages pre-installed: 
-  `cocoapods`, `fastlane`, `rake` and `xctool`. [Flutter](https://flutter.dev/) and Android SDK/NDK are also pre-installed.**
+  `cocoapods`, `fastlane`, `rake` and `xctool`. [Flutter](https://flutter.dev/) and Android SDK/NDK are also pre-installed.
   
 List of available Xcode versions:
 
