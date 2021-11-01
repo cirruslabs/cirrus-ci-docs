@@ -16,7 +16,7 @@ task:
 #### macOS Monterey
 
 * `monterey-base` - vanilla macOS with Brew and Command Line Tools pre-installed.
-* `monterey-xcode-NN` - based of `catalina-base` with Xcode NN and couple other packages pre-installed: 
+* `monterey-xcode-NN` - based off `monterey-base` with Xcode NN and couple other packages pre-installed: 
   `cocoapods`, `fastlane`, `rake` and `xctool`. [Flutter](https://flutter.dev/) and Android SDK/NDK are also pre-installed.
   
 List of available Xcode versions:
@@ -28,7 +28,7 @@ Note that there is a `monterey-xcode` alias available to always reference to the
 #### macOS Big Sur
 
 * `big-sur-base` - vanilla macOS with Brew and Command Line Tools pre-installed.
-* `big-sur-xcode-NN` - based of `catalina-base` with Xcode NN and couple other packages pre-installed: 
+* `big-sur-xcode-NN` - based off `big-sur-base` with Xcode NN and couple other packages pre-installed: 
   `cocoapods`, `fastlane`, `rake` and `xctool`. [Flutter](https://flutter.dev/) and Android SDK/NDK are also pre-installed.
   
 List of available Xcode versions:
@@ -43,7 +43,7 @@ Note that there is a `big-sur-xcode` alias available to always reference to the 
 #### macOS Catalina (deprecated)
 
 * `catalina-base` - vanilla macOS with Brew and Command Line Tools pre-installed.
-* `catalina-xcode-NN` - based of `catalina-base` with Xcode NN and couple other packages pre-installed: 
+* `catalina-xcode-NN` - based off `catalina-base` with Xcode NN and couple other packages pre-installed: 
   `cocoapods`, `fastlane`, `rake` and `xctool`. **Starting from Xcode 12.1 [Flutter](https://flutter.dev/) and Android SDK/NDK are also pre-installed.**
 * `catalina-xcode-NN-flutter` (**deprecated** since Xcode 12.1) - based of `catalina-xcode-NN` with pre-installed [Flutter](https://flutter.dev/) and Android SDK/NDK.
 
