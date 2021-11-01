@@ -5,13 +5,25 @@ Use `macos_instance` in your `.cirrus.yml` files:
 
 ```yaml
 macos_instance:
-  image: big-sur-base
+  image: monterey-base
 
 task:
   script: echo "Hello World from macOS!"
 ```
 
 ### List of available images
+
+#### macOS Monterey
+
+* `monterey-base` - vanilla macOS with Brew and Command Line Tools pre-installed.
+* `monterey-xcode-NN` - based of `catalina-base` with Xcode NN and couple other packages pre-installed: 
+  `cocoapods`, `fastlane`, `rake` and `xctool`. [Flutter](https://flutter.dev/) and Android SDK/NDK are also pre-installed.**
+  
+List of available Xcode versions:
+
+* `monterey-xcode-13.1`
+
+Note that there is a `monterey-xcode` alias available to always reference to the latest stable `monterey-xcode-NN` image.
 
 #### macOS Big Sur
 
@@ -28,7 +40,7 @@ List of available Xcode versions:
 
 Note that there is a `big-sur-xcode` alias available to always reference to the latest stable `big-sur-xcode-NN` image.
 
-#### macOS Catalina
+#### macOS Catalina (deprecated)
 
 * `catalina-base` - vanilla macOS with Brew and Command Line Tools pre-installed.
 * `catalina-xcode-NN` - based of `catalina-base` with Xcode NN and couple other packages pre-installed: 
