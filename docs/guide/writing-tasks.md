@@ -391,13 +391,13 @@ build_and_test_task:
     Use the following link format to download the latest artifact of a particular task:
 
     ```
-    https://api.cirrus-ci.com/v1/artifact/github/<USER OR ORGANIZATION>/<REPOSITORY>/<TASK NAME>/<ARTIFACTS_NAME>/<PATH>
+    https://api.cirrus-ci.com/v1/artifact/github/<USER OR ORGANIZATION>/<REPOSITORY>/<TASK NAME OR ALIAS>/<ARTIFACTS_NAME>/<PATH>
     ```
 
     It is possible to also **download an archive** of all files within an artifact with the following link:
 
     ```
-    https://api.cirrus-ci.com/v1/artifact/github/<USER OR ORGANIZATION>/<REPOSITORY>/<TASK NAME>/<ARTIFACTS_NAME>.zip
+    https://api.cirrus-ci.com/v1/artifact/github/<USER OR ORGANIZATION>/<REPOSITORY>/<TASK NAME OR ALIAS>/<ARTIFACTS_NAME>.zip
     ```
     
     By default, Cirrus looks up the latest **successful** build of the default branch for the repository but the branch name
@@ -416,7 +416,7 @@ build_and_test_task:
     by name:
 
     ```
-    https://api.cirrus-ci.com/v1/artifact/build/<CIRRUS_BUILD_ID>/<TASK_NAME>/<ARTIFACTS_NAME>.zip
+    https://api.cirrus-ci.com/v1/artifact/build/<CIRRUS_BUILD_ID>/<TASK NAME OR ALIAS>/<ARTIFACTS_NAME>.zip
     ```
 
     It's also possible to download a particular file of an artifact and not the whole archive by using `<ARTIFACTS_NAME>/<PATH>`
