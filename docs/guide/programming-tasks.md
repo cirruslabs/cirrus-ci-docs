@@ -201,7 +201,7 @@ Note that this is an error to read a directory with `fs.read()`.
 
 #### `fs.readdir(dirpath)`
 
-Returns a [`list`](https://github.com/bazelbuild/starlark/blob/master/spec.md#lists) of [`string`'s](https://github.com/bazelbuild/starlark/blob/master/spec.md#strings) with names of the entries in the directory.
+Returns a [`list`](https://github.com/bazelbuild/starlark/blob/master/spec.md#lists) of [`string`'s](https://github.com/bazelbuild/starlark/blob/master/spec.md#strings) with names of the entries in the directory or `None` if the directory does not exist.
 
 Note that this is an error to read a file with `fs.readdir()`.
 
