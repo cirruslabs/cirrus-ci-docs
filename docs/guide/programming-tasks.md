@@ -189,6 +189,10 @@ All paths are relative to the project's directory.
 
 Returns `True` if `path` exists and `False` otherwise.
 
+#### `fs.isdir(path)`
+
+Returns `True` if `path` points to a directory and `False` otherwise.
+
 #### `fs.read(path)`
 
 Returns a [`string`](https://github.com/bazelbuild/starlark/blob/master/spec.md#strings) with the file contents or `None` if the file doesn't exist.
