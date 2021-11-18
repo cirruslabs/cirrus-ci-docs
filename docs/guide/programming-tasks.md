@@ -169,7 +169,7 @@ load("github.com/cirrus-modules/golang/lib.star@main", "task", "container")
 You can also specify an exact commit hash instead of the `main()` branch name to prevent accidental changes.
 
 !!! tip "Loading private modules"
-    If your organization has private repository called `cirrus-modules` with installed Cirrus CI, than this repository
+    If your organization has private repository called `cirrus-modules` with installed Cirrus CI, then this repository
     will be available for loading within repositories of your organization.
 
 To load `.star` files from repositories other than GitHub, add a `.git` suffix at the end of the repository name, for example:
