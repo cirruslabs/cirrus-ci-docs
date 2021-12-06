@@ -37,6 +37,7 @@ theme:
     text: Roboto
     code: Roboto Mono
   features:
+    - announce.dismiss
     - content.tabs.link
     - navigation.tabs
     - navigation.tabs.sticky
