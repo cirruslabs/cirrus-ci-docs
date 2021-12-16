@@ -22,6 +22,7 @@ task:
 List of available Xcode versions:
 
 * `monterey-xcode-13.1`
+* `monterey-xcode-13.2`
 
 Note that there is a `monterey-xcode` alias available to always reference to the latest stable `monterey-xcode-NN` image.
 
