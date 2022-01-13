@@ -28,7 +28,7 @@ Use compute credits with your private or public repositories of any scale.
 * 1000 minutes of 1 virtual CPU for Linux for 5 compute credits
 * 1000 minutes of 1 virtual CPU for FreeBSD for 5 compute credits
 * 1000 minutes of 1 virtual CPU for Windows for 10 compute credits
-* 1000 minutes of 1 virtual CPU for macOS for 10 compute credits
+* 1000 minutes of 1 virtual CPU for macOS for 40 compute credits
 
 All tasks using compute credits are charged on per-second basis. 2 CPU Linux task takes 2 minutes? Pay **2 cents**.
 
