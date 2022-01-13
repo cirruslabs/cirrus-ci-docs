@@ -1,7 +1,7 @@
 # Cirrus CI API
 
 Cirrus CI exposes GraphQL API for integrators to use through `https://api.cirrus-ci.com/graphql` endpoint. Please check
-[Cirrus CI GraphQL Schema](https://github.com/cirruslabs/cirrus-ci-web/blob/master/schema.graphql) for a full list of 
+[Cirrus CI GraphQL Schema](https://github.com/cirruslabs/cirrus-ci-web/blob/master/schema.gql) for a full list of 
 available types and methods. Or check [built-in interactive GraphQL Explorer](http://cirrus-ci.com/explorer). Here is an example of how to get a build for a particular SHA of a given repository:
 
 ```bash
