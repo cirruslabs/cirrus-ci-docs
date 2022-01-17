@@ -99,7 +99,7 @@ it happens because of two reasons:
 
 This means that either an agent process or a VM with an agent process exited before reporting the last instruction of a task.
 
-If it's happening for a [`mancos_instance`](guide/macOS.md) then please contact [support](support.md).
+If it's happening for a [`macos_instance`](guide/macOS.md) then please contact [support](support.md).
 
 ## Instance failed to start!
 
