@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 <!-- markdownlint-disable -->
 
 # Privacy Policy
