@@ -456,6 +456,7 @@ Currently, Cirrus CI supports:
     * [Python's Unittest format](../examples.md#unittest-annotations)
 * [XCLogParser](../examples.md#xclogparser)
 * [JetBrains Qodana](../examples.md#qodana)
+* [Buf CLI for Protocol Buffers](../examples.md#protocol-buffers-linting)
 
 Please [let us know](https://github.com/cirruslabs/cirrus-ci-annotations/issues/new) what kind of formats Cirrus CI should support next!
 

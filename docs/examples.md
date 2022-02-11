@@ -636,6 +636,40 @@ task:
       format: eslint
 ```
 
+## Protocol Buffers Linting
+
+Here is an example of how  `*.proto` files can be linted using [Buf CLI](https://buf.build/).
+
+=== "amd64"
+
+    ```yaml
+    container:
+      image: bufbuild/buf:latest
+
+    task:
+      name: Buf Lint
+      lint_script: buf lint --error-format=json > lint.report.json
+      on_failure:
+        report_artifacts:
+          path: lint.report.json
+          format: buf
+    ```
+
+=== "arm64"
+
+    ```yaml
+    arm_container:
+      image: bufbuild/buf:latest
+
+    task:
+      name: Buf Lint
+      lint_script: buf lint --error-format=json > lint.report.json
+      on_failure:
+        report_artifacts:
+          path: lint.report.json
+          format: buf
+    ```
+
 ## Python
 
 Official [Python Docker images](https://hub.docker.com/_/python/) can be used for builds. Here is an example of a `.cirrus.yml` 
