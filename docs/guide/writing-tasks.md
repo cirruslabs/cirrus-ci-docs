@@ -1095,7 +1095,9 @@ approach has some inconveniences like the need to pre-install MySQL by building 
 
 For such use cases Cirrus CI allows to run additional containers in parallel with the main container that executes a task.
 Each additional container is defined under `additional_containers` keyword in `.cirrus.yml`. Each additional container
-should have a unique `name` and specify at least Docker `image` and `port` that this container exposes.
+should have a unique `name` and specify at least a container `image`.
+
+Normally, you would also specify a `port` (or `ports`, if there are many) to instruct the Cirrus CI to configure the networking between the containers and wait for the ports to be available before running the task.
 
 In the example below we use an [official MySQL Docker image](https://hub.docker.com/_/mysql/) that exposes
 the standard MySQL port (3306). Tests will be able to access MySQL instance via `localhost:3306`.
