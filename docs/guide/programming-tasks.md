@@ -4,7 +4,7 @@ Most commonly, Cirrus tasks are declared in a `.cirrus.yml` file in YAML format 
 
 YAML, as a language, is great for declaring simple to moderate configurations, but sometimes just using a declarative language is not enough.
 One might need some conditional execution or an easy way to generate multiple similar tasks. Most continuous integration services solve this problem
-by introducing special a special domain specific language (DSL) into the existing YAML. In case of Cirrus CI, we have the [`only_if` keyword](writing-tasks.md#conditional-task-execution)
+by introducing a special domain specific language (DSL) into the existing YAML. In case of Cirrus CI, we have the [`only_if` keyword](writing-tasks.md#conditional-task-execution)
 for conditional execution and [`matrix` modification](writing-tasks.md#matrix-modification) for generating similar tasks.
 These options are mostly hacks to work around the declarative nature of YAML where in reality an imperative language
 would be a better fit. This is why Cirrus CI allows tasks to be configured in Starlark in addition to YAML.
