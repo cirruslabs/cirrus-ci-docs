@@ -1,25 +1,25 @@
 ## Introduction into Starlark
 
-Most commonly, Cirrus tasks are declared in `.cirrus.yml` file in YAML format as documented in [*Writing Tasks*](writing-tasks.md) guide.
+Most commonly, Cirrus tasks are declared in a `.cirrus.yml` file in YAML format as documented in the [*Writing Tasks*](writing-tasks.md) guide.
 
 YAML, as a language, is great for declaring simple to moderate configurations, but sometimes just using a declarative language is not enough.
-One might need some conditional execution or have an easy way to generate multiple similar tasks. Most of the CIs solve this problem
-by introducing special DSL into the existing YAML. In case of Cirrus CI, we have [`only_if` keyword](writing-tasks.md#conditional-task-execution)
+One might need some conditional execution or an easy way to generate multiple similar tasks. Most continuous integration services solve this problem
+by introducing special a special domain specific language (DSL) into the existing YAML. In case of Cirrus CI, we have the [`only_if` keyword](writing-tasks.md#conditional-task-execution)
 for conditional execution and [`matrix` modification](writing-tasks.md#matrix-modification) for generating similar tasks.
-These options are mostly hacks to workaround declarative nature of YAML language where in reality an imperative language
-looks like a better fit. This is why Cirrus CI allows in additional to YAML configure tasks via Starlark.
+These options are mostly hacks to work around the declarative nature of YAML where in reality an imperative language
+would be a better fit. This is why Cirrus CI allows tasks to be configured in Starlark in addition to YAML.
 
-Starlark language is a procedural programming language [originated from Bazel build tool](https://docs.bazel.build/versions/master/skylark/language.html),
-but ideal for embedding within any other system that want to safely allow user-defined logic. There are a few key differences which made us
+[Starlark](https://github.com/bazelbuild/starlark) is a procedural programming language similar to Python that [originated in the Bazel build tool](https://docs.bazel.build/versions/master/skylark/language.html)
+that is ideal for embedding within systems that want to safely allow user-defined logic. There are a few key differences that made us
 choose Starlark instead of common alternatives like JavaScript/TypeScript or WebAssembly:
 
-1. Starlark doesn't require compilation. No need to introduce full-blown compile and deploy process for a few dozen lines of logic.
-2. Starlark script can be executed instantly on any platform. There is Starlark interpreter written in Go which integrates nicely with Cirrus CLI and Cirrus CI infrastructure.
+1. Starlark doesn't require compilation. There's no need to introduce a full-blown compile and deploy process for a few dozen lines of logic.
+2. Starlark scripts can be executed instantly on any platform. There is Starlark interpreter written in Go which integrates nicely with the Cirrus CLI and Cirrus CI infrastructure.
 3. Starlark has built-in functionality for loading external modules which is ideal for config sharing. See [module loading](#module-loading) for details.
 
 ## Writing Starlark scripts
 
-Let's start with a trivial `.cirrus.star` example like this:
+Let's start with a trivial `.cirrus.star` example:
 
 ```python
 def main():
@@ -33,8 +33,8 @@ def main():
     ]
 ```
 
-With the [module loading](#module-loading), you can re-use other people's code to avoid wasting time on things written from scratch.
-For example, with the official [task helpers](https://github.com/cirrus-modules/helpers) the example above can be refactored in:
+With [module loading](#module-loading) you can re-use other people's code to avoid wasting time writing tasks from scratch.
+For example, with the official [task helpers](https://github.com/cirrus-modules/helpers) the example above can be refactored to:
 
 ```python
 load("github.com/cirrus-modules/helpers", "task", "container", "script")
@@ -48,7 +48,7 @@ def main(ctx):
   ]
 ```
 
-`main()` needs to return a list of task objects which will be serialized into YAML, like this:
+`main()` needs to return a list of task objects, which will be serialized into YAML like this:
 
 ```yaml
 task:
@@ -61,7 +61,7 @@ Then the generated YAML is appended to `.cirrus.yml` (if any) before passing the
 
 With Starlark, it's possible to generate parts of the configuration dynamically based on some external conditions:
 
-* [Parsing files inside the repository](#fs) to pick up some common settings (for example, parse `package.json` to see if it contains `lint` script and generate a linting task).
+* [Parsing files inside the repository](#fs) to pick up some common settings (for example, parse `package.json` to see if it contains a `lint` script and generate a linting task).
 * [Making an HTTP request](#http) to check the previous build status.
 
 See a video tutorial on how to create a custom Cirrus module:
@@ -70,7 +70,7 @@ See a video tutorial on how to create a custom Cirrus module:
 
 ### Entrypoints
 
-Different events will trigger execution of different top-level functions in the `.cirrus.star`. These functions reserve certain names
+Different events will trigger execution of different top-level functions in the `.cirrus.star` file. These functions reserve certain names
 and will be called with different arguments depending on the event which triggered the execution.
 
 #### `main()`
@@ -112,7 +112,7 @@ In regard to top-level overrides, note that when using both YAML and Starlark co
 #### Hooks
 
 It's also possible to execute Starlark scripts on updates to the current build or any of the tasks within the build.
-Think of it as [WebHooks](../api.md#webhooks) running within Cirrus that doesn't require any infrastructure on your end.
+Think of it as [WebHooks](../api.md#webhooks) running within Cirrus that don't require any infrastructure on your end.
 
 Expected names of Starlark Hook functions in `.cirrus.star` are `on_build_<STATUS>` or `on_task_<STATUS>` respectively.
 Please refer to [Cirrus CI GraphQL Schema](https://github.com/cirruslabs/cirrus-ci-web/blob/master/schema.gql) for a
