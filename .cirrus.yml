@@ -5,6 +5,7 @@ container:
 pipe:
   name: Build Site and Validate Links
   only_if: $CIRRUS_BRANCH != 'gh-pages'
+  allow_failures: true
   steps:
     - image: ghcr.io/squidfunk/mkdocs-material:latest
       install_script: python3 -m pip install --upgrade -r requirements.txt
