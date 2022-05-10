@@ -42,8 +42,8 @@ task:
     - Spell Check
   container:
     image: ghcr.io/cirruslabs/mkdocs-material-insiders:latest
-    registry_config: ENCRYPTED[!eca1f54076ecc1d8721532d2610a6593d14c72289e1545a69a7e893411a2941c3ee92179a4900b90a21bee78a212b4df!]
+    registry_config: ENCRYPTED[!cf1a0f25325aa75bad3ce6ebc890bc53eb0044c02efa70d8cefb83ba9766275a994b4831706c52630a0692b2fa9cfb9e!]
   env:
-    DEPLOY_TOKEN: ENCRYPTED[177bcd0bea94a30fd6f1ac437b8c6a633b814da46b70892c9650577051e4d043a232a573b326523178074c96c9253313]
+    DEPLOY_TOKEN: ENCRYPTED[!45ed45666558902ed1c2400add734ec063103bec31841847e8c8764802fca229bfa6d85c690e16ad159e047574b48793!]
   install_script: python3 -m pip install --upgrade -r requirements.txt
   deploy_script: ./.ci/deploy.sh
