@@ -549,7 +549,7 @@ CIRRUS_BUILD_ID | Unique build ID
 CIRRUS_CHANGE_IN_REPO | Git SHA
 CIRRUS_CHANGE_MESSAGE | Commit message or PR title and description, depending on trigger event (Non-PRs or PRs respectively).
 CIRRUS_CHANGE_TITLE | First line of `CIRRUS_CHANGE_MESSAGE`
-CIRRUS_CRON | Name used in Cron settings if a build was triggered by the [Cron service](#cron-builds). For example, `nightly`.
+CIRRUS_CRON | [Cron Build](#cron-builds) name configured in the repository settings if this build was triggered by Cron. For example, `nightly`.
 CIRRUS_DEFAULT_BRANCH | Default repository branch name. For example `master`
 CIRRUS_DOCKER_CONTEXT | Docker build's context directory to use for [Dockerfile as a CI environment](docker-builder-vm.md#dockerfile-as-a-ci-environment). Defaults to project's root directory.
 CIRRUS_LAST_GREEN_BUILD_ID | The build id of the last successful build on the same branch at the time of the current build creation.
