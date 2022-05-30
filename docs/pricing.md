@@ -20,8 +20,7 @@ Organization | <ul><li>Free access to community clusters for public repositories
 
 ## Compute Credits
 
-Sometimes configuring your own [compute services](#compute-services) isn't worth it. It takes time and effort to maintain them. For such cases there is a way to use the same community clusters that the Open Source community is enjoying.
-Use compute credits with your private or public repositories of any scale.
+Sometimes configuring your own [compute services](#compute-services) isn't worth it. It takes time and effort to maintain them. For such cases there is a way to use the same community clusters for your organization.
 
 1 compute credit can be bought for 1 US dollar. Here is how much 1000 minutes of CPU time will cost for different platforms:
 
@@ -32,7 +31,7 @@ Use compute credits with your private or public repositories of any scale.
 
 All tasks using compute credits are charged on per-second basis. 2 CPU Linux task takes 2 minutes? Pay **2 cents**.
 
-**Note:** orchestration costs are included in compute credits and there is no need to purchase additional seats on your plan.
+**Note:** orchestration costs are included in compute credits and there is no need to purchase additional seats on your organization's plan.
 
 !!! info "Priority Scheduling"
     Tasks that are using compute credits will be prioritized and will be scheduled as fast as possible.
