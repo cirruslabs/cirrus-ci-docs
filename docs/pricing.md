@@ -27,7 +27,7 @@ Sometimes configuring your own [compute services](#compute-services) isn't worth
 * 1000 minutes of 1 virtual CPU for Linux platform for 5 compute credits
 * 1000 minutes of 1 virtual CPU for FreeBSD platform for 5 compute credits
 * 1000 minutes of 1 virtual CPU for Windows platform for 10 compute credits
-* 1000 minutes of 1 Apple Silicon CPU or 2 Intel virtual CPUs for macOS platform for 60 compute credits
+* 1000 minutes of 1 Apple Silicon CPU or 2 Intel virtual CPUs for macOS platform for 40 compute credits
 
 All tasks using compute credits are charged on per-second basis. 2 CPU Linux task takes 2 minutes? Pay **2 cents**.
 
