@@ -488,9 +488,10 @@ Now tasks can be scheduled on EC2 by configuring `ec2_instance` something like t
 ```yaml  
 task:
   ec2_instance:
-    image: ami-03790f6959fc34ef3
+    image: ami-0a047931e1d42fdb3
     type: t2.micro
     region: us-east-1
+    architecture: arm64 # defautls to amd64
   script: ./run-ci.sh
 ```
 
