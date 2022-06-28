@@ -121,7 +121,7 @@ to use with private repositories.
 * Need to pay $10/seat/month plan.
 
 !!! info "What is a seat?"
-    A seat is a GitHub user that initiates CI builds by pushing commits and/or creating pull requests in a **private** repository. 
+    A seat is a user that initiates CI builds by pushing commits and/or creating pull requests in a **private** repository. 
     It can be a real person or a bot. If you are using [Cron Builds](guide/writing-tasks.md#cron-builds) or creating builds through [Cirrus's API](api.md)
     it will be counted as an additional seat (like a bot).
     
