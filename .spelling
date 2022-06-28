@@ -1,3 +1,5 @@
+24x5
+24x7
 256-bit
 API
 APIs
@@ -130,6 +132,8 @@ builtins
 caching
 changesInclude
 changesIncludeOnly
+checkin
+checkins
 checksum
 ci.com
 circleci

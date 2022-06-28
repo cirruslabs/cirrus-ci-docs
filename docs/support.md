@@ -25,6 +25,7 @@ care like bi-yearly checkins to make sure Cirrus CI roadmap is aligned with your
 
 `24x5` means period of time from 9AM on Monday till 5PM on Friday in EST timezone.
 
+<!-- markdownlint-disable MD037 -->
 ??? note "Support Impact Definitions"
     * **Severity 4** - Questions or Clarifications around features or documentation (24 hours) Minimal or no Business Impact. 
       Information, an enhancement, or documentation clarification is requested, but there is no impact on the operation of Cirrus CI.
