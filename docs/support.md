@@ -44,7 +44,7 @@ care like bi-yearly checkins to make sure Cirrus CI roadmap is aligned with your
 
 As a company grows, engineering team tend to accumulate knowledge operating and working with Cirrus CI,
 therefore there is less effort needed to support each new seat from our side. On the other hand, Cirrus CI allows to [bring your own infrastructure](guide/supported-computing-services.md)
-which increases complexity of the support. As a result we reflected the above challenges in a progressive
+which increases complexity of the support. As a result we reflected the above challenges in a bracketed
 pricing model based on a seat amount and a type of infrastructure used:
 
 | Seat Amount | Only [managed by us instance types](guide/writing-tasks.md#execution-environment) | [Bring your own infrastructure](guide/supported-computing-services.md) |
