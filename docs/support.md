@@ -6,10 +6,10 @@ hide:
 # General Support
 
 The best way to ask general questions about particular use cases is to email our support team at [support+ci@cirruslabs.org](mailto:support+ci@cirruslabs.org).
-Our support team is trying our best to response ASAP but there is no guarantee on a response time unless your organization enrolls in [Priority Support](#priority-support).
+Our support team is trying our best to respond ASAP, but there is no guarantee on a response time unless your organization enrolls in [Priority Support](#priority-support).
 
 If you have a feature request or noticed lack of some documentation please feel free to [create a GitHub issue](https://github.com/cirruslabs/cirrus-ci-docs/issues/new/choose).
-Our support team will answer it by replying to the issue or by updating documentation.
+Our support team will answer it by replying to the issue or by updating the documentation.
 
 # Priority Support
 
@@ -37,7 +37,7 @@ care like bi-yearly checkins to make sure Cirrus CI roadmap is aligned with your
       our On-Call Support Engineer will respond within 30 minutes. Example: Cirrus CI showing 502 errors for all users.
 
 !!! info "How to submit a priority issue"
-    Once your organization [signs the Priority Support Subscription contract](#how-to-purchase-priority-support-subscription)
+    Once your organization [signs the Priority Support Subscription contract](#how-to-purchase-priority-support-subscription),
     members of your organization will get access to a separate support email specified in your subscription contract.
 
 ## Priority Support Pricing
@@ -65,4 +65,4 @@ pricing model based on a seat amount and a type of infrastructure used:
 
 Please email [sales@cirruslabs.org](mailto:sales@cirruslabs.org), so we can get a support contract in addition to [TOC](legal/terms.md).
 The contract will contain a special priority email address for your organization and other helpful information. Sales team will
-also schedule a checkin meeting to make sure your engineering team is set for success and Cirrus CI roadmap aligns with your needs.
+also schedule a check-in meeting to make sure your engineering team is set for success and Cirrus CI roadmap aligns with your needs.
