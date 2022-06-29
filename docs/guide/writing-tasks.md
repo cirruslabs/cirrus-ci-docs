@@ -418,6 +418,12 @@ build_and_test_task:
     ```
     https://api.cirrus-ci.com/v1/artifact/build/<CIRRUS_BUILD_ID>/<TASK NAME OR ALIAS>/<ARTIFACTS_NAME>.zip
     ```
+    
+    It is also possible to download artifacts given a task id directly:
+    
+    ```
+    https://api.cirrus-ci.com/v1/artifact/task/<CIRRUS_TASK_ID>/<ARTIFACTS_NAME>.zip
+    ```
 
     It's also possible to download a particular file of an artifact and not the whole archive by using `<ARTIFACTS_NAME>/<PATH>`
     instead of `<ARTIFACTS_NAME>.zip`.
