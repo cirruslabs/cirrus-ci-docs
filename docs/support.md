@@ -16,12 +16,12 @@ Our support team will answer it by replying to the issue or by updating the docu
 In addition to the general support we provide a *Priority Support* option with guaranteed response times and some extra
 care like bi-yearly checkins to make sure Cirrus CI roadmap is aligned with your company's needs.
 
-| Severity | Support Impact                                                                                | First Response Time SLA | Hours | How to Submit                                                                                |
-|----------|-----------------------------------------------------------------------------------------------|-------------------------|-------|----------------------------------------------------------------------------------------------|
-| 1        | Emergency (Cirrus CI is unavailable or completely unusable).                                  | 30 minutes              | 24x7  | Please use urgent email address.                                                             |
-| 2        | Highly Degraded (Important features unavailable or extremely slow; No acceptable workaround). | 4 hours                 | 24x5  | Please use priority email address.                                                           |
-| 3        | Medium Impact.                                                                                | 8 hours                 | 24x5  | Please use priority email address.                                                           |
-| 4        | Low Impact.                                                                                   | 24 hours                | 24x5  | Please use regular support address. Make sure to send the email from your corporate address. |
+| Severity | Support Impact                                                                                | First Response Time SLA | Hours | How to Submit                                                                                    |
+|----------|-----------------------------------------------------------------------------------------------|-------------------------|-------|--------------------------------------------------------------------------------------------------|
+| 1        | Emergency (Cirrus CI is unavailable or completely unusable).                                  | 30 minutes              | 24x7  | Please use urgent email address.                                                                 |
+| 2        | Highly Degraded (Important features unavailable or extremely slow; No acceptable workaround). | 4 hours                 | 24x5  | Please use priority email address.                                                               |
+| 3        | Medium Impact.                                                                                | 8 hours                 | 24x5  | Please use priority email address.                                                               |
+| 4        | Low Impact.                                                                                   | 24 hours                | 24x5  | Please use regular support email address. Make sure to send the email from your corporate email. |
 
 `24x5` means period of time from 9AM on Monday till 5PM on Friday in EST timezone.
 
