@@ -43,6 +43,7 @@ theme:
     - navigation.tabs.sticky
     - navigation.top
     - search.suggest
+    - toc.follow
 
 extra_css:
   - 'stylesheets/extra.css'
@@ -51,6 +52,9 @@ extra_css:
 plugins:
   - search
   - minify
+  - social
+  - git-revision-date-localized:
+      enable_creation_date: true
 
 markdown_extensions:
   - markdown.extensions.admonition
@@ -88,30 +92,30 @@ nav:
   - Home: index.md
   - Features: features.md
   - Documentation:
-    - 'User Guide':
-      - 'Quick Start': guide/quick-start.md
-      - 'Writing Tasks': guide/writing-tasks.md
-      - 'Programming Tasks in Starlark': guide/programming-tasks.md
-      - 'Configuration Tips and Tricks': guide/tips-and-tricks.md
-      - 'Execution Environment':
-        - 'Linux Containers': guide/linux.md
-        - 'Windows Containers': guide/windows.md
-        - 'macOS VMs': guide/macOS.md
-        - 'FreeBSD VMs': guide/FreeBSD.md
-        - 'Persistent Workers': guide/persistent-workers.md
-        - 'Docker Builder on VM': guide/docker-builder-vm.md
-        - 'Docker Builds on GKE': guide/docker-builds-on-kubernetes.md
-        - 'Docker Pipe': guide/docker-pipe.md
-        - 'Custom VMs': guide/custom-vms.md
-        - 'Computing Services': guide/supported-computing-services.md
-      - 'Life of a Build': guide/build-life.md
-      - 'Notifications': guide/notifications.md
-    - API: api.md
-    - FAQ: faq.md
-    - Legal:
-      - 'Privacy': legal/privacy.md
-      - 'Terms of Service': legal/terms.md
-    - Security: security.md
+      - 'User Guide':
+          - 'Quick Start': guide/quick-start.md
+          - 'Writing Tasks': guide/writing-tasks.md
+          - 'Programming Tasks in Starlark': guide/programming-tasks.md
+          - 'Configuration Tips and Tricks': guide/tips-and-tricks.md
+          - 'Execution Environment':
+              - 'Linux Containers': guide/linux.md
+              - 'Windows Containers': guide/windows.md
+              - 'macOS VMs': guide/macOS.md
+              - 'FreeBSD VMs': guide/FreeBSD.md
+              - 'Persistent Workers': guide/persistent-workers.md
+              - 'Docker Builder on VM': guide/docker-builder-vm.md
+              - 'Docker Builds on GKE': guide/docker-builds-on-kubernetes.md
+              - 'Docker Pipe': guide/docker-pipe.md
+              - 'Custom VMs': guide/custom-vms.md
+              - 'Computing Services': guide/supported-computing-services.md
+          - 'Life of a Build': guide/build-life.md
+          - 'Notifications': guide/notifications.md
+      - API: api.md
+      - FAQ: faq.md
+      - Legal:
+          - 'Privacy': legal/privacy.md
+          - 'Terms of Service': legal/terms.md
+      - Security: security.md
   - Examples: examples.md
   - Pricing: pricing.md
   - Support: support.md
