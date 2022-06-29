@@ -18,7 +18,7 @@ care like bi-yearly checkins to make sure Cirrus CI roadmap is aligned with your
 
 | Severity | Support Impact                                                                               | First Response Time SLA | Hours | How to Submit                     |
 |----------|----------------------------------------------------------------------------------------------|-------------------------|-------|-----------------------------------|
-| 1        | Emergency (Completely unusable)                                                              | 30 minutes              | 24x7  | Please trigger an urgent issue    |
+| 1        | Emergency (Cirrus CI is unavailable or completely unusable)                                  | 30 minutes              | 24x7  | Please trigger an urgent issue    |
 | 2        | Highly Degraded (Important features unavailable or extremely slow; No acceptable workaround) | 4 hours                 | 24x5  | Please use priority email address |
 | 3        | Medium Impact                                                                                | 8 hours                 | 24x5  | Please use priority email address |
 | 4        | Low Impact                                                                                   | 24 hours                | 24x5  | Please use priority email address |
@@ -27,14 +27,14 @@ care like bi-yearly checkins to make sure Cirrus CI roadmap is aligned with your
 
 <!-- markdownlint-disable MD037 -->
 ??? note "Support Impact Definitions"
-    * **Severity 4** - Questions or Clarifications around features or documentation (24 hours) Minimal or no Business Impact. 
-      Information, an enhancement, or documentation clarification is requested, but there is no impact on the operation of Cirrus CI.
-    * **Severity 3** - Something is preventing normal Cirrus CI operation (8 hours) Some Business Impact. Important Cirrus CI
-      features are unavailable or somewhat slowed, but a workaround is available. Cirrus CI use has a minor loss of operational functionality.
-    * **Severity 2** - Cirrus CI is Highly Degraded (4 hours) Significant Business Impact. Important Cirrus CI features are unavailable
-      or extremely slowed, with no acceptable workaround.
-    * **Severity 1** - Cirrus CI is unavailable or completely unusable (30 Minutes). An urgent issue can be filed and
+    * **Severity 1** - Cirrus CI is unavailable or completely unusable. An urgent issue can be filed and
       our On-Call Support Engineer will respond within 30 minutes. Example: Cirrus CI showing 502 errors for all users.
+    * **Severity 2** - Cirrus CI is Highly Degraded Significant Business Impact. Important Cirrus CI features are unavailable
+      or extremely slowed, with no acceptable workaround.
+    * **Severity 3** - Something is preventing normal Cirrus CI operation Some Business Impact. Important Cirrus CI
+      features are unavailable or somewhat slowed, but a workaround is available. Cirrus CI use has a minor loss of operational functionality.
+    * **Severity 4** - Questions or Clarifications around features or documentation Minimal or no Business Impact. 
+      Information, an enhancement, or documentation clarification is requested, but there is no impact on the operation of Cirrus CI.
 
 !!! info "How to submit a priority issue"
     Once your organization [signs the Priority Support Subscription contract](#how-to-purchase-priority-support-subscription),
