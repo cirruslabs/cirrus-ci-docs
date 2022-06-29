@@ -52,6 +52,56 @@ task:
   script: echo "running on-premise"
 ```
 
+### Resource management
+
+By default, Cirrus CI limits task concurrency to 1 task per each worker. To schedule more tasks on a given worker, [configure it's `resources`](https://github.com/cirruslabs/cirrus-cli/blob/master/PERSISTENT-WORKERS.md#resource-management).
+
+Once done, the worker will be considered resource-aware and will be able to execute concurrently either:
+
+* one resource-less task (a task without `resources:` field)
+* multiple resourceful tasks (a task with `resources:` field) as long worker has resources available for these tasks
+
+Note that `labels` matching still takes place for both resource-less and resource-aware tasks.
+
+So, considering a worker with the following configuration:
+
+```yaml
+token: "[snip]"
+
+name: "mac-mini-usb-hub"
+
+resources:
+  connected-iphones: 4
+  connected-ipads: 2
+```
+
+It will be able to concurrently execute two of these tasks:
+
+```yaml
+task:
+  name: Test iPhones and iPads
+
+  persistent_worker:
+    resources:
+      connected-iphones: 2
+      connected-ipads: 2
+
+  script: make test
+```
+
+And two of these:
+
+```yaml
+task:
+  name: Test iPhones only
+
+  persistent_worker:
+    resources:
+      connected-iphones: 2
+
+  script: make test
+```
+
 ### Isolation
 
 By default, a persistent worker spawns all the tasks on the same host machine it's being run.
