@@ -61,6 +61,8 @@ Once done, the worker will be considered resource-aware and will be able to exec
 * one resource-less task (a task without `resources:` field)
 * multiple resourceful tasks (a task with `resources:` field) as long worker has resources available for these tasks
 
+Note that `labels` matching still takes place for both resource-less and resource-aware tasks.
+
 So, considering a worker with the following configuration:
 
 ```yaml
