@@ -54,6 +54,8 @@ pricing model based on a seat amount and a type of infrastructure used:
 | 301-500     | $30/seat/month                                                                    | $50/seat/month                                                         |
 | 500+        | $15/seat/month                                                                    | $25/seat/month                                                         |
 
+Note that Priority Support Subscription starts from a minimum of 20 seats.
+
 ??? info "What is a seat?"
     A seat is a user that initiates CI builds by pushing commits and/or creating pull requests in a **private** repository.
     It can be a real person or a bot. If you are using [Cron Builds](guide/writing-tasks.md#cron-builds) or creating builds through [Cirrus's API](api.md)
