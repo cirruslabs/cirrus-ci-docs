@@ -54,8 +54,6 @@ based on a seat amount and a type of infrastructure used:
 | 301-500     | $30/seat/month                                                                    | $50/seat/month                                                         |
 | 500+        | $15/seat/month                                                                    | $25/seat/month                                                         |
 
-For example, a team of 200 people actively using Cirrus CI will result in a `100 * $60 + 100 * $45 = $10,500`
-
 Note that Priority Support Subscription requires a purchase of a minimum of 20 seats even if some of them will be unused.
 
 ??? info "What is a seat?"
