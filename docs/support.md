@@ -43,7 +43,7 @@ care like bi-yearly checkins to make sure Cirrus CI roadmap is aligned with your
 ## Priority Support Pricing
 
 As a company grows, engineering team tend to accumulate knowledge operating and working with Cirrus CI,
-therefore there is less need of "support effort per new seat" from our side. In addition, Cirrus CI allows to [bring your own infrastructure](guide/supported-computing-services.md)
+therefore there is less effort needed to support each new seat from our side. On the other hand, Cirrus CI allows to [bring your own infrastructure](guide/supported-computing-services.md)
 which increases complexity of the support. As a result we reflected the above challenges in a progressive
 pricing model based on a seat amount and a type of infrastructure used:
 
