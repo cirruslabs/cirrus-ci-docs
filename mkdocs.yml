@@ -52,8 +52,6 @@ extra_css:
 plugins:
   - search
   - minify
-  - social:
-      cards: !ENV [SOCIAL_CARDS_ENABLED, false]
   - git-revision-date-localized:
       enable_creation_date: true
 
