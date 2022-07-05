@@ -139,6 +139,8 @@ You will see such `build_docker_image_HASH` tasks in the UI.
       zone: us-central1-a
       namespace: default
     ```
+
+    Please make sure your buidler image has [`gcloud` configured as a credential helper](https://cloud.google.com/sdk/gcloud/reference/auth/configure-docker).
     
     If your builder image is stored in another project you can also specify it by using `builder_image_project` field.
     By default, Cirrus CI assumes builder image is stored within the same project as the GKE cluster.
