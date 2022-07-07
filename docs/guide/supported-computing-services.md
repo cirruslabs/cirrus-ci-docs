@@ -514,7 +514,8 @@ add necessary permissions for the IAM user that Cirrus CI is using:
   "eks:DescribeCluster",
   "eks:CreateCluster",
   "eks:DeleteCluster",
-  "eks:UpdateClusterVersion"
+  "eks:UpdateClusterVersion",
+  "ecr:DescribeImages",
 ]
 ```
 

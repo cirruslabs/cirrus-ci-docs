@@ -145,6 +145,29 @@ You will see such `build_docker_image_HASH` tasks in the UI.
     If your builder image is stored in another project you can also specify it by using `builder_image_project` field.
     By default, Cirrus CI assumes builder image is stored within the same project as the GKE cluster.
 
+??? info "Using with private EKS clusters"
+    To use `dockerfile` with `eks_container` you need three things:
+
+    1. Either create an AMI with Docker installed or use one like [ECS-optimized AMIa](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html). For example, `MY_DOCKER_AMI`.
+    2. Create a role which has `AmazonEC2ContainerRegistryFullAccess` policy. For example, `cirrus-builder`.
+    3. Create `cirrus-cache` repository in your Elastic Container registry and make sure user that `aws_credentials` are associated with has `ecr:DescribeImages` access to it.
+
+    Once all of the above requirement are met you can configure `eks_container` like this:
+
+    ```yaml
+    eks_container:
+      region: us-east-2
+      cluster_name: my-company-arm-cluster
+      dockerfile: .ci/Dockerfile
+      builder_image: MY_DOCKER_AMI
+      builder_role: cirrus-builder # role for builder instance profile
+      builder_instance_type: c7g.xlarge # should match the architecture below
+      architecture: arm64 # default is amd64
+    ```
+
+    This will make Cirrus CI to check whether `cirrus-cache` repository in `us-east-2` region contains a precached image
+    for `.ci/Dockerfile` of this repository. 
+
 ### Windows Support
 
 Docker builders also support building Windows Docker containers - use the `platform` and `os_version` fields:
