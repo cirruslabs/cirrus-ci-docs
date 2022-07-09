@@ -28,6 +28,7 @@ task:
 Any of the official FreeBSD VMs on Google Cloud Platform are supported. Here are a few of them which are self explanatory:
 
 * `freebsd-14-0-snap` (14.0-SNAP)
+* `freebsd-13-1`      (13.1-RELEASE)
 * `freebsd-13-0`      (13.0-RELEASE)
 * `freebsd-12-3`      (12.3-RELEASE)
 * `freebsd-12-2`      (12.2-RELEASE)
