@@ -162,6 +162,8 @@ You will see such `build_docker_image_HASH` tasks in the UI.
       builder_image: MY_DOCKER_AMI
       builder_role: cirrus-builder # role for builder instance profile
       builder_instance_type: c7g.xlarge # should match the architecture below
+      builder_security_group_ids:
+        - # optional list of security groups for the builder instance
       architecture: arm64 # default is amd64
     ```
 

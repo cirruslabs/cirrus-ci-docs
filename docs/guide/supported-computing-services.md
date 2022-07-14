@@ -492,6 +492,8 @@ task:
     type: t2.micro
     region: us-east-1
     architecture: arm64 # defautls to amd64
+    security_group_ids:
+      - # optional list of security groups for the instance
   script: ./run-ci.sh
 ```
 
