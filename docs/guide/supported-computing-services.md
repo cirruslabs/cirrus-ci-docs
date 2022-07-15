@@ -163,7 +163,8 @@ like this:
 ```yaml
 gce_instance:
   image_project: ubuntu-os-cloud
-  image_name: ubuntu-1904-disco-v20190417
+  image_name: ubuntu-2204-jammy-arm64-v20220712a
+  architecture: arm64 # optional. By default, amd64 is assumed.
   zone: us-central1-a
   cpu: 8
   memory: 40GB
@@ -194,7 +195,8 @@ task:
     ```yaml
     gce_instance:
       image_project: ubuntu-os-cloud
-      image_family: ubuntu-1904
+      image_family: ubuntu-2204-lts-arm64
+      architecture: arm64
     ```
 
 #### Custom VM images

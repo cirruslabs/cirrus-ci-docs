@@ -16,6 +16,7 @@ compute_engine_instance:
   image_project: cirrus-images # GCP project
   image: family/docker-kvm # family or a full image name.
   platform: linux
+  architecture: arm64 # optional. By default, amd64 is assumed.
   cpu: 4 # optional. Defaults to 2 CPUs.
   memory: 16G # optional. Defaults to 4G.
   disk: 100 # optional. By default, uses the smallest disk size required by the image.
