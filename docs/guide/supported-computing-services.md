@@ -330,7 +330,7 @@ gce_instance:
   </a>
 </p>
 
-Scheduling tasks on [Compute Engine](#google-compute-engine) has one big disadvantage of waiting for an instance to
+Scheduling tasks on [Compute Engine](#compute-engine) has one big disadvantage of waiting for an instance to
 start which usually takes around a minute. One minute is not that long but can't compete with hundreds of milliseconds
 that takes a container cluster on GKE to start a container.
 
