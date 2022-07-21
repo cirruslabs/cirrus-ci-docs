@@ -46,7 +46,7 @@ check_android_task:
 ```
 
 !!! info
-    Please don't forget to setup [Remote Build Cache](#build-cache) for your Gradle project. Or at least [basic folder caching](#gradle-caching).
+    Please don't forget to setup [Remote Build Cache](#build-cache) for your Gradle project.
     
 ### Android Lint
 

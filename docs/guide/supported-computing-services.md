@@ -330,7 +330,7 @@ gce_instance:
   </a>
 </p>
 
-Scheduling tasks on [Compute Engine](#google-compute-engine) has one big disadvantage of waiting for an instance to
+Scheduling tasks on [Compute Engine](#compute-engine) has one big disadvantage of waiting for an instance to
 start which usually takes around a minute. One minute is not that long but can't compete with hundreds of milliseconds
 that takes a container cluster on GKE to start a container.
 
@@ -491,6 +491,7 @@ task:
     image: ami-0a047931e1d42fdb3
     type: t2.micro
     region: us-east-1
+    subnet_id: ... # optional, default subnet from your default VPC is used by default
     architecture: arm64 # defautls to amd64
   script: ./run-ci.sh
 ```

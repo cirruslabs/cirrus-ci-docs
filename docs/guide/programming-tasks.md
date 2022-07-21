@@ -255,7 +255,7 @@ It takes at least one [`string`](https://github.com/bazelbuild/starlark/blob/mas
 
 Currently supported contexts:
 
-* [`main()` entrypoint](#build-generation)
+* [`main()` entrypoint](#main)
 
 Example:
 
@@ -279,7 +279,7 @@ It takes at least one [`string`](https://github.com/bazelbuild/starlark/blob/mas
 
 Currently supported contexts:
 
-* [`main()` entrypoint](#build-generation)
+* [`main()` entrypoint](#main)
 
 Example:
 
