@@ -335,7 +335,7 @@ start which usually takes around a minute. One minute is not that long but can't
 that takes a container cluster on GKE to start a container.
 
 To start scheduling tasks on a container cluster we first need to create one using `gcloud`. Here is a recommended configuration
-of a cluster that is very similar to what is used for the managed `contianer` instances. We recommend creating a cluster with two node pools:
+of a cluster that is very similar to what is used for the managed `container` instances. We recommend creating a cluster with two node pools:
 
 * `default-pool` with a single node and no autoscaling for system pods required by Kubernetes.
 * `workers-pool` that will use [Compute-Optimized instances](https://cloud.google.com/compute/docs/machine-types#compute-optimized_machine_type_family)
