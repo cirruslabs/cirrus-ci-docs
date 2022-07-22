@@ -498,6 +498,7 @@ version of MySQL can used with the following six lines in your `.cirrus.yml`:
           port: 3306
           env:
             MYSQL_ROOT_PASSWORD: ""
+            MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     ```
 
 === "arm64"
@@ -511,6 +512,7 @@ version of MySQL can used with the following six lines in your `.cirrus.yml`:
           port: 3306
           env:
             MYSQL_ROOT_PASSWORD: ""
+            MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     ```
 
 With the configuration above MySQL will be available on `localhost:3306`. Use empty password to login as `root` user. 
