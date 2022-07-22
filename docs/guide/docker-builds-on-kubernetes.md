@@ -45,6 +45,7 @@ docker_build_task:
         port: 2375
         env:
           DOCKER_DRIVER: overlay2 # this speeds up the build
+          DOCKER_TLS_CERTDIR: "" # disable TLS to preserve the old behavior
   env:
     DOCKER_HOST: tcp://localhost:2375 # this is required so that docker cli commands connect to the "additional container" instead of `docker.sock`.
     GOOGLE_CREDENTIALS: ENCRYPTED[qwerty239abc] # this should contain the json key for a gcp service account with the `roles/storage.admin` role on the `artifacts.<your_gcp_project>.appspot.com` bucket as described here https://cloud.google.com/container-registry/docs/access-control. This is only required if you want to pull / push to gcr. If we use dockerhub you need to use different credentials.

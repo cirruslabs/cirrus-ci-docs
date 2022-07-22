@@ -1120,6 +1120,7 @@ the standard MySQL port (3306). Tests will be able to access MySQL instance via 
           memory: 512Mi
           env:
             MYSQL_ROOT_PASSWORD: ""
+            MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     ```
 
 === "arm64"
@@ -1135,6 +1136,7 @@ the standard MySQL port (3306). Tests will be able to access MySQL instance via 
           memory: 512Mi
           env:
             MYSQL_ROOT_PASSWORD: ""
+            MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     ```
 
 Additional container can be very handy in many scenarios. Please check [Cirrus CI catalog of examples](../examples.md) for more details.
@@ -1173,6 +1175,7 @@ Additional container can be very handy in many scenarios. Please check [Cirrus C
               command: mysqld --port 7777
               env:
                 MYSQL_ROOT_PASSWORD: ""
+                MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
         ```
 
     === "arm64"
@@ -1187,6 +1190,7 @@ Additional container can be very handy in many scenarios. Please check [Cirrus C
               command: mysqld --port 7777
               env:
                 MYSQL_ROOT_PASSWORD: ""
+                MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
         ```
 
 ??? warning
