@@ -1239,11 +1239,16 @@ Here is how Cirrus CI's badge can be embeded in a Markdown file:
 
 ## CCTray XML
 
-Cirrus CI supports exporting information about the latest repository builds via the [CCTray XML format](https://cctray.org/).
-Use the following URL format with a tool of your choice (such as [CCMenu](http://ccmenu.org/)):
+Cirrus CI supports exporting information about the latest repository builds via the [CCTray XML format](https://cctray.org/), using the following URL format:
 
 ```console
 https://api.cirrus-ci.com/github/<USER OR ORGANIZATION>/<REPOSITORY>/cctray.xml
 ```
+
+Some tools with support of CCtray are:
+
+* [CCMenu](http://ccmenu.org/) (OSx Native build status monitor).
+* [Barklarm](https://www.barklarm.com/) (Open Source multiplatform alarm and build status monitor).
+* [Nevergreen](https://github.com/build-canaries/nevergreen) (Build radiation service).
 
 **Note:** for private repositories you'll need to configure [access token](../api.md#authorization).
