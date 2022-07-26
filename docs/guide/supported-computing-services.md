@@ -117,6 +117,8 @@ By default Cirrus CI will store logs and caches for 90 days but it can be change
 [lifecycle rule](https://cloud.google.com/storage/docs/lifecycle) for a Google Cloud Storage bucket that Cirrus CI is
 using.
 
+### Authorization
+
 Now we have a service account that Cirrus CI can use! It's time to let Cirrus CI know about the service account to use.
 There are two options:
 
@@ -212,7 +214,7 @@ Now let's setup Cirrus CI as a workload identity provider:
     In the example above `--attribute-condition` flag asserts that the provider can be used with any repository of your organization.
     You can restrict the access further with attributes like `repository` and `repository_visibility`.
 
-6. Allow authentications from the Workload Identity Provider originating from 
+5. Allow authentications from the Workload Identity Provider originating from 
     your organization to impersonate the Service Account created above:
 
     ```sh
@@ -222,7 +224,7 @@ Now let's setup Cirrus CI as a workload identity provider:
       --member="principalSet://iam.googleapis.com/${WORKLOAD_IDENTITY_POOL_ID}/attribute.owner/${OWNER}"
     ```
 
-7. Extract the Workload Identity **Provider** resource name:
+6. Extract the Workload Identity **Provider** resource name:
 
     ```sh
     gcloud iam workload-identity-pools providers describe "cirrus-oidc" \
