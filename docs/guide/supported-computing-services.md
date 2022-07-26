@@ -113,11 +113,21 @@ gcloud projects add-iam-policy-binding $PROJECT_ID \
 ```
 
 !!! info "Default Logs Retentions Period"
-    By default Cirrus CI will store logs and caches for 90 days but it can be changed by manually configuring a
-    [lifecycle rule](https://cloud.google.com/storage/docs/lifecycle) for a Google Cloud Storage bucket that Cirrus CI is using.
+By default Cirrus CI will store logs and caches for 90 days but it can be changed by manually configuring a
+[lifecycle rule](https://cloud.google.com/storage/docs/lifecycle) for a Google Cloud Storage bucket that Cirrus CI is
+using.
 
-Now we have a service account that Cirrus CI can use! It's time to let Cirrus CI know about that fact by securely providing a
-private key for the service account. A private key can be created by running the following command:
+Now we have a service account that Cirrus CI can use! It's time to let Cirrus CI know about the service account to use.
+There are two options:
+
+1. [Creating a static credentials file](#credentials-key-file) for your service account. Same as you might do for using
+   with `gcloud`.
+2. [Configure Cirrus CI as workload identity provider](#workload-identity-federation). This way Cirrus CI will be able
+   to acquire a temporary credentials for each task
+
+#### Credentials Key File
+
+A private key can be created by running the following command:
 
 ```bash
 gcloud iam service-accounts keys create service-account-credentials.json \
@@ -131,14 +141,105 @@ At last create an [encrypted variable](writing-tasks.md#encrypted-variables) fro
 gcp_credentials: ENCRYPTED[qwerty239abc]
 ```
 
-Now Cirrus CI can store logs and caches in Google Cloud Storage for tasks scheduled on either GCE or GKE. Please check following sections 
+Now Cirrus CI can store logs and caches in Google Cloud Storage for tasks scheduled on either GCE or GKE. Please check
+following sections
 with additional instructions about [Compute Engine](#compute-engine) or [Kubernetes Engine](#kubernetes-engine).
 
 !!! info "Supported Regions"
-    Cirrus CI currently supports following GCP regions: `us-central1`, `us-east1`, `us-east4`, `us-west1`, `us-west2`,
-    `europe-west1`, `europe-west2`, `europe-west3` and `europe-west4`.
-    
+Cirrus CI currently supports following GCP regions: `us-central1`, `us-east1`, `us-east4`, `us-west1`, `us-west2`,
+`europe-west1`, `europe-west2`, `europe-west3` and `europe-west4`.
+
     Please [contact support](../support.md) if you are interested in support for other regions.
+
+#### Workload Identity Federation
+
+By configuring Cirrus CI as an identity provider, Cirrus CI will be able to acquire temporary access tokens on-demand
+for each task.
+Please read [Google Cloud documentation](https://cloud.google.com/iam/docs/workload-identity-federation) to learn more
+about security and other benefits of using a workload identity provider.
+
+Now let's setup Cirrus CI as a workload identity provider:
+
+1. First, let's make sure the IAM Credentials API is enabled:
+
+    ```sh
+    gcloud services enable iamcredentials.googleapis.com \
+      --project "${PROJECT_ID}"
+    ```
+
+2. Create a Workload Identity Pool:
+
+    ```sh
+    gcloud iam workload-identity-pools create "ci-pool" \
+      --project="${PROJECT_ID}" \
+      --location="global" \
+      --display-name="Continuous Integration"
+    ```
+
+3. Get the full ID of the Workload Identity Pool:
+
+    ```sh
+    gcloud iam workload-identity-pools describe "ci-pool" \
+      --project="${PROJECT_ID}" \
+      --location="global" \
+      --format="value(name)"
+    ```
+   
+    Save this value as an environment variable:
+
+    ```sh
+    export WORKLOAD_IDENTITY_POOL_ID="..." # value from above
+    ```
+
+4. Create a Workload Identity **Provider** in that pool:
+
+    ```sh
+    # TODO(developer): Update this value to your GitHub organization.
+    export OWNER="organization" # e.g. "cirruslabs"
+   
+    gcloud iam workload-identity-pools providers create-oidc "cirrus-oidc" \
+      --project="${PROJECT_ID}" \
+      --location="global" \
+      --workload-identity-pool="ci-pool" \
+      --display-name="Cirrus CI" \
+      --attribute-mapping="google.subject=assertion.aud,attribute.owner=assertion.owner,attribute.actor=assertion.repository,attribute.actor_visibility=assertion.repository_visibility" \
+      --attribute-condition="attribute.owner == '$OWNER'" \
+      --issuer-uri="https://oidc.cirrus-ci.com"
+    ```
+
+    The attribute mappings map claims in the Cirrus CI JWT to assertions
+    you can make about the request (like the repository name or repository visibility).
+    In the example above `--attribute-condition` flag asserts that the provider can be used with any repository of your organization.
+    You can restrict the access further with attributes like `repository` and `repository_visibility`.
+
+6. Allow authentications from the Workload Identity Provider originating from 
+    your organization to impersonate the Service Account created above:
+
+    ```sh
+    gcloud iam service-accounts add-iam-policy-binding "cirrus-ci@${PROJECT_ID}.iam.gserviceaccount.com" \
+      --project="${PROJECT_ID}" \
+      --role="roles/iam.workloadIdentityUser" \
+      --member="principalSet://iam.googleapis.com/${WORKLOAD_IDENTITY_POOL_ID}/attribute.owner/${OWNER}"
+    ```
+
+7. Extract the Workload Identity **Provider** resource name:
+
+    ```sh
+    gcloud iam workload-identity-pools providers describe "cirrus-oidc" \
+      --project="${PROJECT_ID}" \
+      --location="global" \
+      --workload-identity-pool="ci-pool" \
+      --format="value(name)"
+    ```
+
+    Use this value as the `workload_identity_provider` value in your Cirrus configuration file:
+
+    ```yaml
+    gcp_credentials:
+      # todo(developer): replace PROJECT_NUMBER and PROJECT_ID with the actual values
+      workload_identity_provider: projects/${PROJECT_NUMBER}/locations/global/workloadIdentityPools/ci-pool/providers/cirrus-oidc
+      service_account: cirrus-ci@${PROJECT_ID}.iam.gserviceaccount.com
+    ```
 
 ### Compute Engine
 
