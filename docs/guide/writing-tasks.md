@@ -1248,7 +1248,7 @@ https://api.cirrus-ci.com/github/<USER OR ORGANIZATION>/<REPOSITORY>/cctray.xml
 
 Some tools with support of CCtray are:
 
-* [CCMenu](http://ccmenu.org/) (OSx Native build status monitor).
+* [CCMenu](http://ccmenu.org/) (macOS Native build status monitor).
 * [Barklarm](https://www.barklarm.com/) (Open Source multiplatform alarm and build status monitor).
 * [Nevergreen](https://github.com/build-canaries/nevergreen) (Build radiation service).
 

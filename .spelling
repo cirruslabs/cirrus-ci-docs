@@ -7,6 +7,7 @@ AWS
 Airbnb
 AppVeyor
 Azure
+Barklarm
 Base64
 BitBucket
 Brew
@@ -15,6 +16,7 @@ Builtins
 Bundler
 CCMenu
 CCTray
+CCtray
 CI
 CIRRUS_API_CREATED
 CIRRUS_BASE_BRANCH
@@ -96,6 +98,7 @@ MacStadium
 Makisu
 Monorepo
 MySQL
+Nevergreen
 Node.JS
 Node.js
 NodeJS
