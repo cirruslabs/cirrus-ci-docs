@@ -7,13 +7,13 @@ are basically a syntactic sugar for launching Compute Engine instances from a pa
 
 With `compute_engine_instance` it is possible to use any publicly available image for running your Cirrus tasks in.
 Such instances are particularly useful when you can't use Docker containers, for example, when you need to test things
-against newer versions of Linux kernel then the Docker host has.
+against newer versions of the Linux kernel than the Docker host has.
 
 Here is an example of using a `compute_engine_instance` to run a VM with KVM available:
 
 ```yaml
 compute_engine_instance:
-  image_project: cirrus-images # GCP project
+  image_project: cirrus-images # GCP project.
   image: family/docker-kvm # family or a full image name.
   platform: linux
   cpu: 4 # optional. Defaults to 2 CPUs.
