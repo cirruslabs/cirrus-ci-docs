@@ -564,6 +564,7 @@ CIRRUS_PR | PR number if current build was triggered by a PR. For example `239`.
 CIRRUS_PR_DRAFT | `true` if current build was triggered by a Draft PR.
 CIRRUS_PR_LABELS | comma separated list of PR's labels if current build was triggered by a PR.
 CIRRUS_TAG | Tag name if current build was triggered by a new tag. For example `v1.0`
+CIRRUS_OIDC_TOKEN | OpenID Token issued by `https://oidc.cirrus-ci.com` with audience set to `https://cirrus-ci.com/github/$CIRRUS_REPO_OWNER`. Please refer to [Cirrus CI OpenID Configuration](https://oidc.cirrus-ci.com/.well-known/openid-configuration/) for the set of supported claims.
 CIRRUS_OS, OS | Host OS. Either `linux`, `windows` or `darwin`.
 CIRRUS_TASK_NAME | Task name
 CIRRUS_TASK_ID | Unique task ID
