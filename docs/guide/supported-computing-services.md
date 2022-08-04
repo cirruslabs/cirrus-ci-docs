@@ -526,7 +526,29 @@ gke_container:
   </a>
 </p>
 
-Cirrus CI can schedule tasks on several AWS services. In order to interact with AWS APIs Cirrus CI needs permissions. 
+Cirrus CI can schedule tasks on several AWS services. In order to interact with AWS APIs Cirrus CI needs permissions.
+
+### Configuring AWS Credentials
+
+There are two options to provide access to your infrastructure: via a traditional [IAM user](#iam-user-credentials) or
+via a more flexible and secure [Identity Provider](#cirrus-as-an-openid-connect-identity-provider).
+
+??? info "Permissions"
+    A user or a role that Cirrus CI will be using for orchestrating tasks on AWS should at least have access to S3 in order to store
+    logs and cache artifacts. Here is a list of actions that Cirrus CI requires to store logs and artifacts:
+
+    ```json
+    "Action": [
+      "s3:CreateBucket",
+      "s3:GetObject",
+      "s3:PutObject",
+      "s3:DeleteObject",
+      "s3:PutLifecycleConfiguration"
+    ]
+    ```
+
+#### IAM user credentials 
+
 Creating an [IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html) for programmatic access
 is a common way to safely give granular access to parts of your AWS.
 
@@ -553,19 +575,69 @@ task:
     ...
 ```
 
-!!! info "Permissions"
-    A user that Cirrus CI will be using for orchestrating tasks on AWS should at least have access to S3 in order to store
-    logs and cache artifacts. Here is a list of actions that Cirrus CI requires to store logs and artifacts:
-    
-    ```json
-    "Action": [
-      "s3:CreateBucket",
-      "s3:GetObject",
-      "s3:PutObject",
-      "s3:DeleteObject",
-      "s3:PutLifecycleConfiguration"
-    ]
-    ```
+#### Cirrus as an OpenID Connect Identity Provider
+
+By configuring Cirrus CI as an identity provider, Cirrus CI will be able to acquire temporary access tokens on-demand
+for each task. Please read [AWS documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_oidc.html) to learn more
+about security and other benefits of using a workload identity provider.
+
+Now let's setup Cirrus CI as a workload identity provider. Here is a Cloud Formation Template that can configure Cirrus CI
+as an OpenID Connect Identity Provider:
+
+```yaml
+Parameters:
+  GitHubOrg:
+    Type: String
+  OIDCProviderArn:
+    Description: Arn for the Cirrus CI OIDC Provider.
+    Default: ""
+    Type: String
+
+Conditions:
+  CreateOIDCProvider: !Equals
+    - !Ref OIDCProviderArn
+    - ""
+
+Resources:
+  Role:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Statement:
+          - Effect: Allow
+            Action: sts:AssumeRoleWithWebIdentity
+            Principal:
+              Federated: !If
+                - CreateOIDCProvider
+                - !Ref CirrusOidc
+                - !Ref OIDCProviderArn
+            Condition:
+              StringLike:
+                oidc.cirrus-ci.com:sub: !Sub repo:github:${GitHubOrg}/*
+
+  CirrusOidc:
+    Type: AWS::IAM::OIDCProvider
+    Condition: CreateOIDCProvider
+    Properties:
+      Url: https://oidc.cirrus-ci.com
+      ClientIdList:
+        - sts.amazonaws.com
+      ThumbprintList: # https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_oidc_verify-thumbprint.html
+        - 46b4c330c67f24d6f11b5753394ecbe1e479cf29
+
+Outputs:
+  Role:
+    Value: !GetAtt Role.Arn
+```
+
+The output of running the template will a role that can be used in `aws_credentials` in your `.cirrus.yml` configuration:
+
+```yaml
+aws_credentials:
+  role_arn: arn:aws:iam::123456789:role/CirrusCI-Role-Something-Something
+  role_session_name: cirrus # an identifier for the assumed role session
+  region: us-east-2 # region to use for calling the STS
+```
 
 ### EC2
 
