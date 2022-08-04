@@ -639,6 +639,8 @@ aws_credentials:
   region: us-east-2 # region to use for calling the STS
 ```
 
+Note that you'll need to add permissions required for Cirrus to that role.
+
 ### EC2
 
 <p align="center">
@@ -648,7 +650,7 @@ aws_credentials:
   </a>
 </p>
 
-In order to schedule tasks on EC2 please make sure that IAM user that Cirrus CI is using has following permissions:
+In order to schedule tasks on EC2 please make sure that IAM user or OIDC role that Cirrus CI is using has following permissions:
 
 ```json
 "Action": [
@@ -682,7 +684,7 @@ task:
 
 Please follow instructions on how to [create a EKS cluster](https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html)
 and [add workers nodes](https://docs.aws.amazon.com/eks/latest/userguide/launch-workers.html) to it. And don't forget to
-add necessary permissions for the IAM user that Cirrus CI is using:
+add necessary permissions for the IAM user or OIDC role that Cirrus CI is using:
 
 ```json
 "Action": [
