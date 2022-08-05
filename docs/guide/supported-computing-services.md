@@ -656,8 +656,10 @@ In order to schedule tasks on EC2 please make sure that IAM user or OIDC role th
 ```json
 "Action": [
   "ec2:DescribeInstances",
+  "ec2:DescribeImages",
   "ec2:RunInstances",
-  "ec2:TerminateInstances"
+  "ec2:TerminateInstances",
+  "ssm:GetParameters"
 ]
 ```
 
@@ -673,6 +675,50 @@ task:
     architecture: arm64 # defautls to amd64
   script: ./run-ci.sh
 ```
+
+#### AMI resolution options
+
+Value for the `image` field of `ec2_instance` can be just the image id in a format of `ami-*`
+but there two more convenient options when Cirrus will do image id resolutions for you:
+
+##### AWS System Manager
+
+```yaml
+ec2_task:
+  ec2_instance:
+    image: /aws/service/ecs/optimized-ami/amazon-linux-2/arm64/recommended
+    architecture: arm64
+    region: us-east-2
+    type: a1.metal
+```
+
+In that case Cirrus will run analogue of:
+
+```bash
+aws ssm get-parameters --names /aws/service/ecs/optimized-ami/amazon-linux-2/arm64/recommended
+```
+
+to figure out the ami right before scheduling the instance. Please make use AMI user or role has `ssm:GetParameters` permissions.
+
+##### Image filtering
+
+```yaml
+ec2_task:
+  ec2_instance:
+    image: ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-*
+    architecture: arm64
+    region: us-east-2
+    type: a1.metal
+```
+
+In that case Cirrus will run analogue of:
+
+```bash
+aws ec2 describe-images --filters "Name=name,Values=ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-*"
+```
+
+to figure out the ami right before scheduling the instance (Cirrus will pick the freshest AMI from the list based on creation date).
+Please make use AMI user or role has `ec2:DescribeImages` permissions.
 
 ### EKS
 
