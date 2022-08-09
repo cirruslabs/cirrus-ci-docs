@@ -655,6 +655,7 @@ In order to schedule tasks on EC2 please make sure that IAM user or OIDC role th
 
 ```json
 "Action": [
+  "ec2:CreateTags",
   "ec2:DescribeInstances",
   "ec2:DescribeImages",
   "ec2:RunInstances",
