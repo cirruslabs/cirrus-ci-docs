@@ -106,7 +106,7 @@ No additional configuration needed.
 
 Configure and connect one or more [compute services](guide/supported-computing-services.md) and/or [persistent workers](guide/persistent-workers.md)
 to Cirrus CI for orchestrating CI workloads on them. It's free for your public repositories and [costs $10/seat/month](https://github.com/marketplace/cirrus-ci/plan/MDIyOk1hcmtldHBsYWNlTGlzdGluZ1BsYW45OTM=#pricing-and-setup)
-to use with private repositories.
+to use with private repositories unless your organization has [Priority Support Subscription](support.md#priority-support).
 
 **Benefits** of this approach:
 
