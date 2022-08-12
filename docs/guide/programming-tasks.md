@@ -107,7 +107,35 @@ def main():
     ]
 ```
 
-In regard to top-level overrides, note that when using both YAML and Starlark configuration formats they get merged and the YAML configuration always comes first.
+Sometimes, you might only need to override a specific global field like `env` or `container`. This can be achieved by returning a dictionary:
+
+```python
+def main():
+  return {
+    "env": {
+      "VARIABLE_NAME": "VARIABLE_VALUE",
+    },
+    "container": {
+      "image": "debian:latest",
+    }
+  }
+```
+
+Or you can simply emit a string containing the YAML configuration. This allows splitting YAML configuration across multiple files like this:
+
+```python
+load("cirrus", "env", "fs")
+
+def main(ctx):
+  if env.get("CIRRUS_TAG") != None:
+    return fs.read(".cirrus.release.yml")
+  if env.get("CIRRUS_PR") != None:
+    return fs.read(".cirrus.pr.yml")
+
+  return fs.read(".cirrus.pr.yml") + fs.read(".cirrus.e2e.yml")
+```
+
+Note that no matter which output format you choose, note that when using both YAML and Starlark configuration formats they get merged and the YAML configuration always comes first.
 
 #### Hooks
 
