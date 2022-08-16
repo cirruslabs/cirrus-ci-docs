@@ -13,7 +13,7 @@ Our support team will answer it by replying to the issue or by updating the docu
 
 # Priority Support
 
-In addition to the general support we provide a *Priority Support* option with guaranteed response times. But most importantl we'll be doing
+In addition to the general support we provide a *Priority Support* option with guaranteed response times. But most importantly we'll be doing
 regular checkins to make sure Cirrus CI roadmap is aligned with your company's needs. You'll be helping to shape the future of Cirrus CI/CD!
 
 | Severity | Support Impact                                                                                | First Response Time SLA | Hours | How to Submit                                                                                    |
