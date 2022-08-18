@@ -564,7 +564,7 @@ CIRRUS_PR | PR number if current build was triggered by a PR. For example `239`.
 CIRRUS_PR_DRAFT | `true` if current build was triggered by a Draft PR.
 CIRRUS_PR_LABELS | comma separated list of PR's labels if current build was triggered by a PR.
 CIRRUS_TAG | Tag name if current build was triggered by a new tag. For example `v1.0`
-CIRRUS_OIDC_TOKEN | OpenID Token issued by `https://oidc.cirrus-ci.com` with audience set to `https://cirrus-ci.com/github/$CIRRUS_REPO_OWNER`. Please refer to [Cirrus CI OpenID Configuration](https://oidc.cirrus-ci.com/.well-known/openid-configuration/) for the set of supported claims.
+CIRRUS_OIDC_TOKEN | OpenID Token issued by `https://oidc.cirrus-ci.com` with audience set to `https://cirrus-ci.com/github/$CIRRUS_REPO_OWNER` (can be changed via `$CIRRUS_OIDC_TOKEN_AUDIENCE`). Please refer to [Cirrus CI OpenID Configuration](https://oidc.cirrus-ci.com/.well-known/openid-configuration/) for the set of all supported claims.
 CIRRUS_OS, OS | Host OS. Either `linux`, `windows` or `darwin`.
 CIRRUS_TASK_NAME | Task name
 CIRRUS_TASK_ID | Unique task ID
@@ -589,6 +589,7 @@ Name | Default Value | Description
 CIRRUS_CLONE_DEPTH | `0` which will reflect in a full clone of a single branch | Clone depth.
 CIRRUS_CLONE_SUBMODULES | `false` | Set to `true` to clone submodules recursively.
 CIRRUS_LOG_TIMESTAMP | `false` | Indicate Cirrus Agent to prepend timestamp to each line of logs.
+CIRRUS_OIDC_TOKEN_AUDIENCE | not set | Allows to override `aud` claim for `CIRRUS_OIDC_TOKEN`.
 CIRRUS_SHELL | `sh` on Linux/macOS/FreeBSD and `cmd.exe` on Windows. Set to `direct` to execute each script directly without wrapping the commands in a shell script. | Shell that Cirrus CI uses to execute scripts. By default `sh` is used.
 CIRRUS_VOLUME | `/tmp` | Defines a path for a temporary volume to be mounted into instances running in a Kubernetes cluster. This volume is mounted into all additional containers and is persisted between steps of a `pipe`.
 CIRRUS_WORKING_DIR | `cirrus-ci-build` folder inside of a system's temporary folder | Working directory where Cirrus CI executes builds. Default to `cirrus-ci-build` folder inside of a system's temporary folder.
