@@ -121,10 +121,19 @@ Cirrus CI will check if a container was already built, and if so, Cirrus CI will
 Under the hood, for every `Dockerfile` that is needed to be built, Cirrus CI will create a Docker Builder task as a dependency. 
 You will see such `build_docker_image_HASH` tasks in the UI.
 
-!!! warning "Danger of using `COPY` and `ADD` instructions"
-    Cirrus doesn't include files added or copied into a container image in the cache key. This means that for a public repository
-    a potential bad actor can create a PR with malicious scripts included into a container, wait for it to be cached and then
-    reset the PR so it looks harmless.
+??? warning "Danger of using `COPY` and `ADD` instructions"
+    Cirrus only includes files directly added or copied into a container image in the cache key. But Cirrus is not  recursively 
+    waking contents of folders that are being included into the image. This means that for a public repository a potential bad actor 
+    can create a PR with malicious scripts included into a container, wait for it to be cached and then reset the PR, so it looks harmless.
+
+    Please try to only `COPY` files by full path, e.g.:
+
+    ```Dockerfile
+    FROM python:3
+    
+    COPY requirements.txt /tmp/
+    RUN pip install --requirement /tmp/requirements.txt
+    ```
 
 ??? info "Using with private GKE clusters"
     To use `dockerfile` with `gke_container` you first need to create a VM with Docker installed within your GCP project.
