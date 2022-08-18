@@ -585,7 +585,7 @@ CIRRUS_ENV | Path to a file, by writing to which you can [set task-wide environm
 And some environment variables can be set to control behavior of the Cirrus CI Agent:
 
 Name | Default Value | Description
----  | -- | ---
+---  | --- | ---
 CIRRUS_CLONE_DEPTH | `0` which will reflect in a full clone of a single branch | Clone depth.
 CIRRUS_CLONE_SUBMODULES | `false` | Set to `true` to clone submodules recursively.
 CIRRUS_LOG_TIMESTAMP | `false` | Indicate Cirrus Agent to prepend timestamp to each line of logs.
