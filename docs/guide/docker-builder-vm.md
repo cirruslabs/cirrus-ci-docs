@@ -4,10 +4,21 @@
 In essence, a `docker_builder` is basically [a `task`](writing-tasks.md) that is executed in a VM with pre-installed Docker. 
 A `docker_builder` can be defined the same way as a `task`:
 
-```yaml
-docker_builder:
-  build_script: docker build --tag myrepo/foo:latest .
-```
+=== "amd64"
+
+    ```yaml
+    docker_builder:
+      build_script: docker build --tag myrepo/foo:latest .
+    ```
+
+=== "arm64"
+
+    ```yaml
+    docker_builder:
+      env:
+        CIRRUS_ARCH: arm64
+      build_script: docker build --tag myrepo/foo:latest .
+    ```
 
 Leveraging features such as [Task Dependencies](writing-tasks.md#depepndencies), [Conditional Execution](writing-tasks.md#conditional-execution)
 and [Encrypted Variables](writing-tasks.md#encrypted-variables) with a Docker Builder can help building relatively
@@ -56,7 +67,6 @@ For your convenience, a Docker Builder VM has some common packages pre-installed
 
 * AWS CLI
 * Docker Compose
-* Heroku CLI
 * OpenJDK 11
 * Python
 * Ruby with Bundler
@@ -66,15 +76,30 @@ For your convenience, a Docker Builder VM has some common packages pre-installed
 Under the hood a simple integration with [Google Compute Engine](supported-computing-services.md#compute-engine)
 is used and basically `docker_builder` is a syntactic sugar for the following [`compute_engine_instance`](custom-vms.md) configuration:
 
-```yaml
-task:
-  compute_engine_instance:
-    image_project: cirrus-images
-    image: family/docker-builder
-    platform: linux
-    cpu: 4
-    memory: 16G
-```
+=== "amd64"
+
+    ```yaml
+    task:
+      compute_engine_instance:
+        image_project: cirrus-images
+        image: family/docker-builder
+        platform: linux
+        cpu: 4
+        memory: 16G
+    ```
+
+=== "arm64"
+
+    ```yaml
+    task:
+      compute_engine_instance:
+        image_project: cirrus-images
+        image: family/docker-builder-arm64
+        architecture: arm64
+        platform: linux
+        cpu: 4
+        memory: 16G
+    ```
 
 You can check Packer templates of the VM image in [`cirruslabs/vm-images` repository](https://github.com/cirruslabs/vm-images).
 
