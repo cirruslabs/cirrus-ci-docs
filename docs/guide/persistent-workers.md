@@ -126,7 +126,7 @@ task:
   script: system_profiler
 ```
 
-Once the VM spins up, persistent worker will connect to the VM's IP-address over SSH using `user` and `password` credentials and run the latest agent version targeted for the `platform`.
+Once the VM spins up, persistent worker will connect to the VM's IP-address over SSH using `user` and `password` credentials and run the latest agent version.
 
 #### Parallels
 
