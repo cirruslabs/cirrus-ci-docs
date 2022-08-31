@@ -110,7 +110,7 @@ However, using the `isolation` field, a persistent worker can utilize a VM or a 
 
 #### Tart
 
-To use this isolation type, install the [Tart]([https://www.parallels.com/products/desktop/](https://github.com/cirruslabs/tart) on the persistent worker's host machine.
+To use this isolation type, install the [Tart](https://github.com/cirruslabs/tart) on the persistent worker's host machine.
 
 Here's an example of a configuration that will run the task inside of a fresh macOS virtual machine created from a remote [`ghcr.io/cirruslabs/macos-ventura-base:latest`](https://github.com/cirruslabs/macos-image-templates/pkgs/container/macos-ventura-base) VM image:
 
