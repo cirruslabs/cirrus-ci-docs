@@ -108,6 +108,26 @@ By default, a persistent worker spawns all the tasks on the same host machine it
 
 However, using the `isolation` field, a persistent worker can utilize a VM or a container engine to increase the separation between tasks and to unlock the ability to use different operating systems.
 
+#### Tart
+
+To use this isolation type, install the [Tart]([https://www.parallels.com/products/desktop/](https://github.com/cirruslabs/tart)) on the persistent worker's host machine.
+
+Here's an example of a configuration that will run the task inside of a fresh macOS virtual machine created from the a remote `ghcr.io/cirruslabs/macos-ventura-base:latest` VM image:
+
+```yaml
+persistent_worker:
+  isolation:
+    tart:
+      image: ghcr.io/cirruslabs/macos-ventura-base:latest
+      user: admin
+      password: admin
+
+task:
+  script: system_profiler
+```
+
+Once the VM spins up, persistent worker will connect to the VM's IP-address over SSH using `user` and `password` credentials and run the latest agent version targeted for the `platform`.
+
 #### Parallels
 
 To use this isolation type, install the [Parallels Desktop](https://www.parallels.com/products/desktop/) on the persistent worker's host machine and create a base VM that will be later cloned for each task.
