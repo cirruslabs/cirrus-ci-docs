@@ -595,6 +595,7 @@ CIRRUS_SHELL | `sh` on Linux/macOS/FreeBSD and `cmd.exe` on Windows. Set to `dir
 CIRRUS_VOLUME | `/tmp` | Defines a path for a temporary volume to be mounted into instances running in a Kubernetes cluster. This volume is mounted into all additional containers and is persisted between steps of a `pipe`.
 CIRRUS_WORKING_DIR | `cirrus-ci-build` folder inside of a system's temporary folder | Working directory where Cirrus CI executes builds. Default to `cirrus-ci-build` folder inside of a system's temporary folder.
 CIRRUS_ESCAPING_PROCESSES | not set | Set this variable to prevent the agent from terminating the processes spawned in each non-background instruction after that instruction ends. By default, the agent tries it's best to garbage collect these processes and their standard input/output streams. It's generally better to use a [Background Script Instruction](#background-script-instruction) instead of this variable to achieve the same effect.
+CIRRUS_WINDOWS_ERROR_MODE | not set | Set this value to force all processes spawned by the agent to call the equivalent of [`SetErrorMode()`](https://docs.microsoft.com/en-us/windows/win32/api/errhandlingapi/nf-errhandlingapi-seterrormode) with the provided value (for example, `0x8001`) before beginning their execution.
 
 ## Encrypted Variables
 
