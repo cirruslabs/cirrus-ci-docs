@@ -215,7 +215,14 @@ Cirrus CLI provides builtins all nested in the `cirrus` module that greatly exte
 
 These builtins allow for read-only filesystem access.
 
-All paths are relative to the project's directory.
+The `path` argument used in the methods below re-uses the [module loader](#module-loading)'s logic and thus can point to a file/directory:
+
+* relative to the project's directory
+    * e.g. `.cirrus.yml`
+* in a GitHub repository
+    * e.g. `github.com/cirruslabs/cirrus-ci-docs/.cirrus.yml@master`
+* in remote Git repository
+    * e.g. `gitlab.com/fictional/repository.git/.cirrus.yml`
 
 #### `fs.exists(path)`
 
