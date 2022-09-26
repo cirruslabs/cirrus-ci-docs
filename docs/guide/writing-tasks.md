@@ -932,6 +932,8 @@ These two functions behave differently for PR builds and regular builds:
 * For PR builds, functions check the list of files affected by the PR.
 * For regular builds, the `CIRRUS_LAST_GREEN_CHANGE` [environment variable](#environment-variables)
   will be used to determine list of affected files between `CIRRUS_LAST_GREEN_CHANGE` and `CIRRUS_CHANGE_IN_REPO`.
+  In case `CIRRUS_LAST_GREEN_CHANGE` is not available (either it's a new branch or there were no passing builds before),
+  list of files affected by a commit associated with `CIRRUS_CHANGE_IN_REPO` environment variable will be used instead.
 
 `changesInclude` function can be very useful for skipping some tasks when no changes to sources have been made since the
 last successful Cirrus CI build.
