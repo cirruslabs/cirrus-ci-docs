@@ -94,7 +94,7 @@ example of a task that runs hardware accelerated Android emulators:
 task:
   name: Integration Tests (x86)
   container:
-    image: cirrusci/android-sdk:29
+    image: cirrusci/android-sdk:30
     kvm: true
   accel_check_script: emulator -accel-check
 ```
