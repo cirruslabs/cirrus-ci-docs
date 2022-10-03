@@ -15,33 +15,40 @@ images `.cirrus.yml` configuration file can look like:
 
 ```yaml
 container:
-  image: cirrusci/android-sdk:29
+  image: cirrusci/android-sdk:30
 
 check_android_task:
   check_script: ./gradlew check connectedCheck
 ```
 
-Or like this if a running emulator is needed for the tests:
+Or like this if a running hardware accelerated emulator is needed for the tests:
 
 ```yaml
 container:
-  image: cirrusci/android-sdk:29
+  image: cirrusci/android-sdk:30
   cpu: 4
-  memory: 10G
+  memory: 12G
+  kvm: true
 
 check_android_task:
-  create_device_script:
+  install_emulator_script:
+    sdkmanager --install "system-images;android-30;google_apis;x86"
+  create_avd_script:
     echo no | avdmanager create avd --force
-        -n test
-        -k "system-images;android-29;default;armeabi-v7a"
-  start_emulator_background_script:
+      -n emulator
+      -k "system-images;android-30;google_apis;x86"
+  start_avd_background_script:
     $ANDROID_HOME/emulator/emulator
-        -avd test
-        -no-audio
-        -no-window
-  wait_for_emulator_script:
-    - adb wait-for-device
-    - adb shell input keyevent 82
+      -avd emulator
+      -no-audio
+      -no-boot-anim
+      -gpu swiftshader_indirect
+      -no-snapshot
+  # assemble while emulator is starting
+  assemble_instrumented_tests_script:
+    ./gradlew assembleDebugAndroidTest
+  wait_for_avd_script:
+    adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed) ]]; do sleep 3; done; input keyevent 82'
   check_script: ./gradlew check connectedCheck
 ```
 
