@@ -44,6 +44,7 @@ check_android_task:
       -no-boot-anim
       -gpu swiftshader_indirect
       -no-snapshot
+      -no-window
   # assemble while emulator is starting
   assemble_instrumented_tests_script:
     ./gradlew assembleDebugAndroidTest
