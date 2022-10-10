@@ -183,6 +183,12 @@ check_task:
 
 **Note:** Each script instruction is executed in a newly created process, therefore environment variables are not preserved between them.
 
+??? note "Execution on Windows"
+    When executed on Windows via `batch`, Cirrus Agent will wrap each line of the script in a `call` so it's possible to
+    fail fast upon first line exiting with non-zero exit code.
+
+    To avoid this "syntactic sugar" just create a script file and execute it.
+
 ### Background Script Instruction
 
 A `background_script` instruction is absolutely the same as `script` instruction but Cirrus CI won't wait for the script to finish
