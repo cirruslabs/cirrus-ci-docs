@@ -67,7 +67,7 @@ For your convenience, a Docker Builder VM has some common packages pre-installed
 
 * AWS CLI
 * Docker Compose
-* OpenJDK 11
+* OpenJDK
 * Python
 * Ruby with Bundler
 
