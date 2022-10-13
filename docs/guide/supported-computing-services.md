@@ -485,6 +485,10 @@ gke_container:
   namespace: default # Kubernetes namespace to create pods in
   cpu: 6
   memory: 24GB
+  nodeSelectorTerms: # optional
+    - matchExpressions:
+        - key: cloud.google.com/gke-preemptible
+          operator: Exists
 ```
 
 !!! tip "Using in-memory disk"
@@ -574,7 +578,7 @@ task:
     ...
     
 task:  
-  eks_instance:
+  eks_container:
     ...
 ```
 
@@ -787,6 +791,12 @@ task:
     image: node:latest
     region: us-east-1
     cluster_name: cirrus-ci
+    nodeSelectorTerms: # optional
+      - matchExpressions:
+        - key: eks.amazonaws.com/capacityType
+          operator: In
+          values:
+            - SPOT
   script: ./run-ci.sh
 ```
 
@@ -959,6 +969,12 @@ task:
   oke_container:
     cluster_id: ocid1.cluster.oc1.iad.xxxxxx
     image: golang:latest
+    nodeSelectorTerms: # optional
+      - matchExpressions:
+        - key: kubernetes.io/arch
+          operator: In
+          values:
+            - arm64
   script: ./run-ci.sh
 ```
 
