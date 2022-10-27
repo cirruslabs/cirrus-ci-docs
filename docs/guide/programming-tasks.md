@@ -75,7 +75,12 @@ and will be called with different arguments depending on the event which trigger
 
 #### `main()`
 
-`main()` is called once a Cirrus CI build is triggered in order to generate a list of tasks to execute within that particular build:
+`main()` is called once a Cirrus CI build is triggered in order to generate additional configuration that will be appended to `.cirrus.yml` before parsing.
+
+`main` function can return a single object or a list of objects which will be automatically serialized into YAML. In case of returning plain text,
+it will be appended to `.cirrus.yml` as is.
+
+Note that `.cirrus.yml` configuration file is optional and the whole build can be generated via evaluation of `.cirrus.star` file. 
 
 ```python
 def main():
@@ -92,18 +97,6 @@ def main():
         },
         "script": "make build"
       }
-    ]
-```
-
-If you want to return multiple tasks with the same name or a top-level override like `env`, use the tuple syntax below:
-
-```python
-def main():
-    return [
-      ("env", {"PARALLEL": "yes"}),
-      ("container", {"image": "debian:latest"}),
-      ("task", {"script": "make build"}),
-      ("task", {"script": "make test"})
     ]
 ```
 
@@ -135,7 +128,17 @@ def main(ctx):
   return fs.read(".cirrus.pr.yml") + fs.read(".cirrus.e2e.yml")
 ```
 
-Note that no matter which output format you choose, note that when using both YAML and Starlark configuration formats they get merged and the YAML configuration always comes first.
+If you want to return multiple tasks with the same name or a top-level override like `env`, use the tuple syntax below:
+
+```python
+def main():
+    return [
+      ("env", {"PARALLEL": "yes"}),
+      ("container", {"image": "debian:latest"}),
+      ("task", {"script": "make build"}),
+      ("task", {"script": "make test"})
+    ]
+```
 
 #### Hooks
 
