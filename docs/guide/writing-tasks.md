@@ -685,7 +685,7 @@ publish_task:
   script: ./publish.sh
 ```
 
-The path is exactly the one you'd specify by calling `vault read`, and the selector is a simply dot-delimited list of fields to query in the output.
+The path is exactly the one you are familiar from invoking Vault CLI like [`vault read ...`](https://developer.hashicorp.com/vault/docs/commands/read), and the selector is a simply dot-delimited list of fields to query in the output.
 
 ## Cron Builds
 
