@@ -674,7 +674,7 @@ You will need to configure a [JWT authentication method](https://developer.hashi
 
 This ensures that a cryptographic JWT token (`CIRRUS_OIDC_TOKEN`) that each Cirrus CI's task get assigned will be verified by your Vault installation.
 
-From the Cirrus CI's side, use the `CIRRUS_VAULT_URL` environment variable to point Cirrus Agent at your vault and configure [other Vault-specific variables](#behavioral-environment-variables), if needed.
+From the Cirrus CI's side, use the `CIRRUS_VAULT_URL` environment variable to point Cirrus Agent at your vault and configure [other Vault-specific variables](#behavioral-environment-variables), if needed. Note that it's not required for `CIRRUS_VAULT_URL` to be publicly available since Cirrus CI can orchestrate tasks on your infrastructure. Only Cirrus Agent executing a task from within an [execution environment](#execution-environment) needs access to your Vault.
 
 Once done, you will be able to use the `VAULT[path/to/secret selector]` syntax to retrieve a [version 2 secret](https://developer.hashicorp.com/vault/docs/secrets/kv/kv-v2), for example:
 
