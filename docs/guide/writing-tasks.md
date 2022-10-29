@@ -672,7 +672,7 @@ In addition to using Cirrus CI for managing secrets, it is possible to retrieve 
 
 You will need to configure a [JWT authentication method](https://developer.hashicorp.com/vault/docs/auth/jwt#jwt-authentication) and point it to the Cirrus CI's OIDC discovery URL: `https://oidc.cirrus-ci.com`.
 
-This ensures that a cryptographic JWT token (`CIRRUS_OIDC_TOKEN`) that the Cirrus CI's task will automatically pass to your Vault will be considered valid.
+This ensures that a cryptographic JWT token (`CIRRUS_OIDC_TOKEN`) that each Cirrus CI's task get assigned will be verified by your Vault installation.
 
 From the Cirrus CI's side, use the `CIRRUS_VAULT_URL` environment variable to point Cirrus Agent at your vault and configure [other Vault-specific variables](#behavioral-environment-variables), if needed.
 
