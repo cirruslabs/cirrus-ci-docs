@@ -5,7 +5,7 @@ Use `macos_instance` in your `.cirrus.yml` files:
 
 ```yaml
 macos_instance:
-  image: ghcr.io/cirruslabs/macos-monterey-base:latest
+  image: ghcr.io/cirruslabs/macos-ventura-base:latest
 
 task:
   script: echo "Hello World from macOS!"
@@ -21,5 +21,5 @@ Please refer to the [`macos-image-templates`](https://github.com/cirruslabs/maco
 don't hesitate to [create issues](https://github.com/cirruslabs/macos-image-templates/issues) if current images are missing something.
 
 !!! info "Underlying Orchestration Technology"
-  Under the hood Cirrus CI is using Cirrus CI's own [Persistent Workers](persistent-workers.md). See more details in
-  out [blog post](https://medium.com/cirruslabs/new-macos-task-execution-architecture-for-cirrus-ci-604250627c94).
+    Under the hood Cirrus CI is using Cirrus CI's own [Persistent Workers](persistent-workers.md). See more details in
+    out [blog post](https://medium.com/cirruslabs/new-macos-task-execution-architecture-for-cirrus-ci-604250627c94).
