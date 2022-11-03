@@ -131,7 +131,7 @@ After a successful login, Docker config file located in `~/.docker/config.json` 
 ```
 
 If you don't see `auth` for your registry, it means your Docker installation is using a credentials store. In this case
-you can manually auth using a Base64 encoded string of your username and your PAT ([Personal Access Token](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token)).
+you can manually auth using a Base64 encoded string of your username and your PAT ([Personal Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)).
 Here's how to generate that:
 
 ```bash
