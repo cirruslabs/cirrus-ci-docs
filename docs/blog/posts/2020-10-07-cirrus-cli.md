@@ -22,7 +22,7 @@ Today we are happy to announce **Cirrus CLI — an [open source](https://github.
 
 When Cirrus Labs was created in 2017 the CI market was kind of stagnating. The most popular CIs on GitHub were not innovating for years and it looked like the whole cloud computing technologies are sprinting when CIs are resting on their laurels. Out of this frustration Cirrus CI was created with a focus to leverage modern clouds and be as efficient as possible by using a [completely new concept of architecting CI systems](https://medium.com/cirruslabs/core-principle-of-continuous-integration-systems-is-obsolete-8d926e17c721). Many things have happened since then and the CI market is not stagnating nowadays! There is a new wave of specialized CIs launched with a focus on fixing the CI problem only for one particular niche: only Android or iOS apps, only a specific framework like Laravel, only for Go applications, etc.
 
-Since launching Cirrus CI we heard from users only positive feedback about Cirrus configuration format: it’s concise, there is no magic happening and at the same time it’s easy for humans to understand even though it’s still YAML (check **What’s Next** section to learn about the upcoming alternative configuration format). Here is an example of .cirrus.yml configuration file for a Go project:
+Since launching Cirrus CI we heard from users only positive feedback about Cirrus configuration format: it’s concise, there is no magic happening and at the same time it’s easy for humans to understand even though it’s still YAML (check **What’s Next** section to learn about the upcoming alternative configuration format). Here is an example of `.cirrus.yml` configuration file for a Go project:
 
 ```yaml
 task:
@@ -84,7 +84,7 @@ def main():
   return detect_tasks(versions = ["1.15", "1.14"])
 ```
 
-**That’s it!** It’s a real programming language with an option to load external templates! Let’s also dive into the detect_tasks function:
+**That’s it!** It’s a real programming language with an option to load external templates! Let’s also dive into the `detect_tasks` function:
 
 ```python
 def detect_tasks(versions=["latest"], env={}):
@@ -97,9 +97,9 @@ def detect_tasks(versions=["latest"], env={}):
     return all_tasks
 ```
 
-With a real programming language it is possible to do things that were not possible in YAML with any amount of syntactic sugar. There is logic indetect_task method that checks if there is a configuration file in the repository for golangci-lint and auto-magically configures a linting task. This external loading will allow to create reusable templates for all teams across the company.
+With a real programming language it is possible to do things that were not possible in YAML with any amount of syntactic sugar. There is logic `indetect_task` method that checks if there is a configuration file in the repository for `golangci-lint` and auto-magically configures a linting task. This external loading will allow to create reusable templates for all teams across the company.
 
-There is no CI build that hasn’t flaked once, you can imagine writing **a failure handler** in Starlark for your tasks that **will check logs for common transient failures specific for your CI process and automatically retry tasks without a need for a human eye **and even send a Slack message with the flake details for an additional investigation later on.
+There is no CI build that hasn’t flaked once, you can imagine writing **a failure handler** in Starlark for your tasks that **will check logs for common transient failures specific for your CI process and automatically retry tasks without a need for a human eye** and even send a Slack message with the flake details for an additional investigation later on.
 
 We are very excited about possibilities that template sharing will enable and what teams will do with it!
 

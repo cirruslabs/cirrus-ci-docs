@@ -13,7 +13,7 @@ This blog post will briefly go through the history of CI systems and will descri
 
 <!-- more -->
 
-First time an idea of a Continuous Integration (CI) system was described in the early 90s. But the first big win from a CI system was restraining “integration hell” for *Windows XP* release in 2001. Around that time a few CI systems were created, but only *Jenkins* lives to the current days.
+First time an idea of a Continuous Integration (CI) system was described in the early `90s`. But the first big win from a CI system was restraining “integration hell” for *Windows XP* release in 2001. Around that time a few CI systems were created, but only *Jenkins* lives to the current days.
 
 These first CI systems were pretty simple. They consist of several servers AKA *agents* that are constantly pulling a single *master* server for work that they can do. Once the *master* responses with a job for a particular *agent*, the *agent* simply executes commands and streams results back to the *master*. Simple as that!
 

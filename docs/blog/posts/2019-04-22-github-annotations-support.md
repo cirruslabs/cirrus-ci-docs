@@ -18,7 +18,7 @@ Today Cirrus CI starts supporting GitHub Annotations to provide inline feedback 
 
 <!-- more -->
 
-This became possible as a result of recently added features like [execution behaviour](https://cirrus-ci.org/guide/writing-tasks/#execution-behavior-of-instructions) and [artifacts](https://cirrus-ci.org/guide/writing-tasks/#artifacts-instruction). Now each artifact can specify a *format* so it can be parsed into annotations. Here is an example of .cirrus.yml file which saves and annotates JUnit reports of a Gradle build:
+This became possible as a result of recently added features like [execution behaviour](https://cirrus-ci.org/guide/writing-tasks/#execution-behavior-of-instructions) and [artifacts](https://cirrus-ci.org/guide/writing-tasks/#artifacts-instruction). Now each artifact can specify a *format* so it can be parsed into annotations. Here is an example of `.cirrus.yml` file which saves and annotates JUnit reports of a Gradle build:
 
 ```yaml
 container:  

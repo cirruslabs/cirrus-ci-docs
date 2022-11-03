@@ -61,7 +61,7 @@ We were able to quickly develop a packet filter with DHCP snooping functionality
 
 Once started with Softnet, a VM can only communicate with a DHCP server. Once a DHCP server assigns the VM an address, we remember it and allow only traffic from that address. Softnet does not modify any packets, but only drops them when they don’t match the learned VM’s IP.
 
-Finally, Sofnet already ships with Tart (when installed via Homebrew) and can be enabled with *--with-softnet* command-line flag when starting a VM:
+Finally, Softnet already ships with Tart (when installed via Homebrew) and can be enabled with *--with-softnet* command-line flag when starting a VM:
 
 ```bash
 brew install cirruslabs/cli/tart

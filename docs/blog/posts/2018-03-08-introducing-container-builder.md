@@ -16,7 +16,7 @@ When Cirrus CI was announced a few months ago Docker support was already pretty 
 
 ## Dockerfile as a CI environment
 
-Now there is no need to build and push custom containers so they can be used as an environment to run CI tasks in. Cirrus CI can do it for you! Just specify path to a Dockerfile via dockerfile field for you container declaration in .cirrus.yml like this:
+Now there is no need to build and push custom containers so they can be used as an environment to run CI tasks in. Cirrus CI can do it for you! Just specify path to a Dockerfile via dockerfile field for you container declaration in `.cirrus.yml` like this:
 
 ```yaml
 efficient_task:
@@ -35,13 +35,13 @@ inefficient_task:
 
 Cirrus CI will build a container and cache the resulting image based on Dockerfile’s content. On the next build, Cirrus CI will check if a container was already built, and if so, Cirrus CI will instantly start a CI task using the cached image.
 
-Under the hood, for every Dockerfile that is needed to be built, Cirrus CI will create a Docker Build task as [a dependency](https://cirrus-ci.org/guide/writing-tasks/#dependencies). You will see such build_docker_iamge_HASH tasks in the UI:
+Under the hood, for every Dockerfile that is needed to be built, Cirrus CI will create a Docker Build task as [a dependency](https://cirrus-ci.org/guide/writing-tasks/#dependencies). You will see such `build_docker_iamge_HASH` tasks in the UI:
 
 ![](/blog/images/dockerfile-as-ci-environment.png)
 
 ## Docker Builder for Open Source
 
-Before, only container based builds were available for free to Open Source projects via [Community Cluster](https://cirrus-ci.org/guide/supported-computing-services/#community-cluster). We are thrilled to introduce docker_builder tasks that are executed in a VM with Docker preinstalled. Now, Open Source projects can easily build and publish Docker images by adding docker_builder tasks in their CI pipelines. Here is an example of how Docker Builder can be used to push an image to Docker Hub once there is a release tag created:
+Before, only container based builds were available for free to Open Source projects via [Community Cluster](https://cirrus-ci.org/guide/supported-computing-services/#community-cluster). We are thrilled to introduce `docker_builder` tasks that are executed in a VM with Docker preinstalled. Now, Open Source projects can easily build and publish Docker images by adding `docker_builder` tasks in their CI pipelines. Here is an example of how Docker Builder can be used to push an image to Docker Hub once there is a release tag created:
 
 ```yaml
 test_task: ...

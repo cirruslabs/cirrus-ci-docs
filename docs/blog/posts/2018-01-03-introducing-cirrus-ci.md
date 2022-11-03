@@ -38,7 +38,7 @@ inconveniences like:
 
 * Focused mostly on containers which many businesses have not yet migrated their legacy projects to.
 
-* **Poor environment flexibility**. Usually it’s not possible to specify precisely which VM image or Docker container to run and how much resources it can have. This means that** code is most likely tested in the environment very different from the production environment**.
+* **Poor environment flexibility**. Usually it’s not possible to specify precisely which VM image or Docker container to run and how much resources it can have. This means that **code is most likely tested in the environment very different from the production environment**.
 
 Because of all the problems and inconveniences described above, we decided to build Cirrus CI with three simple principles in mind:
 

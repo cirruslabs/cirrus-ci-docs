@@ -12,7 +12,7 @@ categories:
 
 # New macOS task execution architecture for Cirrus CI
 
-We are happy to announce that the macOS tasks on Cirrus CI Cloud have switched to a new virtualization technology as well as overall architecture of the orchestration. This switch should be unnoticeable for the end users except that the tasks should become much faster since now each macos_instance of the Cirrus CI Cloud offering will utilize a full Mac Mini with 12 virtual CPUs and 24G of RAM.
+We are happy to announce that the macOS tasks on Cirrus CI Cloud have switched to a new virtualization technology as well as overall architecture of the orchestration. This switch should be unnoticeable for the end users except that the tasks should become much faster since now each `macos_instance` of the Cirrus CI Cloud offering will utilize a full Mac Mini with 12 virtual CPUs and 24G of RAM.
 
 <!-- more -->
 
@@ -60,4 +60,4 @@ task:
 
 This configuration can be easily executed locally or in any other CI via Cirrus CLI.
 
-We are very excited about the new architecture and opportunity to dogfood persistent workers functionality at scale! Please let us know how new architecture works for your projects (especially since there are 3x more CPU resources and better network performance) and send us feedback either on GitHub or on Twitter!
+We are very excited about the new architecture and opportunity to dogfood persistent workers functionality at scale! Please let us know how new architecture works for your projects (especially since there are `3x` more CPU resources and better network performance) and send us feedback either on GitHub or on Twitter!

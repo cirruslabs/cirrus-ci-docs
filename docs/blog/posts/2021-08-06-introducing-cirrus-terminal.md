@@ -50,7 +50,7 @@ Talking more technical, Cirrus Terminal is implemented in Golang and [is publicl
 
 * host — provides terminal sessions, typically [via an agent](https://github.com/cirruslabs/cirrus-ci-agent), pictured as two server instances in Fig. 1
 
-* server — acts as a rendezvous point for guests and hosts, pictured as terminal.cirrus-ci.com server in Fig. 1
+* server — acts as a rendezvous point for guests and hosts, pictured as `terminal.cirrus-ci.com` server in Fig. 1
 
 The guest is typically implemented in JavaScript (here’s an [example of the integration](https://github.com/cirruslabs/cirrus-ci-web/pull/384) with the Cirrus CI front end), while the host is [available as a Golang package](https://github.com/cirruslabs/terminal/tree/main/pkg/host).
 
