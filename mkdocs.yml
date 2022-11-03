@@ -50,10 +50,12 @@ extra_css:
   - 'stylesheets/landing.css'
 
 plugins:
+  - blog
   - search
   - minify
   - git-revision-date-localized:
       enable_creation_date: true
+      fallback_to_build_date: true
 
 markdown_extensions:
   - markdown.extensions.admonition
@@ -118,7 +120,8 @@ nav:
   - Examples: examples.md
   - Pricing: pricing.md
   - Support: support.md
-  - Blog: https://medium.com/cirruslabs
+  - Blog:
+    - blog/index.md
   - Go to App: https://cirrus-ci.com/
 
 extra:
