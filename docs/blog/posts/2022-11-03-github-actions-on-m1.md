@@ -1,9 +1,6 @@
 ---
 draft: false
 date: 2022-11-03
-links:
-  - 2021-01-26-new-macos-task-execution-architecture.md
-  - 2022-07-07-isolating-network-between-tarts-macos-virtual-machines.md
 authors:
   - fkorotkov
 categories:
@@ -56,4 +53,3 @@ Mobile CI and particularly managing Apple hardware is very difficult. We've spen
 and now we are happy to share it beyond Cirrus CI.
 
 Have you already switched to Apple Silicon and how do you like it? Don’t hesitate to send us your feedback either [on Twitter](https://twitter.com/cirrus_labs) or via [email](mailto:hello@cirruslabs.org)!
-

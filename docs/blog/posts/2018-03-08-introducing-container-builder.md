@@ -60,7 +60,7 @@ docker_builder:
   push_script: docker push myrepo/foo:$CIRRUS_TAG
 ```
 
-Please check [documentation](https://cirrus-ci.org/guide/docker-builder/) for more details. 🤓
+Please check [documentation](https://cirrus-ci.org/guide/docker-builder-vm/) for more details. 🤓
 
 We are highly encourage you to [try out Cirrus CI](http://cirrus-ci.org/#/quick-start). It’s free for Open Source projects and very easy to setup!
 

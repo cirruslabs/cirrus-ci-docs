@@ -79,13 +79,13 @@ expressly into the Terms of Service by reference. You agree to the use of Your d
 ### Fees for Use of the Service
 
 * The Service may be provided to You without charge up with certain limits or for a certain "trial" period of time.
-* All payments for use of the Service will go through GitHub according to [GitHub Marketplace Terms of Service](https://help.github.com/articles/github-marketplace-terms-of-service/)
+* All payments for use of the Service will go through GitHub according to [GitHub Marketplace Terms of Service](https://docs.github.com/en/site-policy/github-terms/github-marketplace-terms-of-service)
 and [GitHub Marketplace Developer Agreement](https://help.github.com/articles/github-marketplace-developer-agreement/).
 * Cirrus Labs may change its fees and payment policies for the Service by notifying You at least thirty (30) days before the beginning of the billing cycle in which such change will take effect.
 
 ### Cancellation and Termination
 
-* You must cancel your subscription via GitHub Marketplace with respect to [GitHub Marketplace Terms of Service](https://help.github.com/articles/github-marketplace-terms-of-service/).
+* You must cancel your subscription via GitHub Marketplace with respect to [GitHub Marketplace Terms of Service](https://docs.github.com/en/site-policy/github-terms/github-marketplace-terms-of-service).
 * You agree that Cirrus Labs, in its sole discretion and for any or no reason, may terminate or suspend Your subscription. You agree that any termination of Your access to the Service may be without prior notice, and You agree that Cirrus CI will not be liable to You or any third party for such termination.
 
 ### Customer Source Code
