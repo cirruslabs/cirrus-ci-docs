@@ -113,9 +113,9 @@ gcloud projects add-iam-policy-binding $PROJECT_ID \
 ```
 
 !!! info "Default Logs Retentions Period"
-By default Cirrus CI will store logs and caches for 90 days but it can be changed by manually configuring a
-[lifecycle rule](https://cloud.google.com/storage/docs/lifecycle) for a Google Cloud Storage bucket that Cirrus CI is
-using.
+    By default Cirrus CI will store logs and caches for 90 days but it can be changed by manually configuring a
+    [lifecycle rule](https://cloud.google.com/storage/docs/lifecycle) for a Google Cloud Storage bucket that Cirrus CI is
+    using.
 
 ### Authorization
 
@@ -148,8 +148,8 @@ following sections
 with additional instructions about [Compute Engine](#compute-engine) or [Kubernetes Engine](#kubernetes-engine).
 
 !!! info "Supported Regions"
-Cirrus CI currently supports following GCP regions: `us-central1`, `us-east1`, `us-east4`, `us-west1`, `us-west2`,
-`europe-west1`, `europe-west2`, `europe-west3` and `europe-west4`.
+    Cirrus CI currently supports following GCP regions: `us-central1`, `us-east1`, `us-east4`, `us-west1`, `us-west2`,
+    `europe-west1`, `europe-west2`, `europe-west3` and `europe-west4`.
 
     Please [contact support](../support.md) if you are interested in support for other regions.
 
