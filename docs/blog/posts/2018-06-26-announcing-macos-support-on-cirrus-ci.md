@@ -30,7 +30,7 @@ For example, Veertu brings a container-like feel to managing macOS VMs with thei
 
 MacStadium is the best provider of Apple Mac infrastructure. They have reliable and fast network and hardware in their data centers. Recently they partnered up with Veertu to offer hosted Anka on a MacStadium private cloud. Finally a solution that provides a **modern orchestration for macOS VMs**.
 
-Today we are happy to announce support for Anka Build Cloud on Cirrus CI. Open Source Projects can try [**macOS builds free of charge](https://cirrus-ci.org/guide/macOS/)**. To try the power on Anka Virtualization on your OSS projects simply add following to your .cirrus.yml configuration file:
+Today we are happy to announce support for Anka Build Cloud on Cirrus CI. Open Source Projects can try [**macOS builds free of charge](https://cirrus-ci.org/guide/macOS/)**. To try the power on Anka Virtualization on your OSS projects simply add following to your `.cirrus.yml` configuration file:
 
 ```yaml
 task:

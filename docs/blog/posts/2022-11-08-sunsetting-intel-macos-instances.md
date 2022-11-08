@@ -31,8 +31,8 @@ We are switching [managed-by-us macOS instances](/guide/macOS.md)) to exclusivel
 ![](/blog/images/new-architecture-old-anka.png)
 
 We started back in 2018 by adopting pretty new at the time virtualization technology called Anka. It worked fairly well for us to some extent.
-We started hitting first scaling issues pretty quickly when we reached around 10ish Mac Minis in our fleet. Anka Registry was just bounded by the I/O of a single
-server that it was deployed too. **You can't distribute huge 50ish GB templates to dozens of hosts simultaneously from a single server!**
+We started hitting first scaling issues pretty quickly when we reached around a dozen Mac Minis in our fleet. Anka Registry was just bounded by the I/O of a single
+server that it was deployed too. **You can't distribute huge 50+ GB templates to dozens of hosts simultaneously from a single server!**
 
 We had to implement some extra Ansible magic that distributed these templates via `scp` in `log(n)` where `n` is the number of Mac Minis in one data center.
 The magic pulled a new template from Anka registry to a single host, then the next two hosts instead of pulling from the registry, used `scp` to copy
@@ -50,7 +50,7 @@ With that in mind we started working on [Cirrus CLI](https://github.com/cirrusla
 ![](/blog/images/new-architecture-workers.png)
 
 Throughout 2020, we switched from an Anka cluster managed by MacStadium to a self-managed installation. We deployed
-Anka Registry and Anka Controller on Google Cloud and got Mac Minis evenly distributed between two [MacMiniVault](https://www.macminivault.com/) data centers for redundancy.
+Anka Registry and Anka Controller on Google Cloud and got Mac Minis evenly distributed between two [`MacMiniVault`](https://www.macminivault.com/) data centers for redundancy.
 We perfected our Ansible cookbooks and got very comfortable with rolling updates so we don't have downtime. Prepared
 Packer templates to automate creation of Virtual Machines.
 
