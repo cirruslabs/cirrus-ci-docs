@@ -16,6 +16,7 @@ categories:
 # Sunsetting Intel macOS instances
 
 **TLDR** Intel-based Big Sur and High Sierra instances will stop working on January 1st 2023. Please migrate to [M1-based Monterey and Ventura instances](/guide/macOS.md).
+Below we'll provide some history and motivation for this decision.
 
 ## Evolution of macOS infrastructure for Cirrus CI
 
@@ -33,7 +34,7 @@ We started back in 2018 by adopting pretty new at the time virtualization techno
 We started hitting first scaling issues pretty quickly when we reached around 10ish Mac Minis in our fleet. Anka Registry was just bounded by the I/O of a single
 server that it was deployed too. **You can't distribute huge 50ish GB templates to dozens of hosts simultaneously from a single server!**
 
-We had to implement some extra Ansible magic that distributed these templates via `scp` in `log(n)` where `n` is number of Mac Minis is one data center.
+We had to implement some extra Ansible magic that distributed these templates via `scp` in `log(n)` where `n` is the number of Mac Minis in one data center.
 The magic pulled a new template from Anka registry to a single host, then the next two hosts instead of pulling from the registry, used `scp` to copy
 from the previous hosts, etc. That unblocked our growth and we continued using Anka.
 
@@ -58,8 +59,8 @@ We had two criterias in mind: cost-efficiency and network stability. After some 
 Network performance was better, starting time for VMs was a little slower but still very fast. And price! Anka's
 license costed us more than we paid for the hardware we rented to run it! Parallels was just $10/month/host.
 
-Long story shot, we added necessary features to Cirrus CLI to run tasks in Parallels VMs, used the same Packer templates
-to re-build all the virtual machines. And in early 2021 did the switch!
+Long story short, we added necessary features to Cirrus CLI to run tasks in Parallels VMs, used the same Packer templates
+to rebuild all the virtual machines. And in early 2021 did the switch!
 
 ### Third generation with Tart
 
@@ -76,7 +77,7 @@ solution adopted `Virtualization.Framework` beside Anka 3.0. A switch back was o
 the same even though there is now little "knowhow" because Apple liberated this knowledge with `Virtualization.Framework`.
 
 We decided to give it a try and build our own virtualization solution. Couple months later we open-sourced Tart and
-couple other tools to help everyone with automation need on Apple Silicon. One unique feature of Tart is integration with
+a couple other tools to help everyone with automation needs on Apple Silicon. One unique feature of Tart is integration with
 OCI-compatible container registries to Push/Pull virtual machines from them. It simplifies distribution of huge virtual machines
 to hundreds of Mac Minis because cloud container registries are super scalable.
 
@@ -85,9 +86,9 @@ We also added another fleet of M1 Mac Minis and offered M1 macOS virtual machine
 ## Inevitable Future
 
 Apple no longer sells Intel-based hardware, and it's just a matter of time for a full transition. For us, continuing managing
-second generation of infrastructure is becoming a burden. We are fully committing to supporting Apple Silicon and decided
+the second generation of infrastructure is becoming a burden. We are fully committing to supporting Apple Silicon and decided
 to sunset our Intel-based offering from January 1st 2023.
 
 Please migrate your Big Sur and High Sierra `macos_instance`s to Monterey or Ventura. Refer to [documentation](/guide/macOS.md) for more details.
 
-Have any questions? Don’t hesitate to send us your feedback either [on Twitter](https://twitter.com/cirrus_labs) or via [email](mailto:hello@cirruslabs.org)!
+Have any questions? Still need to test on Intel? Don’t hesitate to send us your feedback either [on Twitter](https://twitter.com/cirrus_labs) or via [email](mailto:hello@cirruslabs.org)!
