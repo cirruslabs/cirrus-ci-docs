@@ -12,7 +12,7 @@ categories:
 
 Cirrus CI already had great Linux and Windows support. The only missing platform was macOS and there was a good reason for that.
 
-**TLDR: **Please check [documentation](https://cirrus-ci.org/guide/macOS/) for just instructions on how to configure macOS builds on Cirrus CI. The is a little bit of history and motivation below.
+**TLDR:** Please check [documentation](https://cirrus-ci.org/guide/macOS/) for just instructions on how to configure macOS builds on Cirrus CI. The is a little bit of history and motivation below.
 
 <!-- more -->
 

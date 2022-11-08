@@ -6,6 +6,7 @@ APIs
 AWS
 Airbnb
 Anka
+Ansible
 AppVeyor
 Azure
 Barklarm
@@ -108,6 +109,7 @@ Kaniko
 Kubernetes
 Laravel
 Lifecycle
+M1-based
 MacStadium
 Makisu
 Monorepo
@@ -117,6 +119,7 @@ Node.JS
 Node.js
 NodeJS
 OAuth
+OCI-compatible
 OpenID
 OpenJDK
 Parallelization
@@ -132,6 +135,7 @@ SSDs
 Skaffold
 Softnet
 Starlark
+Sunsetting
 Unittest
 VM-based
 VM-specific
@@ -243,6 +247,7 @@ support@cirruslabs.org
 sweat_smile
 sysctl
 timestamp
+toolset
 unary
 unmarshalling
 utun

@@ -50,12 +50,12 @@ With that in mind we started working on [Cirrus CLI](https://github.com/cirrusla
 ![](/blog/images/new-architecture-workers.png)
 
 Throughout 2020, we switched from an Anka cluster managed by MacStadium to a self-managed installation. We deployed
-Anka Registry and Anka Controller on Google Cloud and got Mac Minis evenly distributed between two MacMiniVault data centers for redundancy.
+Anka Registry and Anka Controller on Google Cloud and got Mac Minis evenly distributed between two [MacMiniVault](https://www.macminivault.com/) data centers for redundancy.
 We perfected our Ansible cookbooks and got very comfortable with rolling updates so we don't have downtime. Prepared
 Packer templates to automate creation of Virtual Machines.
 
 In parallel Cirrus CLI matured, it was able to run tasks in Docker containers. It was time to find a replacement for Anka.
-We had two criterias in mind: cost-efficiency and network stability. After some research we ended up with Parallels.
+We had two criteria in mind: cost-efficiency and network stability. After some research we ended up with Parallels.
 Network performance was better, starting time for VMs was a little slower but still very fast. And price! Anka's
 license costed us more than we paid for the hardware we rented to run it! Parallels was just $10/month/host.
 
