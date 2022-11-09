@@ -22,7 +22,7 @@ Below we'll provide some history and motivation for this decision.
 
 We've been running macOS instances for almost 5 years now. We evaluated all the existing solutions and even successfully
 operated two of them on Intel platform before creating our own virtualization toolset for Apple Silicon called [*Tart*](https://github.com/cirruslabs/tart).
-We are switching [managed-by-us macOS instances](/guide/macOS.md)) to exclusively running in Tart virtual machines **starting January 1st 2023**.
+We are switching [managed-by-us macOS instances](/guide/macOS.md) to exclusively running in Tart virtual machines **starting January 1st 2023**.
 
 <!-- more -->
 
@@ -51,7 +51,7 @@ With that in mind we started working on [Cirrus CLI](https://github.com/cirrusla
 
 Throughout 2020, we switched from an Anka cluster managed by MacStadium to a self-managed installation. We deployed
 Anka Registry and Anka Controller on Google Cloud and got Mac Minis evenly distributed between two [`MacMiniVault`](https://www.macminivault.com/) data centers for redundancy.
-We perfected our Ansible cookbooks and got very comfortable with rolling updates so we don't have downtime. Prepared
+We perfected our Ansible cookbooks and got very comfortable with rolling updates so we don't have downtime. We also prepared
 Packer templates to automate creation of Virtual Machines.
 
 In parallel Cirrus CLI matured, it was able to run tasks in Docker containers. It was time to find a replacement for Anka.
@@ -69,11 +69,11 @@ to rebuild all the virtual machines. And in early 2021 did the switch!
 In the meantime Apple Silicon was taking off. It was clear Apple was very serious about the transition and full switch from Intel processors.
 But at the time none of the virtualization solutions supported Apple Silicon. It was a new stack with new challenges.
 
-Thankfully in the end of 2021 with macOS Monterey release Apple themselves released `Virtualization.Framework` so companies like
+Thankfully in the end of 2021 with macOS Monterey release Apple themselves released `Virtualization.Framework`, so companies like
 Veertu and Parallels don't need to re-invent the wheel and reverse engineer all the things about macOS.
 
 By February 2022 we were getting more and more requests to support M1 workloads in our CI but none of the virtualization
-solution adopted `Virtualization.Framework` beside Anka 3.0. A switch back was off the table. Anka pricing was
+solution adopted `Virtualization.Framework`, except for Anka 3.0. A switch back was off the table. Anka pricing was
 the same even though there is now little "knowhow" because Apple liberated this knowledge with `Virtualization.Framework`.
 
 We decided to give it a try and build our own virtualization solution. Couple months later we open-sourced Tart and
