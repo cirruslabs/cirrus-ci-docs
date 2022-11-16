@@ -19,8 +19,8 @@ to execute these instructions in. Let's see a line-by-line example of a `.cirrus
       test_script: ./gradlew test
     ```
 
-The example above defines a single task that will be scheduled and executed on the [Linux Community Cluster](linux.md) using the `gradle:jdk11` Docker image.
-Only one user-defined [script instruction](#script-instruction) to run `gradle test` will be executed. Not that complex, right?
+The example above defines a single task that will be scheduled and executed on the [Linux Community Cluster](linux.md) using the `openjdk:latest` Docker image.
+Only one user-defined [script instruction](#script-instruction) to run `./gradlew test` will be executed. Not that complex, right?
 
 Please read the topics below if you want better understand what's going on in a more complex `.cirrus.yml` configuration file, such as this:
 
