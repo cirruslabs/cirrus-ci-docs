@@ -10,16 +10,16 @@ services free of charge with [some limits](faq.md#are-there-any-limits) but *wit
 
 Here is a list of all instance types available for free for Open Source Projects:
 
-Instance Type              | Managed by | Description
--------------------------- | ---------- | -----------------------
-`container`                | **us**     | [Linux Docker Container][container]
-`arm_container`            | **us**     | [Linux Arm Docker Container][container]
-`windows_container`        | **us**     | [Windows Docker Container][windows_container]
-`docker_builder`           | **us**     | [Full-fledged VM pre-configured for running Docker][docker_builder]
-`macos_instance`           | **us**     | [macOS Virtual Machines][macos_instance]
-`freebsd_instance`         | **us**     | [FreeBSD Virtual Machines][freebsd_instance]
-`compute_engine_instance`  | **us**     | [Full-fledged custom VM][compute_engine_instance]
-`persistent_worker`        | **you**    | [Use any host on any platform and architecture][persistent_worker]
+| Instance Type             | Managed by | Description                                                         |
+|---------------------------|------------|---------------------------------------------------------------------|
+| `container`               | **us**     | [Linux Docker Container][container]                                 |
+| `arm_container`           | **us**     | [Linux Arm Docker Container][container]                             |
+| `windows_container`       | **us**     | [Windows Docker Container][windows_container]                       |
+| `docker_builder`          | **us**     | [Full-fledged VM pre-configured for running Docker][docker_builder] |
+| `macos_instance`          | **us**     | [macOS Virtual Machines][macos_instance]                            |
+| `freebsd_instance`        | **us**     | [FreeBSD Virtual Machines][freebsd_instance]                        |
+| `compute_engine_instance` | **us**     | [Full-fledged custom VM][compute_engine_instance]                   |
+| `persistent_worker`       | **you**    | [Use any host on any platform and architecture][persistent_worker]  |
 
 [container]: guide/linux.md
 [windows_container]: guide/windows.md
