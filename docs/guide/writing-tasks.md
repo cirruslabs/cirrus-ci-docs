@@ -1106,7 +1106,7 @@ advantage of remote caching. Remote caching is when a build system uploads and d
 execution while the build itself is still executing.
 
 Cirrus CI agent starts a local caching server and exposes it via `CIRRUS_HTTP_CACHE_HOST` environments variable. Caching server
-supports `GET`, `POST` and `HEAD` requests to upload, download and check presence of artifacts.
+supports `GET`, `POST`, `HEAD` and `DELETE` requests to upload, download, check presence and delete artifacts.
 
 !!! info
     If port `12321` is available `CIRRUS_HTTP_CACHE_HOST` will be equal to `localhost:12321`.
