@@ -139,7 +139,6 @@ Field Name                 | Managed by | Description
 
 [container]: linux.md
 [windows_container]: windows.md
-[docker_builder]: docker-builder-vm.md
 [macos_instance]: macOS.md
 [freebsd_instance]: FreeBSD.md
 [compute_engine_instance]: custom-vms.md
