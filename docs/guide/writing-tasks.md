@@ -126,7 +126,6 @@ Field Name                 | Managed by | Description
 `container`                | **us**     | [Linux Docker Container][container]
 `arm_container`            | **us**     | [Linux Arm Docker Container][container]
 `windows_container`        | **us**     | [Windows Docker Container][windows_container]
-`docker_builder`           | **us**     | [Full-fledged VM pre-configured for running Docker][docker_builder]
 `macos_instance`           | **us**     | [macOS Virtual Machines][macos_instance]
 `freebsd_instance`         | **us**     | [FreeBSD Virtual Machines][freebsd_instance]
 `compute_engine_instance`  | **us**     | [Full-fledged custom VM][compute_engine_instance]
@@ -140,7 +139,6 @@ Field Name                 | Managed by | Description
 
 [container]: linux.md
 [windows_container]: windows.md
-[docker_builder]: docker-builder-vm.md
 [macos_instance]: macOS.md
 [freebsd_instance]: FreeBSD.md
 [compute_engine_instance]: custom-vms.md
