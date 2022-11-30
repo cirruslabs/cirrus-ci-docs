@@ -110,6 +110,18 @@ It is possible to use private Docker registries with Cirrus CI to pull container
 of your choice you'll need to obtain a JSON Docker config file for your registry and create an [encrypted variable](writing-tasks.md#encrypted-variables)
 for Cirrus CI to use.
 
+??? note "Using Kubernetes secrets with private clusters"
+    Alternatively, if you are using Cirrus CI with [your private Kubernetes cluster](supported-computing-services.md)
+    you can [create a `kubernetes.io/dockerconfigjson` secret](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/)
+    and just use it's name for `registry_config`:
+
+    ```yaml
+    task:
+      gke_container:
+        image: secret:image
+        registry_config: myregistrykey
+    ```
+
 Let's check an example of setting up Oracle Container Registry in order to use Oracle Database in tests.
 
 First, you'll need to login with the registry by running the following command:
