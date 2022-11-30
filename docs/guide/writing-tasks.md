@@ -480,10 +480,10 @@ Here is an example of how to populate Docker config from an [encrypted environme
 ```yaml
 task:
   environment:
-    DOCKER_CONFIG: ENCRYPTED[qwerty]
+    DOCKER_CONFIG_JSON: ENCRYPTED[qwerty]
   docker_config_file:
-    path: /root/.docker/config
-    variable_name: DOCKER_CONFIG
+    path: /root/.docker/config.json
+    variable_name: DOCKER_CONFIG_JSON
 ```
 
 ### Execution Behavior of Instructions
