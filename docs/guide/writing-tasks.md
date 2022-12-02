@@ -1139,6 +1139,7 @@ Each additional container is defined under `additional_containers` keyword in `.
 should have a unique `name` and specify at least a container `image`.
 
 Normally, you would also specify a `port` (or `ports`, if there are many) to instruct the Cirrus CI to configure the networking between the containers and wait for the ports to be available before running the task.
+Additional containers do not inherit environment variables because they are started before the main task receives it's environment variables.
 
 In the example below we use an [official MySQL Docker image](https://hub.docker.com/_/mysql/) that exposes
 the standard MySQL port (3306). Tests will be able to access MySQL instance via `localhost:3306`.
@@ -1230,8 +1231,8 @@ Additional container can be very handy in many scenarios. Please check [Cirrus C
         ```
 
 ??? warning
-    **Note** that `additional_containers` can be used only with [Community Cluster](supported-computing-services.md#community-cluster)
-    or [Google's Kubernetes Engine](supported-computing-services.md#kubernetes-engine).
+    **Note** that `additional_containers` can be used only with the [Community Cluster](writing-tasks.md)
+    , a [GKE](supported-computing-services.md#kubernetes-engine) cluster or a [EKS](supported-computing-services.md#eks) cluster.
 
 ## Embedded Badges
 
