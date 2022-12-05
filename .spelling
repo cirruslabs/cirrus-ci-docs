@@ -31,6 +31,7 @@ CIRRUS_CHANGE_TITLE
 CIRRUS_CI
 CIRRUS_CLONE_DEPTH
 CIRRUS_CLONE_SUBMODULES
+CIRRUS_CPU
 CIRRUS_CRON
 CIRRUS_DEFAULT_BRANCH
 CIRRUS_DOCKER_CONTEXT
@@ -218,6 +219,7 @@ multiplatform
 namespace
 natively
 node
+non-interger
 nondeterministic
 nonintuitive
 npm
