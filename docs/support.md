@@ -43,7 +43,7 @@ You'll be helping to shape the future of software developed by Cirrus Labs!
 
 ## Priority Support Pricing
 
-As a company grows, engineering team tend to accumulate knowledge operating and working with Cirrus CI and other services/software provided by Cirrus Cabs,
+As a company grows, engineering team tend to accumulate knowledge operating and working with Cirrus CI and other services/software provided by Cirrus Labs,
 therefore there is less effort needed to support each new seat from our side. On the other hand, Cirrus CI allows to [bring your own infrastructure](guide/supported-computing-services.md)
 which increases complexity of the support. As a result we reflected the above challenges in a [tiered pricing model](https://www.rebilly.com/blog/subscription-business-pricing-formulas/#tiered)
 based on a seat amount and a type of infrastructure used:
