@@ -14,11 +14,12 @@ Our support team will answer it by replying to the issue or by updating the docu
 # Priority Support
 
 In addition to the general support we provide a *Priority Support* option with guaranteed response times. But most importantly we'll be doing
-regular checkins to make sure Cirrus CI roadmap is aligned with your company's needs. You'll be helping to shape the future of Cirrus CI/CD!
+regular checkins to make sure roadmap for Cirrus CI and other services/software under [`cirruslabs` organization](https://github.com/cirruslabs) is aligned with your company's needs.
+You'll be helping to shape the future of software developed by Cirrus Labs!
 
 | Severity | Support Impact                                                                                | First Response Time SLA | Hours | How to Submit                                                                                    |
 |----------|-----------------------------------------------------------------------------------------------|-------------------------|-------|--------------------------------------------------------------------------------------------------|
-| 1        | Emergency (Cirrus CI is unavailable or completely unusable).                                  | 30 minutes              | 24x7  | Please use urgent email address.                                                                 |
+| 1        | Emergency (service is unavailable or completely unusable).                                    | 30 minutes              | 24x7  | Please use urgent email address.                                                                 |
 | 2        | Highly Degraded (Important features unavailable or extremely slow; No acceptable workaround). | 4 hours                 | 24x5  | Please use priority email address.                                                               |
 | 3        | Medium Impact.                                                                                | 8 hours                 | 24x5  | Please use priority email address.                                                               |
 | 4        | Low Impact.                                                                                   | 24 hours                | 24x5  | Please use regular support email address. Make sure to send the email from your corporate email. |
@@ -27,14 +28,14 @@ regular checkins to make sure Cirrus CI roadmap is aligned with your company's n
 
 <!-- markdownlint-disable MD037 -->
 ??? note "Support Impact Definitions"
-    * **Severity 1** - Cirrus CI is unavailable or completely unusable. An urgent issue can be filed and
+    * **Severity 1** - Cirrus CI or other services is unavailable or completely unusable. An urgent issue can be filed and
       our On-Call Support Engineer will respond within 30 minutes. Example: Cirrus CI showing 502 errors for all users.
-    * **Severity 2** - Cirrus CI is Highly Degraded Significant Business Impact. Important Cirrus CI features are unavailable
+    * **Severity 2** - Cirrus CI or other services is Highly Degraded Significant Business Impact. Important Cirrus CI features are unavailable
       or extremely slowed, with no acceptable workaround.
-    * **Severity 3** - Something is preventing normal Cirrus CI operation Some Business Impact. Important Cirrus CI
-      features are unavailable or somewhat slowed, but a workaround is available. Cirrus CI use has a minor loss of operational functionality.
+    * **Severity 3** - Something is preventing normal service operation Some Business Impact. Important features of Cirrus CI or other services
+      are unavailable or somewhat slowed, but a workaround is available. Cirrus CI use has a minor loss of operational functionality.
     * **Severity 4** - Questions or Clarifications around features or documentation Minimal or no Business Impact. 
-      Information, an enhancement, or documentation clarification is requested, but there is no impact on the operation of Cirrus CI.
+      Information, an enhancement, or documentation clarification is requested, but there is no impact on the operation of Cirrus CI or other services/software.
 
 !!! info "How to submit a priority or an urgent issue"
     Once your organization [signs the Priority Support Subscription contract](#how-to-purchase-priority-support-subscription),
@@ -42,7 +43,7 @@ regular checkins to make sure Cirrus CI roadmap is aligned with your company's n
 
 ## Priority Support Pricing
 
-As a company grows, engineering team tend to accumulate knowledge operating and working with Cirrus CI,
+As a company grows, engineering team tend to accumulate knowledge operating and working with Cirrus CI and other services/software provided by Cirrus Labs,
 therefore there is less effort needed to support each new seat from our side. On the other hand, Cirrus CI allows to [bring your own infrastructure](guide/supported-computing-services.md)
 which increases complexity of the support. As a result we reflected the above challenges in a [tiered pricing model](https://www.rebilly.com/blog/subscription-business-pricing-formulas/#tiered)
 based on a seat amount and a type of infrastructure used:
@@ -67,4 +68,4 @@ Note that Priority Support Subscription requires a purchase of a minimum of 20 s
 
 Please email [sales@cirruslabs.org](mailto:sales@cirruslabs.org), so we can get a support contract in addition to [TOC](legal/terms.md).
 The contract will contain a special priority email address for your organization and other helpful information. Sales team will
-also schedule a check-in meeting to make sure your engineering team is set for success and Cirrus CI roadmap aligns with your needs.
+also schedule a check-in meeting to make sure your engineering team is set for success and Cirrus Labs roadmap aligns with your needs.
