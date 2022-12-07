@@ -30,11 +30,11 @@ You'll be helping to shape the future of software developed by Cirrus Labs!
 ??? note "Support Impact Definitions"
     * **Severity 1** - Cirrus CI or other services is unavailable or completely unusable. An urgent issue can be filed and
       our On-Call Support Engineer will respond within 30 minutes. Example: Cirrus CI showing 502 errors for all users.
-    * **Severity 2** - Cirrus CI or other services is Highly Degraded Significant Business Impact. Important Cirrus CI features are unavailable
+    * **Severity 2** - Cirrus CI or other services is Highly Degraded. Significant Business Impact. Important Cirrus CI features are unavailable
       or extremely slowed, with no acceptable workaround.
-    * **Severity 3** - Something is preventing normal service operation Some Business Impact. Important features of Cirrus CI or other services
+    * **Severity 3** - Something is preventing normal service operation. Some Business Impact. Important features of Cirrus CI or other services
       are unavailable or somewhat slowed, but a workaround is available. Cirrus CI use has a minor loss of operational functionality.
-    * **Severity 4** - Questions or Clarifications around features or documentation Minimal or no Business Impact. 
+    * **Severity 4** - Questions or Clarifications around features or documentation. Minimal or no Business Impact. 
       Information, an enhancement, or documentation clarification is requested, but there is no impact on the operation of Cirrus CI or other services/software.
 
 !!! info "How to submit a priority or an urgent issue"
