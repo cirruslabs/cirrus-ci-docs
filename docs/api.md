@@ -70,6 +70,11 @@ task(id: $taskId) {
   uniqueLabels
   automaticReRun
   automaticallyReRunnable
+  notifications {
+    level
+    message
+    link
+  }
 }
 ```
 
