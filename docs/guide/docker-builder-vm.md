@@ -153,7 +153,7 @@ declarations in your `.cirrus.yml` like this:
       test_script: ...
     
     inefficient_task:
-      container:
+      arm_container:
         image: node:latest
       setup_script:
         - apt-get update
