@@ -120,25 +120,46 @@ docker build --cache-from myrepo/foo:latest \
 ### Dockerfile as a CI environment
 
 With Docker Builder there is no need to build and push custom containers so they can be used as an environment to run CI tasks in. 
-Cirrus CI can do it for you! Just declare a path to a `Dockerfile` with the `dockerfile` field for your `container` (`arm_container`s are not supported yet)
-declaration in your `.cirrus.yml` like this:
+Cirrus CI can do it for you! Just declare a path to a `Dockerfile` with the `dockerfile` field for your `container` or `arm_container`
+declarations in your `.cirrus.yml` like this:
 
-```yaml
-efficient_task:
-  container:
-    dockerfile: ci/Dockerfile
-    docker_arguments:
-      foo: bar
-  test_script: ...
+=== "amd64"
 
-inefficient_task:
-  container:
-    image: node:latest
-  setup_script:
-    - apt-get update
-    - apt-get install build-essential
-  test_script: ...
-```
+    ```yaml
+    efficient_task:
+      container:
+        dockerfile: ci/Dockerfile
+        docker_arguments:
+          foo: bar
+      test_script: ...
+    
+    inefficient_task:
+      container:
+        image: node:latest
+      setup_script:
+        - apt-get update
+        - apt-get install build-essential
+      test_script: ...
+    ```
+
+=== "arm64"
+
+    ```yaml
+    efficient_task:
+      arm_container:
+        dockerfile: ci/Dockerfile
+        docker_arguments:
+          foo: bar
+      test_script: ...
+    
+    inefficient_task:
+      container:
+        image: node:latest
+      setup_script:
+        - apt-get update
+        - apt-get install build-essential
+      test_script: ...
+    ```
 
 Cirrus CI will build a container and cache the resulting image based on `Dockerfile`’s content. On the next build, 
 Cirrus CI will check if a container was already built, and if so, Cirrus CI will instantly start a CI task using the cached image.
