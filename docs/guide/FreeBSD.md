@@ -1,6 +1,6 @@
 ## FreeBSD Virtual Machines
 
-It is possible to run FreeBSD Virtual Machines the same way one can run [Linux containers](linux.md) on the FreeBSD Community Cluster. 
+It is possible to run FreeBSD Virtual Machines the same way one can run [Linux containers](linux.md) on the FreeBSD Cloud Cluster. 
 To accomplish this, use `freebsd_instance` in your `.cirrus.yml`:
 
 ```yaml

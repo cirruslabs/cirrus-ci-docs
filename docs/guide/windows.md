@@ -1,6 +1,6 @@
 ## Windows Containers
 
-It is possible to run [Windows Containers](https://docs.microsoft.com/en-us/virtualization/windowscontainers/about/) like how one can run [Linux containers](linux.md) on Windows Community Cluster. 
+It is possible to run [Windows Containers](https://docs.microsoft.com/en-us/virtualization/windowscontainers/about/) like how one can run [Linux containers](linux.md) on Cirrus Cloud Windows Cluster. 
 To use Windows, add `windows_container` instead of `container` in `.cirrus.yml` files:
 
 ```yaml

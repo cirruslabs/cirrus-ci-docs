@@ -19,7 +19,7 @@ to execute these instructions in. Let's see a line-by-line example of a `.cirrus
       test_script: ./gradlew test
     ```
 
-The example above defines a single task that will be scheduled and executed on the [Linux Community Cluster](linux.md) using the `openjdk:latest` Docker image.
+The example above defines a single task that will be scheduled and executed on the [Linux Cluster](linux.md) using the `openjdk:latest` Docker image.
 Only one user-defined [script instruction](#script-instruction) to run `./gradlew test` will be executed. Not that complex, right?
 
 Please read the topics below if you want better understand what's going on in a more complex `.cirrus.yml` configuration file, such as this:
@@ -371,7 +371,7 @@ Note that `pip` cache won't be uploaded in this example: using `upload_caches` d
 
 An `artifacts` instruction allows to store files and expose them in the UI for downloading later. An `artifacts` instruction
 can be named the same way as `script` instruction and has only one required `path` field which accepts a [glob pattern](https://en.wikipedia.org/wiki/Glob_(programming))
-of files relative to `$CIRRUS_WORKING_DIR` to store. Right now only storing files under [`$CIRRUS_WORKING_DIR` folder](#environment-variables) as artifacts is supported with a total size limit of 1G for a community task and with no limit on your own infrastructure.
+of files relative to `$CIRRUS_WORKING_DIR` to store. Right now only storing files under [`$CIRRUS_WORKING_DIR` folder](#environment-variables) as artifacts is supported with a total size limit of 1G for a free task and with no limit on your own infrastructure.
 
 In the example below, *Build and Test* task produces two artifacts: `binaries` artifacts with all executables built during a
 successful task completion and `junit` artifacts with all test reports regardless of the final task status (more about
@@ -1232,8 +1232,8 @@ Additional container can be very handy in many scenarios. Please check [Cirrus C
         ```
 
 ??? warning
-    **Note** that `additional_containers` can be used only with the [Community Cluster](writing-tasks.md)
-    , a [GKE](supported-computing-services.md#kubernetes-engine) cluster or a [EKS](supported-computing-services.md#eks) cluster.
+    **Note** that `additional_containers` can be used only with the [Linux Clusters](writing-tasks.md),
+    a [GKE](supported-computing-services.md#kubernetes-engine) cluster or a [EKS](supported-computing-services.md#eks) cluster.
 
 ## Embedded Badges
 
