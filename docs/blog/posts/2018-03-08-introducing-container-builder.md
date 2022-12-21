@@ -41,7 +41,7 @@ Under the hood, for every Dockerfile that is needed to be built, Cirrus CI will 
 
 ## Docker Builder for Open Source
 
-Before, only container based builds were available for free to Open Source projects via [Community Cluster](https://cirrus-ci.org/guide/supported-computing-services/#community-cluster). We are thrilled to introduce `docker_builder` tasks that are executed in a VM with Docker preinstalled. Now, Open Source projects can easily build and publish Docker images by adding `docker_builder` tasks in their CI pipelines. Here is an example of how Docker Builder can be used to push an image to Docker Hub once there is a release tag created:
+Before, only container based builds were available for free to Open Source projects via [Cirrus Cloud Clusters](https://cirrus-ci.org/guide/supported-computing-services/#cirrus-cloud-clusters). We are thrilled to introduce `docker_builder` tasks that are executed in a VM with Docker preinstalled. Now, Open Source projects can easily build and publish Docker images by adding `docker_builder` tasks in their CI pipelines. Here is an example of how Docker Builder can be used to push an image to Docker Hub once there is a release tag created:
 
 ```yaml
 test_task: ...

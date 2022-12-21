@@ -24,7 +24,7 @@ publish_task:
 
 ## Are there any limits?
 
-Cirrus CI has the following limitations on how many CPUs for different platforms a single user can run on community clusters
+Cirrus CI has the following limitations on how many CPUs for different platforms a single user can run on Cirrus Cloud Clusters
 for public repositories for free:
 
 * 16.0 CPUs for Linux platform (Containers or VMs).
@@ -68,10 +68,10 @@ Here are a few examples of such questionable activities we've seen so far:
 * Use Cirrus CI to download a pirated movie, re-encode it, upload as a Cirrus artifact and distribute it.
 * Use Cirrus CI distributed infrastructure to emulate user activity on a variety of websites to trick advertisers.
 
-## IP Addresses of Community Clusters
+## IP Addresses of Cirrus Cloud Clusters
 
-Instances running on Community Clusters are using dynamic IPs by default. It's possible to request
-a static `35.222.255.190` IP for all the community instance types except macOS VMs via `use_static_ip` field.
+Instances running on Cirrus Cloud Clusters are using dynamic IPs by default. It's possible to request
+a static `35.222.255.190` IP for all the "managed-by-us" instance types except macOS VMs via `use_static_ip` field.
 Here is an example of a Linux Docker container with a static IP:
 
 ```yaml
@@ -88,7 +88,7 @@ task:
 It means that Cirrus CI haven't heard from the agent for quite some time. In 99.999% of the cases 
 it happens because of two reasons:
 
-1. Your task was executing on [Community Cluster](guide/supported-computing-services.md#community-cluster). Community Cluster 
+1. Your task was executing on a [Cirrus Cloud Cluster](guide/supported-computing-services.md#cirrus-cloud-clusters). Cirrus Cloud Cluster 
    is backed by Google Cloud's [Preemptible VMs](https://cloud.google.com/preemptible-vms/) for cost efficiency reasons and
    Google Cloud preempted back a VM your task was executing on. Cirrus CI is trying to minimize possibility of such cases 
    by constantly rotating VMs before Google Cloud preempts them, but there is still chance of such inconvenience.
@@ -132,7 +132,7 @@ task:
 ```
 
 !!! note "Maximum timeout"
-    There is a hard limit of 2 hours for community tasks. Use [compute credits](pricing.md#compute-credits) or
+    There is a hard limit of 2 hours for free tasks. Use [compute credits](pricing.md#compute-credits) or
     [compute service integration](guide/supported-computing-services.md) to avoid the limit.
 
 ## Container errored
@@ -147,6 +147,6 @@ to [support BitBucket](https://github.com/cirruslabs/cirrus-ci-docs/issues/9) ne
 
 ## Any discounts?
 
-Cirrus CI itself doesn't provide any discounts except [Community Cluster](guide/supported-computing-services.md#community-cluster) 
+Cirrus CI itself doesn't provide any discounts except [Cirrus Cloud Cluster](guide/supported-computing-services.md#cirrus-cloud-clusters) 
 which is free for open source projects. But since Cirrus CI delegates execution of builds to different computing services,
 it means that discounts from your cloud provider will be applied to Cirrus CI builds.

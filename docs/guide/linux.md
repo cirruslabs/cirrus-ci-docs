@@ -7,7 +7,7 @@ running each platform:
 * For `container` instances Cirrus CI uses a GKE cluster of compute-optimized instances running in Google Cloud.
 * For `arm_container` instances Cirrus CI uses a EKS cluster of Graviton2 instances running in AWS.
 
-Community Clusters are configured the same way as anyone can configure a private Kubernetes cluster for their own
+Cirrus Cloud Clusters are configured the same way as anyone can configure a private Kubernetes cluster for their own
 repository. Cirrus CI supports connecting managed Kubernetes clusters from most of the cloud providers. Please check out
 all the [supported computing services](supported-computing-services.md) Cirrus CI can integrate with.
 
@@ -37,17 +37,10 @@ By default, a container is given 2 CPUs and 4 GB of memory, but it can be config
       script: ...
     ``` 
 
-Containers on Community Cluster can use maximum 8.0 CPUs and up to 32 GB of memory. Memory limit is tied to the amount
+Containers on Cirrus Cloud Cluster can use maximum 8.0 CPUs and up to 32 GB of memory. Memory limit is tied to the amount
 of CPUs requested. For each CPU you can't get more than 4G of memory.
 
 Tasks using [Compute Credits](../pricing.md#compute-credits) has higher limits and can use up to 28.0 CPUs and 112G of memory respectively.
-
-??? warning "Scheduling Times on Community Cluster"
-    Since Community Cluster is shared, scheduling times for containers can vary from time to time. Also, the smaller a container 
-    require resources the faster it will be scheduled.
-    
-    If you have a popular project and experiencing long scheduling times, don't hesitate to reach out to [support](../support.md)
-    and we can whitelist your repository for use of extra resources.
 
 ??? info "Using in-memory disks"
     Some I/O intensive tasks may benefit from using a `tmpfs` disk mounted as a working directory. Set `use_in_memory_disk` flag
