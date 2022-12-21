@@ -88,7 +88,7 @@ task:
 It means that Cirrus CI haven't heard from the agent for quite some time. In 99.999% of the cases 
 it happens because of two reasons:
 
-1. Your task was executing on a [Cirrus Cloud Cluster](guide/supported-computing-services.md#cirrus-cloud-clusters).Cirrus Cloud Cluster 
+1. Your task was executing on a [Cirrus Cloud Cluster](guide/supported-computing-services.md#cirrus-cloud-clusters). Cirrus Cloud Cluster 
    is backed by Google Cloud's [Preemptible VMs](https://cloud.google.com/preemptible-vms/) for cost efficiency reasons and
    Google Cloud preempted back a VM your task was executing on. Cirrus CI is trying to minimize possibility of such cases 
    by constantly rotating VMs before Google Cloud preempts them, but there is still chance of such inconvenience.

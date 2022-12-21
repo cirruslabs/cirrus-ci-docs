@@ -1232,7 +1232,7 @@ Additional container can be very handy in many scenarios. Please check [Cirrus C
         ```
 
 ??? warning
-    **Note** that `additional_containers` can be used only with the [Linux Clusters](writing-tasks.md),
+    **Note** that `additional_containers` can be used only with the [Linux Clusters](linux.md),
     a [GKE](supported-computing-services.md#kubernetes-engine) cluster or a [EKS](supported-computing-services.md#eks) cluster.
 
 ## Embedded Badges
