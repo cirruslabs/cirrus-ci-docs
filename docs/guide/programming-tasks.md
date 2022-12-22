@@ -298,15 +298,21 @@ Currently supported contexts:
 Example:
 
 ```python
-load("cirrus", "changes_include")
+load("cirrus", "changes_include", "fs")
 
 def main(ctx):
-    tasks = base_tasks()
+    result = ""
 
-    if changes_include("Dockerfile"):
-        tasks += docker_task()
+    if changes_include("docs/*"):
+        result += fs.read(".cirrus.docs.yml") + "\n"
 
-    return tasks
+    if changes_include("web/*"):
+        result += fs.read(".cirrus.web.yml") + "\n"
+
+    if changes_include("server/*"):
+        result += fs.read(".cirrus.server.yml") + "\n"
+
+    return result
 ```
 
 ### `changes_include_only`
@@ -325,10 +331,11 @@ Example:
 load("cirrus", "changes_include_only")
 
 def main(ctx):
+    # skip if only documentation changed
     if changes_include_only("doc/*"):
         return []
 
-    return base_tasks()
+    # ...
 ```
 
 ### `http`
