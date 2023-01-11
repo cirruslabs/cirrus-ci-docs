@@ -679,7 +679,8 @@ task:
     type: t2.micro
     region: us-east-1
     subnet_id: ... # optional, default subnet from your default VPC is used by default
-    architecture: arm64 # defautls to amd64
+    architecture: arm64 # defaults to amd64
+    spot: true # defaults to false
   script: ./run-ci.sh
 ```
 
