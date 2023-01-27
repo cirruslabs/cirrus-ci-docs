@@ -567,6 +567,8 @@ CIRRUS_LAST_GREEN_BUILD_ID | The build id of the last successful build on the sa
 CIRRUS_LAST_GREEN_CHANGE | Corresponding to `CIRRUS_LAST_GREEN_BUILD_ID` SHA (used in [`changesInclude`](#supported-functions) and [`changesIncludeOnly`](#supported-functions) functions).
 CIRRUS_PR | PR number if current build was triggered by a PR. For example `239`.
 CIRRUS_PR_DRAFT | `true` if current build was triggered by a Draft PR.
+CIRRUS_PR_TITLE | Title of a corresponding PR if any.
+CIRRUS_PR_BODY | Body of a corresponding PR if any.
 CIRRUS_PR_LABELS | comma separated list of PR's labels if current build was triggered by a PR.
 CIRRUS_TAG | Tag name if current build was triggered by a new tag. For example `v1.0`
 CIRRUS_OIDC_TOKEN | OpenID Token issued by `https://oidc.cirrus-ci.com` with audience set to `https://cirrus-ci.com/github/$CIRRUS_REPO_OWNER` (can be changed via `$CIRRUS_OIDC_TOKEN_AUDIENCE`). Please refer to [Cirrus CI OpenID Configuration](https://oidc.cirrus-ci.com/.well-known/openid-configuration) for the set of all supported claims.
