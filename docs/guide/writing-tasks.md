@@ -950,7 +950,7 @@ Currently only basic operators like `==`, `!=`, `=~`, `!=~`, `&&`, `||` and unar
     ```
     
     Note that `=~` operator can match against multiline values (dotall mode) and therefore looking for the exact occurrence of the regular expression
-    so don't forget to use `.*` around your term for matching it at any position (for example, `$CIRRUS_CHANGE_TITLE =~ '.*[docs].*'`).
+    so don't forget to use `.*` around your term for matching it at any position (for example, `$CIRRUS_CHANGE_TITLE =~ '.*\[docs\].*'`).
 
 ### Supported Functions
 
