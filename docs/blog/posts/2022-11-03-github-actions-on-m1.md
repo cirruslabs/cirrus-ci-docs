@@ -4,6 +4,8 @@ date: 2022-11-03
 links:
   - blog/posts/2021-01-26-new-macos-task-execution-architecture.md
   - blog/posts/2022-07-07-isolating-network-between-tarts-macos-virtual-machines.md
+search:
+  exclude: true
 authors:
   - fkorotkov
 categories:

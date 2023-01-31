@@ -1,6 +1,8 @@
 ---
 draft: false
 date: 2021-01-26
+search:
+  exclude: true
 authors:
   - fkorotkov
 categories:

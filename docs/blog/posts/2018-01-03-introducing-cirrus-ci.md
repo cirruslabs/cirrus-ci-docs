@@ -1,6 +1,8 @@
 ---
 draft: false
 date: 2018-01-03
+search:
+  exclude: true
 authors:
   - fkorotkov
 categories:
