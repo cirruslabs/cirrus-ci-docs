@@ -1,6 +1,8 @@
 ---
 draft: false
 date: 2021-08-06
+search:
+  exclude: true
 authors:
   - edigaryev
 categories:
