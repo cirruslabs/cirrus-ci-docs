@@ -681,6 +681,15 @@ task:
     subnet_id: ... # optional, default subnet from your default VPC is used by default
     architecture: arm64 # defaults to amd64
     spot: true # defaults to false
+    block_device_mappings: # empty by default
+      - device_name: /dev/sdg
+        ebs:
+          volume_size: 100 # to increase the size of the root volume
+      - device_name: /dev/sda1
+        virtual_name: ephemeral0 # to add an ephemeral disk for supported instances
+      - device_name: /dev/sdj
+        ebs:
+          snapshot_id: snap-xxxxxxxx 
   script: ./run-ci.sh
 ```
 
