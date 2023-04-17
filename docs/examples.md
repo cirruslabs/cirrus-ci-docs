@@ -248,7 +248,7 @@ container:
 test_task:
   pub_cache:
     folder: ~/.pub-cache
-  test_script: flutter test -machine > report.json
+  test_script: flutter test --machine > report.json
   always:
     report_artifacts:
       path: report.json
