@@ -27,7 +27,7 @@ you use any of our websites or services (whether or not you have signed up).
 ### Reuse
 
 This document is an adaptation of the [Code Climate Terms of Service](https://codeclimate.com/legal/terms), which is 
-an adaptation of the [Heroku Terms of Service](https://legal.heroku.com/tos), which is turn an adaptation of the 
+an adaptation of the original Heroku Terms of Service, which is turn an adaptation of the 
 [Google App Engine Terms of Service](https://code.google.com/appengine/terms.html). The original work has been modified 
 with permission under the [Creative Commons Attribution 3.0 License](https://creativecommons.org/licenses/by/3.0/). 
 Neither Code Climate, Inc, nor Heroku, Inc. nor Google, Inc. is connected with and they do not sponsor or endorse 

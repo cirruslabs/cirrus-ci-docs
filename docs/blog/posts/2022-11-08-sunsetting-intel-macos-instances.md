@@ -17,14 +17,14 @@ categories:
 
 # Sunsetting Intel macOS instances
 
-**TLDR** Intel-based Big Sur and High Sierra instances will stop working on January 1st 2023. Please migrate to [M1-based Monterey and Ventura instances](/guide/macOS.md).
+**TLDR** Intel-based Big Sur and High Sierra instances will stop working on January 1st 2023. Please migrate to [M1-based Monterey and Ventura instances](/guide/macOS).
 Below we'll provide some history and motivation for this decision.
 
 ## Evolution of macOS infrastructure for Cirrus CI
 
 We've been running macOS instances for almost 5 years now. We evaluated all the existing solutions and even successfully
 operated two of them on Intel platform before creating our own virtualization toolset for Apple Silicon called [*Tart*](https://github.com/cirruslabs/tart).
-We are switching [managed-by-us macOS instances](/guide/macOS.md) to exclusively running in Tart virtual machines **starting January 1st 2023**.
+We are switching [managed-by-us macOS instances](/guide/macOS) to exclusively running in Tart virtual machines **starting January 1st 2023**.
 
 <!-- more -->
 
@@ -91,6 +91,6 @@ Apple no longer sells Intel-based hardware, and it's just a matter of time for a
 the second generation of infrastructure is becoming a burden. We are fully committing to supporting Apple Silicon and decided
 to sunset our Intel-based offering from January 1st 2023.
 
-Please migrate your Big Sur and High Sierra `macos_instance`s to Monterey or Ventura. Refer to [documentation](/guide/macOS.md) for more details.
+Please migrate your Big Sur and High Sierra `macos_instance`s to Monterey or Ventura. Refer to [documentation](/guide/macOS) for more details.
 
 Have any questions? Still need to test on Intel? Don’t hesitate to send us your feedback either [on Twitter](https://twitter.com/cirrus_labs) or via [email](mailto:hello@cirruslabs.org)!

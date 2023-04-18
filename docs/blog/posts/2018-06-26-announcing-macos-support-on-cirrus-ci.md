@@ -41,8 +41,6 @@ task:
   script: ...
 ```
 
-For a real-life example please check how [Chrome’s Puppeteer team tests headless Chrome on macOS](https://github.com/GoogleChrome/puppeteer/blob/master/.cirrus.yml#L24-L34).
-
 Private organizations with more serious workloads can use a separate Anka Build Cloud. Simply sign up for an Anka cloud with MacStadium and configure it as described in [documentation](https://cirrus-ci.org/guide/supported-computing-services/#anka). Having a dedicated Anka Build Cloud for your organization has many benefits:
 
 * **Security**. The infrastructure is not shared. No need to think about bugs in macOS kernel or virtualization that can potentially give escalated access to VMs running on the same host with your CI builds.
