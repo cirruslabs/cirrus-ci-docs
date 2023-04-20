@@ -21,6 +21,8 @@ jobs:
       github.event.check_suite.app.name == 'Cirrus CI'
       && github.event.check_suite.conclusion != 'success'
       && github.event.check_suite.conclusion != 'cancelled'
+      && github.event.check_suite.conclusion != 'skipped'
+      && github.event.check_suite.conclusion != 'neutral'
     runs-on: ubuntu-latest
     steps:
       - uses: octokit/request-action@v2.x
