@@ -638,6 +638,7 @@ Outputs:
     Value: !GetAtt Role.Arn
 ```
 
+<!-- markdownlint-disable MD030 -->
 1.  :warning: this example template only checks that `CIRRUS_OIDC_TOKEN` comes from any repository under your organization.
     If you are planning to use AWS compute services only for private repositories you should change this condition to:
 
