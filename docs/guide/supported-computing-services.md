@@ -204,7 +204,7 @@ Now let's setup Cirrus CI as a workload identity provider:
       --location="global" \
       --workload-identity-pool="ci-pool" \
       --display-name="Cirrus CI" \
-      --attribute-mapping="google.subject=assertion.aud,attribute.owner=assertion.owner,attribute.actor=assertion.repository,attribute.actor_visibility=assertion.repository_visibility" \
+      --attribute-mapping="google.subject=assertion.aud,attribute.owner=assertion.owner,attribute.actor=assertion.repository,attribute.actor_visibility=assertion.repository_visibility,attribute.pr=assertion.pr" \
       --attribute-condition="attribute.owner == '$OWNER'" \
       --issuer-uri="https://oidc.cirrus-ci.com"
     ```
@@ -212,7 +212,7 @@ Now let's setup Cirrus CI as a workload identity provider:
     The attribute mappings map claims in the Cirrus CI JWT to assertions
     you can make about the request (like the repository name or repository visibility).
     In the example above `--attribute-condition` flag asserts that the provider can be used with any repository of your organization.
-    You can restrict the access further with attributes like `repository` and `repository_visibility`.
+    You can restrict the access further with attributes like `repository`, `repository_visibility` and `pr`.
 
 5. Allow authentications from the Workload Identity Provider originating from 
     your organization to impersonate the Service Account created above:
@@ -588,8 +588,9 @@ By configuring Cirrus CI as an identity provider, Cirrus CI will be able to acqu
 for each task. Please read [AWS documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_oidc.html) to learn more
 about security and other benefits of using a workload identity provider.
 
-Now let's setup Cirrus CI as a workload identity provider. Here is a Cloud Formation Template that can configure Cirrus CI
-as an OpenID Connect Identity Provider:
+Now lets setup Cirrus CI as a workload identity provider. Here is a Cloud Formation Template that can configure Cirrus CI
+as an OpenID Connect Identity Provider. Please be extra careful and review this template, specifically pay attention to
+the condition that asserts [claims `CIRRUS_OIDC_TOKEN` has](https://oidc.cirrus-ci.com/.well-known/openid-configuration).
 
 ```yaml
 Parameters:
@@ -620,7 +621,7 @@ Resources:
                 - !Ref OIDCProviderArn
             Condition:
               StringLike:
-                oidc.cirrus-ci.com:sub: !Sub repo:github:${GitHubOrg}/*
+                oidc.cirrus-ci.com:sub: !Sub repo:github:${GitHubOrg}/* # (1)
 
   CirrusOidc:
     Type: AWS::IAM::OIDCProvider
@@ -636,6 +637,20 @@ Outputs:
   Role:
     Value: !GetAtt Role.Arn
 ```
+
+<!-- markdownlint-disable MD030 -->
+1.  :warning: this example template only checks that `CIRRUS_OIDC_TOKEN` comes from any repository under your organization.
+    If you are planning to use AWS compute services only for private repositories you should change this condition to:
+
+    ```yaml
+    Condition:
+      StringLike:
+        oidc.cirrus-ci.com:sub: !Sub repo:github:${GitHubOrg}/*
+        oidc.cirrus-ci.com:repository_visibility: private
+    ```
+
+    Additionally, if you are planning to access production services from within your CI tasks, please create a separate
+    role with even stricter asserts for additional security. The same `CIRRUS_OIDC_TOKEN` can be used to acquire tokens for multiple roles.
 
 The output of running the template will a role that can be used in `aws_credentials` in your `.cirrus.yml` configuration:
 
