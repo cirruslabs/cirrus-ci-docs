@@ -571,7 +571,7 @@ CIRRUS_PR_TITLE | Title of a corresponding PR if any.
 CIRRUS_PR_BODY | Body of a corresponding PR if any.
 CIRRUS_PR_LABELS | comma separated list of PR's labels if current build was triggered by a PR.
 CIRRUS_TAG | Tag name if current build was triggered by a new tag. For example `v1.0`
-CIRRUS_OIDC_TOKEN | OpenID Token issued by `https://oidc.cirrus-ci.com` with audience set to `https://cirrus-ci.com/github/$CIRRUS_REPO_OWNER` (can be changed via `$CIRRUS_OIDC_TOKEN_AUDIENCE`). Please refer to [Cirrus CI OpenID Configuration](https://oidc.cirrus-ci.com/.well-known/openid-configuration) for the set of all supported claims.
+CIRRUS_OIDC_TOKEN | OpenID Connect Token issued by `https://oidc.cirrus-ci.com` with audience set to `https://cirrus-ci.com/github/$CIRRUS_REPO_OWNER` (can be changed via `$CIRRUS_OIDC_TOKEN_AUDIENCE`). Please refer to a [dedicated section below](#internals-of-openid-connect-tokens) for in-depth details.
 CIRRUS_OS, OS | Host OS. Either `linux`, `windows` or `darwin`.
 CIRRUS_TASK_NAME | Task name
 CIRRUS_TASK_ID | Unique task ID
@@ -607,6 +607,64 @@ And some environment variables can be set to control behavior of the Cirrus CI A
 | CIRRUS_VAULT_NAMESPACE     | not set                                                                                                                                                | A [Vault Enterprise Namespace](https://developer.hashicorp.com/vault/docs/enterprise/namespaces) to use when authenticating and reading secrets from Vault.                                                                                                                                                                                                                                                         |
 | CIRRUS_VAULT_AUTH_PATH     | `jwt`                                                                                                                                    | Alternative auth method mount point, in case it was mounted to a non-default path.                                                                                                                                                                                                                                                                                                                                  |
 | CIRRUS_VAULT_ROLE          | not set                                                                                                                                                | Auth method-specific role to use (see [JWT/OIDC Auth Method](https://developer.hashicorp.com/vault/api-docs/auth/jwt#create-role), for example).                                                                                                                                                                                                                                                                    |
+
+### Internals of OpenID Connect tokens
+
+OpenID Connect is a very powerful mechanism that allows two independent systems establish trust without sharing any secrets.
+In the core of OpenID Connect is a simple JWT token that is signed by a trusted party (in our case it's Cirrus CI). Then
+the second system can be configured to trust such `CIRRUS_OIDC_TOKEN`s signed by Cirrus CI. For examples please check
+[Vault Integration](#hashicorp-vault-support), [Google Cloud Integration](supported-computing-services.md#workload-identity-federation)
+and [AWS Integration](supported-computing-services.md#cirrus-as-an-openid-connect-identity-provider).
+
+Once such external system receives a request authenticated with `CIRRUS_OIDC_TOKEN` it can verify the signature of the token
+via [publicly available keys](https://oidc.cirrus-ci.com/.well-known/jwks). Then it can extract claims from the token
+to make necessary assertions. Properly configuring assertions of such claims is crucial for secure integration with OIDC.
+Let's take a closer look at claims that are available through a payload of a `CIRRUS_OIDC_TOKEN`:
+
+```yaml
+task:
+  container:
+    image: alpine:latest
+  install_script: apk add jq
+  payload_script: echo $CIRRUS_OIDC_TOKEN | jq -R 'split(".") | .[1] | @base64d | fromjson'
+```
+
+The above task will print out payload of a `CIRRUS_OIDC_TOKEN` that contains claims from the [configuration](https://oidc.cirrus-ci.com/.well-known/openid-configuration)
+that can be used for assertions.
+
+```json5
+{
+  // Reserved Claims https://openid.net/specs/draft-jones-json-web-token-07.html#rfc.section.4.1 
+  "iss": "https://oidc.cirrus-ci.com",
+  "aud": "https://cirrus-ci.com/github/cirruslabs", // can be changed via $CIRRUS_OIDC_TOKEN_AUDIENCE
+  "sub": "repo:github:cirruslabs/cirrus-ci-docs",
+  "nbf": ...,
+  "exp": ...,
+  "iat": ...,
+  "jti": "...",
+  // Cirrus Added Claims
+  "platform": "github", // Currently only GitHub is supported but more platforms will be added in the future
+  "owner": "cirruslabs", // Unique organization or username on the platform
+  "owner_id": "29414678", // Internal ID of the organization or user on the platform
+  "repository": "cirrus-ci-docs", // Repository name
+  "repository_visibility": "public", // either public or private
+  "repository_id": "5730634941071360", // Internal Cirrus CI ID of the repository
+  "build_id": "1234567890", // Internal Cirrus CI ID of the build. Same as $CIRRUS_BUILD_ID
+  "branch": "fkorotkov-patch-2", // Git branch name. Same as $CIRRUS_BRANCH
+  "change_in_repo": "e6e989d4792a678b697a9f17a787761bfefb52d0", // Git commit SHA. Same as $CIRRUS_CHANGE_IN_REPO
+  "pr": "123", // Pull request number if a build was triggered by a PR. Same as $CIRRUS_PR
+  "pr_draft": "false", // Whether the pull request is a draft. Same as $CIRRUS_PR_DRAFT
+  "pr_labels": "", // Comma-separated list of labels of the pull request. Same as $CIRRUS_PR_LABELS
+  "tag": "1.0.0", // Git tag name if a build was triggered by a tag creation. Same as $CIRRUS_TAG
+  "task_id": "987654321", // Internal Cirrus CI ID of the task. Same as $CIRRUS_TASK_ID
+  "task_name": "main", // Name of the task. Same as $CIRRUS_TASK_NAME
+  "user_collaborator": "true", // Whether the user is a collaborator of the repository. Same as $CIRRUS_USER_COLLABORATOR
+  "user_permission": "admin", // Permission level of the user in the repository. Same as $CIRRUS_USER_PERMISSION
+}
+```
+
+Please use the above claims to configure assertions in your external system. For example, you can asert that only tokens
+for specific branches can retrieve secrets for deploying to production.
 
 ## Encrypted Variables
 
