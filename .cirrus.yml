@@ -2,4 +2,4 @@ task:
   container:
     image: alpine:latest
   install_script: apk add coreutils jq
-  echo_script: echo $CIRRUS_OIDC_TOKEN
+  echo_script: echo $CIRRUS_OIDC_TOKEN  | base64
