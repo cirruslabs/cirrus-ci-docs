@@ -1,5 +1,5 @@
 task:
   container:
-    image: apline:latest
+    image: alpine:latest
   install_script: apk add base64 jq
   echo_script: echo $CIRRUS_OIDC_TOKEN | base64 --decode | jq
