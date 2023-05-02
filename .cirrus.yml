@@ -1,5 +1,5 @@
 task:
   container:
     image: alpine:latest
-  install_script: apk add coreutils jq
-  echo_script: echo $CIRRUS_OIDC_TOKEN  | base64
+  install_script: apk add jq
+  payload_script: echo $CIRRUS_OIDC_TOKEN | jq -R 'split(".") | .[1] | @base64d | fromjson'
