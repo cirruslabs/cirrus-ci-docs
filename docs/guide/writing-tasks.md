@@ -663,7 +663,7 @@ that can be used for assertions.
 }
 ```
 
-Please use the above claims to configure assertions in your external system. For example, you can asert that only tokens
+Please use the above claims to configure assertions in your external system. For example, you can assert that only tokens
 for specific branches can retrieve secrets for deploying to production.
 
 ## Encrypted Variables
