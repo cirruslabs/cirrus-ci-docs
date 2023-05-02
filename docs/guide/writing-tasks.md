@@ -632,7 +632,7 @@ task:
 The above task will print out payload of a `CIRRUS_OIDC_TOKEN` that contains claims from the [configuration](https://oidc.cirrus-ci.com/.well-known/openid-configuration)
 that can be used for assertions.
 
-```json5
+```json
 {
   // Reserved Claims https://openid.net/specs/draft-jones-json-web-token-07.html#rfc.section.4.1 
   "iss": "https://oidc.cirrus-ci.com",
