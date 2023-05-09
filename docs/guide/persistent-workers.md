@@ -16,10 +16,9 @@ design difference has multiple benefits comparing to more traditional CIs:
    
 ### What is a Persistent Worker
 
-For some use cases the traditional CI setup is still useful. However, not everything is available in the cloud. For example,
-Apple releases new ARM-based products and there is no virtualization yet available for the new hardware. 
-Another use case is to test the hardware itself, since not everyone is working on websites and mobile apps after all! For such use cases
-it makes sense to go with a traditional CI setup: install some binary on the hardware which will constantly pull for new tasks 
+For some use cases the traditional CI setup is still useful since not everything is available in the cloud.
+For example, testing hardware itself or some third party devices that can be attached with wires.
+For such use cases it makes sense to go with a traditional CI setup: install some binary on the hardware which will constantly pull for new tasks 
 and will execute them one after another.
 
 This is precisely what Persistent Workers for Cirrus CI are: a simple way to run Cirrus tasks beyond cloud!
@@ -127,32 +126,6 @@ task:
 ```
 
 Once the VM spins up, persistent worker will connect to the VM's IP-address over SSH using `user` and `password` credentials and run the latest agent version.
-
-#### Parallels
-
-To use this isolation type, install the [Parallels Desktop](https://www.parallels.com/products/desktop/) on the persistent worker's host machine and create a base VM that will be later cloned for each task.
-
-This base VM needs to:
-
-* be either in a stopped or suspended state
-* provide SSH access on port 22
-
-Here's an example of a configuration that will run the task inside of a fresh macOS virtual machine created from the `big-sur-base` base VM:
-
-```yaml
-persistent_worker:
-  isolation:
-    parallels:
-      image: big-sur-base
-      user: admin
-      password: secret
-      platform: darwin
-
-task:
-  script: system_profiler
-```
-
-Once the VM spins up, persistent worker will connect to the VM's IP-address over SSH using `user` and `password` credentials and run the latest agent version targeted for the `platform`.
 
 #### Container
 
