@@ -755,7 +755,7 @@ env:
   AWS_SESSION_TOKEN: VAULT_CACHED[aws/sts/<PRESET> security_token]
 ```
 
-The first `VAULT_CACHED[...]` invocation behaves like `VAULT[...]` because no cache for the specified path is present. It fetches the secret from the Vault and caches it, while whe rest of the `VAULT_CACHED[...]` invocations re-use the cached value.
+The first `VAULT_CACHED[...]` invocation behaves like `VAULT[...]` because no cache for the specified path is present. It fetches the secret from the Vault and caches it, while the rest of the `VAULT_CACHED[...]` invocations re-use the cached value.
 
 Note that mixing `VAULT[...]` and `VAULT_CACHED[...]` on the same key is not recommended because the order in which these invocations are processed is not deterministic.
 
