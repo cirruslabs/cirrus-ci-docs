@@ -747,11 +747,14 @@ publish_task:
 The path is exactly the one you are familiar from invoking Vault CLI like [`vault read ...`](https://developer.hashicorp.com/vault/docs/commands/read), and the selector is a simply dot-delimited list of fields to query in the output.
 
 !!! warning "Caching of Vault secrets"
-Note that all `VAULT[...]` invocations cache the retrieved secrets on a per-path basis by default. To disable caching, use `VAULT_NOCACHE[...]` instead of `VAULT[...]`.
-But such PR tasks **can read** all caches even from the main caching namespace for a repository.
+
+    Note that all `VAULT[...]` invocations cache the retrieved secrets on a per-path basis by default.
+
+    To disable caching, use `VAULT_NOCACHE[...]` instead of `VAULT[...]`.
 
 !!! note "Mixing of `VAULT[...]` and `VAULT_NOCACHE[...]` on the same path"
-Using both `VAULT[...]` and `VAULT_CACHED[...]` on the same key is not recommended because the order in which these invocations are processed is not deterministic.
+
+    Using both `VAULT[...]` and `VAULT_CACHED[...]` on the same key is not recommended because the order in which these invocations are processed is not deterministic.
 
 ## Cron Builds
 
