@@ -754,7 +754,7 @@ The path is exactly the one you are familiar from invoking Vault CLI like [`vaul
 
 !!! note "Mixing of `VAULT[...]` and `VAULT_NOCACHE[...]` on the same path"
 
-    Using both `VAULT[...]` and `VAULT_CACHED[...]` on the same key is not recommended because the order in which these invocations are processed is not deterministic.
+    Using both `VAULT[...]` and `VAULT_NOCACHE[...]` on the same path is not recommended because the order in which these invocations are processed is not deterministic.
 
 ## Cron Builds
 
