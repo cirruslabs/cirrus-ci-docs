@@ -748,7 +748,7 @@ The path is exactly the one you are familiar from invoking Vault CLI like [`vaul
 
 !!! warning "Caching of Vault secrets"
 
-    Note that all `VAULT[...]` invocations cache the retrieved secrets on a per-path basis by default.
+    Note that all `VAULT[...]` invocations cache the retrieved secrets on a per-path basis by default. Caching happens within a single task execution and is not shared between several tasks using the same secret.
 
     To disable caching, use `VAULT_NOCACHE[...]` instead of `VAULT[...]`.
 
