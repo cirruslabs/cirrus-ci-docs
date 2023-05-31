@@ -746,18 +746,15 @@ publish_task:
 
 The path is exactly the one you are familiar from invoking Vault CLI like [`vault read ...`](https://developer.hashicorp.com/vault/docs/commands/read), and the selector is a simply dot-delimited list of fields to query in the output.
 
-Alternatively, if retrieving a secret value for a given path is not an idempotent operation for some reason, you can re-use that secret's value in more than one instance by utilizing the `VAULT_CACHED[path/to/secret selector]` syntax:
+!!! warning "Caching of Vault secrets"
 
-```yaml
-env:
-  AWS_ACCESS_KEY_ID: VAULT_CACHED[aws/sts/<PRESET> access_key]
-  AWS_SECRET_ACCESS_KEY: VAULT_CACHED[aws/sts/<PRESET> secret_key]
-  AWS_SESSION_TOKEN: VAULT_CACHED[aws/sts/<PRESET> security_token]
-```
+    Note that all `VAULT[...]` invocations cache the retrieved secrets on a per-path basis by default. Caching happens within a single task execution and is not shared between several tasks using the same secret.
 
-The first `VAULT_CACHED[...]` invocation behaves like `VAULT[...]` because no cache for the specified path is present. It fetches the secret from the Vault and caches it, while the rest of the `VAULT_CACHED[...]` invocations re-use the cached value.
+    To disable caching, use `VAULT_NOCACHE[...]` instead of `VAULT[...]`.
 
-Note that mixing `VAULT[...]` and `VAULT_CACHED[...]` on the same key is not recommended because the order in which these invocations are processed is not deterministic.
+!!! note "Mixing of `VAULT[...]` and `VAULT_NOCACHE[...]` on the same path"
+
+    Using both `VAULT[...]` and `VAULT_NOCACHE[...]` on the same path is not recommended because the order in which these invocations are processed is not deterministic.
 
 ## Cron Builds
 
