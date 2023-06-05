@@ -9,13 +9,13 @@ Here you can find example configurations per different programming languages/fra
 
 ## Android
 
-Cirrus CI has a [set of Docker images ready for Android development](https://hub.docker.com/r/cirrusci/android-sdk/). 
+Cirrus CI has a [set of Docker images ready for Android development](https://github.com/cirruslabs/docker-images-android/pkgs/container/android-sdk). 
 If these images are not the right fit for your project you can always use any custom Docker image with Cirrus CI. For those
 images `.cirrus.yml` configuration file can look like:
 
 ```yaml
 container:
-  image: cirrusci/android-sdk:30
+  image: ghcr.io/cirruslabs/android-sdk:30
 
 check_android_task:
   check_script: ./gradlew check connectedCheck
@@ -25,7 +25,7 @@ Or like this if a running hardware accelerated emulator is needed for the tests:
 
 ```yaml
 container:
-  image: cirrusci/android-sdk:30
+  image: ghcr.io/cirruslabs/android-sdk:30
   cpu: 4
   memory: 12G
   kvm: true
@@ -238,12 +238,12 @@ Official [Erlang Docker images](https://hub.docker.com/_/erlang/) can be used fo
 
 ## Flutter
 
-Cirrus CI provides a [set of Docker images with Flutter and Dart SDK pre-installed](https://hub.docker.com/r/cirrusci/flutter/).
+Cirrus CI provides a [set of Docker images with Flutter and Dart SDK pre-installed](https://github.com/cirruslabs/docker-images-flutter/pkgs/container/flutter).
 Here is an example of how `.cirrus.yml` can be written for Flutter:
 
 ```yaml
 container:
-  image: cirrusci/flutter:latest
+  image: ghcr.io/cirruslabs/flutter:latest
 
 test_task:
   pub_cache:
@@ -259,7 +259,7 @@ If these images are not the right fit for your project you can always use any cu
 
 ### Flutter Web
 
-[Our Docker images with Flutter and Dart SDK pre-installed](https://hub.docker.com/r/cirrusci/flutter/) have special `*-web` tags
+[Our Docker images with Flutter and Dart SDK pre-installed](https://github.com/cirruslabs/docker-images-flutter/pkgs/container/flutter) have special `*-web` tags
 with [Chromium](https://www.chromium.org/) pre-installed. You can use these tags to run Flutter Web 
 
 First define a new `chromium` platform in your `dart_test.yaml`:

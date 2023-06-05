@@ -377,7 +377,7 @@ using KVM-enabled container to run a hardware accelerated Android emulator:
 gce_container:
   image_project: my-project
   image_name: my-custom-ubuntu-with-docker-and-KVM
-  container: cirrusci/android-sdk:29
+  container: ghcr.io/cirruslabs/android-sdk:latest
   enable_nested_virtualization: true
   accel_check_script:
     - sudo chown cirrus:cirrus /dev/kvm
