@@ -127,5 +127,3 @@ one will need at least `write` permission with a few exceptions:
 * `admin` permission is required for creating API access tokens via `GenerateNewOwnerAccessTokenMutation` and `GenerateNewScopedAccessTokenMutation`.
 
 **Note** that for public repositories `none` collaborator permission is mapped to `read` in order to give public view access to anyone.
-
-
