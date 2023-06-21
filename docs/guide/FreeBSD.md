@@ -5,7 +5,7 @@ To accomplish this, use `freebsd_instance` in your `.cirrus.yml`:
 
 ```yaml
 freebsd_instance:
-  image_family: freebsd-13-0
+  image_family: freebsd-13-2
 
 task:
   install_script: pkg install -y ...
