@@ -574,6 +574,7 @@ CIRRUS_TAG | Tag name if current build was triggered by a new tag. For example `
 CIRRUS_OIDC_TOKEN | OpenID Connect Token issued by `https://oidc.cirrus-ci.com` with audience set to `https://cirrus-ci.com/github/$CIRRUS_REPO_OWNER` (can be changed via `$CIRRUS_OIDC_TOKEN_AUDIENCE`). Please refer to a [dedicated section below](#internals-of-openid-connect-tokens) for in-depth details.
 CIRRUS_OS, OS | Host OS. Either `linux`, `windows` or `darwin`.
 CIRRUS_TASK_NAME | Task name
+CIRRUS_TASK_NAME_ALIAS | Task name `alias` if any.
 CIRRUS_TASK_ID | Unique task ID
 CIRRUS_RELEASE | GitHub Release id if current tag was created for a release. Handy for [uploading release assets](../examples.md#release-assets).
 CIRRUS_REPO_CLONE_TOKEN | Temporary GitHub access token to perform a clone.
@@ -658,6 +659,7 @@ that can be used for assertions.
   "tag": "1.0.0", // Git tag name if a build was triggered by a tag creation. Same as $CIRRUS_TAG
   "task_id": "987654321", // Internal Cirrus CI ID of the task. Same as $CIRRUS_TASK_ID
   "task_name": "main", // Name of the task. Same as $CIRRUS_TASK_NAME
+  "task_name_alias": "main", // Optional name alias of the task. Same as $CIRRUS_TASK_NAME_ALIAS
   "user_collaborator": "true", // Whether the user is a collaborator of the repository. Same as $CIRRUS_USER_COLLABORATOR
   "user_permission": "admin", // Permission level of the user in the repository. Same as $CIRRUS_USER_PERMISSION
 }
