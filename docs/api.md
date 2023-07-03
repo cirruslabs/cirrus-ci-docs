@@ -64,6 +64,7 @@ build(id: $buildId) {
 task(id: $taskId) {
   id
   name
+  nameAlias
   status
   statusTimestamp
   creationTimestamp
