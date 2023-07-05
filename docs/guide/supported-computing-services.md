@@ -413,18 +413,18 @@ push_docker_task:
   push_script: ./scripts/push_docker.sh
 ```
 
-#### Preemptible Instances
+#### Spot Instances
 
-Cirrus CI can schedule [preemptible](https://cloud.google.com/compute/docs/instances/preemptible) instances with all price
+Cirrus CI can schedule [spot](https://cloud.google.com/compute/docs/instances/spot) instances with all price
 benefits and stability risks. But sometimes risks of an instance being preempted at any time can be tolerated. For example 
-`gce_instance` can be configured to schedule preemptible instance for non master branches like this:
+`gce_instance` can be configured to schedule spot instance for non master branches like this:
 
 ```yaml
 gce_instance:
   image_project: my-project
   image_name: my-custom-image-with-docker
   zone: us-central1-a
-  preemptible: $CIRRUS_BRANCH != "master"
+  spot: $CIRRUS_BRANCH != "master"
 ```
 
 ### Kubernetes Engine
@@ -487,8 +487,10 @@ gke_container:
   memory: 24GB
   nodeSelectorTerms: # optional
     - matchExpressions:
-        - key: cloud.google.com/gke-preemptible
-          operator: Exists
+        - key: cloud.google.com/gke-spot
+          operator: In
+          values:
+            - "true"
 ```
 
 !!! tip "Using in-memory disk"

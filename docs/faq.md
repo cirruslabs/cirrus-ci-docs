@@ -89,7 +89,7 @@ It means that Cirrus CI haven't heard from the agent for quite some time. In 99.
 it happens because of two reasons:
 
 1. Your task was executing on a [Cirrus Cloud Cluster](guide/supported-computing-services.md#cirrus-cloud-clusters). Cirrus Cloud Cluster 
-   is backed by Google Cloud's [Preemptible VMs](https://cloud.google.com/preemptible-vms/) for cost efficiency reasons and
+   is backed by Google Cloud's [Spot VMs](https://cloud.google.com/compute/docs/instances/spot) for cost efficiency reasons and
    Google Cloud preempted back a VM your task was executing on. Cirrus CI is trying to minimize possibility of such cases 
    by constantly rotating VMs before Google Cloud preempts them, but there is still chance of such inconvenience.
 
@@ -111,11 +111,11 @@ and then contact [support](support.md) if it's still not clear what happened.
 
 ## Instance got rescheduled!
 
-Cirrus CI is trying to be as efficient as possible and heavily uses [preemptible VMs](https://cloud.google.com/preemptible-vms/) to run majority
+Cirrus CI is trying to be as efficient as possible and heavily uses [spot VMs](https://cloud.google.com/compute/docs/instances/spot) to run majority
 of workloads. It allows to drastically lower Cirrus CI's infrastructure bill and allows to provide [the best pricing model with per-second billing](pricing.md)
 and [very generous limits for OSS projects](#are-there-any-limits), but it comes with a rare edge case... 
 
-Preemptible VMs can be preempted which will require rescheduling and automatically restart tasks that were executing on these VMs. 
+Spot VMs can be preempted which will require rescheduling and automatically restart tasks that were executing on these VMs. 
 This is a rare event since autoscaler is constantly rotating instances but preemption still happens occasionally. 
 All automatic re-runs and [stateful](guide/writing-tasks.md#stateful-tasks) tasks using [compute credits](pricing.md#compute-credits)
 are always executed on regular VMs.
