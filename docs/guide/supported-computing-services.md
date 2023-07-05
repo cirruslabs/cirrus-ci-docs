@@ -218,7 +218,7 @@ Now let's setup Cirrus CI as a workload identity provider:
 
     ```sh
     gcloud iam service-accounts create cirrus-ci \
-    --project="${PROJECT_ID}"
+      --project="${PROJECT_ID}"
     ```
 
 6. Allow authentications from the Workload Identity Provider originating from your organization to impersonate the Service Account created above:
