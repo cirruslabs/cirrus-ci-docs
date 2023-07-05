@@ -193,7 +193,7 @@ Now let's setup Cirrus CI as a workload identity provider:
     export WORKLOAD_IDENTITY_POOL_ID="..." # value from above
     ```
 
-4. Create a Workload Identity **Provider** in that pool:
+4. Create a Workload Identity Provider in that pool:
 
     ```sh
     # TODO(developer): Update this value to your GitHub organization.
@@ -230,7 +230,7 @@ Now let's setup Cirrus CI as a workload identity provider:
       --member="principalSet://iam.googleapis.com/${WORKLOAD_IDENTITY_POOL_ID}/attribute.owner/${OWNER}"
     ```
 
-6. Extract the Workload Identity **Provider** resource name:
+7. Extract the Workload Identity Provider resource name:
 
     ```sh
     gcloud iam workload-identity-pools providers describe "cirrus-oidc" \
