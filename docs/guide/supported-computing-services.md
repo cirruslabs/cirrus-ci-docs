@@ -99,7 +99,12 @@ assigned to the service account. But Cirrus CI will always need permissions to r
 ```bash
 gcloud projects add-iam-policy-binding $PROJECT_ID \
     --member serviceAccount:cirrus-ci@$PROJECT_ID.iam.gserviceaccount.com \
-    --role roles/iam.serviceAccountTokenCreator \
+    --role roles/iam.serviceAccountTokenCreator
+```
+
+```bash
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+    --member serviceAccount:cirrus-ci@$PROJECT_ID.iam.gserviceaccount.com \
     --role roles/monitoring.viewer
 ```
 
