@@ -272,7 +272,7 @@ like this:
 ```yaml
 gce_instance:
   image_project: ubuntu-os-cloud
-  image_name: ubuntu-2204-jammy-arm64-v20220712a
+  image_family: ubuntu-2204-lts-arm64
   architecture: arm64 # optional. By default, amd64 is assumed.
   zone: us-central1-a
   cpu: 8
@@ -291,20 +291,20 @@ task:
     ```yaml
     gce_instance:
       image_project: ubuntu-os-cloud
-      image_name: ubuntu-1604-xenial-v20171121a
+      image_family: ubuntu-2204-lts
       zone: us-central1-a
       type: n1-standard-8
       disk: 20
     ```
 
-!!! tip "Specify Image Family"
-    It's also possible to specify image family instead of the concrete image name. Use the `image_family` field
-    instead of `image_name`:
+!!! tip "Specify Image Name"
+    It's also possible to specify a concrete image name instead of the periodically rolling image family. Use the `image_name` field
+    instead of `image_family`:
 
     ```yaml
     gce_instance:
       image_project: ubuntu-os-cloud
-      image_family: ubuntu-2204-lts-arm64
+      image_name: ubuntu-2204-jammy-arm64-v20230630
       architecture: arm64
     ```
 
@@ -326,7 +326,7 @@ platform of an image like this:
 ```yaml
 gce_instance:
   image_project: windows-cloud
-  image_name: windows-server-2016-dc-core-v20170913
+  image_family: windows-2016-core
   platform: windows
   zone: us-central1-a
   cpu: 8
