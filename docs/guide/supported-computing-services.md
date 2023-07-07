@@ -94,12 +94,17 @@ gcloud iam service-accounts create cirrus-ci \
 ```
 
 Depending on a compute service Cirrus CI will need different [roles](https://cloud.google.com/iam/docs/understanding-roles) 
-assigned to the service account. But Cirrus CI will always need permissions to act as a service account and be able to view monitoring:
+assigned to the service account. But Cirrus CI will always need permissions to refresh it's token, generate pre-signed URLs (for the artifacts upload/download to work) and be able to view monitoring:
 
 ```bash
 gcloud projects add-iam-policy-binding $PROJECT_ID \
     --member serviceAccount:cirrus-ci@$PROJECT_ID.iam.gserviceaccount.com \
-    --role roles/iam.serviceAccountUser \
+    --role roles/iam.serviceAccountTokenCreator
+```
+
+```bash
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+    --member serviceAccount:cirrus-ci@$PROJECT_ID.iam.gserviceaccount.com \
     --role roles/monitoring.viewer
 ```
 
@@ -193,7 +198,7 @@ Now let's setup Cirrus CI as a workload identity provider:
     export WORKLOAD_IDENTITY_POOL_ID="..." # value from above
     ```
 
-4. Create a Workload Identity **Provider** in that pool:
+4. Create a Workload Identity Provider in that pool:
 
     ```sh
     # TODO(developer): Update this value to your GitHub organization.
@@ -214,8 +219,9 @@ Now let's setup Cirrus CI as a workload identity provider:
     In the example above `--attribute-condition` flag asserts that the provider can be used with any repository of your organization.
     You can restrict the access further with attributes like `repository`, `repository_visibility` and `pr`.
 
-5. Allow authentications from the Workload Identity Provider originating from 
-    your organization to impersonate the Service Account created above:
+5. If not yet created, [create a Service Account](#google-cloud) that Cirrus CI will impersonate to manage compute resources and [assign it the required roles](#google-cloud).
+
+6. Allow authentications from the Workload Identity Provider originating from your organization to impersonate the Service Account created above:
 
     ```sh
     gcloud iam service-accounts add-iam-policy-binding "cirrus-ci@${PROJECT_ID}.iam.gserviceaccount.com" \
@@ -224,7 +230,7 @@ Now let's setup Cirrus CI as a workload identity provider:
       --member="principalSet://iam.googleapis.com/${WORKLOAD_IDENTITY_POOL_ID}/attribute.owner/${OWNER}"
     ```
 
-6. Extract the Workload Identity **Provider** resource name:
+7. Extract the Workload Identity Provider resource name:
 
     ```sh
     gcloud iam workload-identity-pools providers describe "cirrus-oidc" \
