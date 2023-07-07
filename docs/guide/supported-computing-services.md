@@ -214,12 +214,7 @@ Now let's setup Cirrus CI as a workload identity provider:
     In the example above `--attribute-condition` flag asserts that the provider can be used with any repository of your organization.
     You can restrict the access further with attributes like `repository`, `repository_visibility` and `pr`.
 
-5. Create a Service Account that Cirrus CI will impersonate to manage compute resources:
-
-    ```sh
-    gcloud iam service-accounts create cirrus-ci \
-      --project="${PROJECT_ID}"
-    ```
+5. If not yet created, [create a Service Account](#google-cloud) that Cirrus CI will impersonate to manage compute resources and [assign it the required roles](#google-cloud).
 
 6. Allow authentications from the Workload Identity Provider originating from your organization to impersonate the Service Account created above:
 
