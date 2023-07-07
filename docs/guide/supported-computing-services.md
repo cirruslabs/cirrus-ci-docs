@@ -94,12 +94,12 @@ gcloud iam service-accounts create cirrus-ci \
 ```
 
 Depending on a compute service Cirrus CI will need different [roles](https://cloud.google.com/iam/docs/understanding-roles) 
-assigned to the service account. But Cirrus CI will always need permissions to act as a service account and be able to view monitoring:
+assigned to the service account. But Cirrus CI will always need permissions to refresh it's token, generate pre-signed URLs (for the artifacts upload/download to work) and be able to view monitoring:
 
 ```bash
 gcloud projects add-iam-policy-binding $PROJECT_ID \
     --member serviceAccount:cirrus-ci@$PROJECT_ID.iam.gserviceaccount.com \
-    --role roles/iam.serviceAccountUser \
+    --role roles/iam.serviceAccountTokenCreator \
     --role roles/monitoring.viewer
 ```
 
