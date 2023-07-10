@@ -130,8 +130,8 @@ Here is an example of an audit event for when a user re-ran a task with an attac
 
 At the moment only two types of audit events are supported:
 
-  * `graphql.mutation` - any GraphQL mutation was performed for your organization (re-running tasks, creating an encrypted variable, etc.).
-  * `user.authenticated` - a user that has access to your organization logs in to Cirrus CI.
+* `graphql.mutation` - any GraphQL mutation was performed for your organization (re-running tasks, creating an encrypted variable, etc.).
+* `user.authenticated` - a user that has access to your organization logs in to Cirrus CI.
 
 ### Securing WebHooks
 
