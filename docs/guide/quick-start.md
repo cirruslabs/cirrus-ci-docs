@@ -110,3 +110,20 @@ building your repository on Cirrus CI.
 If you only allowed Cirrus CI to access certain repositories, then add your new repository to
 the list of repositories Cirrus CI has access to via [this page](https://github.com/apps/cirrus-ci/installations/new),
 then push a `.cirrus.yml` to start building on Cirrus CI.
+
+## Permission Model for GitHub Repositories
+
+When a user triggers a build on Cirrus CI by either pushing a change to a repository, creating a PR or a release,
+Cirrus CI will associate a corresponding user's permissions with the build and tasks within that build. Those permissions
+are exposed to tasks with `CIRRUS_USER_PERMISSIONS` environment variable and are mapped to [GitHub's collaborator permissions](https://docs.github.com/en/rest/collaborators/collaborators?apiVersion=2022-11-28#get-repository-permissions-for-a-user).
+of the user for the given repository. Only tasks with `write` and `admin` permissions will be get decrypted values of the
+[encrypted variables](writing-tasks.md#encrypted-variables).
+
+When working with [Cirrus GraphQL API](../api.md) either directly or indirectly through Cirrus CI Web UI, permissions play a key role.
+Not only one need `read` permission to view a certain build and tasks of a private repository, but in order to perform any GraphQL mutation
+one will need at least `write` permission with a few exceptions:
+
+* `admin` permission is required for deleting a repository via `RepositoryDeleteMutation`.
+* `admin` permission is required for creating API access tokens via `GenerateNewOwnerAccessTokenMutation` and `GenerateNewScopedAccessTokenMutation`.
+
+**Note** that for public repositories `none` collaborator permission is mapped to `read` in order to give public view access to anyone.
