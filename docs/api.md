@@ -36,6 +36,8 @@ header to `Bearer $TOKEN`.
 
 ## WebHooks
 
+### Builds and Tasks WebHooks
+
 It is possible to subscribe for updates of builds and tasks. If a WebHook URL is configured on Cirrus CI Settings page for 
 an organization, Cirrus CI will try to `POST` a webhook event payload to this URL.
 
@@ -84,9 +86,57 @@ task(id: $taskId) {
 }
 ```
 
-!!! info "Custom GraphQL Query"
-    If you'd like to customize GraphQL query which will be executed and included in the event payload please contact support
-    for further details.
+### Audit Events WebHooks
+
+In addition to updates to builds and tasks, Cirrus CI will also send `audit_event` events to the configured WebHook URL.
+`action` for these audit events will be always `"create"` and the `data` field will contain the following GraphQL fragment
+for the particular audit event:
+
+```graphql
+fragment AuditEventWebhookPayload on AuditEventType {
+  id
+  type
+  timestamp
+  data
+  actor {
+    id
+  }
+  repository {
+    id
+    owner
+    name
+    isPrivate
+  }
+}
+```
+
+Here is an example of an audit event for when a user re-ran a task with an attached Terminal within your organization:
+
+```json
+{
+  "action": "created" | "updated",
+  "data": {
+    "id": "uuid-uuid-uuid-uuid",
+    "type": "graphql.mutation",
+    "timestamp": ...,
+    "data": "{\n  \"mutationName\": \"TaskReRun\",\n  \"taskId\": \"1\",\n  \"attachTerminal\": true,\n  \"newTaskId\": 2\n}",
+    "actor": {
+      "id": "..." // internal to Cirrus CI user Id
+    },
+    "repository": {
+      "id": "123",
+      "owner": "ACME",
+      "name": "super-project",
+      "isPrivate": true
+    }
+  }
+}
+```
+
+At the moment only two types of audit events are supported:
+
+* `graphql.mutation` - any GraphQL mutation was performed for your organization (re-running tasks, creating an encrypted variable, etc.).
+* `user.authenticated` - a user that has access to your organization logs in to Cirrus CI.
 
 ### Securing WebHooks
 
