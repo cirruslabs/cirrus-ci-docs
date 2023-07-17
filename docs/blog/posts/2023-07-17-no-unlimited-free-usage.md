@@ -14,14 +14,14 @@ categories:
 Unfortunately the day has come. As a self-bootstrapped company Cirrus Labs can no longer provide unlimited usage of Cirrus CI
 for public repositories for free. We have to put a limit on the amount of compute resources that can be consumed for free each month
 by organizations and users. Starting September 1st 2023, there will be an upper monthly limit on free usage equal to 40 compute credits
-(equal to 10,000 CPU-minutes for Linux tasks).
+(which is equal to 10,000 CPU-minutes for Linux tasks).
 
 The reason for the change is that we want to continue being a profitable business and keep Cirrus CI running,
 but unfortunately we haven’t found a better solution for a couple of ongoing issues described below.
 
 <!-- more -->
 
-**Crypto miners are still active.** Methodically, a lot of CI vendors one after another were restricting free usage because of this single reason.
+**Crypto miners are still active.** Methodically, a lot of CI vendors one after another were restricting free usage because of this [single reason](https://webapp.io/blog/crypto-miners-are-killing-free-ci/).
 Only Cirrus CI and GitHub Actions have been allowing unlimited usage as of lately and we are very proud of the effort that we have put into battling with the abuse.
 We tried everything from clever firewall and traffic analysis to some basic machine learning on factors like similarity of config files and CPU usage patterns.
 This effort got us a silver medal in the race of providing unlimited free usage for as long as we could. Congrats GitHub Actions on getting the gold
