@@ -33,6 +33,8 @@ paid **tasks that use compute credits have an average CPU utilization of 80%**. 
 and discovered that many people just used the maximum possible resources that Cirrus CI allows “just because they could”.
 Frequently we saw tasks requesting 8 CPUs and 24GB of memory, but in reality they used only a single CPU core.
 
+# Silver lining
+
 In addition to introducing the limits we will also lower the prices for the existing compute resources. Starting August 1st,
 we are lowering [the existing pricing](https://cirrus-ci.org/pricing/#compute-credits) for macOS instances by 50% and
 by 20% for Linux, Windows and FreeBSD instances respectively.
