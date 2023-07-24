@@ -4,8 +4,8 @@
 
 Cirrus CI control plane uses three IP addresses:
 
-* `34.117.12.6` - IP address for ingress connections to Cirrus CI API and all `*.cirrus-ci.com` domains.
-* `34.27.109.83` - IP address for evaluating [Starlark configuration files](guide/programming-tasks.md).
+* `34.117.12.6` - IP address of the Cirrus CI API and all `*.cirrus-ci.com` domains.
+* `34.27.109.83` - IP address for egress connections when evaluating [Starlark configuration files](guide/programming-tasks.md).
 * `34.28.114.255` - IP addresses for egress connections that Cirrus CI uses to access APIs, deliver webhook events, etc.
 
 ## Is Cirrus CI a delivery platform?
