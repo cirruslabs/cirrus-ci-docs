@@ -39,12 +39,13 @@ for public repositories for free:
 * 16.0 CPUs for Arm Linux platform (Containers).
 * 8.0 CPUs for Windows platform (Containers or VMs)
 * 8.0 CPUs for FreeBSD VMs.
-* 12.0 CPUs macOS VM (1 VM).
+* 4.0 CPUs macOS VM (1 VM).
 
 Note that a single task can't request more than 8 CPUs (except macOS VMs which are not configurable).
 
-!!! note "No Monthly Minute Limit"
-    There are no limits on how many minutes a month you can use! Please keep in mind that mining cryptocurrency is against our Terms of Service, and will most likely be blocked by firewall rules and other anti-fraud mechanisms. Be a good citizen in the OSS community!
+!!! note "Monthly CPU Minutes Limit"
+    Additionally there is an upper monthly limit on free usage equal to 40 [compute credits](pricing.md)
+    (which is equal to 10,000 CPU-minutes for Linux tasks or 500 minutes for macOS tasks which always use 4 CPUs).
 
 If you are using Cirrus CI with your private personal repositories under the [$10/month plan](https://github.com/marketplace/cirrus-ci/plan/MDIyOk1hcmtldHBsYWNlTGlzdGluZ1BsYW45OTI=#pricing-and-setup)
 **you'll have twice the limits**:
@@ -52,13 +53,10 @@ If you are using Cirrus CI with your private personal repositories under the [$1
 * 32.0 CPUs for Linux platform (Containers or VMs).
 * 16.0 CPUs for Windows platform (Containers or VMs)
 * 16.0 CPUs for FreeBSD VMs.
-* 24.0 CPUs macOS VM (2 VMs).
+* 8.0 CPUs macOS VM (2 VMs).
 
 There are no limits on how many VMs or Containers you can run in parallel if you bring [your own infrastructure](guide/supported-computing-services.md)
 or use [Compute Credits](pricing.md#compute-credits) for either private or public repositories.
-
-!!! note "No per repository limits"
-    Cirrus CI doesn't enforce any limits on repository or organization levels. All the limits are on a per-user basis.
     
 !!! note "Cache and Logs Redundancy"
     By default Cirrus CI persists caches and logs for 90 days. If you bring your own [compute services](guide/supported-computing-services.md)
