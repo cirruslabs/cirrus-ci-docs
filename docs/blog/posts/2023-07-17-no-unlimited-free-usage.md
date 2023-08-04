@@ -13,8 +13,8 @@ categories:
 
 Unfortunately the day has come. As a self-bootstrapped company Cirrus Labs can no longer provide unlimited usage of Cirrus CI
 for public repositories for free. We have to put a limit on the amount of compute resources that can be consumed for free each month
-by organizations and users. Starting September 1st 2023, there will be an upper monthly limit on free usage equal to 40 compute credits
-(which is equal to 10,000 CPU-minutes for Linux tasks).
+by organizations and users. Starting September 1st 2023, there will be an upper monthly limit on free usage equal to 50 compute credits
+(which is equal to a little over 16,000 CPU-minutes for Linux tasks).
 
 The reason for the change is that we want to continue being a profitable business and keep Cirrus CI running,
 but unfortunately we haven’t found a better solution for a couple of ongoing issues described below.
@@ -36,8 +36,8 @@ Frequently we saw tasks requesting 8 CPUs and 24GB of memory, but in reality the
 # Silver lining
 
 In addition to introducing the limits we will also lower the prices for the existing compute resources. Starting August 1st,
-we are lowering [the existing pricing](https://cirrus-ci.org/pricing/#compute-credits) for macOS instances by 50% and
-by 20% for Linux, Windows and FreeBSD instances respectively.
+we are lowering [the existing pricing](https://cirrus-ci.org/pricing/#compute-credits) for macOS and Windows instances by 60% and
+by 40% for Linux and FreeBSD instances respectively.
 
 # How does this change affect me?
 
