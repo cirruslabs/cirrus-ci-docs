@@ -24,17 +24,14 @@ Sometimes configuring your own [compute services](#compute-services) isn't worth
 
 1 compute credit can be bought for 1 US dollar. Here is how much 1000 minutes of CPU time will cost for different platforms:
 
-* 1000 minutes of 1 virtual CPU for Linux platform for 4 compute credits
-* 1000 minutes of 1 virtual CPU for FreeBSD platform for 4 compute credits
-* 1000 minutes of 1 virtual CPU for Windows platform for 8 compute credits
-* 1000 minutes of 1 Apple Silicon CPU for 20 compute credits
+* 1000 minutes of 1 virtual CPU for Linux platform for 3 compute credits
+* 1000 minutes of 1 virtual CPU for FreeBSD platform for 3 compute credits
+* 1000 minutes of 1 virtual CPU for Windows platform for 4 compute credits
+* 1000 minutes of 1 Apple Silicon CPU for 15 compute credits
 
-All tasks using compute credits are charged on per-second basis. 2 CPU Linux task takes 2 minutes? Pay **2 cents**.
+All tasks using compute credits are charged on per-second basis. 2 CPU Linux task takes 5 minutes? Pay **3 cents**.
 
 **Note:** orchestration costs are included in compute credits and there is no need to purchase additional seats on your organization's plan.
-
-!!! info "Priority Scheduling"
-    Tasks that are using compute credits will be prioritized and will be scheduled as fast as possible.
 
 !!! tip "Works for OSS projects"
     Compute credits can be used for commercial OSS projects to avoid [concurrency limits](faq.md#are-there-any-limits).
@@ -44,7 +41,7 @@ All tasks using compute credits are charged on per-second basis. 2 CPU Linux tas
   
 * Use the same pre-configured infrastructure that we fine tune and constantly upgrade/improve.
 * No need to configure anything. Let Cirrus CI's team manage and upgrade infrastructure for you.
-* Per-second billing with no additional minimum or monthly fees.
+* Per-second billing with no additional monthly fees for storage and traffic.
 * Cost efficient for small to medium teams. 
   
 **Cons** of this approach:
