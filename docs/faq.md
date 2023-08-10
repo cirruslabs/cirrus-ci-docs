@@ -44,7 +44,7 @@ for public repositories for free:
 Note that a single task can't request more than 8 CPUs (except macOS VMs which are not configurable).
 
 !!! note "Monthly CPU Minutes Limit"
-    Additionally there is an upper monthly limit on free usage equal to 40 [compute credits](pricing.md)
+    Additionally there is an upper monthly limit on free usage equal to 50 [compute credits](pricing.md)
     (which is equal to 10,000 CPU-minutes for Linux tasks or 500 minutes for macOS tasks which always use 4 CPUs).
 
 If you are using Cirrus CI with your private personal repositories under the [$10/month plan](https://github.com/marketplace/cirrus-ci/plan/MDIyOk1hcmtldHBsYWNlTGlzdGluZ1BsYW45OTI=#pricing-and-setup)
