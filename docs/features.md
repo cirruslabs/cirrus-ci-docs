@@ -6,7 +6,7 @@ hide:
 ## Free for Open Source 
 
 To support the Open Source community, Cirrus CI provides [Linux](guide/linux.md), [Windows](guide/windows.md), [macOS](guide/macOS.md) and [FreeBSD](guide/FreeBSD.md)
-services free of charge with [some limits](faq.md#are-there-any-limits) but *without* a cap on how many minutes a month OSS projects can consume.
+services free of charge up to [a cap of 50 compute credits](faq.md#are-there-any-limits) a month to OSS projects.
 
 Here is a list of all instance types available for free for Open Source Projects:
 
