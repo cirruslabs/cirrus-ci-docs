@@ -701,7 +701,8 @@ task:
     image: ami-0a047931e1d42fdb3
     type: t2.micro
     region: us-east-1
-    subnet_id: ... # optional, default subnet from your default VPC is used by default
+    subnet_ids: # optional, list of subnets from your default VPC to randomly choose from for scheduling the instance
+      - ...
     architecture: arm64 # defaults to amd64
     spot: true # defaults to false
     block_device_mappings: # empty by default

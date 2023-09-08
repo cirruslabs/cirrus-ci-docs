@@ -217,7 +217,8 @@ You will see such `build_docker_image_HASH` tasks in the UI.
       builder_image: MY_DOCKER_AMI
       builder_role: cirrus-builder # role for builder instance profile
       builder_instance_type: c7g.xlarge # should match the architecture below
-      builder_subnet_id: ... # optional, default subnet from your default VPC is used by default
+      builder_subnet_ids: # optional, list of subnets from your default VPC to randomly choose from for scheduling the instance
+        - ...
       architecture: arm64 # default is amd64
     ```
 
