@@ -1,11 +1,7 @@
 ## Linux Containers
 
 Cirrus CI supports `container` and `arm_container` instances in order to run your CI workloads on `amd64` and `arm64`
-platforms respectively. Cirrus CI uses Kubernetes clusters running in different clouds that are the most suitable for
-running each platform:
-
-* For `container` instances Cirrus CI uses a GKE cluster of compute-optimized instances running in Google Cloud.
-* For `arm_container` instances Cirrus CI uses a EKS cluster of Graviton2 instances running in AWS.
+platforms respectively. Cirrus CI uses a GKE cluster of compute-optimized instances running in Google Cloud.
 
 Cirrus Cloud Clusters are configured the same way as anyone can configure a private Kubernetes cluster for their own
 repository. Cirrus CI supports connecting managed Kubernetes clusters from most of the cloud providers. Please check out
@@ -42,6 +38,8 @@ of CPUs requested. For each CPU you can't get more than 4G of memory.
 
 Tasks using [Compute Credits](../pricing.md#compute-credits) has higher limits and can use up to 28.0 CPUs and 112G of memory respectively.
 
+Containers on Cirrus Cloud Cluster have a fixed and limited storage space of 10 GB. Use a [custom VM](custom-vms.md) or an in-memory-disk to increase the storage space:
+
 ??? info "Using in-memory disks"
     Some I/O intensive tasks may benefit from using a `tmpfs` disk mounted as a working directory. Set `use_in_memory_disk` flag
     to enable in-memory disk for a container:
@@ -70,9 +68,6 @@ Tasks using [Compute Credits](../pricing.md#compute-credits) has higher limits a
 
 ??? info "Privileged Access"
     If you need to run privileged docker containers, take a look at the [docker builder](docker-builder-vm.md).
-
-??? info "Greedy instances"
-    Greedy instances can potentially use more CPU resources if available. Please check [this blog post](https://medium.com/cirruslabs/introducing-greedy-container-instances-29aad06dc2b4) for more details.
     
 ### KVM-enabled Privileged Containers
 
