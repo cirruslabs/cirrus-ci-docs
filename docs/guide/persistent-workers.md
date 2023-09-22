@@ -74,7 +74,7 @@ resources:
   connected-ipads: 2
 ```
 
-It will be able to concurrently execute two of these tasks:
+It will be able to concurrently execute one of this task:
 
 ```yaml
 task:
