@@ -64,6 +64,7 @@ build(id: $buildId) {
   id
   branch
   pullRequest
+  durationInSeconds
   changeIdInRepo
   changeTimestamp
   status
@@ -75,6 +76,7 @@ task(id: $taskId) {
   status
   statusTimestamp
   creationTimestamp
+  durationInSeconds
   uniqueLabels
   automaticReRun
   automaticallyReRunnable
