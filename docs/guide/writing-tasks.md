@@ -472,7 +472,7 @@ Please [let us know](https://github.com/cirruslabs/cirrus-ci-annotations/issues/
 
 ### File Instruction
 
-A `file` instruction allows to create a file from an environment variable. It is especially useful for situations when
+A `file` instruction allows to create a file from either an environment variable or directly from the configuration file. It is especially useful for situations when
 execution environment doesn't have proper shell to use `echo ... >> ...` syntax, for example, within [scratch Docker containers](https://docs.docker.com/samples/library/scratch/).
 
 Here is an example of how to populate Docker config from an [encrypted environment variable](#encrypted-variables):
@@ -484,6 +484,18 @@ task:
   docker_config_file:
     path: /root/.docker/config.json
     variable_name: DOCKER_CONFIG_JSON
+```
+
+You can also populate a file directly from the `.cirrus.yml` configuration file:
+
+```yaml
+task:
+  git_config_file:
+    path: /root/.gitconfig
+    from_contents: |
+      [user]
+        name = John Doe
+        email = john@example.com
 ```
 
 ### Execution Behavior of Instructions
