@@ -488,7 +488,7 @@ task:
 
 ### Execution Behavior of Instructions
 
-By default Cirrus CI executes instructions one after another and stops the overall task execution on the first failure.
+By default, Cirrus CI executes instructions one after another and stops the overall task execution on the first failure.
 Sometimes there might be situations when some scripts should always be executed or some debug information needs to be saved
 on a failure. For such situations the `always` and `on_failure` keywords can be used to group instructions.
 
@@ -502,8 +502,17 @@ task:
 ```
 
 In the example above, `print_additional_debug_info.sh` script will be executed only on failures to output some additional
-debug information. `print_test_reports.sh` on the other hand will be executed both on successful and and failed runs to
+debug information. `print_test_reports.sh` on the other hand will be executed both on successful and failed runs to
 print test reports (test reports are always useful! :smile:).
+
+Sometimes, a complex task might exceed the [pre-defined timeout](../faq.md#instance-timed-out), and it might not be clear why. In this case, the `on_timeout` execution behavior, which has an extra time budget of 5 minutes might be useful:
+
+```yaml
+task:
+  integration_test_script: ./run_integration_tests.sh
+  on_timeout:
+    cleanup_script: ./cleanup.sh
+```
 
 ## Environment Variables
 
