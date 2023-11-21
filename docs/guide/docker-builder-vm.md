@@ -219,6 +219,11 @@ You will see such `build_docker_image_HASH` tasks in the UI.
       builder_instance_type: c7g.xlarge # should match the architecture below
       builder_subnet_ids: # optional, list of subnets from your default VPC to randomly choose from for scheduling the instance
         - ...
+      builder_subnet_filters: # optional, map of filters to use for DescribeSubnets API call. Note to make sure Cirrus is given `ec2:DescribeSubnets`  
+        - name: tag:Name
+          values:
+            - subnet1
+            - subnet2
       architecture: arm64 # default is amd64
     ```
 

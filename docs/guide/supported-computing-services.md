@@ -703,6 +703,11 @@ task:
     region: us-east-1
     subnet_ids: # optional, list of subnets from your default VPC to randomly choose from for scheduling the instance
       - ...
+    subnet_filters: # optional, map of filters to use for DescribeSubnets API call. Note to make sure Cirrus is given `ec2:DescribeSubnets`  
+      - name: tag:Name
+        values:
+          - subnet1
+          - subnet2
     architecture: arm64 # defaults to amd64
     spot: true # defaults to false
     block_device_mappings: # empty by default
