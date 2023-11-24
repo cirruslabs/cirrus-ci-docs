@@ -47,6 +47,7 @@ payload itself is pretty basic:
 ```json
 {
   "action": "created" | "updated",
+  "old_status": "FAILED", # optional field for "updated" action in case a task or a build transitioned from one status to another
   "data": ...
 }
 ```
