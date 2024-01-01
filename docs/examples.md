@@ -2,14 +2,14 @@
 hide:
   - navigation
 ---
-  
+
 # Examples
 
 Here you can find example configurations per different programming languages/frameworks.
 
 ## Android
 
-Cirrus CI has a [set of Docker images ready for Android development](https://github.com/cirruslabs/docker-images-android/pkgs/container/android-sdk). 
+Cirrus CI has a [set of Docker images ready for Android development](https://github.com/cirruslabs/docker-images-android/pkgs/container/android-sdk).
 If these images are not the right fit for your project you can always use any custom Docker image with Cirrus CI. For those
 images `.cirrus.yml` configuration file can look like:
 
@@ -55,7 +55,7 @@ check_android_task:
 
 !!! info
     Please don't forget to setup [Remote Build Cache](#build-cache) for your Gradle project.
-    
+
 ### Android Lint
 
 The Cirrus CI annotator supports providing inline reports on PRs and can parse Android Lint reports. Here is an example of an *Android Lint*
@@ -260,7 +260,7 @@ If these images are not the right fit for your project you can always use any cu
 ### Flutter Web
 
 [Our Docker images with Flutter and Dart SDK pre-installed](https://github.com/cirruslabs/docker-images-flutter/pkgs/container/flutter) have special `*-web` tags
-with [Chromium](https://www.chromium.org/) pre-installed. You can use these tags to run Flutter Web 
+with [Chromium](https://www.chromium.org/) pre-installed. You can use these tags to run Flutter Web
 
 First define a new `chromium` platform in your `dart_test.yaml`:
 
@@ -287,7 +287,7 @@ an example of how `.cirrus.yml` can look like for a project using Go Modules:
     ```yaml
     container:
       image: golang:latest
-    
+
     test_task:
       modules_cache:
         fingerprint_script: cat go.sum
@@ -302,7 +302,7 @@ an example of how `.cirrus.yml` can look like for a project using Go Modules:
     ```yaml
     arm_container:
       image: golang:latest
-    
+
     test_task:
       modules_cache:
         fingerprint_script: cat go.sum
@@ -350,7 +350,7 @@ task that you can add to your `.cirrus.yml`:
 
 ## Gradle
 
-We recommend use of the [official Gradle Docker containers](https://hub.docker.com/_/gradle/) since they have Gradle specific configurations already set up. For example, standard Java containers don't have 
+We recommend use of the [official Gradle Docker containers](https://hub.docker.com/_/gradle/) since they have Gradle specific configurations already set up. For example, standard Java containers don't have
 a pre-configured user and as a result don't have `HOME` environment variable presented which makes Gradle complain.
 
 ### Caching
@@ -364,7 +364,7 @@ files in `~/.gradle/caches` folder on every run which makes Cirrus CI re-upload 
     ```yaml
     container:
       image: gradle:jdk11
-    
+
     check_task:
       gradle_cache:
         folder: ~/.gradle/caches
@@ -382,7 +382,7 @@ files in `~/.gradle/caches` folder on every run which makes Cirrus CI re-upload 
     ```yaml
     arm_container:
       image: gradle:jdk11
-    
+
     check_task:
       gradle_cache:
         folder: ~/.gradle/caches
@@ -492,7 +492,7 @@ Official [Maven Docker images](https://hub.docker.com/_/maven/) can be used for 
 ## MySQL
 
 The [Additional Containers feature](guide/writing-tasks.md#additional-containers) makes it super simple to run the same Docker
-MySQL image as you might be running in production for your application. Getting a running instance of the latest GA 
+MySQL image as you might be running in production for your application. Getting a running instance of the latest GA
 version of MySQL can used with the following six lines in your `.cirrus.yml`:
 
 === "amd64"
@@ -523,7 +523,7 @@ version of MySQL can used with the following six lines in your `.cirrus.yml`:
             MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     ```
 
-With the configuration above MySQL will be available on `localhost:3306`. Use empty password to login as `root` user. 
+With the configuration above MySQL will be available on `localhost:3306`. Use empty password to login as `root` user.
 
 ## Node
 
@@ -538,7 +538,7 @@ Here is an example of a `.cirrus.yml` that caches `node_modules` based on conten
     ```yaml
     container:
       image: node:latest
-    
+
     test_task:
       node_modules_cache:
         folder: node_modules
@@ -552,7 +552,7 @@ Here is an example of a `.cirrus.yml` that caches `node_modules` based on conten
     ```yaml
     arm_container:
       image: node:latest
-    
+
     test_task:
       node_modules_cache:
         folder: node_modules
@@ -570,7 +570,7 @@ Here is an example of a `.cirrus.yml` that caches `node_modules` based on the co
     ```yaml
     container:
       image: node:latest
-    
+
     test_task:
       node_modules_cache:
         folder: node_modules
@@ -584,7 +584,7 @@ Here is an example of a `.cirrus.yml` that caches `node_modules` based on the co
     ```yaml
     arm_container:
       image: node:latest
-    
+
     test_task:
       node_modules_cache:
         folder: node_modules
@@ -682,7 +682,7 @@ Here is an example of how  `*.proto` files can be linted using [Buf CLI](https:/
 
 ## Python
 
-Official [Python Docker images](https://hub.docker.com/_/python/) can be used for builds. Here is an example of a `.cirrus.yml` 
+Official [Python Docker images](https://hub.docker.com/_/python/) can be used for builds. Here is an example of a `.cirrus.yml`
 that caches installed packages based on contents of `requirements.txt` and runs `pytest`:
 
 === "amd64"
@@ -690,7 +690,7 @@ that caches installed packages based on contents of `requirements.txt` and runs 
     ```yaml
     container:
       image: python:slim
-    
+
     test_task:
       pip_cache:
         folder: ~/.cache/pip
@@ -704,7 +704,7 @@ that caches installed packages based on contents of `requirements.txt` and runs 
     ```yaml
     arm_container:
       image: python:slim
-    
+
     test_task:
       pip_cache:
         folder: ~/.cache/pip
@@ -713,7 +713,7 @@ that caches installed packages based on contents of `requirements.txt` and runs 
       test_script: pytest
     ```
 
-### Building PyPI Packages  
+### Building PyPI Packages
 
 Also using the Python Docker images, you can run tests if you are making packages for [PyPI](https://pypi.org). Here is an example `.cirrus.yml` for doing so:
 
@@ -722,7 +722,7 @@ Also using the Python Docker images, you can run tests if you are making package
     ```yaml
     container:
       image: python:slim
-    
+
     build_package_test_task:
       pip_cache:
         folder: ~/.cache/pip
@@ -736,7 +736,7 @@ Also using the Python Docker images, you can run tests if you are making package
     ```yaml
     arm_container:
       image: python:slim
-    
+
     build_package_test_task:
       pip_cache:
         folder: ~/.cache/pip
@@ -839,12 +839,12 @@ task:
 ## Release Assets
 
 Cirrus CI doesn't provide a built-in functionality to upload artifacts on a GitHub release but this functionality can be
-added via a script. For a release, Cirrus CI will provide `CIRRUS_RELEASE` environment variable along with `CIRRUS_TAG` 
+added via a script. For a release, Cirrus CI will provide `CIRRUS_RELEASE` environment variable along with `CIRRUS_TAG`
 environment variable. `CIRRUS_RELEASE` indicates release id which can be used to upload assets.
 
-Cirrus CI only requires write access to Check API and doesn't require write access to repository contents because of security 
+Cirrus CI only requires write access to Check API and doesn't require write access to repository contents because of security
 reasons. That's why you need to [create a personal access token](https://github.com/settings/tokens/new) with full access
-to `repo` scope. Once an access token is created, please [create an encrypted variable](guide/writing-tasks.md#encrypted-variables) 
+to `repo` scope. Once an access token is created, please [create an encrypted variable](guide/writing-tasks.md#encrypted-variables)
 from it and save it to `.cirrus.yml`:
 
 ```yaml
@@ -896,7 +896,7 @@ contents of `Gemfile.lock`, and runs `rspec`:
     ```yaml
     container:
       image: ruby:latest
-    
+
     rspec_task:
       bundle_cache:
         folder: /usr/local/bundle
@@ -917,7 +917,7 @@ contents of `Gemfile.lock`, and runs `rspec`:
     ```yaml
     arm_container:
       image: ruby:latest
-    
+
     rspec_task:
       bundle_cache:
         folder: /usr/local/bundle
@@ -941,11 +941,11 @@ contents of `Gemfile.lock`, and runs `rspec`:
     Here is an example of a `.cirrus.yml` that always runs `bundle install`:
 
     === "amd64"
-    
+
         ```yaml
         container:
           image: ruby:latest
-        
+
         rspec_task:
           bundle_cache:
             folder: /usr/local/bundle
@@ -958,11 +958,11 @@ contents of `Gemfile.lock`, and runs `rspec`:
         ```
 
     === "arm64"
-    
+
         ```yaml
         arm_container:
           image: ruby:latest
-        
+
         rspec_task:
           bundle_cache:
             folder: /usr/local/bundle
@@ -977,7 +977,7 @@ contents of `Gemfile.lock`, and runs `rspec`:
 !!! tip "Test Parallelization"
     It's super easy to add intelligent test splitting by using [Knapsack Pro](https://knapsackpro.com/) and [matrix modification](guide/writing-tasks.md#matrix-modification).
     After [setting up Knapsack Pro gem](https://docs.knapsackpro.com/knapsack_pro-ruby/guide/), you can add sharding like this:
-    
+
     ```yaml
     task:
       matrix:
@@ -991,8 +991,8 @@ contents of `Gemfile.lock`, and runs `rspec`:
         populate_script: bundle install
       rspec_script: bundle exec rake knapsack_pro:rspec
     ```
-    
-    Which will create four shards that will theoretically **run tests 4x faster** by equally splitting all tests between 
+
+    Which will create four shards that will theoretically **run tests 4x faster** by equally splitting all tests between
     these four shards.
 
 ### RSpec and RuboCop Annotations
@@ -1006,7 +1006,7 @@ To get behavior-driven test annotations, generate and upload a `rspec` artifact 
     ```yaml
     container:
       image: ruby:latest
-    
+
     task:
       name: RSpec
       bundle_cache:
@@ -1028,7 +1028,7 @@ To get behavior-driven test annotations, generate and upload a `rspec` artifact 
     ```yaml
     arm_container:
       image: ruby:latest
-    
+
     task:
       name: RSpec
       bundle_cache:
@@ -1052,7 +1052,7 @@ Generate a `rubocop` artifact to quickly gain context for linter/formatter annot
     ```yaml
     container:
       image: ruby:latest
-    
+
     task:
       name: RuboCop
       bundle_cache:
@@ -1074,7 +1074,7 @@ Generate a `rubocop` artifact to quickly gain context for linter/formatter annot
     ```yaml
     arm_container:
       image: ruby:latest
-    
+
     task:
       name: RuboCop
       bundle_cache:
@@ -1093,7 +1093,7 @@ Generate a `rubocop` artifact to quickly gain context for linter/formatter annot
 
 ## Rust
 
-Official [Rust Docker images](https://hub.docker.com/_/rust/) can be used for builds. Here is a basic example of `.cirrus.yml` 
+Official [Rust Docker images](https://hub.docker.com/_/rust/) can be used for builds. Here is a basic example of `.cirrus.yml`
 that caches crates in `$CARGO_HOME` based on contents of `Cargo.lock`:
 
 === "amd64"
@@ -1101,7 +1101,7 @@ that caches crates in `$CARGO_HOME` based on contents of `Cargo.lock`:
     ```yaml
     container:
       image: rust:latest
-    
+
     test_task:
       registry_cache:
         folder: $CARGO_HOME/registry
@@ -1121,7 +1121,7 @@ that caches crates in `$CARGO_HOME` based on contents of `Cargo.lock`:
     ```yaml
     arm_container:
       image: rust:latest
-    
+
     test_task:
       registry_cache:
         folder: $CARGO_HOME/registry
@@ -1138,13 +1138,13 @@ that caches crates in `$CARGO_HOME` based on contents of `Cargo.lock`:
 
 !!! tip "Caching Cleanup"
 
-    Please note `before_cache_script` that removes registry index from the cache before uploading it in the end of a successful task. 
+    Please note `before_cache_script` that removes registry index from the cache before uploading it in the end of a successful task.
     Registry index is [changing very rapidly](https://github.com/rust-lang/crates.io-index) making the cache invalid. `before_cache_script`
     deletes the index and leaves only the required crates for caching.
 
 ### Rust Nightly
 
-It is possible to use nightly builds of Rust via an [official `rustlang/rust:nightly` container](https://hub.docker.com/r/rustlang/rust/). 
+It is possible to use nightly builds of Rust via an [official `rustlang/rust:nightly` container](https://hub.docker.com/r/rustlang/rust/).
 Here is an example of a `.cirrus.yml` to run tests against the latest stable and nightly versions of Rust:
 
 === "amd64"
@@ -1200,8 +1200,8 @@ Here is an example of a `.cirrus.yml` to run tests against the latest stable and
 
     ```yaml
     freebsd_instance:
-      image-family: freebsd-12-0
-    
+      image-family: freebsd-14-0
+
     task:
       name: cargo test (stable)
       env:

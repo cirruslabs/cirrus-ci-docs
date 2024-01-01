@@ -50,7 +50,7 @@ Using a new VM or a new Docker Container each time for running tasks has many be
   VM image version and Docker Container image version. After committing changes to `.cirrus.yml` not only new tasks will use the new environment,
   but also outdated branches will continue using the old configuration.
 * **Reproducibility.** Fresh environment guarantees no corrupted artifacts or caches are presented from the previous tasks.
-* **Cost efficiency.** Most compute services are offering per-second pricing which makes them ideal for using with Cirrus CI. 
+* **Cost efficiency.** Most compute services are offering per-second pricing which makes them ideal for using with Cirrus CI.
   Also each task for repository can define ideal amount of CPUs and Memory specific for a nature of the task. No need to manage
   pools of similar VMs or try to fit workloads within limits of a given Continuous Integration systems.
 
@@ -61,8 +61,8 @@ To be fair there are of course some disadvantages of starting a new VM or a cont
   on average for starting up VMs is not a big inconvenience in favor of more stable, reliable and more reproducible CI.
 * **Cold local caches for every task execution.** Many tools tend to store some caches like downloaded dependencies locally
   to avoid downloading them again in future. Since Cirrus CI always uses fresh VMs and containers such local caches will always
-  be empty. Performance implication of empty local caches can be avoided by using Cirrus CI features like 
-  [built-in caching mechanism](writing-tasks.md#cache-instruction). Some tools like [Gradle](https://gradle.org/) can 
+  be empty. Performance implication of empty local caches can be avoided by using Cirrus CI features like
+  [built-in caching mechanism](writing-tasks.md#cache-instruction). Some tools like [Gradle](https://gradle.org/) can
   even take advantages of [built-in HTTP cache](writing-tasks.md#http-cache)!
 
 Please check the list of currently supported cloud compute services below. In case you have your own hardware, please
@@ -77,23 +77,23 @@ take a look at [Persistent Workers](persistent-workers.md), which allow connecti
   </a>
 </p>
 
-Cirrus CI can schedule tasks on several Google Cloud Compute services. In order to interact with Google Cloud APIs 
-Cirrus CI needs permissions. Creating a [service account](https://cloud.google.com/compute/docs/access/service-accounts) 
-is a common way to safely give granular access to parts of Google Cloud Projects. 
+Cirrus CI can schedule tasks on several Google Cloud Compute services. In order to interact with Google Cloud APIs
+Cirrus CI needs permissions. Creating a [service account](https://cloud.google.com/compute/docs/access/service-accounts)
+is a common way to safely give granular access to parts of Google Cloud Projects.
 
 !!! warning "Isolation"
     We do recommend to create a separate Google Cloud project for running CI builds to make sure tests are
     isolated from production data. Having a separate project also will show how much money is spent on CI and how
     efficient Cirrus CI is :wink:
 
-Once you have a Google Cloud project for Cirrus CI please create a service account by running the following command: 
+Once you have a Google Cloud project for Cirrus CI please create a service account by running the following command:
 
 ```bash
 gcloud iam service-accounts create cirrus-ci \
     --project $PROJECT_ID
 ```
 
-Depending on a compute service Cirrus CI will need different [roles](https://cloud.google.com/iam/docs/understanding-roles) 
+Depending on a compute service Cirrus CI will need different [roles](https://cloud.google.com/iam/docs/understanding-roles)
 assigned to the service account. But Cirrus CI will always need permissions to refresh it's token, generate pre-signed URLs (for the artifacts upload/download to work) and be able to view monitoring:
 
 ```bash
@@ -191,7 +191,7 @@ Now let's setup Cirrus CI as a workload identity provider:
       --location="global" \
       --format="value(name)"
     ```
-   
+
     Save this value as an environment variable:
 
     ```sh
@@ -203,7 +203,7 @@ Now let's setup Cirrus CI as a workload identity provider:
     ```sh
     # TODO(developer): Update this value to your GitHub organization.
     export OWNER="organization" # e.g. "cirruslabs"
-   
+
     gcloud iam workload-identity-pools providers create-oidc "cirrus-oidc" \
       --project="${PROJECT_ID}" \
       --location="global" \
@@ -266,7 +266,7 @@ gcloud projects add-iam-policy-binding $PROJECT_ID \
     --role roles/compute.admin
 ```
 
-Now tasks can be scheduled on Compute Engine within `$PROJECT_ID` project by configuring `gce_instance` something 
+Now tasks can be scheduled on Compute Engine within `$PROJECT_ID` project by configuring `gce_instance` something
 like this:
 
 ```yaml
@@ -279,7 +279,7 @@ gce_instance:
   memory: 40GB
   disk: 60
   use_ssd: true # default to false
-  
+
 task:
   script: ./run-ci.sh
 ```
@@ -287,7 +287,7 @@ task:
 !!! tip "Specify Machine Type"
     It is possible to specify a [predefined machine type](https://cloud.google.com/compute/docs/machine-types) via `type`
     field:
-    
+
     ```yaml
     gce_instance:
       image_project: ubuntu-os-cloud
@@ -332,7 +332,7 @@ gce_instance:
   cpu: 8
   memory: 40GB
   disk: 20
-  
+
 task:
   script: run-ci.bat
 ```
@@ -345,13 +345,13 @@ platform of an image like this:
 ```yaml
 gce_instance:
   image_project: freebsd-org-cloud-dev
-  image_family: freebsd-12-1
+  image_family: freebsd-14-0
   platform: FreeBSD
   zone: us-central1-a
   cpu: 8
   memory: 40GB
   disk: 50
-  
+
 task:
   script: printenv
 ```
@@ -392,9 +392,9 @@ gce_container:
 
 #### Instance Scopes
 
-By default Cirrus CI will create Google Compute instances without any [scopes](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes) 
-so an instance can't access Google Cloud Storage for example. But sometimes it can be useful to give some permissions to an 
-instance by using `scopes` key of `gce_instance`.  For example, if a particular task builds Docker images and then pushes 
+By default Cirrus CI will create Google Compute instances without any [scopes](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes)
+so an instance can't access Google Cloud Storage for example. But sometimes it can be useful to give some permissions to an
+instance by using `scopes` key of `gce_instance`.  For example, if a particular task builds Docker images and then pushes
 them to [Container Registry](https://cloud.google.com/container-registry/), its configuration file can look something like:
 
 ```yaml
@@ -422,7 +422,7 @@ push_docker_task:
 #### Spot Instances
 
 Cirrus CI can schedule [spot](https://cloud.google.com/compute/docs/instances/spot) instances with all price
-benefits and stability risks. But sometimes risks of an instance being preempted at any time can be tolerated. For example 
+benefits and stability risks. But sometimes risks of an instance being preempted at any time can be tolerated. For example
 `gce_instance` can be configured to schedule spot instance for non master branches like this:
 
 ```yaml
@@ -478,7 +478,7 @@ gcloud projects add-iam-policy-binding $PROJECT_ID \
     --role roles/container.admin
 ```
 
-Done! Now after creating `cirrus-ci-cluster` cluster and having `gcp_credentials` configured tasks can be scheduled on the 
+Done! Now after creating `cirrus-ci-cluster` cluster and having `gcp_credentials` configured tasks can be scheduled on the
 newly created cluster like this:
 
 ```yaml
@@ -500,17 +500,17 @@ gke_container:
 ```
 
 !!! tip "Using in-memory disk"
-    By default Cirrus CI mounts an [emptyDir](https://kubernetes.io/docs/concepts/storage/volumes/#emptydir) into 
-    `/tmp` path to protect the pod from unnecessary eviction by autoscaler. It is possible to switch emptyDir's medium to 
+    By default Cirrus CI mounts an [emptyDir](https://kubernetes.io/docs/concepts/storage/volumes/#emptydir) into
+    `/tmp` path to protect the pod from unnecessary eviction by autoscaler. It is possible to switch emptyDir's medium to
     use in-memory `tmpfs` storage instead of a default one by setting `use_in_memory_disk` field of `gke_container` to `true`
     or any other expression that uses environment variables.
 
 !!! tip "Running privileged containers"
-    You can run privileged containers on your private GKE cluster by setting `privileged` field of `gke_container` to `true` 
+    You can run privileged containers on your private GKE cluster by setting `privileged` field of `gke_container` to `true`
     or any other expression that uses environment variables. `privileged` field is also available for any additional container.
-    
+
     Here is an example of how to run docker-in-docker
-    
+
     ```yaml hl_lines="9"
     gke_container:
       image: my-docker-client:latest
@@ -562,7 +562,7 @@ via a more flexible and secure [Identity Provider](#cirrus-as-an-openid-connect-
     ]
     ```
 
-#### IAM user credentials 
+#### IAM user credentials
 
 Creating an [IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html) for programmatic access
 is a common way to safely give granular access to parts of your AWS.
@@ -581,11 +581,11 @@ Then you'll be able to use the encrypted variable in your `.cirrus.yml` file lik
 ```yaml
 aws_credentials: ENCRYPTED[...]
 
-task:  
+task:
   ec2_instance:
     ...
-    
-task:  
+
+task:
   eks_container:
     ...
 ```
@@ -695,7 +695,7 @@ In order to schedule tasks on EC2 please make sure that IAM user or OIDC role th
 
 Now tasks can be scheduled on EC2 by configuring `ec2_instance` something like this:
 
-```yaml  
+```yaml
 task:
   ec2_instance:
     image: ami-0a047931e1d42fdb3
@@ -703,7 +703,7 @@ task:
     region: us-east-1
     subnet_ids: # optional, list of subnets from your default VPC to randomly choose from for scheduling the instance
       - ...
-    subnet_filters: # optional, map of filters to use for DescribeSubnets API call. Note to make sure Cirrus is given `ec2:DescribeSubnets`  
+    subnet_filters: # optional, map of filters to use for DescribeSubnets API call. Note to make sure Cirrus is given `ec2:DescribeSubnets`
       - name: tag:Name
         values:
           - subnet1
@@ -718,7 +718,7 @@ task:
         virtual_name: ephemeral0 # to add an ephemeral disk for supported instances
       - device_name: /dev/sdj
         ebs:
-          snapshot_id: snap-xxxxxxxx 
+          snapshot_id: snap-xxxxxxxx
   script: ./run-ci.sh
 ```
 
@@ -808,7 +808,7 @@ $: kubectl get nodes
     If you have an issue with accessing your EKS cluster via `kubectl`, most likely you did **not** create the cluster
     with the user that Cirrus CI is using. The easiest way to do so is to create the cluster through AWS CLI with the
     following command:
-    
+
     ```bash
     $: aws sts get-caller-identity
     {
@@ -820,11 +820,11 @@ $: kubectl get nodes
         create-cluster --name cirrus-ci \
         --role-arn ... \
         --resources-vpc-config subnetIds=...,securityGroupIds=...
-    ```   
+    ```
 
 Now tasks can be scheduled on EKS by configuring `eks_container` something like this:
 
-```yaml  
+```yaml
 task:
   eks_container:
     image: node:latest
@@ -855,12 +855,12 @@ task:
   </a>
 </p>
 
-Cirrus CI can schedule tasks on several Azure services. In order to interact with Azure APIs 
+Cirrus CI can schedule tasks on several Azure services. In order to interact with Azure APIs
 Cirrus CI needs permissions. First, please choose a subscription you want to use for scheduling CI tasks.
 [Navigate to the Subscriptions blade within the Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)
 and save `$SUBSCRIPTION_ID` that we'll use below for setting up a service principle.
 
-Creating a [service principal](https://docs.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli) 
+Creating a [service principal](https://docs.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli)
 is a common way to safely give granular access to parts of Azure:
 
 ```bash
@@ -882,7 +882,7 @@ Command above will create a new service principal and will print something like:
 
 Please also remember `clientId` from the JSON as `$CIRRUS_CLIENT_ID`. It will be used later for configuring blob storage access.
 
-Please create an [encrypted variable](writing-tasks.md#encrypted-variables) from this output and 
+Please create an [encrypted variable](writing-tasks.md#encrypted-variables) from this output and
 add it to the top of `.cirrus.yml` file:
 
 ```yaml
@@ -914,8 +914,8 @@ Now Cirrus CI can interact with Azure APIs.
   </a>
 </p>
 
-[Azure Container Instances (ACI)](https://azure.microsoft.com/en-us/services/container-instances/) is an ideal 
-candidate for running modern CI workloads. ACI allows *just* to run Linux and Windows containers without thinking about 
+[Azure Container Instances (ACI)](https://azure.microsoft.com/en-us/services/container-instances/) is an ideal
+candidate for running modern CI workloads. ACI allows *just* to run Linux and Windows containers without thinking about
 underlying infrastructure.
 
 Once `azure_credentials` is configured as described above, tasks can be scheduled on ACI by configuring `aci_instance` like this:
@@ -1003,7 +1003,7 @@ oracle_credentials: ENCRYPTED[qwerty239abc]
 Please create a Kubernetes cluster and make sure *Kubernetes API Public Endpoint* is enabled for the cluster so Cirrus
 can access it. Then copy cluster id which can be used in configuring `oke_container`:
 
-```yaml  
+```yaml
 task:
   oke_container:
     cluster_id: ocid1.cluster.oc1.iad.xxxxxx
