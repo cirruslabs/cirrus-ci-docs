@@ -5,7 +5,7 @@ Use `macos_instance` in your `.cirrus.yml` files:
 
 ```yaml
 macos_instance:
-  image: ghcr.io/cirruslabs/macos-ventura-base:latest
+  image: ghcr.io/cirruslabs/macos-sonoma-base:latest
 
 task:
   script: echo "Hello World from macOS!"
