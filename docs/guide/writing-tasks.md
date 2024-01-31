@@ -509,11 +509,12 @@ task:
   test_script: ./run_tests.sh
   on_failure:
     debug_script: ./print_additional_debug_info.sh
+  cleanup_script: ./cleanup.sh # failure here will not trigger `on_failure` instruction above
   always:
     test_reports_script: ./print_test_reports.sh
 ```
 
-In the example above, `print_additional_debug_info.sh` script will be executed only on failures to output some additional
+In the example above, `print_additional_debug_info.sh` script will be executed only on failures of `test_script` to output some additional
 debug information. `print_test_reports.sh` on the other hand will be executed both on successful and failed runs to
 print test reports (test reports are always useful! :smile:).
 
