@@ -75,22 +75,4 @@ Configure things like:
 
 Check the [Quick Start](guide/quick-start.md) guide for more features.
 
-## Comparison with popular CIaaS
-
-Here is a high level comparison with popular continuous-integration-as-a-service solutions:
-
-**Name**        | **[Linux][1] [Windows][2] [macOS][3]** | **[FreeBSD][4]**   | **Customizable CPU/Memory**    | **For Open Source**                                          | **For Personal Private Repositories**                          | **For Organizational Private Repositories**
---------------- | -------------------------------------- | -------------------| ------------------------------ |--------------------------------------------------------------| -------------------------------------------------------------- | --------------------------------
-Cirrus CI       | :white_check_mark:                     | :white_check_mark: | :white_check_mark: (any value) | [34 concurrent CPUs with **no monthly limit** on minutes][5] | $10/month with the same OSS limits 👈                          | [Per-second usage with no parallel limit](#per-second-billing)<br>[Connect your cloud](#bring-your-own-infrastructure) for $10/month/seat
-GitHub Actions  | :white_check_mark:                     | :x:                | :x:                            | 20 concurrent jobs with no monthly limit on minutes          | 2,000 minutes/month for free                                   | Per-minute usage with no parallel limit<br>Host and manage additional runners at no additional cost
-Travis CI       | :white_check_mark:                     | :x:                | :x:                            | 1000 minutes per account per month                           | $69/month for 1 concurrent job                                 | $49/month per additional concurrency job
-CircleCI        | :white_check_mark:                     | :x:                | :white_check_mark: (4 types)   | 40,000 minutes per organization per month                    | 1,000 minutes/month for free<br>$69/month for 2 concurrent job | $15/month/user + per-minute usage with up to 80 parallel jobs
-AppVeyor        | :white_check_mark:                     | :x:                | :x:                            | 1 concurrent job with no monthly limit on minutes            | $59/month for 1 concurrent job                                 | $50/month per additional concurrency job
-
-[1]: guide/linux.md
-[2]: guide/windows.md
-[3]: guide/macOS.md
-[4]: guide/FreeBSD.md
-[5]: faq.md#are-there-any-limits
-
 Feel free to [contact support](mailto:support@cirruslabs.org) if you have questions for your particular case.
