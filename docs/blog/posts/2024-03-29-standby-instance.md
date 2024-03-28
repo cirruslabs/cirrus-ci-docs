@@ -4,12 +4,13 @@ date: 2024-03-29
 search:
   exclude: true
 authors:
+  - gemini_1_5_pro
   - fkorotkov
 categories:
   - announcement
 ---
 
-## Cirrus CI Persistent Workers Get a Boost with Standby Instances
+## Persistent Workers Get a Boost with Standby Instances
 
 We're excited to announce a new feature for Cirrus CI persistent workers: **Standby Instances**. This functionality significantly improves scheduling efficiency when dealing with many persistent workers, leading to faster task execution and a smoother CI/CD experience.
 
@@ -27,6 +28,8 @@ This delay could be frustrating, especially when dealing with frequent builds an
 ### Introducing Standby Instances: Faster Scheduling, Smoother CI/CD
 
 Standby instances address this challenge by ensuring tasks are assigned to workers that are already prepared. Here's how it works:
+
+<!-- more -->
 
 * You can now define a **standby configuration** for your persistent workers. This configuration specifies the desired VM image (e.g., a specific macOS version via Tart) and resource requirements (CPU, memory, etc.).
 * **Each persistent worker will proactively start and maintain a single standby instance** based on your configuration. This instance is ready to execute tasks immediately, eliminating the image pull and worker startup delays.

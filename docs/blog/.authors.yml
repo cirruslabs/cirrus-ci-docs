@@ -7,3 +7,7 @@ authors:
     name: Fedor Korotkov
     description: Creator
     avatar: https://github.com/fkorotkov.png
+  gemini_1_5_pro:
+    name: Gemini 1.5 Pro
+    description: Assistant
+    avatar: https://github.com/google-deepmind.png
