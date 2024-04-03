@@ -20,7 +20,17 @@ task:
   # ...
 ```
 
-In addition if you need to use Git tags, you can add the following script to populate this information:
+In addition if you need to use Git tags, set `CIRRUS_CLONE_TAGS` environment variable to `true`:
+
+```yaml
+build_task:
+  environment:
+    CIRRUS_CLONE_TAGS: true
+  fetch_deps_script: ...
+```
+
+You can also use the script below, but note that it requires `git` to be present
+in the container:
 
 ```yaml
 task:
@@ -28,9 +38,9 @@ task:
 ```
 
 !!! note "`go-git` benefits"
-    Using `go-git` made it possible not to require a pre-installed Git from an execution environment. For example,
-    most of `alpine`-based containers don't have Git pre-installed. Because of `go-git` you can even use distroless
-    containers with Cirrus CI, which don't even have an Operating System.
+Using `go-git` made it possible not to require a pre-installed Git from an execution environment. For example,
+most of `alpine`-based containers don't have Git pre-installed. Because of `go-git` you can even use distroless
+containers with Cirrus CI, which don't even have an Operating System.
 
 ## Sharing configuration between tasks
 
@@ -69,10 +79,10 @@ lines. YAML supports a [variety of options](https://yaml-multiline.info/) to do 
 ENCRYPTED values:
 
 ```yaml
-  env:
-    GOOGLE_APPLICATION_CREDENTIALS_DATA: "ENCRYPTED\
-      [3287dbace8346dfbe98347d1954eca923487fd8ea7251983\
-      cb6d5edabdf6fe5abd711238764cbd6efbde6236abd6f274]"
+env:
+  GOOGLE_APPLICATION_CREDENTIALS_DATA: "ENCRYPTED\
+    [3287dbace8346dfbe98347d1954eca923487fd8ea7251983\
+    cb6d5edabdf6fe5abd711238764cbd6efbde6236abd6f274]"
 ```
 
 ## Setting environment variables from scripts
