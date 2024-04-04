@@ -20,7 +20,17 @@ task:
   # ...
 ```
 
-In addition if you need to use Git tags, you can add the following script to populate this information:
+In addition if you need to use Git tags, set `CIRRUS_CLONE_TAGS` environment variable to `true`:
+
+```yaml
+build_task:
+  environment:
+    CIRRUS_CLONE_TAGS: true
+  fetch_deps_script: ...
+```
+
+You can also use the script below, but note that it requires `git` to be present
+in the container:
 
 ```yaml
 task:
