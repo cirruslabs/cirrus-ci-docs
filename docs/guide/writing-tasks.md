@@ -703,6 +703,11 @@ on a repository's main page (for example `https://cirrus-ci.com/github/my-organi
 !!! warning
     Only users with `WRITE` permissions can add encrypted variables to a repository.
 
+!!! warning "Multi-Line Encrypted Variables"
+    Please avoid using encrypted variables that consist of multiple lines
+    as they won't be masked (replaced by `HIDDEN-BY-CIRRUS-CI`) correctly
+    due to the line-buffered nature of the task's instructions output.
+
 An encrypted variable will be presented in a form like `ENCRYPTED[qwerty239abc]` which can be safely committed to `.cirrus.yml` file:
 
 ```yaml
@@ -712,7 +717,7 @@ publish_task:
   script: ./publish.sh
 ```
 
-Cirrus CI encrypts variables with a unique per repository 256-bit encryption key so forks and even repositories within
+Cirrus CI encrypts variables with a unique per-repository 256-bit encryption key, so that forks and even repositories within
 the same organization cannot re-use them. `qwerty239abc` from the example above is **NOT** the content of your encrypted
 variable, it's just an internal ID. No one can brute force your secrets from such ID. In addition, Cirrus CI doesn't know
 a relation between an encrypted variable and a repository for which the encrypted variable was created.
@@ -778,6 +783,12 @@ The path is exactly the one you are familiar from invoking Vault CLI like [`vaul
     Note that all `VAULT[...]` invocations cache the retrieved secrets on a per-path basis by default. Caching happens within a single task execution and is not shared between several tasks using the same secret.
 
     To disable caching, use `VAULT_NOCACHE[...]` instead of `VAULT[...]`.
+
+!!! warning "Multi-Line Vault Secrets"
+
+    Please avoid referencing Vault secrets that consist of multiple lines
+    as they won't be masked (replaced by `HIDDEN-BY-CIRRUS-CI`) correctly
+    due to the line-buffered nature of the task's instructions output.
 
 !!! note "Mixing of `VAULT[...]` and `VAULT_NOCACHE[...]` on the same path"
 
