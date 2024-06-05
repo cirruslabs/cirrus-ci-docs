@@ -29,7 +29,7 @@ Any of the official FreeBSD VMs on Google Cloud Platform are supported. Here are
 
 * `freebsd-15-0-snap` (15.0-SNAP)
 * `freebsd-14-0`      (14.0-RELEASE)
-* `freebsd-13-2`      (13.2-RELEASE)
+* `freebsd-13-3`      (13.3-RELEASE)
 
 It's also possible to specify a concrete version of an image by name via `image_name` field. To get a full list of
 available images please run the following [gcloud](https://cloud.google.com/sdk/gcloud/) command:
