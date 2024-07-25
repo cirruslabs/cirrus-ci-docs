@@ -109,9 +109,7 @@ fragment AuditEventWebhookPayload on AuditEventType {
     id
     username
   }
-  actorLocation {
-    ip
-  }
+  actorLocationIP
   repository {
     id
     owner
