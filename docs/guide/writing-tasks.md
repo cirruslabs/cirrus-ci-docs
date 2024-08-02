@@ -1045,7 +1045,7 @@ Cirrus CI supports the `only_if` and `skip` keywords in order to provide such fl
 ### Supported Operators
 
 Currently only basic operators like `==`, `!=`, `=~`, `!=~`, `&&`, `||` and unary `!` are supported in `only_if` and `skip` expressions.
-[Environment variables](#environment-variables) can also be used as usually.
+[Environment variables](#environment-variables) can also be used as usual.
 
 !!! tip "Pattern Matching Example"
     Use `=~` operator for pattern matching.
