@@ -69,6 +69,10 @@ build(id: $buildId) {
   changeIdInRepo
   changeTimestamp
   status
+  initializer {
+    id
+    username
+  }
 }
 task(id: $taskId) {
   id
@@ -103,7 +107,9 @@ fragment AuditEventWebhookPayload on AuditEventType {
   data
   actor {
     id
+    username
   }
+  actorLocationIP
   repository {
     id
     owner
