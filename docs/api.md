@@ -81,6 +81,7 @@ task(id: $taskId) {
   uniqueLabels
   automaticReRun
   automaticallyReRunnable
+  manualRerunCount
   notifications {
     level
     message
