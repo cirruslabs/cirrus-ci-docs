@@ -913,6 +913,29 @@ The `matrix` modification makes it easy to create some pretty complex testing sc
           test_script: yarn run test
     ```
 
+Another example showing how to create 2 tasks with different environment
+variables:
+
+```yaml
+task:
+  name: matrixdemo
+  container:
+    image: alpine:3.20
+  env:
+    matrix:
+      FIRST_VAR: foo
+      FIRST_VAR: bar
+      FIRST_VAR: baz
+    matrix:
+      SECOND_VAR: alpha
+      SECOND_VAR: bravo
+  print_script:
+    - echo "FIRST_VAR value is $FIRST_VAR"
+    - echo "SECOND_VAR value is $SECOND_VAR"
+```
+
+The above will generate 6 tasks.
+
 ## Task Execution Dependencies
 
 Sometimes it might be very handy to execute some tasks only after successful execution of other tasks. For such cases
