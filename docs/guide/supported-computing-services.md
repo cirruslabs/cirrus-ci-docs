@@ -558,7 +558,8 @@ via a more flexible and secure [Identity Provider](#cirrus-as-an-openid-connect-
       "s3:PutObject",
       "s3:DeleteObject",
       "s3:PutLifecycleConfiguration",
-      "s3:PutBucketCORS"
+      "s3:PutBucketCORS",
+      "s3:PutBucketPolicy"
     ]
     ```
 
