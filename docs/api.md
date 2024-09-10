@@ -65,6 +65,7 @@ build(id: $buildId) {
   id
   branch
   pullRequest
+  pullRequestDraft
   durationInSeconds
   changeIdInRepo
   changeTimestamp
