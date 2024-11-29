@@ -913,6 +913,53 @@ The `matrix` modification makes it easy to create some pretty complex testing sc
           test_script: yarn run test
     ```
 
+Another example showing how to create 2 tasks with different environment
+variables:
+
+```yaml
+task:
+  name: matrixdemo
+  container:
+    image: alpine:3.20
+  env:
+    matrix:
+      FIRST_VAR: foo
+      FIRST_VAR: bar
+      FIRST_VAR: baz
+    matrix:
+      SECOND_VAR: alpha
+      SECOND_VAR: bravo
+  print_script:
+    - echo "FIRST_VAR value is $FIRST_VAR"
+    - echo "SECOND_VAR value is $SECOND_VAR"
+```
+
+The above will generate 6 tasks.
+
+And yet another example, showing how to granularly control the environment variables for each matrix:
+
+```yaml
+task:
+  name: matrixdemo
+  container:
+    image: ubuntu:24.04
+  env:
+    # Android Command-line tools were obtained with https://stackoverflow.com/a/78890086/7009800
+    matrix:
+      - ANDROID_CLT_VERSION: 9123335 # v8, latest compatible with JDK 8+
+        JDK_PACKAGE: openjdk-8-jdk
+      - ANDROID_CLT_VERSION: 9862592 # v10, latest compatible with JDK 11+
+        JDK_PACKAGE: openjdk-11-jdk
+      - ANDROID_CLT_VERSION: 11479570 # v13, latest compatible with JDK 17+
+        JDK_PACKAGE: openjdk-17-jdk
+      - ANDROID_CLT_VERSION: 11479570 # v13, latest compatible with JDK 17+
+        JDK_PACKAGE: openjdk-21-jdk
+      info_script:
+        - echo "Building Android SDK with Android Command-line tools $ANDROID_CLT_VERSION and JDK $JDK_PACKAGE"
+```
+
+The above will generate 4 tasks.
+
 ## Task Execution Dependencies
 
 Sometimes it might be very handy to execute some tasks only after successful execution of other tasks. For such cases
