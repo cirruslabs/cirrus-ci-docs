@@ -753,6 +753,8 @@ to figure out the ami right before scheduling the instance. Please make use AMI 
 ec2_task:
   ec2_instance:
     image: ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-*
+    image_owners: # optional, defaults to self, amazon and aws-marketplace
+      - aws-marketplace
     architecture: arm64
     region: us-east-2
     type: a1.metal

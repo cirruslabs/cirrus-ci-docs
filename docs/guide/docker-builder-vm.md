@@ -215,6 +215,8 @@ You will see such `build_docker_image_HASH` tasks in the UI.
       cluster_name: my-company-arm-cluster
       dockerfile: .ci/Dockerfile
       builder_image: MY_DOCKER_AMI
+      builder_image_owners: # optional, defaults to self, amazon and aws-marketplace
+        - self
       builder_role: cirrus-builder # role for builder instance profile
       builder_instance_type: c7g.xlarge # should match the architecture below
       builder_subnet_ids: # optional, list of subnets from your default VPC to randomly choose from for scheduling the instance
