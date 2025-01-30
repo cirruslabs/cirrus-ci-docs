@@ -786,9 +786,6 @@ add necessary permissions for the IAM user or OIDC role that Cirrus CI is using:
 "Action": [
   "iam:PassRole",
   "eks:DescribeCluster",
-  "eks:CreateCluster",
-  "eks:DeleteCluster",
-  "eks:UpdateClusterVersion",
   "ecr:DescribeImages",
 ]
 ```
