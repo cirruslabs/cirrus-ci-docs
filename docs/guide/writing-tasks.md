@@ -388,6 +388,8 @@ build_and_test_task:
       format: junit
 ```
 
+You can either use `path` or `paths` field, where the latter expects a list of paths instead of just a scalar.
+
 ??? tip "URLs to the artifacts"
     #### Latest build artifacts
 
