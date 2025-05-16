@@ -272,7 +272,7 @@ A `fingerprint_script` and `fingerprint_key` are *optional* fields that can spec
     fingerprint_key: 2038-01-20
   ```
 
-These two fields are mutually exclusive. By default the task name is used as a fingerprint value.
+These two fields are mutually exclusive. By default, the task name is used as a fingerprint value.
 
 After the last `script` instruction for the task succeeds, Cirrus CI will calculate checksum of the cached folder (note that it's unrelated to `fingerprint_script` or `fingerprint_key` fields) and re-upload the cache if it finds any changes.
 To avoid a time-costly re-upload, remove volatile files from the cache (for example, in the last `script` instruction of a task).
@@ -286,6 +286,11 @@ contents of cached `folder` have changed during task execution and re-upload a c
 If `reupload_on_changes` option is not set explicitly then it will be set to `false` if `fingerprint_script` or `fingerprint_key` is presented and `true` otherwise.
 Cirrus Agent will detect additions, deletions and modifications of any files under specified `folder`. All of the detected changes will be
 logged under `Upload '$CACHE_NAME' cache` instructions for easier debugging of cache invalidations.
+
+`optimistically_restore_on_miss` is an *optional* field that can specify whether Cirrus Agent should restore a cache
+even if it doesn't exist for a given `fingerprint_script` or `fingerprint_key`. In this case, a most recent cache entry
+will be optimistically located and used instead. Note that the optimistic lookup is performed based on cache instruction
+name, so please make sure they are unique across different platforms and architectures if contents of the cache depend on platform or architecture.
 
 That means the only difference between the example above and below is that `yarn install` will always be executed in the
 example below where in the example above only when `yarn.lock` has changes.
