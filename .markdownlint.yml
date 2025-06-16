@@ -11,3 +11,4 @@
 "MD045": false # OK not to have a description for an image
 "MD046": false # Code block style [Expected: fenced; Actual: indented]
 "MD055": false # Unexpected leading pipe "|" in tables are OK
+"MD059": false # It's OK to have non-descriptive link texts

@@ -278,7 +278,8 @@ gce_instance:
   cpu: 8
   memory: 40GB
   disk: 60
-  use_ssd: true # default to false
+  use_ssd: true # defaults to false
+  hostname: ubuntu.local
 
 task:
   script: ./run-ci.sh
