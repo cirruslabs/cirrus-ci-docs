@@ -10,11 +10,11 @@ categories:
   - announcement
 ---
 
-## Persistent Workers Get a Boost with Standby Instances
+# Persistent Workers Get a Boost with Standby Instances
 
 We're excited to announce a new feature for Cirrus CI persistent workers: **Standby Instances**. This functionality significantly improves scheduling efficiency when dealing with many persistent workers, leading to faster task execution and a smoother CI/CD experience.
 
-### Background: Persistent Workers and Scheduling Challenges
+## Background: Persistent Workers and Scheduling Challenges
 
 Cirrus CI's persistent workers offer a powerful way to run tasks on dedicated infrastructure, including bare metal and virtual machines. This is ideal for scenarios where you need more control over the environment or want to leverage specific hardware configurations.
 
@@ -25,7 +25,7 @@ However, with many persistent workers, scheduling tasks efficiently can be chall
 
 This delay could be frustrating, especially when dealing with frequent builds and deployments.
 
-### Introducing Standby Instances: Faster Scheduling, Smoother CI/CD
+## Introducing Standby Instances: Faster Scheduling, Smoother CI/CD
 
 Standby instances address this challenge by ensuring tasks are assigned to workers that are already prepared. Here's how it works:
 
@@ -45,7 +45,7 @@ This new approach offers several benefits:
 
 **Note:** While standby instances do not directly improve resource utilization, they ensure that resources are used effectively by minimizing the time spent on image pulls and worker startup. This leads to a more efficient CI/CD process overall.
 
-### Example Standby Configuration
+## Example Standby Configuration
 
 Here's an example of how to configure a standby instance for a persistent worker using Tart:
 
@@ -64,6 +64,6 @@ standby:
 
 This configuration ensures that the persistent worker will keep one macOS Sonoma VM running and ready to execute tasks that require this specific environment and resources.
 
-### Conclusion
+## Conclusion
 
 Standby instances are a powerful way to improve the performance and efficiency of your Cirrus CI persistent workers. We encourage you to try it out and experience the benefits for yourself. If you have any questions or need assistance with configuration, please don't hesitate to reach out to our support team at [support@cirruslabs.org](mailto:support@cirruslabs.org).
