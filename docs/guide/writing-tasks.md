@@ -1140,7 +1140,7 @@ lint_task:
 
 ```yaml
 build_task:
-  skip: "changesIncludeOnly('doc/*')"
+  skip: "changesIncludeOnly('doc/**')"
 ```
 
 ## Auto-Cancellation of Tasks
