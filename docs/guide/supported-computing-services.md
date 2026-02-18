@@ -712,6 +712,7 @@ task:
           - subnet2
     architecture: arm64 # defaults to amd64
     spot: true # defaults to false
+    nested_virtualization: true # optional, defaults to false
     block_device_mappings: # empty by default
       - device_name: /dev/sdg
         ebs:
