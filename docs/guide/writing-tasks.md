@@ -1431,7 +1431,7 @@ https://api.cirrus-ci.com/github/<USER OR ORGANIZATION>/<REPOSITORY>.svg?task=bu
 
 ### Badges in Markdown
 
-Here is how Cirrus CI's badge can be embeded in a Markdown file:
+Here is how Cirrus CI's badge can be embedded in a Markdown file:
 
 ```markdown
 [![Build Status](https://api.cirrus-ci.com/github/<USER OR ORGANIZATION>/<REPOSITORY>.svg)](https://cirrus-ci.com/github/<USER OR ORGANIZATION>/<REPOSITORY>)
