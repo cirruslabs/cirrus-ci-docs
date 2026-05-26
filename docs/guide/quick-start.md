@@ -99,7 +99,7 @@ After clicking on `Sign In` you'll be redirected to GitHub in order to authorize
     These permissions are read-only except for write access to checks and commit statuses in order for Cirrus CI to
     be able to report task statuses via checks or commit statuses.
 
-    There is a long thread disscussing this weird "*Act on your behalf*" wording [here](https://github.community/t/why-does-this-forum-need-permission-to-act-on-my-behalf/120453/7)
+    There is a long thread discussing this weird "*Act on your behalf*" wording [here](https://github.community/t/why-does-this-forum-need-permission-to-act-on-my-behalf/120453/7)
     on GitHub's own commuity forum.
 
 ## Enabling New Repositories after Installation

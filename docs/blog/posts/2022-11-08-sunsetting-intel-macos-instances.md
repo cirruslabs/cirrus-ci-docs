@@ -40,7 +40,7 @@ We had to implement some extra Ansible magic that distributed these templates vi
 The magic pulled a new template from Anka registry to a single host, then the next two hosts instead of pulling from the registry, used `scp` to copy
 from the previous hosts, etc. That unblocked our growth and we continued using Anka.
 
-Then in the end of 2019 - early 2020 there were a bunch of transient issues with Anka's networking layer. Sometimes some hosts were just loosing
+Then in the end of 2019 - early 2020 there were a bunch of transient issues with Anka's networking layer. Sometimes some hosts were just losing
 internet connections and all consecutive Anka VMs were not able to run anything until a restart of a host. We spent countless hours with Veertu folks
 trying to debug this transient but very annoying issue with no luck. In the end we had to implement some workaround and detections on our end.
 At this point we started thinking of a way to replace Anka Controller, so we could potentially switch the virtualization layer as well.
